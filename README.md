@@ -1,2 +1,2 @@
 # reloading-cost-calculator
-Reloading calculator cost estimation calculator.
+Reloading calculator cost estimation.
