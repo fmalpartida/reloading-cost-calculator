@@ -34,7 +34,7 @@ The application has three main tabs accessible from the navigation bar at the to
 
 A fourth **Editor** tab appears automatically whenever you are adding or editing an entry.
 
-![Reload Cost Calculator — main application and navigation tabs](main-image.png)
+![Reload Cost Calculator — main application and navigation tabs](./images/main-view.png)
 
 ---
 
