@@ -28,13 +28,13 @@ The application has three main tabs accessible from the navigation bar at the to
 
 | Tab | Purpose |
 |-----|---------|
-| **Cost Comparison** | Side-by-side cost breakdown for selected reload and factory entries |
 | **My Ammo** | Library of all your ammo entries — reloads and factory |
+| **Cost Comparison** | Side-by-side cost breakdown for selected reload and factory entries |
 | **Cost Analysis** | Break-even chart showing when reloading pays off after equipment investment |
 
 A fourth **Editor** tab appears automatically whenever you are adding or editing an entry.
 
-> 📷 *[Screenshot: Application header and navigation tabs]*
+![Reload Cost Calculator — main application and navigation tabs](main-image.png)
 
 ---
 
