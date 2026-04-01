@@ -34,7 +34,7 @@ The application has three main tabs accessible from the navigation bar at the to
 
 A fourth **Editor** tab appears automatically whenever you are adding or editing an entry.
 
-![Reload Cost Calculator — main application and navigation tabs](./images/main-view.png)
+![Reload Cost Calculator — main application and navigation tabs](./images/header-tabs.png)
 
 ---
 
@@ -42,7 +42,7 @@ A fourth **Editor** tab appears automatically whenever you are adding or editing
 
 The **My Ammo** tab is where you build and maintain your ammunition library. Entries are grouped by type — reloads first, then factory ammo — and sorted cheapest to most expensive within each group.
 
-> 📷 *[Screenshot: My Ammo tab showing reload and factory cards]*
+![Screenshot: My Ammo tab showing reload and factory cards](./images/my-ammo.png)
 
 ### 2.1 Adding a Reload Entry
 
@@ -68,9 +68,9 @@ Click **Add Ammo** in the top-right corner of the My Ammo tab. The Editor tab wi
 
 A **Live Preview** panel on the right updates in real time as you type, showing the per-round cost breakdown and totals for 50, 100, and 1000 rounds.
 
-> 📷 *[Screenshot: Load editor — Reload Data form with live preview]*
+![Screenshot: Load editor — Reload Data form with live preview](./images/load-editor.png)
 
-Click **Save Load** when done. The entry appears immediately in My Ammo and becomes available in Cost Comparison and Cost Analysis.
+Click **Save Load** or **Update Load** when done. The entry appears immediately in My Ammo and becomes available in Cost Comparison and Cost Analysis.
 
 ### 2.2 Adding a Factory Ammo Entry
 
@@ -80,14 +80,14 @@ Set the **Load Type** to **Factory Ammo**. The form changes to:
 - Price per box and rounds per box.
 
 **Factory Taxes**
-- Sales tax (%) and federal excise tax (%).
+- Sales tax (%), State excise tax (%).
 
 **Additional Fixed Cost**
-- A flat fee spread over a number of rounds — useful for background check fees (e.g. $25 over 500 rounds = $0.05/rd extra).
+- A flat fee spread over a number of rounds — useful for background check fees (e.g. $25 over 500 rounds = $0.05/rd extra) if applicable in your State.
 
-> 📷 *[Screenshot: Load editor — Factory Ammo Data form]*
+![Screenshot: Load editor — Factory Ammo Data form](images/factory-ammo.png)
 
-### 2.3 Managing Entries
+### 2.3 Managing Ammo Entries
 
 Each ammo card has three action buttons in its top-right corner:
 
@@ -101,7 +101,7 @@ Click the **▸ / ▾** chevron on the left of the action buttons to expand a ca
 
 Use the **Search** box to filter cards by name, caliber, type, or component name.
 
-> 📷 *[Screenshot: Expanded ammo card showing component breakdown]*
+![Screenshot: Expanded ammo card showing component breakdown](images/ammo-viewer.png)
 
 ### 2.4 Default Taxes & Fees
 
@@ -112,7 +112,7 @@ At the top of My Ammo there is a **Default Taxes** panel. Values set here are us
 
 Click **Apply to All** to update every existing entry in your library with the current defaults at once.
 
-> 📷 *[Screenshot: Default Taxes panel]*
+![Screenshot: Default Taxes panel](images/default-taxes.png)
 
 You can also reset taxes to defaults on a per-entry basis using the **Reset to defaults** link inside the Editor.
 
@@ -122,7 +122,7 @@ You can also reset taxes to defaults on a per-entry basis using the **Reset to d
 
 The **Cost Comparison** tab lets you select any combination of reload and factory entries and compare their costs side by side.
 
-> 📷 *[Screenshot: Cost Comparison tab with entries selected]*
+![Screenshot: Cost Comparison tab with entries selected](./images/comparison-selection.png)
 
 **Selecting entries**  
 Click any entry in the selection list to toggle it on or off. Selected entries are highlighted — green for reloads, amber for factory ammo. You can select multiple reloads and multiple factory entries simultaneously.
@@ -136,7 +136,8 @@ Once entries are selected, the view shows:
 
 Use the **Search** box above the selection list to filter by name, caliber, type, or component.
 
-> 📷 *[Screenshot: Cost Comparison — bar chart and difference table]*
+![Screenshot: Cost Comparison — bar chart and difference table](./images/cost-comparison.png)
+![Screenshot: Cost Comparison — difference table](./images/cost-break-down.png)
 
 ---
 
@@ -144,13 +145,13 @@ Use the **Search** box above the selection list to filter by name, caliber, type
 
 The **Cost Analysis** tab shows how the cumulative cost of reloading (including your one-time equipment investment) compares to buying factory ammo over time, and at what point reloading becomes cheaper overall.
 
-> 📷 *[Screenshot: Cost Analysis tab — full view]*
+![Screenshot: Cost Analysis tab — full view](images/cost-analysis.png)
 
 ### 4.1 Load Selection
 
 The left column lists all your reload and factory entries with checkboxes. Check the entries you want to include in the averages. If nothing is checked, **all entries of each type are included automatically**.
 
-> 📷 *[Screenshot: Load Selection panel with checkboxes]*
+![Screenshot: Load Selection panel with checkboxes](./images/load-selection.png)
 
 ### 4.2 Equipment Costs
 
@@ -162,7 +163,7 @@ The right column is where you enter your one-time reloading equipment costs — 
 
 This total is treated as an upfront investment that your per-round savings must recover before reloading becomes net-positive.
 
-> 📷 *[Screenshot: Equipment Costs panel with several items entered]*
+![Screenshot: Equipment Costs panel with several items entered](./images/equipment-costs.png)
 
 ### 4.3 Reading the Chart & Stats
 
@@ -183,7 +184,7 @@ The point where the lines cross is the **break-even point**, marked on the chart
 
 If the reload average is higher than the factory average (reloading is more expensive per round), the lines never cross and a warning is shown.
 
-> 📷 *[Screenshot: Break-even chart showing the intersection point]*
+![Screenshot: Break-even chart showing the intersection point](./images/analysis.png)
 
 ---
 
@@ -199,7 +200,7 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 
 > WARNING: Import overwrites your current data. Export first if you want to keep your existing entries.
 
-> 📷 *[Screenshot: Export and Import buttons in the navigation bar]*
+![Screenshot: Export and Import buttons in the navigation bar](./images/import-export.png)
 
 ---
 
@@ -207,7 +208,8 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 
 - **All data is stored locally.** No account or internet connection is required. Data is saved automatically in the browser/app storage every time you make a change.
 - **Brass reuse count matters.** Setting a realistic reuse count (commonly 5–10 reloads per case) significantly lowers your per-round brass cost. A count of 1 treats every case as single-use.
-- **Federal Excise Tax (FET).** Factory ammunition in the US is subject to an 11% federal excise tax in addition to state sales tax. The default value is pre-filled for you.
+- **State Excise Tax (SET).** Factory ammunition in some US States is subject to a state excise tax in addition to state and local sales tax. The default value is pre-filled for you.
+- **Fix Fee (FF).** Some US States have an additional fix fee (normally associated to a background check) on any ammunition purchases. This is a fixed fee and applied to the entire purchase and its cost is diluded over all the rounds purchased.
 - **Accuracy of results.** All costs are estimates based on the prices you enter. Check current component and ammo prices regularly — they fluctuate.
 - **Duplicating entries** is a quick way to model variants: duplicate a load, change the powder charge or bullet weight, and compare side by side in the Cost Comparison tab.
 - **Equipment costs** only need to be entered once. They persist between sessions and are included in export files.
