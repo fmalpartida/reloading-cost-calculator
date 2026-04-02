@@ -17,8 +17,12 @@ Reload Estimator is an application that helps you compare the true cost of reloa
    - [Load Selection](#41-load-selection)
    - [Equipment Costs](#42-equipment-costs)
    - [Reading the Chart & Stats](#43-reading-the-chart--stats)
-5. [Import & Export](#5-import--export)
-6. [Tips & Notes](#6-tips--notes)
+5. [My Inventory](#5-my-inventory)
+   - [Adding a Component](#51-adding-a-component)
+   - [Managing Components](#52-managing-components)
+   - [Linking Inventory to Loads](#53-linking-inventory-to-loads)
+6. [Import & Export](#6-import--export)
+7. [Tips & Notes](#7-tips--notes)
 
 ---
 
@@ -31,8 +35,9 @@ The application has three main tabs accessible from the navigation bar at the to
 | **My Ammo** | Library of all your ammo entries — reloads and factory |
 | **Cost Comparison** | Side-by-side cost breakdown for selected reload and factory entries |
 | **Cost Analysis** | Break-even chart showing when reloading pays off after equipment investment |
+| **My Inventory** | Global catalog of reloading components — powders, primers, bullets, and brass |
 
-A fourth **Editor** tab appears automatically whenever you are adding or editing an entry.
+A fifth **Editor** tab appears automatically whenever you are adding or editing an ammo entry.
 
 ![Reload Cost Calculator — main application and navigation tabs](./images/header-tabs.png)
 
@@ -188,9 +193,95 @@ If the reload average is higher than the factory average (reloading is more expe
 
 ---
 
-## 5. Import & Export
+## 5. My Inventory
 
-Your entire library — ammo entries, tax defaults, equipment costs, and load selections — can be saved to a single JSON file and restored later or shared with another computer.
+The **My Inventory** tab is a global catalog of reloading components. Instead of typing the same powder name, price, and quantity into every load, you define each component once here and then select it from a dropdown when editing any reload. If a component price changes, update it in the inventory and every linked load updates automatically.
+
+![Screenshot: My Inventory tab showing grouped components with filter tags](./images/my-inventory.png)
+
+Components are organised into four types: **Powder**, **Primer**, **Bullet**, and **Brass**. They are displayed in grouped sections, each with a colored left-border accent that matches the component's icon.
+
+**Filter tags** at the top of the list let you narrow the view to a single type at a glance — click a tag to activate it, click again to clear the filter.
+
+![Screenshot: My Inventory — filter tags and grouped sections](./images/inventory-filter-tags.png)
+
+Use the **Search** box to filter components by name or notes across all groups.
+
+### 5.1 Adding a Component
+
+Click **Add Component** in the top-right corner, or click the small **+** button in any group header to pre-select that component type.
+
+**Component Type**  
+Choose one of the four types using the selector buttons at the top of the form. Once a component is saved the type cannot be changed — duplicate it and delete the original if you need a different type.
+
+**Name / Description** *(required)*  
+A descriptive label, e.g. *Titegroup*, *CCI 500 Small Pistol*, *124gr FMJ RN*, *Mixed once-fired 9mm*.
+
+**Price** *(required)*  
+The price you paid for the component. For powders this is the price per pound (Imperial) or per kilogram (Metric). For all other types it is the total price for the quantity below.
+
+**Quantity / Weight** *(required)*  
+- *Powder* — the weight the price covers (lbs or kg). A 1 lb jug entered at $28.99/1 lb stores as $28.99/lb; a 4 lb jug entered at $89.99/4 lb also resolves to the correct per-lb rate when used in a load.
+- *Primer, Bullet, Brass* — the number of units the price covers (e.g. 100 primers for $15.99).
+
+**Measurement System** *(powder only)*  
+Select **Imperial (lb)** or **Metric (kg)**. This carries through to any load that links to this powder.
+
+**Times Reloaded** *(brass only)*  
+How many reloads each case is expected to survive before replacement. This amortises the brass cost across that many rounds.
+
+**Notes**  
+Optional free-text field for lot numbers, suppliers, or any other reference.
+
+Click **Save** to add the component. The card appears immediately in its group.
+
+![Screenshot: Add/Edit component form panel](./images/inventory-add-form.png)
+
+Each component card shows:
+- Component name and type icon
+- **Price** — the raw price as entered (e.g. *$89.99 / 4 lb*)
+- **Per unit** — the derived cost per lb/kg or per single primer/bullet/case (e.g. *$22.50/lb*)
+- Brass **Reloads** count (brass cards only)
+- Notes (if any)
+
+![Screenshot: Inventory card showing price and per-unit fields](./images/inventory-card.png)
+
+### 5.2 Managing Components
+
+Each component card has three action buttons:
+
+| Button | Action |
+|--------|--------|
+| ✏️ Edit | Opens the component in the form panel for editing. The type selector is disabled — type cannot be changed after creation. |
+| ⧉ Duplicate | Creates a copy with *(copy)* appended to the name — useful when a component comes in multiple package sizes. |
+| 🗑 Delete | Permanently removes the component from the catalog. Loads that were linked to it retain their last-known values but lose the live link. |
+
+![Screenshot: Inventory card action buttons](./images/inventory-card-actions.png)
+
+### 5.3 Linking Inventory to Loads
+
+When editing or creating a reload in the **Editor** tab, each component section (Powder, Primers, Bullets, Brass) has a **Select from inventory** dropdown above the manual input fields. Choosing an item from that dropdown fills all the related fields automatically and marks the component with a **linked badge**.
+
+![Screenshot: Load editor with inventory dropdown and linked badge](./images/inventory-link-badge.png)
+
+**What the linked badge means:**  
+A small inventory icon appears next to the component name to indicate the values are driven by the inventory. If you manually edit any field in that section the link is broken automatically and the badge disappears — the load then stores its own independent copy of those values.
+
+You can also click the **×** on the badge to unlink intentionally without editing any field.
+
+**Auto-update behaviour:**  
+When you edit a component in My Inventory (e.g. update a powder price after buying a new jug), every reload that is still linked to that component has its cost recalculated immediately. No manual re-entry is needed.
+
+**Inventory badge in My Ammo:**  
+In the expanded card view under My Ammo, any component that originates from the inventory shows a small inventory icon next to its name, so you can tell at a glance which values are managed centrally.
+
+![Screenshot: Expanded ammo card showing inventory link badges on components](./images/inventory-badge-card.png)
+
+---
+
+## 6. Import & Export
+
+Your entire library — ammo entries, tax defaults, equipment costs, load selections, **and your full component inventory** — can be saved to a single JSON file and restored later or shared with another computer.
 
 **Exporting**  
 Click **Export** in the top navigation bar. A `.json` file will be downloaded to your machine.
@@ -204,7 +295,7 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 
 ---
 
-## 6. Tips & Notes
+## 7. Tips & Notes
 
 - **All data is stored locally.** No account or internet connection is required. Data is saved automatically in the browser/app storage every time you make a change.
 - **Brass reuse count matters.** Setting a realistic reuse count (commonly 5–10 reloads per case) significantly lowers your per-round brass cost. A count of 1 treats every case as single-use.
@@ -213,3 +304,7 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 - **Accuracy of results.** All costs are estimates based on the prices you enter. Check current component and ammo prices regularly — they fluctuate.
 - **Duplicating entries** is a quick way to model variants: duplicate a load, change the powder charge or bullet weight, and compare side by side in the Cost Comparison tab.
 - **Equipment costs** only need to be entered once. They persist between sessions and are included in export files.
+- **Use the inventory for shared components.** If you load multiple calibers with the same powder or primer, define it once in My Inventory and link it to all relevant loads. A single price update flows through everywhere.
+- **Powder quantity field.** When entering a powder in the inventory, set the quantity to match how the powder is sold — 1 lb, 4 lb, 8 lb, etc. The app calculates the per-lb rate automatically and uses it when costing a load.
+- **Unlinking a component.** Manually editing any field in a linked component section (name, price, quantity) automatically breaks the inventory link. The load keeps the values you typed but is no longer updated when the inventory item changes. Use the **×** on the badge to unlink without changing any values.
+- **Deleting an inventory item** does not delete any loads that used it. Those loads retain the component values they had at the time the link was broken.
