@@ -1,5 +1,5 @@
 
-Creative Commons Attribution-ShareAlike 4.0 International
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
 
 CREATIVE COMMONS CORPORATION IS NOT A LAW FIRM AND DOES NOT PROVIDE LEGAL SERVICES. DISTRIBUTION OF THIS LICENSE
 DOES NOT CREATE AN ATTORNEY-CLIENT RELATIONSHIP. CREATIVE COMMONS PROVIDES THIS INFORMATION ON AN "AS-IS" BASIS.
@@ -41,10 +41,19 @@ circumvented under laws fulfilling obligations under Article 11 of the WIPO Copy
 allow use of the Licensed Material without permission from the Copyright owner under certain circumstances, such as
 fair use or fair dealing.
 
+"Licensed Rights" means the rights granted to You subject to the terms and conditions of this License, which are
+limited to all Copyright and Similar Rights that apply to Your use of the Licensed Material and that the Licensor has
+authority to license.
+
 "Licensor" means the individual(s) or entity(ies) that offer(s) the Work under the terms of this License.
 
 "Licensed Material" means the artistic or literary work, performance, or other material made available under the terms
 of this License.
+
+"NonCommercial" means not primarily intended for or directed towards commercial advantage or monetary compensation.
+For purposes of this License, the exchange of the Licensed Material for other material subject to Copyright and
+Similar Rights by digital file-sharing or similar means is NonCommercial provided there is no payment of monetary
+compensation in connection with the exchange.
 
 "Share" means to provide material to the public by any means or process that requires permission under the Licensed
 Material's Copyright and Similar Rights, such as reproduction, public display, public performance, distribution,
@@ -64,10 +73,10 @@ a. License grant. Subject to the terms and conditions of this License, the Licen
 royalty-free, non-sublicensable, non-exclusive, irrevocable license to exercise the Licensed Rights in the Licensed
 Material to:
 
-	i. reproduce and Share the Licensed Material, in whole or in part; and
+	i. reproduce and Share the Licensed Material, in whole or in part, for NonCommercial purposes only; and
 
 	ii. produce and reproduce, adapt, modify, translate, and otherwise create from the Licensed Material, and to
-	reproduce, Share, and publicly perform, display, and distribute the Adapted Material.
+	reproduce, Share, and publicly perform, display, and distribute the Adapted Material, for NonCommercial purposes only.
 
 b. Exceptions and Limitations. For the avoidance of doubt, where Exceptions and Limitations apply to Your use, this
 License does not apply, and You do not need to comply with its terms and conditions.
@@ -106,9 +115,11 @@ a. Attribution. If You Share the Licensed Material (including in modified form),
 	resource that includes the required information.
 
 b. ShareAlike. In the case of Adapted Material, You must distribute the Adapted Material under the same license as the
-Licensed Material.
+Licensed Material (CC BY-NC-SA 4.0), or a Creative Commons license with the same License Elements.
 
-c. No additional restrictions. You may not apply legal terms or technological measures that legally restrict others from
+c. NonCommercial. You may not use the Licensed Material for commercial purposes.
+
+d. No additional restrictions. You may not apply legal terms or technological measures that legally restrict others from
 doing anything the license permits.
 
 4. Sui Generis Database Rights.
@@ -116,7 +127,7 @@ doing anything the license permits.
 Where the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:
 
 a. for the avoidance of doubt, Section 2(a) grants You the right to extract, reutilize, and Share all or a substantial
-portion of the contents of the database; and
+portion of the contents of the database for NonCommercial purposes only; and
 
 b. if You extract and/or reutilize a substantial portion of the contents of the database, You must also comply with the
 conditions in Section 3 (License Conditions).
@@ -170,5 +181,4 @@ implication, estoppel, or otherwise.
 
 11. Notice.
 
-For full legal code and more information: https://creativecommons.org/licenses/by-sa/4.0/legalcode
-
+For full legal code and more information: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
