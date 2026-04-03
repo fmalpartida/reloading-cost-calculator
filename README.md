@@ -247,13 +247,15 @@ The left column lists all your reload and factory entries with checkboxes. Check
 
 ### 5.2 Equipment Costs
 
-The right column is where you enter your one-time reloading equipment costs — press, dies, tumbler, scale, etc.
+The right column is where you enter your one-time reloading equipment costs (press, dies, tumbler, scale, etc.)
 
 - Type a name and price in the **New item** row and press **Enter** or click **+** to add it.
 - Click **✕** to remove an item.
 - The running **Total Equipment Cost** is shown at the bottom.
 
 This total is treated as an upfront investment that your per-round savings must recover before reloading becomes net-positive.
+
+This cost can be ignored by switching off the **Include** switch.
 
 ![Screenshot: Equipment Costs panel with several items entered](./images/equipment-costs.png)
 
