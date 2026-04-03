@@ -12,15 +12,16 @@ Reload Estimator is an application that helps you compare the true cost of reloa
    - [Adding a Factory Ammo Entry](#22-adding-a-factory-ammo-entry)
    - [Managing Entries](#23-managing-entries)
    - [Default Taxes & Fees](#24-default-taxes--fees)
-3. [Cost Comparison](#3-cost-comparison)
-4. [Cost Analysis (Break-Even)](#4-cost-analysis-break-even)
-   - [Load Selection](#41-load-selection)
-   - [Equipment Costs](#42-equipment-costs)
-   - [Reading the Chart & Stats](#43-reading-the-chart--stats)
-5. [My Inventory](#5-my-inventory)
-   - [Adding a Component](#51-adding-a-component)
-   - [Managing Components](#52-managing-components)
-   - [Linking Inventory to Loads](#53-linking-inventory-to-loads)
+3. [My Inventory](#3-my-inventory)
+   - [Adding a Component](#31-adding-a-component)
+   - [Managing Components](#32-managing-components)
+   - [Linking Inventory to Loads](#33-linking-inventory-to-loads)
+4. [Cost Comparison](#4-cost-comparison)
+5. [Cost Analysis (Break-Even)](#5-cost-analysis-break-even)
+   - [Load Selection](#51-load-selection)
+   - [Equipment Costs](#52-equipment-costs)
+   - [Reading the Chart & Stats](#53-reading-the-chart--stats)
+
 6. [Import & Export](#6-import--export)
 7. [Tips & Notes](#7-tips--notes)
 
@@ -123,77 +124,7 @@ You can also reset taxes to defaults on a per-entry basis using the **Reset to d
 
 ---
 
-## 3. Cost Comparison
-
-The **Cost Comparison** tab lets you select any combination of reload and factory entries and compare their costs side by side.
-
-![Screenshot: Cost Comparison tab with entries selected](./images/comparison-selection.png)
-
-**Selecting entries**  
-Click any entry in the selection list to toggle it on or off. Selected entries are highlighted — green for reloads, amber for factory ammo. You can select multiple reloads and multiple factory entries simultaneously.
-
-**Reading the comparison**  
-Once entries are selected, the view shows:
-
-- A **bar chart** of cost per round for every selected entry.
-- A **cost table** with totals for 50, 100, and 1,000 rounds for each entry.
-- A **Difference** section (visible when at least one reload and one factory entry are selected) showing how much cheaper your reload is per round, per 50, per 100, and per 1,000 rounds.
-
-Use the **Search** box above the selection list to filter by name, caliber, type, or component.
-
-![Screenshot: Cost Comparison — bar chart and difference table](./images/cost-comparison.png)
-![Screenshot: Cost Comparison — difference table](./images/cost-break-down.png)
-
----
-
-## 4. Cost Analysis (Break-Even)
-
-The **Cost Analysis** tab shows how the cumulative cost of reloading (including your one-time equipment investment) compares to buying factory ammo over time, and at what point reloading becomes cheaper overall.
-
-![Screenshot: Cost Analysis tab — full view](images/cost-analysis.png)
-
-### 4.1 Load Selection
-
-The left column lists all your reload and factory entries with checkboxes. Check the entries you want to include in the averages. If nothing is checked, **all entries of each type are included automatically**.
-
-![Screenshot: Load Selection panel with checkboxes](./images/load-selection.png)
-
-### 4.2 Equipment Costs
-
-The right column is where you enter your one-time reloading equipment costs — press, dies, tumbler, scale, etc.
-
-- Type a name and price in the **New item** row and press **Enter** or click **+** to add it.
-- Click **✕** to remove an item.
-- The running **Total Equipment Cost** is shown at the bottom.
-
-This total is treated as an upfront investment that your per-round savings must recover before reloading becomes net-positive.
-
-![Screenshot: Equipment Costs panel with several items entered](./images/equipment-costs.png)
-
-### 4.3 Reading the Chart & Stats
-
-The **stats bar** across the middle column shows four key figures at a glance:
-
-| Stat | Meaning |
-|------|---------|
-| **Avg Reload Cost** | Average cost per round across selected reload entries |
-| **Avg Factory Cost** | Average cost per round across selected factory entries |
-| **Savings per Round** | Factory average minus reload average |
-| **Break-Even Point** | Number of rounds until cumulative savings cover total equipment cost |
-
-The **chart** below plots two lines:
-- **Reload line** — cumulative spend including the equipment investment upfront, declining in slope as per-round costs are cheaper than factory.
-- **Factory line** — cumulative spend at factory prices with no upfront cost.
-
-The point where the lines cross is the **break-even point**, marked on the chart. After that point, every round you reload puts money back in your pocket.
-
-If the reload average is higher than the factory average (reloading is more expensive per round), the lines never cross and a warning is shown.
-
-![Screenshot: Break-even chart showing the intersection point](./images/analysis.png)
-
----
-
-## 5. My Inventory
+## 3. My Inventory
 
 The **My Inventory** tab is a global catalog of reloading components. Instead of typing the same powder name, price, and quantity into every load, you define each component once here and then select it from a dropdown when editing any reload. If a component price changes, update it in the inventory and every linked load updates automatically.
 
@@ -207,7 +138,7 @@ Components are organised into four types: **Powder**, **Primer**, **Bullet**, an
 
 Use the **Search** box to filter components by name or notes across all groups.
 
-### 5.1 Adding a Component
+### 3.1 Adding a Component
 
 Click **Add Component** in the top-right corner, or click the small **+** button in any group header to pre-select that component type.
 
@@ -246,7 +177,7 @@ Each component card shows:
 
 ![Screenshot: Inventory card showing price and per-unit fields](./images/inventory-card.png)
 
-### 5.2 Managing Components
+### 3.2 Managing Components
 
 Each component card has three action buttons:
 
@@ -258,7 +189,7 @@ Each component card has three action buttons:
 
 ![Screenshot: Inventory card action buttons](./images/inventory-card-actions.png)
 
-### 5.3 Linking Inventory to Loads
+### 3.3 Linking Inventory to Loads
 
 When editing or creating a reload in the **Editor** tab, each component section (Powder, Primers, Bullets, Brass) has a **Select from inventory** dropdown above the manual input fields. Choosing an item from that dropdown fills all the related fields automatically and marks the component with a **linked badge**.
 
@@ -276,6 +207,76 @@ When you edit a component in My Inventory (e.g. update a powder price after buyi
 In the expanded card view under My Ammo, any component that originates from the inventory shows a small inventory icon next to its name, so you can tell at a glance which values are managed centrally.
 
 ![Screenshot: Expanded ammo card showing inventory link badges on components](./images/inventory-badge-card.png)
+
+---
+
+## 4. Cost Comparison
+
+The **Cost Comparison** tab lets you select any combination of reload and factory entries and compare their costs side by side.
+
+![Screenshot: Cost Comparison tab with entries selected](./images/comparison-selection.png)
+
+**Selecting entries**  
+Click any entry in the selection list to toggle it on or off. Selected entries are highlighted — green for reloads, amber for factory ammo. You can select multiple reloads and multiple factory entries simultaneously.
+
+**Reading the comparison**  
+Once entries are selected, the view shows:
+
+- A **bar chart** of cost per round for every selected entry.
+- A **cost table** with totals for 50, 100, and 1,000 rounds for each entry.
+- A **Difference** section (visible when at least one reload and one factory entry are selected) showing how much cheaper your reload is per round, per 50, per 100, and per 1,000 rounds.
+
+Use the **Search** box above the selection list to filter by name, caliber, type, or component.
+
+![Screenshot: Cost Comparison — bar chart and difference table](./images/cost-comparison.png)
+![Screenshot: Cost Comparison — difference table](./images/cost-break-down.png)
+
+---
+
+## 5. Cost Analysis (Break-Even)
+
+The **Cost Analysis** tab shows how the cumulative cost of reloading (including your one-time equipment investment) compares to buying factory ammo over time, and at what point reloading becomes cheaper overall.
+
+![Screenshot: Cost Analysis tab — full view](images/cost-analysis.png)
+
+### 5.1 Load Selection
+
+The left column lists all your reload and factory entries with checkboxes. Check the entries you want to include in the averages. If nothing is checked, **all entries of each type are included automatically**.
+
+![Screenshot: Load Selection panel with checkboxes](./images/load-selection.png)
+
+### 5.2 Equipment Costs
+
+The right column is where you enter your one-time reloading equipment costs — press, dies, tumbler, scale, etc.
+
+- Type a name and price in the **New item** row and press **Enter** or click **+** to add it.
+- Click **✕** to remove an item.
+- The running **Total Equipment Cost** is shown at the bottom.
+
+This total is treated as an upfront investment that your per-round savings must recover before reloading becomes net-positive.
+
+![Screenshot: Equipment Costs panel with several items entered](./images/equipment-costs.png)
+
+### 5.3 Reading the Chart & Stats
+
+The **stats bar** across the middle column shows four key figures at a glance:
+
+| Stat | Meaning |
+|------|---------|
+| **Avg Reload Cost** | Average cost per round across selected reload entries |
+| **Avg Factory Cost** | Average cost per round across selected factory entries |
+| **Savings per Round** | Factory average minus reload average |
+| **Break-Even Point** | Number of rounds until cumulative savings cover total equipment cost |
+
+The **chart** below plots two lines:
+- **Reload line** — cumulative spend including the equipment investment upfront, declining in slope as per-round costs are cheaper than factory.
+- **Factory line** — cumulative spend at factory prices with no upfront cost.
+
+The point where the lines cross is the **break-even point**, marked on the chart. After that point, every round you reload puts money back in your pocket.
+
+If the reload average is higher than the factory average (reloading is more expensive per round), the lines never cross and a warning is shown.
+
+![Screenshot: Break-even chart showing the intersection point](./images/analysis.png)
 
 ---
 
