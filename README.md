@@ -2,6 +2,8 @@
 
 Reload Cost Calculator is an application that helps you compare the true cost of reloading your own ammunition against buying factory-loaded rounds. It accounts for component prices, taxes, fixed fees, and one-time equipment purchases to give you a clear picture of your real savings or costs.
 
+[Try it out](https://fmalpartida.github.io/reloading-cost-calculator)
+
 ---
 
 ## Table of Contents
@@ -55,7 +57,10 @@ The **My Ammo** tab is where you build and maintain your ammunition library. Ent
 Click **Add Ammo** in the top-right corner of the My Ammo tab. The Editor tab will open. Set the **Load Type** to **Reload** and fill in the following sections:
 
 **Ammo Information**
-- **Caliber** — the cartridge designation (e.g. *9mm Luger*, *.308 Win*).
+- **Name** - to for the cartridge to identify it. Required.
+- **Load Type** - Reload or Factory
+- **Caliber** — the cartridge designation (e.g. *9mm Luger*, *.308 Win*). Required.
+- **Notes** - Optional free-text field for COAL, dates, lot numbers, or any other reference.
 
 **Powder**
 - Powder name, measurement system (Imperial grains or Metric grams), price per lb/kg, and charge weight per round.
@@ -311,3 +316,61 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 - **Powder quantity field.** When entering a powder in the inventory, set the quantity to match how the powder is sold — 1 lb, 4 lb, 8 lb, etc. The app calculates the per-lb rate automatically and uses it when costing a load.
 - **Unlinking a component.** Manually editing any field in a linked component section (name, price, quantity) automatically breaks the inventory link. The load keeps the values you typed but is no longer updated when the inventory item changes. Use the **×** on the badge to unlink without changing any values.
 - **Deleting an inventory item** does not delete any loads that used it. Those loads retain the component values they had at the time the link was broken.
+
+---
+
+## 8. Architecture Overview
+
+This section is for developers working on the codebase.
+
+### Tech Stack
+
+- **Angular 21** — standalone components, signal-based reactivity (`input()`, `output()`, `computed()`, `signal()`)
+- **SCSS** — global partials in `src/app/styles/`, component-scoped overrides in each component's `.scss` file
+- **LocalStorage** — all user data is persisted via injectable services (`LoadsService`, `InventoryService`, `TaxDefaultsService`, `AmortizationService`)
+
+### Component Structure
+
+```
+src/app/components/
+├── load-form/            ← Add/Edit ammo entry (form + live preview)
+├── load-list/            ← My Ammo tab (card grid + tax defaults panel)
+├── load-card/            ← Individual ammo card (header, body, footer stats)
+├── inventory/            ← My Inventory tab
+├── cost-comparison/      ← Cost Comparison tab
+├── amortization/         ← Cost Analysis / break-even tab
+└── shared/
+    ├── search-field/       ← Reusable search input with clear button
+    ├── empty-state/        ← Reusable empty/zero-state placeholder
+    ├── section-header/     ← Icon + title row with optional right-side slot
+    ├── stat-row/           ← Single labeled cost stat (Per round, 50 rds …)
+    ├── cost-breakdown-bar/ ← Proportional segmented bar + legend
+    ├── inventory-picker/   ← Linked-badge + "From inventory…" dropdown
+    ├── load-preview/       ← Live cost preview panel (used in load-form)
+    ├── tax-defaults-panel/ ← Default taxes & fees panel + Apply to All button
+    ├── load-selection-grid/← Checkable ammo grid with search (used in cost-comparison)
+    └── cost-difference-table/ ← Reload vs factory difference tables
+```
+
+### Services & Pipes
+
+| Name | Purpose |
+|------|---------|
+| `LoadsService` | CRUD for ammo entries; computes `LoadCost` from a `Load` |
+| `InventoryService` | CRUD for inventory items; exposes type-filtered signals |
+| `TaxDefaultsService` | Persisted default tax/fee values shared across the app |
+| `AmortizationService` | Break-even chart data and equipment cost list |
+| `TextFilterService` | Normalize and multi-term filter for any typed list |
+| `PriceFormatPipe` | Format an `InventoryItem` price for display or per-unit |
+
+### Global SCSS Partials (`src/app/styles/`)
+
+| File | Contents |
+|------|---------|
+| `_buttons.scss` | `.btn`, `.btn-primary`, `.btn-icon`, `.btn-danger`, `.mini-btn` |
+| `_forms.scss` | `.form-group`, `.form-grid`, `.required`, `.error`, `.hint` |
+| `_search.scss` | `.search-field` wrapper and inner input/icon/clear button |
+| `_empty-state.scss` | `.empty-state`, `.empty-state.small` |
+| `_utilities.scss` | `.type-group-label`, segment colors, toggle switch, section title |
+| `_breakdown-bar.scss` | `.cost-breakdown-bar`, segments, legend |
+| `_tooltips.scss` | `.info-tooltip-anchor`, `.info-tooltip` hover popup |
