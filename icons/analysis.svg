@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <!-- factory cost line (high → flat) -->
-  <polyline points="2,19 7,13 12,11 22,8"/>
-  <!-- reload cost line (drops then levels) -->
-  <polyline points="2,5 7,8 12,11 22,16"/>
-  <!-- intersection dot -->
-  <circle cx="12" cy="11" r="2.5" fill="white" stroke="none"/>
-</svg>

@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <!-- receipt shape -->
-  <path d="M4,2 L20,2 L20,22 L17,20 L14,22 L12,20 L10,22 L7,20 L4,22 Z"/>
-  <!-- lines -->
-  <line x1="8" y1="8"  x2="16" y2="8"/>
-  <line x1="8" y1="12" x2="16" y2="12"/>
-  <line x1="8" y1="16" x2="13" y2="16"/>
-</svg>
