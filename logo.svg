@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="caseG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#a07800"/>
+      <stop offset="50%"  stop-color="#e8b84b"/>
+      <stop offset="100%" stop-color="#a07800"/>
+    </linearGradient>
+    <linearGradient id="bulletG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#7a7a7a"/>
+      <stop offset="50%"  stop-color="#d8d8d8"/>
+      <stop offset="100%" stop-color="#7a7a7a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Scope ring -->
+  <circle cx="50" cy="50" r="44" fill="none" stroke="#5B9BD5" stroke-width="3"/>
+
+  <!-- Crosshair ticks -->
+  <line x1="50" y1="4"  x2="50" y2="20" stroke="#5B9BD5" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="50" y1="80" x2="50" y2="96" stroke="#5B9BD5" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="4"  y1="50" x2="20" y2="50" stroke="#5B9BD5" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="80" y1="50" x2="96" y2="50" stroke="#5B9BD5" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Brass case -->
+  <rect x="41" y="54" width="18" height="24" rx="3" fill="url(#caseG)"/>
+
+  <!-- Bullet ogive -->
+  <path d="M41,56 Q41,30 50,20 Q59,30 59,56Z" fill="url(#bulletG)"/>
+
+  <!-- Center dot -->
+  <circle cx="50" cy="50" r="3.5" fill="#5B9BD5"/>
+</svg>
