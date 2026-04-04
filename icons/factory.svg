@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- building outline -->
+  <path d="M2,22 L2,10 L8,6 L8,10 L14,6 L14,10 L22,6 L22,22 Z"/>
+  <!-- windows -->
+  <rect x="5"  y="14" width="3" height="3" fill="white" stroke="none" opacity="0.6"/>
+  <rect x="10.5" y="14" width="3" height="3" fill="white" stroke="none" opacity="0.6"/>
+  <rect x="16" y="14" width="3" height="3" fill="white" stroke="none" opacity="0.6"/>
+</svg>
