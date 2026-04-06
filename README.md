@@ -23,9 +23,9 @@ Reload Cost Calculator is an application that helps you compare the true cost of
    - [Load Selection](#51-load-selection)
    - [Equipment Costs](#52-equipment-costs)
    - [Reading the Chart & Stats](#53-reading-the-chart--stats)
-
-6. [Import & Export](#6-import--export)
-7. [Tips & Notes](#7-tips--notes)
+6. [Guided Tour](#6-guided-tour)
+7. [Import & Export](#7-import--export)
+8. [Tips & Notes](#8-tips--notes)
 
 ---
 
@@ -41,6 +41,8 @@ The application has three main tabs accessible from the navigation bar at the to
 | **My Inventory** | Global catalog of reloading components — powders, primers, bullets, and brass |
 
 A fifth **Editor** tab appears automatically whenever you are adding or editing an ammo entry.
+
+There is also a built-in **Tour** button in the top navigation bar. It launches a guided walkthrough of the main areas of the application, including My Ammo, My Inventory, Cost Comparison, and the break-even analysis workflow.
 
 ![Reload Cost Calculator — main application and navigation tabs](./images/header-tabs.png)
 
@@ -246,9 +248,25 @@ The **Cost Analysis** tab shows how the cumulative cost of reloading (including 
 
 ### 5.1 Load Selection
 
-The left column lists all your reload and factory entries with checkboxes. Check the entries you want to include in the averages. If nothing is checked, **all entries of each type are included automatically**.
+The left column lists all your reload and factory entries.
+
+By default, both reloads and factory ammo use **checkbox selection**. Check the entries you want to include in the averages. If nothing is checked, **all entries of that type are included automatically**.
 
 ![Screenshot: Load Selection panel with checkboxes](./images/load-selection.png)
+
+For reloads only, you can also switch to **Rounds** mode using the flip switch at the top of the panel. In this mode:
+
+- Reload entries accept a round count instead of a checkbox.
+- The app calculates a **weighted average reload cost** based on the number of rounds entered for each reload.
+- Factory ammo remains checkbox-based even in this mode.
+
+![Screenshot: Load Selection panel with costs](./images/load-selection-costs.png)
+
+This is useful when you want the break-even math to reflect your real production mix instead of treating every selected reload equally.
+
+In addition, you can track your reloading journey and keep track of where you stand with respect to your costs or savings.
+
+
 
 ### 5.2 Equipment Costs
 
@@ -266,7 +284,7 @@ This cost can be ignored by switching off the **Include** switch.
 
 ### 5.3 Reading the Chart & Stats
 
-The **stats bar** across the middle column shows four key figures at a glance:
+The **stats bar** across the middle column shows the main values used in the break-even calculation:
 
 | Stat | Meaning |
 |------|---------|
@@ -275,11 +293,21 @@ The **stats bar** across the middle column shows four key figures at a glance:
 | **Savings per Round** | Factory average minus reload average |
 | **Break-Even Point** | Number of rounds until cumulative savings cover total equipment cost |
 
+When **Rounds** mode is enabled for reloads, additional progress values appear:
+
+| Stat | Meaning |
+|------|---------|
+| **Reload Rounds Logged** | Total reload rounds currently entered across all reload recipes |
+| **Rounds Remaining** | How many more reload rounds are needed to reach break-even |
+| **Total Savings So Far** | Current savings based on the entered reload rounds, optionally net of equipment when **Include** is enabled |
+
 The **chart** below plots two lines:
 - **Reload line** — cumulative spend including the equipment investment upfront, declining in slope as per-round costs are cheaper than factory.
 - **Factory line** — cumulative spend at factory prices with no upfront cost.
 
 The point where the lines cross is the **break-even point**, marked on the chart. After that point, every round you reload puts money back in your pocket.
+
+In reload **Rounds** mode, the chart also shows your **current position** on the timeline based on the total reload rounds you have entered, making it easier to see how far along you are toward break-even.
 
 If the reload average is higher than the factory average (reloading is more expensive per round), the lines never cross and a warning is shown.
 
@@ -287,7 +315,24 @@ If the reload average is higher than the factory average (reloading is more expe
 
 ---
 
-## 6. Import & Export
+## 6. Guided Tour
+
+Click **Tour** in the top navigation bar to start the built-in walkthrough at any time.
+
+The guided tour highlights the major parts of the application and explains:
+
+- how to add and manage ammo entries
+- how to use the inventory and linked components
+- how to compare reloads and factory ammo
+- how to use the break-even analysis
+- how to switch between simple selection and reload round-count analysis
+- which values to check in the analysis stats cards
+
+The tour can be dismissed at any time and is designed to help first-time users get oriented quickly.
+
+---
+
+## 7. Import & Export
 
 Your entire library — ammo entries, tax defaults, equipment costs, load selections, **and your full component inventory** — can be saved to a single JSON file and restored later or shared with another computer.
 
@@ -303,7 +348,7 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 
 ---
 
-## 7. Tips & Notes
+## 8. Tips & Notes
 
 - **All data is stored locally.** No account or internet connection is required. Data is saved automatically in the browser/app storage every time you make a change.
 - **Brass reuse count matters.** Setting a realistic reuse count (commonly 5–10 reloads per case) significantly lowers your per-round brass cost. A count of 1 treats every case as single-use.
@@ -313,7 +358,7 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 - **Duplicating entries** is a quick way to model variants: duplicate a load, change the powder charge or bullet weight, and compare side by side in the Cost Comparison tab.
 - **Equipment costs** only need to be entered once. They persist between sessions and are included in export files.
 - **Use the inventory for shared components.** If you load multiple calibers with the same powder or primer, define it once in My Inventory and link it to all relevant loads. A single price update flows through everywhere.
+- **Inventory lists are alphabetical.** Components inside each inventory group are ordered by name to make powders, primers, bullets, and brass easier to scan.
 - **Powder quantity field.** When entering a powder in the inventory, set the quantity to match how the powder is sold — 1 lb, 4 lb, 8 lb, etc. The app calculates the per-lb rate automatically and uses it when costing a load.
 - **Unlinking a component.** Manually editing any field in a linked component section (name, price, quantity) automatically breaks the inventory link. The load keeps the values you typed but is no longer updated when the inventory item changes. Use the **×** on the badge to unlink without changing any values.
 - **Deleting an inventory item** does not delete any loads that used it. Those loads retain the component values they had at the time the link was broken.
-
