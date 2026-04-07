@@ -51,7 +51,7 @@ There are also built-in **Tour**, **About**, and **Settings** controls in the to
 
 ## 2. My Ammo
 
-The **My Ammo** tab is where you build and maintain your ammunition library. Entries are grouped by type — reloads first, then factory ammo — and sorted cheapest to most expensive within each group.
+The **My Ammo** tab is where you build and maintain your ammunition library. Entries are grouped by type — reloads first, then factory ammo (sorted cheapest to most expensive within each group).
 
 ![Screenshot: My Ammo tab showing reload and factory cards](./images/my-ammo.png)
 
@@ -142,7 +142,7 @@ The **My Inventory** tab is a global catalog of reloading components. Instead of
 
 Components are organised into four types: **Powder**, **Primer**, **Bullet**, and **Brass**. They are displayed in grouped sections, each with a colored left-border accent that matches the component's icon.
 
-**Filter tags** at the top of the list let you narrow the view to a single type at a glance — click a tag to activate it, click again to clear the filter.
+**Filter tags** at the top of the list let you narrow the view to a single type at a glance; click a tag to activate it, click again to clear the filter.
 
 ![Screenshot: My Inventory — filter tags and grouped sections](./images/inventory-filter-tags.png)
 
@@ -346,9 +346,9 @@ The top-right area of the header includes both an **About** button and a **Setti
 - **Currency Symbol** — changes the currency shown across cards, tables, and analysis views
 - **Cost Per Round Decimals** — controls how many decimal places are shown for per-round costs
 
-The application still defaults to the **dark theme** on first launch. If you enable **Follow Time Of Day**, the app will switch themes automatically based on the time of day. You can still use the theme toggle in the header to return immediately to manual light/dark mode.
+![Screenshot: Settings showing the configuration of the application](./images/app-settings.png)
 
-Both Settings and About use the same dialog style for a consistent look and feel across the application.
+The application still defaults to the **dark theme** on first launch. If you enable **Follow Time Of Day**, the app will switch themes automatically based on the time of day. You can still use the theme toggle in the header to return immediately to manual light/dark mode.
 
 ---
 
@@ -364,7 +364,7 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 
 > WARNING: Import overwrites your current data. Export first if you want to keep your existing entries.
 
-![Screenshot: Export and Import buttons in the navigation bar](./images/import-export.png)
+![Screenshot: Export and Import buttons in the navigation bar](./images/header-tabs.png)
 
 ---
 
