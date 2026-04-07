@@ -24,8 +24,9 @@ Reload Cost Calculator is an application that helps you compare the true cost of
    - [Equipment Costs](#52-equipment-costs)
    - [Reading the Chart & Stats](#53-reading-the-chart--stats)
 6. [Guided Tour](#6-guided-tour)
-7. [Import & Export](#7-import--export)
-8. [Tips & Notes](#8-tips--notes)
+7. [Settings & About](#7-settings--about)
+8. [Import & Export](#8-import--export)
+9. [Tips & Notes](#9-tips--notes)
 
 ---
 
@@ -42,7 +43,7 @@ The application has three main tabs accessible from the navigation bar at the to
 
 A fifth **Editor** tab appears automatically whenever you are adding or editing an ammo entry.
 
-There is also a built-in **Tour** button in the top navigation bar. It launches a guided walkthrough of the main areas of the application, including My Ammo, My Inventory, Cost Comparison, and the break-even analysis workflow.
+There are also built-in **Tour**, **About**, and **Settings** controls in the top navigation area. Tour launches a guided walkthrough of the main areas of the application, About shows application/version/author/license information, and Settings lets you adjust display preferences such as theme behavior, currency symbol, and cost precision.
 
 ![Reload Cost Calculator — main application and navigation tabs](./images/header-tabs.png)
 
@@ -114,6 +115,8 @@ Click the **▸ / ▾** chevron on the left of the action buttons to expand a ca
 
 Use the **Search** box to filter cards by name, caliber, type, or component name.
 
+You can also switch between **Card** and **Table** views using the view toggle next to the search box. Card view shows the familiar expandable cards, while Table view gives you a denser list that is easier to scan when you have many entries.
+
 ![Screenshot: Expanded ammo card showing component breakdown](images/ammo-viewer.png)
 
 ### 2.4 Default Taxes & Fees
@@ -144,6 +147,8 @@ Components are organised into four types: **Powder**, **Primer**, **Bullet**, an
 ![Screenshot: My Inventory — filter tags and grouped sections](./images/inventory-filter-tags.png)
 
 Use the **Search** box to filter components by name or notes across all groups.
+
+Like My Ammo, My Inventory also supports **Card** and **Table** views through the view toggle near the search box. This makes it easy to choose between richer cards and a denser table layout depending on how many items you manage.
 
 ### 3.1 Adding a Component
 
@@ -332,7 +337,22 @@ The tour can be dismissed at any time and is designed to help first-time users g
 
 ---
 
-## 7. Import & Export
+## 7. Settings & About
+
+The top-right area of the header includes both an **About** button and a **Settings** button.
+
+**Settings**
+- **Follow Time Of Day** — automatically uses the light theme during the day and dark theme in the evening
+- **Currency Symbol** — changes the currency shown across cards, tables, and analysis views
+- **Cost Per Round Decimals** — controls how many decimal places are shown for per-round costs
+
+The application still defaults to the **dark theme** on first launch. If you enable **Follow Time Of Day**, the app will switch themes automatically based on the time of day. You can still use the theme toggle in the header to return immediately to manual light/dark mode.
+
+Both Settings and About use the same dialog style for a consistent look and feel across the application.
+
+---
+
+## 8. Import & Export
 
 Your entire library — ammo entries, tax defaults, equipment costs, load selections, **and your full component inventory** — can be saved to a single JSON file and restored later or shared with another computer.
 
@@ -348,7 +368,7 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 
 ---
 
-## 8. Tips & Notes
+## 9. Tips & Notes
 
 - **All data is stored locally.** No account or internet connection is required. Data is saved automatically in the browser/app storage every time you make a change.
 - **Brass reuse count matters.** Setting a realistic reuse count (commonly 5–10 reloads per case) significantly lowers your per-round brass cost. A count of 1 treats every case as single-use.
