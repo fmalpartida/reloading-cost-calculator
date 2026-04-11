@@ -43,6 +43,8 @@ Reloading Tracker is an application that helps you log your reloading sessions, 
 
 Reloading Tracker is built around a natural progression that mirrors the way reloading actually works. Following this workflow will give you the most accurate results and make the analysis meaningful from the start.
 
+![Reloading Tracker — main application and navigation tabs](./images/header-tabs.png)
+
 **Step 1 — Define your ammo**
 
 Before you can log sessions or compare costs, the application needs to know what you are reloading and what it costs. You have two ways to do this:
@@ -92,8 +94,6 @@ A sixth **Editor** tab appears automatically whenever you are adding or editing 
 
 There are also built-in **Tour**, **About**, and **Settings** controls in the top navigation area. Tour launches a guided walkthrough of the main areas of the application, About shows application/version/author/license information, and Settings lets you adjust display preferences such as theme behavior, currency symbol, and cost precision.
 
-> 📷 **IMAGE NEEDS REVIEW** — `header-tabs.png` — navigation now includes the Journal tab between My Components and Cost Analysis.
-
 ![Reloading Tracker — main application and navigation tabs](./images/header-tabs.png)
 
 ---
@@ -101,8 +101,6 @@ There are also built-in **Tour**, **About**, and **Settings** controls in the to
 ## 2. My Ammo
 
 The **My Ammo** tab is where you build and maintain your ammunition library. Entries are grouped by type — reloads first, then factory ammo (sorted cheapest to most expensive within each group). Each group has a colored section header with a **+** button to add a new entry of that type directly.
-
-> 📷 **IMAGE NEEDS REVIEW** — `my-ammo.png` — section headers now show a styled bar with icon, count badge, and + button.
 
 ![Screenshot: My Ammo tab showing reload and factory cards](./images/my-ammo.png)
 
@@ -189,15 +187,11 @@ You can also reset taxes to defaults on a per-entry basis using the **Reset to d
 
 The **My Components** tab is a global catalog of reloading components. Instead of typing the same powder name, price, and quantity into every load, you define each component once here and then select it from a dropdown when editing any reload. If a component price changes, update it in the inventory and every linked load updates automatically.
 
-> 📷 **IMAGE NEEDS REVIEW** — `my-inventory.png` — the header and filter tags are now sticky (stay visible while scrolling), and section headers have a new styled bar with icon, count, and + button.
-
 ![Screenshot: My Components tab showing grouped components with filter tags](./images/my-inventory.png)
 
 Components are organised into four types: **Powder**, **Primer**, **Bullet**, and **Brass**. They are displayed in grouped sections, each with a colored left-border accent that matches the component's icon.
 
 **Filter tags** at the top of the list let you narrow the view to a single type at a glance; click a tag to activate it, click again to clear the filter.
-
-> 📷 **IMAGE NEEDS REVIEW** — `inventory-filter-tags.png` — filter tags are now part of the sticky header area.
 
 ![Screenshot: My Components — filter tags and grouped sections](./images/inventory-filter-tags.png)
 
@@ -281,7 +275,8 @@ In the expanded card view under My Ammo, any component that originates from the 
 
 The **Journal** tab is your session log. Every time you sit down at the press, add an entry with the load you reloaded, the quantity you produced, and the date. Each entry automatically receives a unique, incrementing **lot number** that you can print on an ammo box label.
 
-> 📷 **NEW IMAGE NEEDED** — `journal-overview.png` — screenshot of the Journal tab showing the session list, add row at the bottom, and the summary panel on the right.
+![Screenshot: Journal tab showing the session list, add row at the bottom, and the summary panel](./images/journal-overview.png)
+
 
 ### 4.1 Logging a Session
 
@@ -324,7 +319,7 @@ The label dialog lets you review and adjust every field on the label before comm
 
 You can also open the print dialog from any ammo card in **My Ammo** using the print button on that card, without a pre-filled lot number.
 
-> 📷 **NEW IMAGE NEEDED** — `label-print.png` — screenshot of the print label dialog showing LOT and QTY pre-filled from a journal entry.
+![Screenshot: print label dialog showing LOT and QTY pre-filled from a journal entry.](./images/label-print.png)
 
 ### 4.4 Journal Statistics
 
@@ -382,8 +377,6 @@ For reloads only, you can also switch to **Rounds** mode using the flip switch a
 - Reload entries accept a round count instead of a checkbox.
 - The app calculates a **weighted average reload cost** based on the number of rounds entered for each reload.
 - Factory ammo remains checkbox-based even in this mode.
-
-> 📷 **IMAGE NEEDS REVIEW** — `load-selection-costs.png` — in Rounds mode, each reload now shows a **+N** badge next to the input field when you have Journal entries for that load. The badge shows how many rounds the Journal contributes on top of your manual baseline. The effective total (manual + journal) is displayed next to the entry.
 
 ![Screenshot: Load Selection panel with costs](./images/load-selection-costs.png)
 
