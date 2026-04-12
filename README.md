@@ -4,9 +4,15 @@ Reloading Tracker is an application that helps you log your reloading sessions, 
 
 [Try it out](https://fmalpartida.github.io/reloading-cost-calculator)
 
-## Disclaimer
+## ⚠️ IMPORTANT SAFETY DISCLAIMER ⚠️
 
-Any recipie in this guide is for illustration purposes only. You shouldn't use it for your own reloads, rather build your own loads starting with reliable publish data.
+> **WARNING: DO NOT USE THE LOAD DATA IN THIS GUIDE.**
+>
+> Any load recipe shown in this guide (powder charges, bullet weights, COALs, or any other reloading data) is for **illustration purposes only**. These values are **not safe for use** in actual reloading.
+>
+> **Always build your loads from reliable, published reloading data** from reputable sources such as powder manufacturers, bullet manufacturers, or established reloading manuals. Never copy load data from screenshots, examples, or guides like this one.
+>
+> Improper reloading can result in serious injury, death, or property damage.
 
 ---
 
