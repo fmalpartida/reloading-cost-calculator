@@ -1,4 +1,4 @@
-# Reloading Tracker — User Guide
+# Reloading Tracker 2.0.0 — User Guide
 
 Reloading Tracker is an application that helps you log your reloading sessions, compare the true cost of reloading your own ammunition against buying factory-loaded rounds, and track your progress toward break-even. It accounts for component prices, taxes, fixed fees, one-time equipment purchases, and your actual reloading history to give you a clear picture of your real savings over time.
 
@@ -25,11 +25,11 @@ Reloading Tracker is an application that helps you log your reloading sessions, 
    - [Managing Journal Entries](#42-managing-journal-entries)
    - [Printing a Lot Label](#43-printing-a-lot-label)
    - [Journal Statistics](#44-journal-statistics)
-5. [Cost Comparison](#5-cost-comparison)
-6. [Cost Analysis (Break-Even)](#6-cost-analysis-break-even)
-   - [Load Selection](#61-load-selection)
-   - [Equipment Costs](#62-equipment-costs)
-   - [Reading the Chart & Stats](#63-reading-the-chart--stats)
+5. [Cost Analysis (Break-Even)](#5-cost-analysis-break-even)
+   - [Load Selection](#51-load-selection)
+   - [Equipment Costs](#52-equipment-costs)
+   - [Reading the Chart & Stats](#53-reading-the-chart--stats)
+6. [Cost Comparison](#6-cost-comparison)
 7. [Guided Tour](#7-guided-tour)
 8. [Settings & About](#8-settings--about)
 9. [Import & Export](#9-import--export)
@@ -333,38 +333,13 @@ These figures accumulate automatically as you add entries. The cost per round us
 
 ---
 
-## 5. Cost Comparison
-
-The **Cost Comparison** tab lets you select any combination of reload and factory entries and compare their costs side by side.
-
-![Screenshot: Cost Comparison tab with entries selected](./images/comparison-selection.png)
-
-**Selecting entries**  
-Click any entry in the selection list to toggle it on or off. Selected entries are highlighted — green for reloads, amber for factory ammo. You can select multiple reloads and multiple factory entries simultaneously.
-
-**Reading the comparison**  
-Once entries are selected, the view shows:
-
-- A **bar chart** of cost per round for every selected entry.
-- A **cost table** with totals for 50, 100, and 1,000 rounds for each entry.
-- A **Difference** section (visible when at least one reload and one factory entry are selected) showing how much cheaper your reload is per round, per 50, per 100, and per 1,000 rounds.
-
-Use the **Search** box above the selection list to filter by name, caliber, type, or component.
-
-![Screenshot: Cost Comparison — bar chart and difference table](./images/cost-comparison.png)
-![Screenshot: Cost Comparison — difference table](./images/cost-break-down.png)
-
----
-
-## 6. Cost Analysis (Break-Even)
+## 5. Cost Analysis (Break-Even)
 
 The **Cost Analysis** tab shows how the cumulative cost of reloading (including your one-time equipment investment) compares to buying factory ammo over time, and at what point reloading becomes cheaper overall.
 
-> 📷 **IMAGE NEEDS REVIEW** — `cost-analysis.png` — the title/subtitle area is now sticky and stays visible while scrolling. The stats card and chart also remain fixed while the load selection and equipment columns scroll independently.
-
 ![Screenshot: Cost Analysis tab — full view](images/cost-analysis.png)
 
-### 6.1 Load Selection
+### 5.1 Load Selection
 
 The left column lists all your reload and factory entries.
 
@@ -386,7 +361,7 @@ The round counts you log in the **Journal** tab are automatically reflected here
 
 This is designed for reloaders who were already pressing ammo before starting the journal. Enter your historical round count in the input as a baseline; the journal adds to it going forward. If you start fresh, leave the input at zero and the journal fills it in automatically.
 
-### 6.2 Equipment Costs
+### 5.2 Equipment Costs
 
 The right column is where you enter your one-time reloading equipment costs (press, dies, tumbler, scale, etc.)
 
@@ -400,7 +375,7 @@ This cost can be ignored by switching off the **Include** switch.
 
 ![Screenshot: Equipment Costs panel with several items entered](./images/equipment-costs.png)
 
-### 6.3 Reading the Chart & Stats
+### 5.3 Reading the Chart & Stats
 
 The **stats bar** across the middle column shows the main values used in the break-even calculation:
 
@@ -430,6 +405,29 @@ In reload **Rounds** mode, the chart also shows your **current position** on the
 If the reload average is higher than the factory average (reloading is more expensive per round), the lines never cross and a warning is shown.
 
 ![Screenshot: Break-even chart showing the intersection point](./images/analysis.png)
+
+---
+
+## 6. Cost Comparison
+
+The **Cost Comparison** tab lets you select any combination of reload and factory entries and compare their costs side by side.
+
+![Screenshot: Cost Comparison tab with entries selected](./images/comparison-selection.png)
+
+**Selecting entries**  
+Click any entry in the selection list to toggle it on or off. Selected entries are highlighted — green for reloads, amber for factory ammo. You can select multiple reloads and multiple factory entries simultaneously.
+
+**Reading the comparison**  
+Once entries are selected, the view shows:
+
+- A **bar chart** of cost per round for every selected entry.
+- A **cost table** with totals for 50, 100, and 1,000 rounds for each entry.
+- A **Difference** section (visible when at least one reload and one factory entry are selected) showing how much cheaper your reload is per round, per 50, per 100, and per 1,000 rounds.
+
+Use the **Search** box above the selection list to filter by name, caliber, type, or component.
+
+![Screenshot: Cost Comparison — bar chart and difference table](./images/cost-comparison.png)
+![Screenshot: Cost Comparison — difference table](./images/cost-break-down.png)
 
 ---
 
@@ -477,8 +475,6 @@ Click **Export** in the top navigation bar. A `.json` file will be downloaded to
 Click **Import** and select a previously exported `.json` file. All data in the file will replace the current library.
 
 > WARNING: Import overwrites your current data. Export first if you want to keep your existing entries.
-
-> 📷 **IMAGE NEEDS REVIEW** — `header-tabs.png` — used here to show the Export/Import buttons; needs retaking with the updated navigation.
 
 ![Screenshot: Export and Import buttons in the navigation bar](./images/header-tabs.png)
 
