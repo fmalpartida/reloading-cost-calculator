@@ -4,6 +4,10 @@ Reloading Tracker is an application that helps you log your reloading sessions, 
 
 [Try it out](https://fmalpartida.github.io/reloading-cost-calculator)
 
+## Disclaimer
+
+Any recipie in this guide is for illustration purposes only. You shouldn't use it for your own reloads, rather build your own loads starting with reliable publish data.
+
 ---
 
 ## Table of Contents
