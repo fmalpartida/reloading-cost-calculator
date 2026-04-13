@@ -122,7 +122,8 @@ Click **Add Ammo** in the top-right corner of the My Ammo tab, or click the **+*
 - **Name**: identifies the cartridge. Required.
 - **Load Type**: Reload or Factory.
 - **Caliber**: the cartridge designation (e.g. *9mm Luger*, *.308 Win*). Required.
-- **Notes**: optional free-text field for COAL, dates, or any other reference.
+- **COAL**: cartridge overall length for this load. Printed on the lot label.
+- **Notes**: optional free-text field for dates or any other reference.
 
 **Powder**
 - Powder name, measurement system (Imperial grains or Metric grams), price per lb/kg, and charge weight per round.
