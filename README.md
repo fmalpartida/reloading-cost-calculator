@@ -135,7 +135,7 @@ Click **Add Ammo** in the top-right corner of the My Ammo tab, or click the **+*
 **Ammo Information**
 - **Name**: identifies the cartridge. Required.
 - **Load Type**: Reload or Factory.
-- **Caliber**: the cartridge designation (e.g. *9mm Luger*, *.308 Win*). Required.
+- **Caliber**: the cartridge designation (e.g. *9mm Luger*, *.308 Win*). This is added when defining the bullet.
 - **COAL**: cartridge overall length for this load. Printed on the lot label.
 - **Notes**: optional free-text field for dates or any other reference.
 
@@ -146,7 +146,7 @@ Click **Add Ammo** in the top-right corner of the My Ammo tab, or click the **+*
 - Primer name, price, and the quantity that price covers (default 100).
 
 **Bullets / Projectiles**
-- Bullet description, price, and quantity (default 100).
+- Bullet description, weight, diameter, caliber, price, and quantity (default 100).
 
 **Brass / Cases**
 - Brass description, price, quantity, and how many times each case will be reloaded before replacement. The cost per round is divided by this reuse count.
@@ -260,6 +260,7 @@ Each component card shows:
 - **Price**: the raw price as entered (e.g. *$89.99 / 4 lb*)
 - **Per unit**: the derived cost per lb/kg or per single primer/bullet/case (e.g. *$22.50/lb*)
 - Brass **Reloads** count (brass cards only)
+- Bullet **caliber**, **diameter** and **weight** (bullets only)
 - Notes (if any)
 
 ![Screenshot: Inventory card showing price and per-unit fields](./images/inventory-card.png)
