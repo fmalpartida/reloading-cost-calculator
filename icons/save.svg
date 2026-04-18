@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- outer body -->
+  <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+  <!-- label slot on top -->
+  <rect x="7" y="3" width="7" height="5" rx="0.5"/>
+  <!-- storage slot at bottom -->
+  <rect x="7" y="14" width="10" height="6" rx="0.5"/>
+</svg>
