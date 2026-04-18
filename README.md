@@ -25,6 +25,7 @@ Reloading Tracker is an application for managing your reloading activity. At its
    - [Adding a Reload Entry](#21-adding-a-reload-entry)
    - [Adding a Factory Ammo Entry](#22-adding-a-factory-ammo-entry)
    - [Managing Entries](#23-managing-entries)
+   - [Load Status](#load-status)
    - [Default Taxes & Fees](#24-default-taxes--fees)
 3. [My Components](#3-my-components)
    - [Adding a Component](#31-adding-a-component)
@@ -135,6 +136,7 @@ Click **Add Ammo** in the top-right corner of the My Ammo tab, or click the **+*
 **Ammo Information**
 - **Name**: identifies the cartridge. Required.
 - **Load Type**: Reload or Factory.
+- **Status**: the development state of the load. See [Load Status](#load-status) below.
 - **Caliber**: the cartridge designation (e.g. *9mm Luger*, *.308 Win*). This is added when defining the bullet.
 - **COAL**: cartridge overall length for this load. Printed on the lot label.
 - **Notes**: optional free-text field for dates or any other reference.
@@ -193,6 +195,31 @@ Use the **Search** box to filter cards by name, caliber, type, or component name
 You can also switch between **Card** and **Table** views using the view toggle next to the search box. Card view shows the familiar expandable cards, while Table view gives you a denser list that is easier to scan when you have many entries.
 
 ![Screenshot: Expanded ammo card showing component breakdown](images/ammo-viewer.png)
+
+### Load Status
+
+Every ammo entry carries a **status** that describes where it is in your development cycle. The status badge appears on each card and in the table's Status column.
+
+| Status | Meaning |
+|--------|---------|
+| **Draft** | Entered for cost estimation only; not yet range-verified. Cards show a dashed border as a visual reminder. |
+| **In Development** | Actively being worked up at the bench or range. Eligible for Journal logging. |
+| **Active** | Proven load, ready to press. Eligible for Journal logging. |
+| **Retired** | Recipe superseded or no longer in use. Hidden from default views but preserved in all history and journal entries. |
+
+**Changing the status**
+- In card view: expand the card (▸) and use the **Status** selector at the top of the expanded body.
+- In table view: use the **Status** dropdown in the Status column.
+- In the Editor: the Status field appears in the Ammo Information section next to the load type.
+
+![Screenshot: Load Editor showing expanded load status](images/load-editor-status.png) 
+
+**Retired loads**
+Retired entries are hidden by default to keep your active library clean. When a section (Reloads or Factory) contains retired entries, a **"N retired"** link appears in that section's header bar next to the count. Click it to reveal retired loads; click **"hide retired"** to collapse them again.
+
+![Screenshot: Ammo card showing expanded load status](images/load-card-status.png)
+
+> **Journal and Range Log entries are never affected by status changes.** A retired load's history is fully preserved; only its visibility in the active library changes.
 
 ### 2.4 Default Taxes & Fees
 
@@ -619,6 +646,7 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 - **State Excise Tax (SET).** Factory ammunition in some US States is subject to a state excise tax in addition to state and local sales tax. The default value is pre-filled for you.
 - **Fix Fee (FF).** Some US States have an additional fix fee (normally associated to a background check) on any ammunition purchases. This is a fixed fee applied to the entire purchase and its cost is diluted over all the rounds purchased.
 - **Accuracy of results.** All costs are estimates based on the prices you enter. Check current component and ammo prices regularly, as they fluctuate.
+- **Use load status to manage your library lifecycle.** Mark new recipes as **Draft** while you are costing them out, move them to **In Development** once you are working them up at the range, promote to **Active** when proven, and **Retire** recipes that have been superseded. Retired loads disappear from default views without losing any journal history.
 - **Duplicating entries** is a quick way to model variants: duplicate a load, change the powder charge or bullet weight, and compare side by side in the Cost Comparison tab.
 - **Equipment costs** only need to be entered once. They persist between sessions and are included in export files.
 - **Use the inventory for shared components.** If you load multiple calibers with the same powder or primer, define it once in My Components and link it to all relevant loads. A single price update flows through everywhere.
