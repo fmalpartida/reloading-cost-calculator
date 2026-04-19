@@ -27,6 +27,7 @@ Reloading Tracker is an application for managing your reloading activity. At its
    - [Managing Entries](#23-managing-entries)
    - [Load Status](#load-status)
    - [Default Taxes & Fees](#24-default-taxes--fees)
+   - [Charge Workup (Load Development)](#25-charge-workup-load-development)
 3. [My Components](#3-my-components)
    - [Adding a Component](#31-adding-a-component)
    - [Managing Components](#32-managing-components)
@@ -72,7 +73,11 @@ Before you can log sessions, the application needs to know what you are reloadin
 
 If you use Cost Analysis or Cost Comparison, also add at least one **factory ammo** entry (with its box price, taxes, and any fixed fees) so the comparison and break-even analysis have a meaningful baseline to work against.
 
-**Step 2: Log your pressing sessions in the Journal**
+**Step 2a (optional): Work up a new load**
+
+If you are developing a new load from scratch, set its status to **In Development** and configure a **Charge Ladder** in the Editor. Then open the **Charge Workup** panel (ladder icon on the load card or table row) to manage the full development cycle — plan charges, batch-log pressing sessions, track velocity and accuracy results from the range, and promote the winning charge to your final load definition when done. See [Charge Workup](#25-charge-workup-load-development) for the full workflow.
+
+**Step 2b: Log your pressing sessions in the Journal**
 
 Every time you sit down at the press, open the **Journal** tab and add an entry: select the load, enter the date and the number of rounds you produced. The application assigns a unique, incrementing lot number automatically.
 
@@ -203,7 +208,7 @@ Every ammo entry carries a **status** that describes where it is in your develop
 | Status | Meaning |
 |--------|---------|
 | **Draft** | Entered for cost estimation only; not yet range-verified. Cards show a dashed border as a visual reminder. |
-| **In Development** | Actively being worked up at the bench or range. Eligible for Journal logging. |
+| **In Development** | Actively being worked up at the bench or range. Eligible for Journal logging. Unlocks the **Charge Ladder Setup** section in the Editor and the **Charge Workup** panel on the load card. |
 | **Active** | Proven load, ready to press. Eligible for Journal logging. |
 | **Retired** | Recipe superseded or no longer in use. Hidden from default views but preserved in all history and journal entries. |
 
@@ -220,6 +225,106 @@ Retired entries are hidden by default to keep your active library clean. When a 
 ![Screenshot: Ammo card showing expanded load status](images/load-card-status.png)
 
 > **Journal and Range Log entries are never affected by status changes.** A retired load's history is fully preserved; only its visibility in the active library changes.
+
+### 2.5 Charge Workup (Load Development)
+
+The **Charge Workup** panel is the built-in load development workflow. It lets you plan a charge ladder, batch-log pressing sessions directly from the panel, track velocity and group-size results for each step, and promote the winning charge to your final load — all without leaving the application.
+
+#### Setting up a charge ladder
+
+1. Create or edit a reload entry and set **Status** to **In Development**.
+2. A **Charge Ladder Setup** section appears at the bottom of the Editor form. Fill in:
+
+| Field | Description |
+|-------|-------------|
+| **Min charge** | Starting charge in your ladder (e.g. 38.0 gr) |
+| **Max charge** | Upper bound of the ladder (e.g. 42.0 gr) |
+| **Step size** | Increment between each step (e.g. 0.5 gr) |
+| **Rounds per step** | How many rounds to press at each charge weight (e.g. 20) |
+
+3. Save the load. A **ladder icon (⟑)** now appears on the load card and in the table's action column.
+
+<!-- TODO: screenshot — load card with ladder icon visible in the action buttons -->
+![Screenshot: load card showing the ladder workup icon in the action buttons](./images/workup-ladder-icon.png)
+
+#### The Charge Workup panel
+
+Click the ladder icon to open the **Charge Workup** panel. It contains three main areas:
+
+**Load info bar**
+
+Shows the load name, caliber, and the configured ladder range (e.g. *38.0–42.0 gr · step 0.5 gr · 20 rds/step*). While the load is In Development, a small pencil button lets you edit the min/max/step/rounds directly in the bar without going back to the Editor. If a charge has been promoted, a green *Promoted: X gr* badge appears.
+
+**Charge ladder table**
+
+Every step in the ladder is listed as a row — planned steps (not yet pressed) and fired steps with accumulated data.
+
+| Column | Description |
+|--------|-------------|
+| ☐ | Checkbox to include this charge in the next batch log |
+| **Charge** | The charge weight; a ✓ badge marks the promoted charge |
+| **Lot(s)** | Lot number chips for each journal entry at this charge |
+| **Qty** | Total rounds pressed at this charge |
+| **Sessions** | Number of range sessions that include these lots |
+| **Avg fps** | Average muzzle velocity across all sessions for this charge |
+| **Avg SD** | Average standard deviation |
+| **Best Group** | Best (smallest) group size recorded at this charge |
+| **Promote** | Button to promote this charge as the final load (only shown when data exists and the load is In Development) |
+
+Rows with data but not yet promoted are highlighted with a subtle tint. The promoted row is highlighted in green.
+
+The table scrolls independently of the header, so the column labels remain visible with long ladders.
+
+<!-- TODO: screenshot — workup panel showing the charge ladder table with a mix of planned and fired rows -->
+![Screenshot: Charge Workup panel — charge ladder table with planned and fired rows, promoted row highlighted](./images/workup-panel-table.png)
+
+**Logging entries from the workup panel**
+
+All plannable steps are checked by default. Uncheck any step you do not want to press in this session, then click **Log N Entries** in the footer. The application creates one Journal entry per checked charge, all dated today, using the configured rounds per step. A brief confirmation message appears before the panel closes.
+
+> You can also add a **one-off charge** that is outside the configured ladder: type the charge weight in the *Add charge* field below the table and click **Add**. The row appears in the table, checked and ready to include in the next batch log, without immediately writing a journal entry.
+
+**Performance chart**
+
+Once at least two steps have been fired and recorded in the Range Log, a chart appears below the table:
+
+- **Avg fps** (solid blue line, left axis): average muzzle velocity per charge weight.
+- **Lot fps** (blue diamonds): individual lot velocity, one diamond per journal entry — shows the spread at each charge when multiple lots have been fired.
+- **Best Group** (dashed amber line, right axis, inverted): the best group size at each charge. The axis is inverted so smaller groups (better accuracy) appear higher on the chart.
+- **Lot Group** (amber diamonds): individual lot group sizes.
+
+Hover over any line point to see the value; hover over a diamond to see which lot it belongs to. The chart is reactive to the application's light/dark theme.
+
+<!-- TODO: screenshot — workup panel chart showing both fps and group traces with scatter diamonds -->
+![Screenshot: Charge Workup panel — performance chart showing velocity and group curves with individual lot markers](./images/workup-panel-chart.png)
+
+#### Promoting a charge
+
+When the data shows a clear node — a charge with consistently good velocity SD and small groups — click **Promote** on that row. A confirmation dialog shows the charge being promoted.
+
+Confirming promotion:
+- Sets the load's **powder charge** to the promoted value.
+- Changes the load's status to **Active**.
+- **Stars** all Journal entries for the promoted charge so they are easy to find in the Journal and Range Log.
+- **Unstars** any entries that belonged to a previously promoted charge (on re-promotion).
+
+The load is now an active, proven recipe and the Charge Workup panel switches to a history view showing the full development record.
+
+#### Starting a new development cycle
+
+If you want to refine the load further, open the workup panel and use the **In Dev / Active** toggle in the footer. This returns the load to In Development status without clearing any data. You can then adjust the ladder range, add new steps, or press additional lots at charges of interest.
+
+<!-- TODO: screenshot — workup panel footer showing the In Dev / Active toggle and the Log N Entries button -->
+![Screenshot: Charge Workup panel footer — status toggle and Log Entries button](./images/workup-panel-footer.png)
+
+#### Workup data in the printed data sheet
+
+When you print a load's **Data Sheet** from the My Ammo print options, the Charge Workup section is automatically included if development data is present. The printed output shows the ladder summary, the full charge table with the promoted step marked, and a copy of the performance chart as an embedded image.
+
+<!-- TODO: screenshot — printed data sheet showing the Charge Workup section with table and chart -->
+![Screenshot: Printed load data sheet — Charge Workup section with charge table and performance chart](./images/workup-datasheet-print.png)
+
+---
 
 ### 2.4 Default Taxes & Fees
 
@@ -662,3 +767,10 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 - **Range Log notes for load development.** Use the per-lot notes field in the Range Log to record group sizes, point of impact shifts, felt recoil, or function issues. Over time this builds a development log you can cross-reference when adjusting a recipe.
 - **Star your reference loads.** Once you find a load that functions and groups well, star that range session. The starred filter gives you a quick shortlist when you are deciding what to press next.
 - **Range Log data is included in export files.** When you export your library, your full range log history is included. Import it on another machine and your field records move with you.
+- **Charge workup and the journal are connected.** When you log entries from the Charge Workup panel, they appear in the Journal as normal lot entries. When you later log those lots in the Range Log (select them **From Journal**), the velocity and group data flows back into the workup chart automatically — no extra steps needed.
+- **Link range sessions to workup lots using "From Journal" mode.** When adding a lot in the Range Log, select **From Journal** and pick the lot number that the Charge Workup panel created. This is what connects your range data to the workup chart; if you use the Reload or manual mode instead, the lot number may not match and the data will not appear on the chart.
+- **The workup chart needs at least two data points.** The velocity and group chart only appears once two or more distinct charges have been fired and recorded in the Range Log. Until then, the table gives you the data in row form.
+- **Multiple lots at the same charge show as separate diamonds.** If you pressed and fired two batches at the same charge weight (e.g. two lots of 20 rounds), the chart shows a diamond for each lot alongside the average line, so you can see how consistent your results are across batches.
+- **Ad-hoc charges let you test outside the ladder.** Use the *Add charge* field in the workup panel to add a step that falls outside your configured min–max range — for example to test a charge that looks promising based on early data. The entry is held as a pending row in the table until you click Log Entries, so you can still choose to exclude it before logging.
+- **Promote unstars the previous winning charge.** If you promote a charge, then later start a new development cycle and promote a different charge, the application automatically removes the star from journal entries for the old charge and stars the new one. Your starred filter in the Journal always reflects the current best load.
+- **Workup history is preserved after promotion.** Promoting a charge does not delete the ladder or its data. The full development history remains visible in the workup panel (and on the printed data sheet) even after the load is Active.
