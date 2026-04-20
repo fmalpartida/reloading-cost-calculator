@@ -1,4 +1,4 @@
-# Reloading Tracker 2.0.0: User Guide
+# Reloading Tracker 2.3.1-beta.1: User Guide
 
 Reloading Tracker is an application for managing your reloading activity. At its core it is a production log: define your loads, record each pressing session with a unique lot number, and print a label for every box on your shelf. If you also want to understand the economics of reloading, the application goes further, comparing the cost of your reloads against factory ammunition, tracking your progress toward break-even, and accounting for component prices, taxes, fixed fees, and one-time equipment purchases.
 
@@ -436,36 +436,53 @@ In the expanded card view under My Ammo, any component that originates from the 
 
 The **Journal** tab is the heart of the application for session-based reloaders. Every time you sit down at the press, add an entry with the load you reloaded, the quantity you produced, and the date. Each entry automatically receives a unique, incrementing **lot number** that you can print on an ammo box label. Over time, your journal becomes a complete, searchable production history of every batch you have ever pressed.
 
+<!-- TODO: Update screenshot — journal overview showing Log Entry button, Remaining Rounds column, and the summary panel -->
 ![Screenshot: Journal tab showing the session list, add row at the bottom, and the summary panel](./images/journal-overview.png)
 
 
 ### 4.1 Logging a Session
 
-The **add row** at the bottom of the session list always shows the next available lot number. Fill in:
+Click **Log Entry** at the top right of the entries card to open the session dialog. Fill in:
 
 | Field | Description |
 |-------|-------------|
-| **Date** | The date of the session (defaults to today) |
-| **Load** | Select from your reload entries |
-| **Qty** | Number of rounds produced |
-| **Notes** | Optional; use for a powder lot, seating depth, or any other reference |
+| **Date** | The date of the session (defaults to today). Required. |
+| **Load** | Select from your Active or In Development reload entries. Required. |
+| **Qty** | Number of rounds produced. Required. |
+| **Charge override** | Optional. Enter a value only if this batch was loaded at a different charge than the recipe default. Overridden values are highlighted in the journal row. |
+| **COAL override** | Optional. Per-lot cartridge overall length if it differs from the recipe. |
+| **Brass override** | Optional. Specify which brass was used if it differs from the recipe default. |
+| **Notes** | Optional; use for a powder lot number, seating depth, or any other session reference. |
 
-Click **+** or press **Enter** in any field to save the entry. It appears at the top of the list and the lot number advances automatically.
+The next available lot number is shown at the top of the dialog and is assigned automatically when you save. Click **Save Entry** to log the session. The new entry appears at the top of the list and the lot counter advances.
+
+<!-- TODO: Update screenshot of journal add/edit dialog showing the charge, COAL, and brass override fields -->
 
 **Starting lot number**  
-At the top right of the Journal page you can set the **Starting lot #**. The next lot number is always the first unused number at or above this value. If you raise it above your current highest lot (for example to start a new series at 100), the next entry will begin from that number. If the requested number is already in use, the application finds the next free slot automatically, so duplicate lot numbers can never occur. Use this field to align with a lot series you were already tracking elsewhere or to create a meaningful break in your numbering when switching between projects or calibres.
+At the top of the summary panel (visible when the summary is expanded) you can set the **Starting lot #**. The next lot number is always the first unused number at or above this value. If you raise it above your current highest lot (for example to start a new series at 100), the next entry will begin from that number. If the requested number is already in use, the application finds the next free slot automatically, so duplicate lot numbers can never occur. Use this field to align with a lot series you were already tracking elsewhere or to create a meaningful break in your numbering when switching between projects or calibres.
 
 ### 4.2 Managing Journal Entries
 
-Each entry row has three action buttons on the right:
+Each entry row has action buttons on the right:
 
 | Button | Action |
 |--------|--------|
-| ✏️ Edit | Edits all fields inline; the lot number is fixed and cannot be changed |
+| ☆ Star | Marks the entry as a reference lot (starred entries show a coloured accent) |
+| ✏️ Edit | Opens the entry for editing; the lot number is fixed and cannot be changed |
+| ⧉ Duplicate | Creates a copy of the entry with the next available lot number (useful for pressing additional batches of the same load at the same settings) |
 | 🖨 Print | Opens the label print dialog pre-filled with the lot number and quantity |
+| 📦 Archive | Moves the entry to the archive so it no longer appears in the main list. Archived entries are preserved in full and can be restored at any time. |
 | 🗑 Delete | Permanently removes the entry |
 
-Use the **Search** box at the top of the page to filter entries by lot number, date, load name, caliber, or notes.
+**Remaining Rounds column**
+The **Remaining** column shows how many rounds from each lot have not yet been fired. It is calculated automatically from your Range Log: every time you log rounds against a lot in a range session, the remaining count decreases. When all rounds in a lot have been accounted for in the Range Log, the lot is marked **Depleted**. This live link between the journal and the range means you always know exactly how much of each lot is left on the shelf without maintaining a separate inventory.
+
+**Archiving and restoring entries**
+Click the **📦 Archive** button to move a lot out of the active list without deleting it. Archived entries remain part of your history and are still counted in the Journal statistics panel. To see archived entries, click the **"N archived"** link that appears in the journal header when any entries are archived. To restore an entry to the active list, expand the archived view and click the **Restore** button on the relevant row.
+
+<!-- TODO: Add screenshot of journal entry row showing all action buttons (star, edit, duplicate, print, archive, delete) and the Remaining Rounds column -->
+
+Use the **Search** box at the top of the page to filter entries by lot number, date, load name, caliber, brass name, or notes.
 
 ### 4.3 Printing a Lot Label
 
@@ -517,7 +534,7 @@ After filling in the session header, add one or more **lots** to the session usi
 
 | Mode | When to use |
 |------|-------------|
-| **From Journal** | The ammo was logged at the press in the Reloading Journal. Select the lot from the dropdown; charge, COAL, and round count pre-fill automatically from the journal entry. |
+| **From Journal** | The ammo was logged at the press in the Reloading Journal. Select the lot from the dropdown; charge and COAL fill in automatically. The rounds field pre-fills with the remaining (unfired) count from the journal, and the form will not let you log more rounds than are available. Depleted lots are hidden from the dropdown so you can never over-log a lot. |
 | **Reload** | A reload batch that was not logged in the Journal. Enter an optional lot number, select the reload recipe, and override charge or COAL if needed. |
 | **Factory** | Factory ammunition. Select from your defined factory entries. No charge or COAL fields are shown. |
 
@@ -540,6 +557,11 @@ Use the **⧉** duplicate button on any lot row to quickly copy it when firing m
 
 Click **Save Session** when done. You can add as many lots as you fired during the outing.
 
+**Velocity unit**
+The **fps / m/s** toggle in the page header switches the velocity display unit for all sessions and the add/edit form at once. The preference is saved so the Range Log always opens in your chosen unit. Velocity values are always stored internally in fps; toggling the display never changes your recorded numbers.
+
+<!-- TODO: Add screenshot of the Range Log page header showing the fps/m/s velocity unit toggle button -->
+
 ### 5.2 Managing Range Sessions
 
 Sessions are displayed as rows in a list, most recent first. Click any row to **expand** it and see the full per-lot breakdown for that session.
@@ -553,17 +575,21 @@ Each session row has action buttons on the right:
 |--------|--------|
 | ★ Star | Marks the session as a reference (see [Starring Sessions](#53-starring-sessions)) |
 | ✏️ Edit | Opens the session for editing — you can change the header fields or add and remove lot entries |
+| ⧉ Duplicate | Creates a copy of the session (useful for recurring outings at the same location with the same firearm) |
+| 🖨 Print | Opens the print dialog for the session's data sheet |
 | 🗑 Delete | Permanently removes the session and all its lot entries |
 
-Use the **Search** box at the top of the page to filter sessions by firearm, distance, lot number, load name, or notes text.
+Use the **Search** box at the top of the page to filter sessions by firearm, date, lot number, or load name.
 
 ### 5.3 Starring Sessions
 
 Click the **star button** (☆ / ★) on any session row to mark it as a reference session. Starred sessions display a coloured left-border accent so they stand out in the list.
 
+Starring a range session also **automatically stars all journal lots** that were linked to that session via **From Journal** mode. This means the lots that produced your best results are instantly flagged in the Journal as well, so you can find them quickly at the bench when deciding what to reload next.
+
 Click the **starred filter button** (☆) in the page header to toggle the list to show only starred sessions. This is useful when you are at the bench deciding which loads to press again and want to pull up only the sessions that produced your best results.
 
-<!-- TODO: Add screenshot showing starred sessions in the list with the star filter active in the header -->
+<!-- TODO: Add screenshot showing starred sessions in the list with the star filter active, and the corresponding starred lots visible in the Journal -->
 ![Screenshot: Range Log with starred sessions highlighted and the starred filter button active](./images/range-log-starred.png)
 
 ### 5.4 Range Log Statistics
@@ -765,7 +791,10 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 - **The bench-to-range loop.** Use the Journal to record what you pressed, then use the Range Log to record how each lot performed at the range. The two tabs together give you a complete picture: production history in the Journal, field performance in the Range Log.
 - **Multiple lots in one range session.** A single range session can include several lots — for example if you ran three different powder charges side by side. Add one lot entry per charge weight so each gets its own round count and notes.
 - **Range Log notes for load development.** Use the per-lot notes field in the Range Log to record group sizes, point of impact shifts, felt recoil, or function issues. Over time this builds a development log you can cross-reference when adjusting a recipe.
-- **Star your reference loads.** Once you find a load that functions and groups well, star that range session. The starred filter gives you a quick shortlist when you are deciding what to press next.
+- **Star your reference loads.** Once you find a load that functions and groups well, star that range session. The starred filter gives you a quick shortlist when you are deciding what to press next. Starring a session also stars the linked journal lots automatically, so both records are flagged together.
+- **Remaining Rounds keeps your shelf count accurate.** Log rounds against journal lots in the Range Log using **From Journal** mode and the Remaining column updates automatically. Lots that reach zero are marked Depleted and hidden from the From Journal dropdown so you cannot accidentally log against an empty lot.
+- **Archive completed lots to keep the journal tidy.** Once a lot is fully fired and you no longer need it in the active list, archive it. The lot stays in your history and still contributes to statistics; it just does not appear in the main journal table. Restore it at any time if you need to reference or reprint the label.
+- **Velocity unit preference is global.** The fps / m/s toggle in the Range Log header applies to every session in the list and carries over into the add and edit forms. Switch once; it stays set until you toggle it again.
 - **Range Log data is included in export files.** When you export your library, your full range log history is included. Import it on another machine and your field records move with you.
 - **Charge workup and the journal are connected.** When you log entries from the Charge Workup panel, they appear in the Journal as normal lot entries. When you later log those lots in the Range Log (select them **From Journal**), the velocity and group data flows back into the workup chart automatically — no extra steps needed.
 - **Link range sessions to workup lots using "From Journal" mode.** When adding a lot in the Range Log, select **From Journal** and pick the lot number that the Charge Workup panel created. This is what connects your range data to the workup chart; if you use the Reload or manual mode instead, the lot number may not match and the data will not appear on the chart.
