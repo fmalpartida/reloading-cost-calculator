@@ -55,7 +55,7 @@ body { font-family: Arial, Helvetica, sans-serif; }
   width: 2.625in;
   height: 1in;
   overflow: hidden;
-  padding: 0.045in 0.08in;
+  padding: 0.025in 0.08in;
   flex-shrink: 0;
 }
 .label.empty {
