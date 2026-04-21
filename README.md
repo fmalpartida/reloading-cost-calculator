@@ -1,4 +1,4 @@
-# Reloading Tracker 2.3.1-beta.1: User Guide
+# Reloading Tracker 2.3.2-beta.1: User Guide
 
 Reloading Tracker is an application for managing your reloading activity. At its core it is a production log: define your loads, record each pressing session with a unique lot number, and print a label for every box on your shelf. If you also want to understand the economics of reloading, the application goes further, comparing the cost of your reloads against factory ammunition, tracking your progress toward break-even, and accounting for component prices, taxes, fixed fees, and one-time equipment purchases.
 
@@ -244,7 +244,6 @@ The **Charge Workup** panel is the built-in load development workflow. It lets y
 
 3. Save the load. A **ladder icon (⟑)** now appears on the load card and in the table's action column.
 
-<!-- TODO: screenshot — load card with ladder icon visible in the action buttons -->
 ![Screenshot: load card showing the ladder workup icon in the action buttons](./images/workup-ladder-icon.png)
 
 #### The Charge Workup panel
@@ -275,7 +274,6 @@ Rows with data but not yet promoted are highlighted with a subtle tint. The prom
 
 The table scrolls independently of the header, so the column labels remain visible with long ladders.
 
-<!-- TODO: screenshot — workup panel showing the charge ladder table with a mix of planned and fired rows -->
 ![Screenshot: Charge Workup panel — charge ladder table with planned and fired rows, promoted row highlighted](./images/workup-panel-table.png)
 
 **Logging entries from the workup panel**
@@ -293,9 +291,8 @@ Once at least two steps have been fired and recorded in the Range Log, a chart a
 - **Best Group** (dashed amber line, right axis, inverted): the best group size at each charge. The axis is inverted so smaller groups (better accuracy) appear higher on the chart.
 - **Lot Group** (amber diamonds): individual lot group sizes.
 
-Hover over any line point to see the value; hover over a diamond to see which lot it belongs to. The chart is reactive to the application's light/dark theme.
+Hover over any line point to see the value; hover over a diamond to see which lot it belongs to. 
 
-<!-- TODO: screenshot — workup panel chart showing both fps and group traces with scatter diamonds -->
 ![Screenshot: Charge Workup panel — performance chart showing velocity and group curves with individual lot markers](./images/workup-panel-chart.png)
 
 #### Promoting a charge
@@ -456,7 +453,8 @@ Click **Log Entry** at the top right of the entries card to open the session dia
 
 The next available lot number is shown at the top of the dialog and is assigned automatically when you save. Click **Save Entry** to log the session. The new entry appears at the top of the list and the lot counter advances.
 
-<!-- TODO: Update screenshot of journal add/edit dialog showing the charge, COAL, and brass override fields -->
+![Screenshot: journal edit dialog showing the charge, COAL, and brass override fields](./images/journal-editor.png)
+
 
 **Starting lot number**  
 At the top of the summary panel (visible when the summary is expanded) you can set the **Starting lot #**. The next lot number is always the first unused number at or above this value. If you raise it above your current highest lot (for example to start a new series at 100), the next entry will begin from that number. If the requested number is already in use, the application finds the next free slot automatically, so duplicate lot numbers can never occur. Use this field to align with a lot series you were already tracking elsewhere or to create a meaningful break in your numbering when switching between projects or calibres.
@@ -480,7 +478,7 @@ The **Remaining** column shows how many rounds from each lot have not yet been f
 **Archiving and restoring entries**
 Click the **📦 Archive** button to move a lot out of the active list without deleting it. Archived entries remain part of your history and are still counted in the Journal statistics panel. To see archived entries, click the **"N archived"** link that appears in the journal header when any entries are archived. To restore an entry to the active list, expand the archived view and click the **Restore** button on the relevant row.
 
-<!-- TODO: Add screenshot of journal entry row showing all action buttons (star, edit, duplicate, print, archive, delete) and the Remaining Rounds column -->
+![Screenshot: journal entry row showing all action buttons (star, edit, duplicate, print, archive, delete) and the Remaining Rounds column](./images/journal-entry.png)
 
 Use the **Search** box at the top of the page to filter entries by lot number, date, load name, caliber, brass name, or notes.
 
