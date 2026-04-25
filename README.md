@@ -1,4 +1,4 @@
-# Reloading Tracker 2.3.2-beta.1: User Guide
+# Reloading Tracker 2.4.0: User Guide
 
 Reloading Tracker is an application for managing your reloading activity. At its core it is a production log: define your loads, record each pressing session with a unique lot number, and print a label for every box on your shelf. If you also want to understand the economics of reloading, the application goes further, comparing the cost of your reloads against factory ammunition, tracking your progress toward break-even, and accounting for component prices, taxes, fixed fees, and one-time equipment purchases.
 
@@ -32,25 +32,30 @@ Reloading Tracker is an application for managing your reloading activity. At its
    - [Adding a Component](#31-adding-a-component)
    - [Managing Components](#32-managing-components)
    - [Linking Inventory to Loads](#33-linking-inventory-to-loads)
-4. [Reloading Journal](#4-reloading-journal)
-   - [Logging a Session](#41-logging-a-session)
-   - [Managing Journal Entries](#42-managing-journal-entries)
-   - [Printing a Lot Label](#43-printing-a-lot-label)
-   - [Journal Statistics](#44-journal-statistics)
-5. [Range Log](#5-range-log)
-   - [Logging a Range Session](#51-logging-a-range-session)
-   - [Managing Range Sessions](#52-managing-range-sessions)
-   - [Starring Sessions](#53-starring-sessions)
-   - [Range Log Statistics](#54-range-log-statistics)
-6. [Cost Analysis (Break-Even)](#6-cost-analysis-break-even)
-   - [Load Selection](#61-load-selection)
-   - [Equipment Costs](#62-equipment-costs)
-   - [Reading the Chart & Stats](#63-reading-the-chart--stats)
-7. [Cost Comparison](#7-cost-comparison)
-8. [Guided Tour](#8-guided-tour)
-9. [Settings & About](#9-settings--about)
-10. [Import & Export](#10-import--export)
-11. [Tips & Notes](#11-tips--notes)
+4. [Firearms Registry](#4-firearms-registry)
+   - [Adding a Firearm Profile](#41-adding-a-firearm-profile)
+   - [Managing Firearm Profiles](#42-managing-firearm-profiles)
+   - [Filtering and Searching](#43-filtering-and-searching)
+   - [Card and Table Views](#44-card-and-table-views)
+5. [Reloading Journal](#5-reloading-journal)
+   - [Logging a Session](#51-logging-a-session)
+   - [Managing Journal Entries](#52-managing-journal-entries)
+   - [Printing a Lot Label](#53-printing-a-lot-label)
+   - [Journal Statistics](#54-journal-statistics)
+6. [Range Log](#6-range-log)
+   - [Logging a Range Session](#61-logging-a-range-session)
+   - [Managing Range Sessions](#62-managing-range-sessions)
+   - [Starring Sessions](#63-starring-sessions)
+   - [Range Log Statistics](#64-range-log-statistics)
+7. [Cost Analysis (Break-Even)](#7-cost-analysis-break-even)
+   - [Load Selection](#71-load-selection)
+   - [Equipment Costs](#72-equipment-costs)
+   - [Reading the Chart & Stats](#73-reading-the-chart--stats)
+8. [Cost Comparison](#8-cost-comparison)
+9. [Guided Tour](#9-guided-tour)
+10. [Settings & About](#10-settings--about)
+11. [Import & Export](#11-import--export)
+12. [Tips & Notes](#12-tips--notes)
 
 ---
 
@@ -60,6 +65,7 @@ Reloading Tracker is an application for managing your reloading activity. At its
 
 Reloading Tracker follows a natural progression that mirrors the way reloading actually works. The first three steps are the core workflow, useful for any reloader regardless of whether you care about costs. Step 4 is for those who also want to track cost and break-even progress.
 
+<!-- IMAGE MAY NEED UPDATING: navigation bar now includes the Firearms tab between My Components and Journal -->
 ![Reloading Tracker: main application and navigation tabs](./images/header-tabs.png)
 
 **Step 1: Define your loads**
@@ -91,6 +97,8 @@ After logging a pressing session, click the **Print** button on the journal entr
 
 After a range trip, open the **Range Log** tab and add a session: choose the firearm you used, the date, the distance you shot, and the lots you burned through. You can record multiple lots in a single outing — each with its own round count, charge weight, COAL, and notes — so each lot tells you exactly how it performed at the range.
 
+The firearm selector in the Range Log form draws from the **Firearms Registry** (the Firearms tab). Any firearm you have profiled there appears in the dropdown, so you never have to type the same name twice and your performance data stays tied to a consistent firearm identity. If you log a session with a firearm name that does not yet exist in the registry, it is added automatically as a minimal profile that you can flesh out later in the Firearms tab.
+
 Over time the Range Log becomes a searchable field record that connects every range session to the specific lots and load recipes that produced it. Star sessions that produced exceptional results so you can find them later; use the starred filter to pull up only your reference loads when you are at the bench deciding what to reload next.
 
 > **The bench-to-range loop.** The Journal and the Range Log together close the loop on every batch of ammo you press. The Journal tells you what you made and when. The Range Log tells you how each lot performed when it counted. Together, they make it straightforward to decide which loads are worth pressing again and which recipes to refine.
@@ -115,15 +123,16 @@ The application has six main tabs accessible from the navigation bar at the top:
 |-----|---------|
 | **My Ammo** | Library of all your ammo entries: reloads and factory |
 | **My Components** | Global catalog of reloading components: powders, primers, bullets, and brass |
+| **Firearms** | Registry of your firearm profiles: type, caliber, action, barrel, and twist data |
 | **Journal** | Log pressing sessions with auto-incrementing lot numbers, dates, quantities, and notes |
 | **Range Log** | Record range sessions: firearm, distance, lots fired, round counts, performance notes |
-| **Cost Analysis** | Break-even chart showing when reloading pays off after equipment investment |
-| **Cost Comparison** | Side-by-side cost breakdown for selected reload and factory entries |
+| **Cost Tools** | Break-even chart showing when reloading pays off after equipment investment & Side-by-side cost breakdown for selected reload and factory entries |
 
-A seventh **Editor** tab appears automatically whenever you are adding or editing an ammo entry.
+An **Editor** tab appears automatically whenever you are adding or editing an ammo entry.
 
 There are also built-in **Tour**, **About**, and **Settings** controls in the top navigation area. Tour launches a guided walkthrough of the main areas of the application, About shows application/version/author/license information, and Settings lets you adjust display preferences such as theme behavior, currency symbol, and cost precision.
 
+<!-- IMAGE MAY NEED UPDATING: navigation bar now includes the Firearms tab between My Components and Journal -->
 ![Reloading Tracker: main application and navigation tabs](./images/header-tabs.png)
 
 ---
@@ -429,7 +438,74 @@ In the expanded card view under My Ammo, any component that originates from the 
 
 ---
 
-## 4. Reloading Journal
+## 4. Firearms Registry
+
+The **Firearms** tab is a dedicated catalog of the firearms you own and shoot. Every firearm you add here becomes available in the Range Log session form as a selectable option, keeping your range session records consistently tied to a known firearm profile rather than free-typed names. Profiles capture the mechanical details that matter for long-range and load-development work: caliber, action type, barrel length, and twist rate.
+
+<!-- TODO: screenshot of Firearms tab — card view showing several firearm profiles grouped by caliber, with caliber filter chips below the header and the Add Firearm button in the top-right -->
+![Screenshot: Firearms tab showing firearm profiles in card view, grouped by caliber, with caliber filter chips](./images/firearms-overview.png)
+
+### 4.1 Adding a Firearm Profile
+
+Click **Add Firearm** in the top-right corner of the Firearms tab. A dialog opens with the following fields:
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| **Name** | Yes | A descriptive label for the firearm, e.g. *Remington 700 SPS*, *Glock 17 Gen 5*. |
+| **Firearm Type** | No | Broad category: **Rifle**, **Handgun**, **Shotgun**, or **Other**. |
+| **Caliber** | No | The cartridge the firearm is chambered in, e.g. *.308 Win*, *9mm Luger*. Used for grouping and caliber filter chips. |
+| **Action Type** | No | Operating mechanism: **Bolt**, **Semi-Auto**, **Lever**, **Pump**, **Single Shot**, **Revolver**, or **Other**. |
+| **Barrel Length** | No | Free text, e.g. *24 in*, *16.5"*. |
+| **Twist Rate** | No | Rifling twist rate, e.g. *1:10*, *1:8*. Relevant for bullet stabilisation in load development. |
+| **Notes** | No | Any other reference — optics setup, known issues, purchase date, etc. |
+
+Click **Add Firearm** in the dialog footer to save. The profile appears immediately in the Firearms list and becomes available in the Range Log firearm selector.
+
+<!-- TODO: screenshot of the Add/Edit Firearm dialog showing all fields filled in for a rifle profile -->
+![Screenshot: Firearm form dialog showing Name, Firearm Type, Caliber, Action Type, Barrel Length, Twist Rate, and Notes fields](./images/firearm-form-dialog.png)
+
+### 4.2 Managing Firearm Profiles
+
+Each firearm profile — in both card and table view — has two action buttons:
+
+| Button | Action |
+|--------|--------|
+| ✏️ Edit | Opens the profile in the form dialog for editing. All fields can be changed. |
+| 🗑 Delete | Permanently removes the profile from the registry. Existing Range Log sessions that referenced this firearm are not affected — the recorded firearm name is preserved in those sessions. |
+
+A confirmation dialog appears before deletion to prevent accidental removal.
+
+### 4.3 Filtering and Searching
+
+**Caliber filter chips**
+
+When at least one profile has a caliber set, a row of **caliber filter chips** appears below the page header. Each chip shows the caliber name and a count of how many firearms are chambered in it. Click a chip to filter the list to that caliber; click it again to deselect. Multiple chips can be active at the same time, showing the union of the selected calibers.
+
+<!-- TODO: screenshot of the Firearms tab caliber filter chips row with two chips active, narrowing the displayed profiles -->
+![Screenshot: Firearms tab caliber filter chips with two chips active, narrowing the visible profiles](./images/firearms-caliber-chips.png)
+
+**Search**
+
+The **Search** box in the page header filters profiles by name, caliber, and notes simultaneously. The count below the page title updates to reflect how many profiles match the current search.
+
+Clearing the search box resets the list to all profiles (subject to any active caliber filter chips). The search and caliber chips work together — the list shows only profiles that match both the active chip selection and the search text.
+
+### 4.4 Card and Table Views
+
+The **Cards / Table** toggle in the page header switches the display layout. The preference is saved between sessions so the Firearms tab always opens in your last-used view.
+
+**Card view** (default) — each firearm appears as a tile showing all populated fields. Fields that were left blank are omitted from the card to keep it uncluttered. The Type badge and Action tag appear as styled chips.
+
+**Table view** — profiles are displayed as rows in a denser layout with columns for Name, Type, Action, Barrel, Twist, and Notes. This view is more efficient for scanning a large registry at a glance.
+
+In both views, profiles are grouped by caliber. Firearms without a caliber appear in an **Uncategorized** group at the bottom.
+
+<!-- TODO: screenshot of Firearms tab in table view showing the column headers and firearm rows grouped by caliber -->
+![Screenshot: Firearms tab table view showing rows grouped by caliber with Type and Action tag columns](./images/firearms-table-view.png)
+
+---
+
+## 5. Reloading Journal
 
 The **Journal** tab is the heart of the application for session-based reloaders. Every time you sit down at the press, add an entry with the load you reloaded, the quantity you produced, and the date. Each entry automatically receives a unique, incrementing **lot number** that you can print on an ammo box label. Over time, your journal becomes a complete, searchable production history of every batch you have ever pressed.
 
@@ -437,7 +513,7 @@ The **Journal** tab is the heart of the application for session-based reloaders.
 ![Screenshot: Journal tab showing the session list, add row at the bottom, and the summary panel](./images/journal-overview.png)
 
 
-### 4.1 Logging a Session
+### 5.1 Logging a Session
 
 Click **Log Entry** at the top right of the entries card to open the session dialog. Fill in:
 
@@ -459,7 +535,7 @@ The next available lot number is shown at the top of the dialog and is assigned 
 **Starting lot number**  
 At the top of the summary panel (visible when the summary is expanded) you can set the **Starting lot #**. The next lot number is always the first unused number at or above this value. If you raise it above your current highest lot (for example to start a new series at 100), the next entry will begin from that number. If the requested number is already in use, the application finds the next free slot automatically, so duplicate lot numbers can never occur. Use this field to align with a lot series you were already tracking elsewhere or to create a meaningful break in your numbering when switching between projects or calibres.
 
-### 4.2 Managing Journal Entries
+### 5.2 Managing Journal Entries
 
 Each entry row has action buttons on the right:
 
@@ -482,7 +558,7 @@ Click the **📦 Archive** button to move a lot out of the active list without d
 
 Use the **Search** box at the top of the page to filter entries by lot number, date, load name, caliber, brass name, or notes.
 
-### 4.3 Printing a Lot Label
+### 5.3 Printing a Lot Label
 
 Click the **Print** button on any journal entry to open the label print dialog. The **LOT** and **QTY** fields are pre-filled from the entry; just confirm and print.
 
@@ -497,7 +573,7 @@ You can also open the print dialog from any ammo card in **My Ammo** using the p
 
 ![Screenshot: print label dialog showing LOT and QTY pre-filled from a journal entry.](./images/label-print.png)
 
-### 4.4 Journal Statistics
+### 5.4 Journal Statistics
 
 The **summary panel** on the right of the Journal tab shows:
 
@@ -509,21 +585,21 @@ These figures accumulate automatically as you add entries. The cost per round us
 
 ---
 
-## 5. Range Log
+## 6. Range Log
 
 The **Range Log** tab is where you record what happens after the ammo leaves the bench. Every time you go to the range, add a session: choose the firearm, enter the date and the distance, then list each lot you fired along with how many rounds and any per-lot observations. The Range Log supports all three ammo sources: lots from the Reloading Journal, manually entered reload batches, and factory ammunition. Over time it becomes a searchable field record that connects every range trip to the specific lots and load recipes that produced the ammo.
 
 <!-- TODO: Add screenshot of the Range Log tab showing a list of range sessions with expanded lot details -->
 ![Screenshot: Range Log tab showing session list with expanded session](./images/range-log-overview.png)
 
-### 5.1 Logging a Range Session
+### 6.1 Logging a Range Session
 
 Click **+ Log Session** at the top of the Range Log to open the add form. Fill in:
 
 | Field | Description |
 |-------|-------------|
 | **Date** | The date of the range trip (defaults to today). Required. |
-| **Firearm** | Name of the firearm used (e.g. *Glock 17*, *AR-15 18" SPR*). Type a new name or select a previously used firearm. Required. |
+| **Firearm** | The firearm used. Select from the profiles in your **Firearms Registry** (see [Section 4](#4-firearms-registry)), or type a new name. Required. If you type a name that does not exist in the registry it is created as a minimal profile automatically; you can add its full details later in the Firearms tab. |
 | **Distance** | The distance at which you shot, with a unit selector (yd / m) |
 | **Temperature / Wind** | Optional session conditions |
 | **Notes** | Optional free-text field for range conditions, impressions, or any other reference |
@@ -537,6 +613,7 @@ After filling in the session header, add one or more **lots** to the session usi
 | **Factory** | Factory ammunition. Select from your defined factory entries. No charge or COAL fields are shown. |
 
 <!-- TODO: Add screenshot of the Range Log add form showing the From Journal / Reload / Factory mode toggle buttons on a lot row -->
+<!-- IMAGE MAY NEED UPDATING: the Firearm field now shows a dropdown populated from the Firearms Registry rather than a plain text input -->
 ![Screenshot: Range Log add/edit form showing the lot mode toggle (From Journal / Reload / Factory) and lot entry fields](./images/range-log-add-form.png)
 
 For every lot, regardless of mode, you can also record per-lot performance data:
@@ -560,7 +637,7 @@ The **fps / m/s** toggle in the page header switches the velocity display unit f
 
 <!-- TODO: Add screenshot of the Range Log page header showing the fps/m/s velocity unit toggle button -->
 
-### 5.2 Managing Range Sessions
+### 6.2 Managing Range Sessions
 
 Sessions are displayed as rows in a list, most recent first. Click any row to **expand** it and see the full per-lot breakdown for that session.
 
@@ -571,7 +648,7 @@ Each session row has action buttons on the right:
 
 | Button | Action |
 |--------|--------|
-| ★ Star | Marks the session as a reference (see [Starring Sessions](#53-starring-sessions)) |
+| ★ Star | Marks the session as a reference (see [Starring Sessions](#63-starring-sessions)) |
 | ✏️ Edit | Opens the session for editing — you can change the header fields or add and remove lot entries |
 | ⧉ Duplicate | Creates a copy of the session (useful for recurring outings at the same location with the same firearm) |
 | 🖨 Print | Opens the print dialog for the session's data sheet |
@@ -579,7 +656,7 @@ Each session row has action buttons on the right:
 
 Use the **Search** box at the top of the page to filter sessions by firearm, date, lot number, or load name.
 
-### 5.3 Starring Sessions
+### 6.3 Starring Sessions
 
 Click the **star button** (☆ / ★) on any session row to mark it as a reference session. Starred sessions display a coloured left-border accent so they stand out in the list.
 
@@ -590,7 +667,7 @@ Click the **starred filter button** (☆) in the page header to toggle the list 
 <!-- TODO: Add screenshot showing starred sessions in the list with the star filter active, and the corresponding starred lots visible in the Journal -->
 ![Screenshot: Range Log with starred sessions highlighted and the starred filter button active](./images/range-log-starred.png)
 
-### 5.4 Range Log Statistics
+### 6.4 Range Log Statistics
 
 The **statistics panel** at the top of the Range Log gives you an at-a-glance performance summary across all your recorded sessions. Click the bar to expand it.
 
@@ -620,13 +697,13 @@ The cards let you compare performance across different loads at a glance — use
 
 ---
 
-## 6. Cost Analysis (Break-Even)
+## 7. Cost Analysis (Break-Even)
 
 The **Cost Analysis** tab shows how the cumulative cost of reloading (including your one-time equipment investment) compares to buying factory ammo over time, and at what point reloading becomes cheaper overall.
 
 ![Screenshot: Cost Analysis tab: full view](images/cost-analysis.png)
 
-### 6.1 Load Selection
+### 7.1 Load Selection
 
 The left column lists all your reload and factory entries.
 
@@ -648,7 +725,7 @@ The round counts you log in the **Journal** tab are automatically reflected here
 
 This is designed for reloaders who were already pressing ammo before starting the journal. Enter your historical round count in the input as a baseline; the journal adds to it going forward. If you start fresh, leave the input at zero and the journal fills it in automatically.
 
-### 6.2 Equipment Costs
+### 7.2 Equipment Costs
 
 The right column is where you enter your one-time reloading equipment costs (press, dies, tumbler, scale, etc.)
 
@@ -662,7 +739,7 @@ This cost can be ignored by switching off the **Include** switch.
 
 ![Screenshot: Equipment Costs panel with several items entered](./images/equipment-costs.png)
 
-### 6.3 Reading the Chart & Stats
+### 7.3 Reading the Chart & Stats
 
 The **stats bar** across the middle column shows the main values used in the break-even calculation:
 
@@ -695,7 +772,7 @@ If the reload average is higher than the factory average (reloading is more expe
 
 ---
 
-## 7. Cost Comparison
+## 8. Cost Comparison
 
 The **Cost Comparison** tab lets you select any combination of reload and factory entries and compare their costs side by side.
 
@@ -718,7 +795,7 @@ Use the **Search** box above the selection list to filter by name, caliber, type
 
 ---
 
-## 8. Guided Tour
+## 9. Guided Tour
 
 Click **Tour** in the top navigation bar to start the built-in walkthrough at any time.
 
@@ -726,6 +803,7 @@ The guided tour highlights the major parts of the application and explains:
 
 - how to add and manage ammo entries
 - how to use the inventory and linked components
+- how to build and manage firearm profiles in the Firearms Registry
 - how to log pressing sessions in the Journal and assign lot numbers
 - how to record range sessions in the Range Log and track lot performance in the field
 - how to compare reloads and factory ammo
@@ -737,7 +815,7 @@ The tour can be dismissed at any time and is designed to help first-time users g
 
 ---
 
-## 9. Settings & About
+## 10. Settings & About
 
 The top-right area of the header includes both an **About** button and a **Settings** button.
 
@@ -752,9 +830,9 @@ The application still defaults to the **dark theme** on first launch. If you ena
 
 ---
 
-## 10. Import & Export
+## 11. Import & Export
 
-Your entire library (ammo entries, tax defaults, equipment costs, load selections, component inventory, and your full reloading journal) can be saved to a single JSON file and restored later or shared with another computer.
+Your entire library (ammo entries, tax defaults, equipment costs, load selections, component inventory, reloading journal, range log, and your **Firearms Registry**) can be saved to a single JSON file and restored later or shared with another computer.
 
 **Exporting**  
 Click **Export** in the top navigation bar. A `.json` file will be downloaded to your machine.
@@ -764,11 +842,12 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 
 > WARNING: Import overwrites your current data. Export first if you want to keep your existing entries.
 
+<!-- IMAGE MAY NEED UPDATING: navigation bar now includes the Firearms tab between My Components and Journal -->
 ![Screenshot: Export and Import buttons in the navigation bar](./images/header-tabs.png)
 
 ---
 
-## 11. Tips & Notes
+## 12. Tips & Notes
 
 - **All data is stored locally.** No account or internet connection is required. Data is saved automatically in the browser/app storage every time you make a change.
 - **Brass reuse count matters.** Setting a realistic reuse count (commonly 5–10 reloads per case) significantly lowers your per-round brass cost. A count of 1 treats every case as single-use.
@@ -794,6 +873,11 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 - **Archive completed lots to keep the journal tidy.** Once a lot is fully fired and you no longer need it in the active list, archive it. The lot stays in your history and still contributes to statistics; it just does not appear in the main journal table. Restore it at any time if you need to reference or reprint the label.
 - **Velocity unit preference is global.** The fps / m/s toggle in the Range Log header applies to every session in the list and carries over into the add and edit forms. Switch once; it stays set until you toggle it again.
 - **Range Log data is included in export files.** When you export your library, your full range log history is included. Import it on another machine and your field records move with you.
+- **Firearms Registry data is included in export files.** All firearm profiles are exported with your library and restored on import, so your full registry travels with your data.
+- **Add firearm profiles before logging range sessions.** Populating the Firearms Registry before your first range session means the firearm selector in the Range Log form will already have your guns listed, saving you from typing them out each time.
+- **Caliber on a firearm profile enables grouping and filtering.** Profiles without a caliber still appear in the registry and the Range Log dropdown, but they fall into an Uncategorized group and do not generate a caliber filter chip. Set the caliber if you want to use the chip filter to narrow down multi-gun sessions by cartridge family.
+- **Deleting a firearm profile does not affect past sessions.** Range Log entries record the firearm name as a string at the time of logging. Removing a profile from the registry does not alter any historical session records; the name is preserved exactly as it was when you logged it.
+- **Twist rate is useful during load development.** Enter the twist rate on your rifle profiles (e.g. *1:10*) so you have it on hand when selecting bullet weights during load development — heavier, longer bullets need faster twist rates to stabilise, and having the spec in the registry saves you from looking it up every time.
 - **Charge workup and the journal are connected.** When you log entries from the Charge Workup panel, they appear in the Journal as normal lot entries. When you later log those lots in the Range Log (select them **From Journal**), the velocity and group data flows back into the workup chart automatically — no extra steps needed.
 - **Link range sessions to workup lots using "From Journal" mode.** When adding a lot in the Range Log, select **From Journal** and pick the lot number that the Charge Workup panel created. This is what connects your range data to the workup chart; if you use the Reload or manual mode instead, the lot number may not match and the data will not appear on the chart.
 - **The workup chart needs at least two data points.** The velocity and group chart only appears once two or more distinct charges have been fired and recorded in the Range Log. Until then, the table gives you the data in row form.
