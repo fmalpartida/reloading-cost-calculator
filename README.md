@@ -1,4 +1,4 @@
-# Reloading Tracker 2.4.0: User Guide
+# Reloading Tracker 2.5.0: User Guide
 
 Reloading Tracker is an application for managing your reloading activity. At its core it is a production log: define your loads, record each pressing session with a unique lot number, and print a label for every box on your shelf. If you also want to understand the economics of reloading, the application goes further, comparing the cost of your reloads against factory ammunition, tracking your progress toward break-even, and accounting for component prices, taxes, fixed fees, and one-time equipment purchases.
 
@@ -47,15 +47,24 @@ Reloading Tracker is an application for managing your reloading activity. At its
    - [Managing Range Sessions](#62-managing-range-sessions)
    - [Starring Sessions](#63-starring-sessions)
    - [Range Log Statistics](#64-range-log-statistics)
-7. [Cost Analysis (Break-Even)](#7-cost-analysis-break-even)
-   - [Load Selection](#71-load-selection)
-   - [Equipment Costs](#72-equipment-costs)
-   - [Reading the Chart & Stats](#73-reading-the-chart--stats)
-8. [Cost Comparison](#8-cost-comparison)
-9. [Guided Tour](#9-guided-tour)
-10. [Settings & About](#10-settings--about)
-11. [Import & Export](#11-import--export)
-12. [Tips & Notes](#12-tips--notes)
+7. [Target Analysis](#7-target-analysis)
+   - [Creating a Target Record](#71-creating-a-target-record)
+   - [Uploading and Calibrating the Image](#72-uploading-and-calibrating-the-image)
+   - [Marking Impacts and Point of Aim](#73-marking-impacts-and-point-of-aim)
+   - [Statistics Panel](#74-statistics-panel)
+   - [Working with Groups](#75-working-with-groups)
+   - [Aggregate View](#76-aggregate-view)
+   - [Linking to a Range Session](#77-linking-to-a-range-session)
+   - [Printing a Target](#78-printing-a-target)
+8. [Cost Analysis (Break-Even)](#8-cost-analysis-break-even)
+   - [Load Selection](#81-load-selection)
+   - [Equipment Costs](#82-equipment-costs)
+   - [Reading the Chart & Stats](#83-reading-the-chart--stats)
+9. [Cost Comparison](#9-cost-comparison)
+10. [Guided Tour](#10-guided-tour)
+11. [Settings & About](#11-settings--about)
+12. [Import & Export](#12-import--export)
+13. [Tips & Notes](#13-tips--notes)
 
 ---
 
@@ -103,6 +112,10 @@ Over time the Range Log becomes a searchable field record that connects every ra
 
 > **The bench-to-range loop.** The Journal and the Range Log together close the loop on every batch of ammo you press. The Journal tells you what you made and when. The Range Log tells you how each lot performed when it counted. Together, they make it straightforward to decide which loads are worth pressing again and which recipes to refine.
 
+**Step 4b (optional): Analyse your target**
+
+After a range session, open the **Targets** tab and create a new target record. Upload a photo of your target, calibrate the scale using a known reference distance, and mark each bullet impact. The application computes group statistics — extreme spread, mean radius, CEP50, windage and elevation offset from your point of aim, and more — immediately as you place shots. When you have multiple loads or charges on the same target, organise impacts into colour-coded groups to compare each group independently and view aggregate statistics across all groups. Link the target record to the range session to navigate between the two tabs with a single click.
+
 **Step 5 (optional): Review your costs and track break-even**
 
 With pressing sessions accumulating in the journal, open **Cost Analysis** and switch to **Rounds** mode. Your journal rounds are automatically added to your reload entries. Watch the break-even chart as your position on the reload line advances toward the intersection with factory costs. The stats panel shows you exactly how many rounds remain until your equipment pays for itself, and how much you have already saved.
@@ -117,7 +130,7 @@ The more consistently you log your sessions, the more the application rewards yo
 
 ### Tabs at a Glance
 
-The application has six main tabs accessible from the navigation bar at the top:
+The application has seven main tabs accessible from the navigation bar at the top:
 
 | Tab | Purpose |
 |-----|---------|
@@ -126,6 +139,7 @@ The application has six main tabs accessible from the navigation bar at the top:
 | **Firearms** | Registry of your firearm profiles: type, caliber, action, barrel, and twist data |
 | **Journal** | Log pressing sessions with auto-incrementing lot numbers, dates, quantities, and notes |
 | **Range Log** | Record range sessions: firearm, distance, lots fired, round counts, performance notes |
+| **Targets** | Upload target photos, mark impacts, measure group size and statistics, and link to range sessions |
 | **Cost Tools** | Break-even chart showing when reloading pays off after equipment investment & Side-by-side cost breakdown for selected reload and factory entries |
 
 An **Editor** tab appears automatically whenever you are adding or editing an ammo entry.
@@ -651,7 +665,8 @@ Each session row has action buttons on the right:
 | ★ Star | Marks the session as a reference (see [Starring Sessions](#63-starring-sessions)) |
 | ✏️ Edit | Opens the session for editing — you can change the header fields or add and remove lot entries |
 | ⧉ Duplicate | Creates a copy of the session (useful for recurring outings at the same location with the same firearm) |
-| 🖨 Print | Opens the print dialog for the session's data sheet |
+| 🎯 Target | Navigates to the linked target in the Targets tab. Only visible when a target has been linked to this session. |
+| 🖨 Print | Opens the print dialog for the session's data sheet. If a target is linked to this session, the printed output automatically includes the annotated target image and its key statistics. |
 | 🗑 Delete | Permanently removes the session and all its lot entries |
 
 Use the **Search** box at the top of the page to filter sessions by firearm, date, lot number, or load name.
@@ -697,13 +712,204 @@ The cards let you compare performance across different loads at a glance — use
 
 ---
 
-## 7. Cost Analysis (Break-Even)
+## 7. Target Analysis
+
+The **Targets** tab gives you a full picture of where your shots actually landed. Upload a photo of your target after a range session, calibrate the scale using a known reference distance on the image, mark each bullet impact by clicking on the photo, and the application immediately computes your group statistics: extreme spread, mean radius, CEP50, windage and elevation offset from your point of aim, and more. When you fire multiple loads or charges at the same aiming point, organise the impacts into colour-coded groups to compare each load's dispersion independently and view aggregate statistics across all groups.
+
+<!-- TODO: Add screenshot of the Targets tab showing the three-panel layout: target list on the left, annotated canvas in the centre, configuration and statistics sidebar on the right -->
+![Screenshot: Targets tab — target list panel, annotated image canvas, and configuration/statistics sidebar](./images/targets-overview.png)
+
+The tab has a three-panel layout:
+- **Left panel** — your list of saved target records, each showing a thumbnail, name, date, and shot count.
+- **Centre** — the interactive canvas where you upload the image and place or review impacts.
+- **Right sidebar** — the Configuration panel (calibration, bullet size, shot distance, notes, and range session link) and the Statistics panel (computed group metrics).
+
+### 7.1 Creating a Target Record
+
+Click **+ New** in the top-left header to create a new target record. A blank record opens immediately and pre-populates the measurement system from your application settings (imperial or metric). Give the record a name and date in the toolbar at the top of the canvas area.
+
+Target records in the list show:
+- A thumbnail of the uploaded target image (or a placeholder icon if no image has been uploaded yet)
+- The target name and date
+- Shot count and best group size
+
+Click the **☆ / ★** star button on any list item to mark the target as a reference. Click the **✕** button to delete it (a confirmation dialog appears first).
+
+### 7.2 Uploading and Calibrating the Image
+
+**Uploading**
+
+Click the upload area in the centre canvas (or drag and drop an image file onto it) to load your target photo. JPEG and PNG images are supported. The image is stored locally alongside all other application data and travels with your export files.
+
+<!-- TODO: Add screenshot of the canvas area before an image is loaded, showing the upload/drag-drop zone -->
+![Screenshot: Targets canvas area showing the upload drag-drop zone before an image is loaded](./images/targets-upload-zone.png)
+
+**Calibrating**
+
+Before placing any shots, calibrate the pixel-to-real-world scale so the statistics are in meaningful units:
+
+1. Select **Calibrate** from the mode buttons in the toolbar.
+2. Click on the first reference point (e.g. one edge of a known dimension on the target).
+3. Click on the second reference point (e.g. the opposite edge).
+4. In the **Configuration** sidebar, enter the real-world distance between those two points and choose the unit (in / cm / mm).
+
+The application uses the pixel distance between the two points divided by the entered real-world distance to derive a pixels-per-unit scale. All statistics update immediately whenever the calibration changes.
+
+> **Tip:** Use a printed grid square, a scored ring of known diameter, or any other measurable feature on the target as your calibration reference. Write the measurement down before the session so you have it ready when you upload the photo.
+
+**Configuration panel fields**
+
+| Field | Description |
+|-------|-------------|
+| **Calibration reference** | The two reference points and their real-world distance |
+| **Bullet diameter** | Diameter of the bullet fired, in inches or mm. Used to measure ES and group size from outer hole edges rather than centres |
+| **Shot distance** | The distance at which the target was shot, used to compute angular values (MOA / MIL) for all statistics |
+| **Measurement system** | Imperial (inches) or Metric (centimetres) output for linear statistics |
+| **Angular unit** | MOA or MIL for angular statistics |
+| **Click value** | Your scope's adjustment per click in the selected angular unit, used to compute how many clicks of correction are needed to move point of impact to point of aim |
+| **Notes** | Optional free-text notes for this target |
+| **Session** | Optional link to a range session (see [Section 7.7](#77-linking-to-a-range-session)) |
+
+<!-- TODO: Add screenshot of the Configuration sidebar showing the calibration fields, bullet diameter, shot distance, and measurement system controls -->
+![Screenshot: Target Analysis configuration sidebar showing calibration, bullet diameter, shot distance, and measurement system fields](./images/targets-config-sidebar.png)
+
+### 7.3 Marking Impacts and Point of Aim
+
+**Placing shots**
+
+Select **Add Impact** from the mode buttons in the toolbar, then click on each bullet hole in the image. Each click places a numbered impact marker. Impacts are numbered in the order they are placed; the number is shown inside the circle.
+
+To remove an individual impact, select **Edit** mode and click an existing marker to select it, then delete it, or use the per-impact controls in the Statistics panel.
+
+**Setting the point of aim**
+
+Select **Set POA** from the mode buttons, then click the point on the target you were aiming at (typically the centre of the bullseye). All offset statistics — windage, elevation, and POI distance — are measured relative to this point.
+
+If no point of aim is set, the application uses the centroid of all shots as the reference point, and offset statistics show the deviation of each individual shot from the group centre rather than from an intended aiming point.
+
+<!-- TODO: Add screenshot of the canvas with several numbered impact markers placed on a target, the POA crosshair visible, and the mode selector buttons highlighted in the toolbar -->
+![Screenshot: Target canvas with numbered impact markers, POA marker, and toolbar mode selector buttons](./images/targets-canvas-impacts.png)
+
+**Toolbar modes**
+
+| Mode button | Function |
+|-------------|----------|
+| **Add Impact** | Click on the canvas to place a new numbered impact |
+| **Set POA** | Click to place or move the point of aim marker |
+| **Calibrate** | Click two reference points to set the calibration baseline |
+| **Pan / Zoom** | Drag to pan the canvas; use the zoom buttons or scroll wheel to zoom in and out |
+
+The toolbar also has **Zoom In**, **Zoom Out**, and **Fit** buttons to control the canvas view, and a **Print** button to print the annotated target (see [Section 7.8](#78-printing-a-target)).
+
+### 7.4 Statistics Panel
+
+The **Statistics** panel in the right sidebar shows computed metrics for the current view (all shots, a selected group, or the aggregate). The panel is collapsible.
+
+<!-- TODO: Add screenshot of the Statistics panel showing the key metric rows: Shots, Extreme Spread, Mean Radius, CEP50, Windage and Elevation offset with angular equivalents -->
+![Screenshot: Target Analysis statistics panel showing shot count, extreme spread, mean radius, CEP50, windage and elevation offset rows](./images/targets-stats-panel.png)
+
+**Group metrics** (computed per group or for all shots)
+
+| Statistic | Description |
+|-----------|-------------|
+| **Shots** | Number of impacts in this group / view |
+| **Extreme Spread** | Diameter of the smallest circle enclosing all shot holes (edge to edge if bullet diameter is set) |
+| **Mean Radius (MR)** | Average distance from each shot to the group centroid |
+| **Figure of Merit** | Average of horizontal and vertical extreme spreads |
+| **Horizontal / Vertical Spread** | The total spread measured on each axis independently |
+| **Horizontal / Vertical SD** | Standard deviation on each axis |
+| **Radial SD** | Standard deviation of shot distances from the centroid |
+| **Max Radial Deviation** | Distance from centroid to the furthest shot |
+| **CEP 50%** | Circle of equal probability at 50 %: the radius within which half of all shots are expected to land (requires ≥ 5 shots; based on the Rayleigh distribution) |
+| **R95** | Radius within which 95 % of all shots are expected to land |
+| **2σ / 3σ** | Two- and three-sigma dispersion radii |
+| **Flyers (2σ / 3σ)** | Count of shots outside the 2σ and 3σ thresholds |
+| **Vertical String Ratio** | Ratio of vertical to horizontal spread; values above 1.5 suggest a vertical stringing issue |
+
+**Point of impact offset** (relative to point of aim)
+
+| Statistic | Description |
+|-----------|-------------|
+| **Windage offset** | Horizontal POI offset from POA, with direction (left / right) and angular equivalent |
+| **Elevation offset** | Vertical POI offset from POA, with direction (up / down) and angular equivalent |
+| **POI distance** | Total distance from POA to group centroid |
+| **Clicks needed** | Number of scope clicks to correct windage and elevation (if click value is configured) |
+
+All linear statistics are shown in the unit selected in the Configuration panel (in or cm). Angular equivalents appear in parentheses when a shot distance is configured.
+
+### 7.5 Working with Groups
+
+Groups let you organise shots on the same target image by load, charge, or any other meaningful category — each with its own colour-coded markers and independent statistics.
+
+**Creating a group**
+
+Click **+ Group** in the **Groups** section of the sidebar. A new group is created with a default name and an automatically assigned colour. Click the group's name field to rename it.
+
+Each group appears as a coloured row in the Groups list. Click a group row to select it — the canvas highlights only that group's impacts and the Statistics panel shows that group's metrics.
+
+**Assigning shots to a group**
+
+When one or more groups exist, each new impact you place is automatically assigned to the currently selected group. To move existing shots between groups, select **Edit** mode, click an impact to select it, and use the group selector that appears.
+
+**Group colours**
+
+The application assigns a distinct colour to each group automatically. Shot markers, statistics overlays (ES line, mean radius circle), and group list items all use the same colour for that group, making it easy to identify which shots belong to which load at a glance.
+
+<!-- TODO: Add screenshot of the canvas and sidebar showing two groups with different colours, each group's shots highlighted in their respective colour, and both groups listed in the Groups section -->
+![Screenshot: Targets canvas with two colour-coded groups and the Groups section in the sidebar showing each group's name and shot count](./images/targets-groups.png)
+
+### 7.6 Aggregate View
+
+When a target has **two or more groups**, a set of view selector tabs appears above the Statistics panel:
+
+| Tab | Description |
+|-----|-------------|
+| **All** | Shows all impacts on the canvas at their original positions; statistics are computed over the full shot set as if it were a single group |
+| **Group name** (one per group) | Shows only that group's impacts; statistics are computed for that group alone |
+| **Aggregate** | Translates each group so its centroid sits at the origin, then stacks all the re-centred shots together; statistics describe the typical dispersion of a single group, averaging across all groups |
+
+The **Aggregate** view is particularly useful when comparing multiple loads fired at the same aiming point: it removes the POI offset between loads and focuses entirely on the consistency and group size of each load independently.
+
+<!-- TODO: Add screenshot of the view selector tabs (All / Group 1 / Group 2 / Aggregate) above the Statistics panel, with the Aggregate tab active and the re-centred overlay visible on the canvas -->
+![Screenshot: Targets view selector tabs showing All, group tabs, and Aggregate; Aggregate tab active with re-centred impact overlay on the canvas](./images/targets-aggregate-view.png)
+
+### 7.7 Linking to a Range Session
+
+In the **Configuration** sidebar, the **Session** field connects this target record to a specific range session in the Range Log. Click the field to open a searchable dropdown listing all your recorded sessions. You can search by date, firearm name, distance, or lot number.
+
+Once linked:
+- A **navigate** button (arrow icon) appears next to the session selector. Click it to jump directly to that session in the Range Log tab.
+- In the Range Log, a **target icon** (scope) appears on the linked session's action buttons. Click it to jump back to this target in the Targets tab.
+- When you **print** the linked range session, the printed output automatically includes the annotated target image and key statistics — no extra steps needed (see [Section 7.8](#78-printing-a-target) and [Section 6.2](#62-managing-range-sessions)).
+
+<!-- TODO: Add screenshot of the Session field in the Configuration sidebar showing a linked session selected, with the navigate button visible next to the select control -->
+![Screenshot: Configuration sidebar session field with a session selected and the navigate button visible](./images/targets-session-link.png)
+
+### 7.8 Printing a Target
+
+Click the **Print** button in the target toolbar to open the print output for the current view.
+
+The printed sheet includes:
+- The annotated target image with impact circles, shot order numbers, and overlay graphics: a dashed **ES line** connecting the two most extreme shots, a solid **mean radius circle**, and a dashed **CEP50 circle** (when ≥ 5 shots are present)
+- The target name and view label (group name or "All Groups")
+- Key statistics: shot count, extreme spread, mean radius, POI offset, and CEP50
+
+When multiple groups are present, the view that is currently active (All, a specific group, or Aggregate) determines what is printed.
+
+> Printing a **range session** from the Range Log automatically includes the linked target's image and statistics at the bottom of the session sheet — see [Section 6.2](#62-managing-range-sessions).
+
+<!-- TODO: Add screenshot of the printed target output showing the annotated image with ES line, mean radius circle, CEP50 circle, shot numbers, and the statistics table alongside -->
+![Screenshot: Printed target output showing annotated target image with overlay graphics and key statistics table](./images/targets-print-output.png)
+
+---
+
+## 8. Cost Analysis (Break-Even)
 
 The **Cost Analysis** tab shows how the cumulative cost of reloading (including your one-time equipment investment) compares to buying factory ammo over time, and at what point reloading becomes cheaper overall.
 
 ![Screenshot: Cost Analysis tab: full view](images/cost-analysis.png)
 
-### 7.1 Load Selection
+### 8.1 Load Selection
 
 The left column lists all your reload and factory entries.
 
@@ -725,7 +931,7 @@ The round counts you log in the **Journal** tab are automatically reflected here
 
 This is designed for reloaders who were already pressing ammo before starting the journal. Enter your historical round count in the input as a baseline; the journal adds to it going forward. If you start fresh, leave the input at zero and the journal fills it in automatically.
 
-### 7.2 Equipment Costs
+### 8.2 Equipment Costs
 
 The right column is where you enter your one-time reloading equipment costs (press, dies, tumbler, scale, etc.)
 
@@ -739,7 +945,7 @@ This cost can be ignored by switching off the **Include** switch.
 
 ![Screenshot: Equipment Costs panel with several items entered](./images/equipment-costs.png)
 
-### 7.3 Reading the Chart & Stats
+### 8.3 Reading the Chart & Stats
 
 The **stats bar** across the middle column shows the main values used in the break-even calculation:
 
@@ -772,7 +978,7 @@ If the reload average is higher than the factory average (reloading is more expe
 
 ---
 
-## 8. Cost Comparison
+## 9. Cost Comparison
 
 The **Cost Comparison** tab lets you select any combination of reload and factory entries and compare their costs side by side.
 
@@ -795,7 +1001,7 @@ Use the **Search** box above the selection list to filter by name, caliber, type
 
 ---
 
-## 9. Guided Tour
+## 10. Guided Tour
 
 Click **Tour** in the top navigation bar to start the built-in walkthrough at any time.
 
@@ -815,7 +1021,7 @@ The tour can be dismissed at any time and is designed to help first-time users g
 
 ---
 
-## 10. Settings & About
+## 11. Settings & About
 
 The top-right area of the header includes both an **About** button and a **Settings** button.
 
@@ -830,9 +1036,9 @@ The application still defaults to the **dark theme** on first launch. If you ena
 
 ---
 
-## 11. Import & Export
+## 12. Import & Export
 
-Your entire library (ammo entries, tax defaults, equipment costs, load selections, component inventory, reloading journal, range log, and your **Firearms Registry**) can be saved to a single JSON file and restored later or shared with another computer.
+Your entire library (ammo entries, tax defaults, equipment costs, load selections, component inventory, reloading journal, range log, firearm profiles, and your **target analysis records**) can be saved to a single JSON file and restored later or shared with another computer.
 
 **Exporting**  
 Click **Export** in the top navigation bar. A `.json` file will be downloaded to your machine.
@@ -847,7 +1053,7 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 
 ---
 
-## 12. Tips & Notes
+## 13. Tips & Notes
 
 - **All data is stored locally.** No account or internet connection is required. Data is saved automatically in the browser/app storage every time you make a change.
 - **Brass reuse count matters.** Setting a realistic reuse count (commonly 5–10 reloads per case) significantly lowers your per-round brass cost. A count of 1 treats every case as single-use.
@@ -885,3 +1091,11 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 - **Ad-hoc charges let you test outside the ladder.** Use the *Add charge* field in the workup panel to add a step that falls outside your configured min–max range — for example to test a charge that looks promising based on early data. The entry is held as a pending row in the table until you click Log Entries, so you can still choose to exclude it before logging.
 - **Promote unstars the previous winning charge.** If you promote a charge, then later start a new development cycle and promote a different charge, the application automatically removes the star from journal entries for the old charge and stars the new one. Your starred filter in the Journal always reflects the current best load.
 - **Workup history is preserved after promotion.** Promoting a charge does not delete the ladder or its data. The full development history remains visible in the workup panel (and on the printed data sheet) even after the load is Active.
+- **Calibrate before placing shots.** Set both reference points and enter the known distance before marking any impacts. The calibration can be changed later, but the statistics update immediately so it is most efficient to calibrate first.
+- **Use a known reference on the target.** A printed grid square, the bullseye ring diameter, or a target's stated scoring ring size all work as calibration references. Write the distance in millimetres or inches before the session so you have it ready when you upload the photo.
+- **Bullet diameter refines your statistics.** Enter your bullet's diameter in the Configuration panel. The app uses it to measure extreme spread and group size from the outer edges of the holes (as if touching), the same way groups are conventionally measured with a calliper.
+- **Groups let you compare loads on the same target.** If you fired two charge weights or two different loads at the same aiming point, assign their impacts to separate groups. Each group gets its own colour, its own statistics, and contributes to the aggregate calculation.
+- **The aggregate view averages group centroids.** When you have two or more groups, the Aggregate stats tab treats each group's centroid as a single representative shot. This gives you a measure of how consistent the point of impact is across loads, independent of each group's internal dispersion.
+- **Link targets to sessions for bidirectional navigation.** In the target's Configuration panel, select the range session this target came from. A navigation button then appears in both the Targets tab (go to session) and in the Range Log session row (go to target), so you can jump between the two records with one click.
+- **Printed session sheets include the target.** When you print a range session that has a linked target, the target image with annotated shots, ES line, mean-radius circle, and CEP50 circle is automatically included at the bottom of the printed sheet along with key statistics — no separate step needed.
+- **Target records are included in export files.** All target photos, calibration data, impact coordinates, groups, and session links are exported with your library and restored on import.
