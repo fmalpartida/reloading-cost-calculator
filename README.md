@@ -1,6 +1,10 @@
 # Reloading Tracker 2.5.1: User Guide
 
-Reloading Tracker is an application for managing your reloading activity. At its core it is a production log: define your loads, record each pressing session with a unique lot number, and print a label for every box on your shelf. If you also want to understand the economics of reloading, the application goes further, comparing the cost of your reloads against factory ammunition, tracking your progress toward break-even, and accounting for component prices, taxes, fixed fees, and one-time equipment purchases.
+Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
+
+Manage a shared component inventory, work up new loads with a structured charge ladder, and log velocity and group-size results from the range until the data tells you which charge wins. Maintain a registry of your firearms so every range session is tied to a consistent gun profile. Track every range trip in the Range Log, star your best sessions, and watch remaining rounds tick down as you burn through each lot. Upload target photos, mark impacts, and get instant group statistics (extreme spread, mean radius, CEP50, windage and elevation offset), with support for colour-coded groups when you're comparing loads on the same paper.
+
+If you also care about the economics, the app can do that too. Compare the cost of your reloads against factory ammunition, track your progress toward break-even after equipment investment, and get a side-by-side cost breakdown across any combination of loads. Totally optional though -- plenty of reloaders just want the log and the data.
 
 [Try it out](https://fmalpartida.github.io/reloading-cost-calculator)
 
