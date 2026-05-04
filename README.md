@@ -1,4 +1,4 @@
-# Reloading Tracker 2.5.0: User Guide
+# Reloading Tracker 2.5.1: User Guide
 
 Reloading Tracker is an application for managing your reloading activity. At its core it is a production log: define your loads, record each pressing session with a unique lot number, and print a label for every box on your shelf. If you also want to understand the economics of reloading, the application goes further, comparing the cost of your reloads against factory ammunition, tracking your progress toward break-even, and accounting for component prices, taxes, fixed fees, and one-time equipment purchases.
 
@@ -295,8 +295,6 @@ Every step in the ladder is listed as a row — planned steps (not yet pressed) 
 
 Rows with data but not yet promoted are highlighted with a subtle tint. The promoted row is highlighted in green.
 
-The table scrolls independently of the header, so the column labels remain visible with long ladders.
-
 ![Screenshot: Charge Workup panel — charge ladder table with planned and fired rows, promoted row highlighted](./images/workup-panel-table.png)
 
 **Logging entries from the workup panel**
@@ -334,14 +332,12 @@ The load is now an active, proven recipe and the Charge Workup panel switches to
 
 If you want to refine the load further, open the workup panel and use the **In Dev / Active** toggle in the footer. This returns the load to In Development status without clearing any data. You can then adjust the ladder range, add new steps, or press additional lots at charges of interest.
 
-<!-- TODO: screenshot — workup panel footer showing the In Dev / Active toggle and the Log N Entries button -->
 ![Screenshot: Charge Workup panel footer — status toggle and Log Entries button](./images/workup-panel-footer.png)
 
 #### Workup data in the printed data sheet
 
 When you print a load's **Data Sheet** from the My Ammo print options, the Charge Workup section is automatically included if development data is present. The printed output shows the ladder summary, the full charge table with the promoted step marked, and a copy of the performance chart as an embedded image.
 
-<!-- TODO: screenshot — printed data sheet showing the Charge Workup section with table and chart -->
 ![Screenshot: Printed load data sheet — Charge Workup section with charge table and performance chart](./images/workup-datasheet-print.png)
 
 ---
@@ -456,7 +452,6 @@ In the expanded card view under My Ammo, any component that originates from the 
 
 The **Firearms** tab is a dedicated catalog of the firearms you own and shoot. Every firearm you add here becomes available in the Range Log session form as a selectable option, keeping your range session records consistently tied to a known firearm profile rather than free-typed names. Profiles capture the mechanical details that matter for long-range and load-development work: caliber, action type, barrel length, and twist rate.
 
-<!-- TODO: screenshot of Firearms tab — card view showing several firearm profiles grouped by caliber, with caliber filter chips below the header and the Add Firearm button in the top-right -->
 ![Screenshot: Firearms tab showing firearm profiles in card view, grouped by caliber, with caliber filter chips](./images/firearms-overview.png)
 
 ### 4.1 Adding a Firearm Profile
@@ -475,7 +470,6 @@ Click **Add Firearm** in the top-right corner of the Firearms tab. A dialog open
 
 Click **Add Firearm** in the dialog footer to save. The profile appears immediately in the Firearms list and becomes available in the Range Log firearm selector.
 
-<!-- TODO: screenshot of the Add/Edit Firearm dialog showing all fields filled in for a rifle profile -->
 ![Screenshot: Firearm form dialog showing Name, Firearm Type, Caliber, Action Type, Barrel Length, Twist Rate, and Notes fields](./images/firearm-form-dialog.png)
 
 ### 4.2 Managing Firearm Profiles
@@ -495,7 +489,6 @@ A confirmation dialog appears before deletion to prevent accidental removal.
 
 When at least one profile has a caliber set, a row of **caliber filter chips** appears below the page header. Each chip shows the caliber name and a count of how many firearms are chambered in it. Click a chip to filter the list to that caliber; click it again to deselect. Multiple chips can be active at the same time, showing the union of the selected calibers.
 
-<!-- TODO: screenshot of the Firearms tab caliber filter chips row with two chips active, narrowing the displayed profiles -->
 ![Screenshot: Firearms tab caliber filter chips with two chips active, narrowing the visible profiles](./images/firearms-caliber-chips.png)
 
 **Search**
@@ -514,7 +507,6 @@ The **Cards / Table** toggle in the page header switches the display layout. The
 
 In both views, profiles are grouped by caliber. Firearms without a caliber appear in an **Uncategorized** group at the bottom.
 
-<!-- TODO: screenshot of Firearms tab in table view showing the column headers and firearm rows grouped by caliber -->
 ![Screenshot: Firearms tab table view showing rows grouped by caliber with Type and Action tag columns](./images/firearms-table-view.png)
 
 ---
@@ -523,7 +515,6 @@ In both views, profiles are grouped by caliber. Firearms without a caliber appea
 
 The **Journal** tab is the heart of the application for session-based reloaders. Every time you sit down at the press, add an entry with the load you reloaded, the quantity you produced, and the date. Each entry automatically receives a unique, incrementing **lot number** that you can print on an ammo box label. Over time, your journal becomes a complete, searchable production history of every batch you have ever pressed.
 
-<!-- TODO: Update screenshot — journal overview showing Log Entry button, Remaining Rounds column, and the summary panel -->
 ![Screenshot: Journal tab showing the session list, add row at the bottom, and the summary panel](./images/journal-overview.png)
 
 
@@ -770,7 +761,6 @@ The application uses the pixel distance between the two points divided by the en
 | **Notes** | Optional free-text notes for this target |
 | **Session** | Optional link to a range session (see [Section 7.7](#77-linking-to-a-range-session)) |
 
-<!-- TODO: Add screenshot of the Configuration sidebar showing the calibration fields, bullet diameter, shot distance, and measurement system controls -->
 ![Screenshot: Target Analysis configuration sidebar showing calibration, bullet diameter, shot distance, and measurement system fields](./images/targets-config-sidebar.png)
 
 ### 7.3 Marking Impacts and Point of Aim
@@ -787,7 +777,6 @@ Select **Set POA** from the mode buttons, then click the point on the target you
 
 If no point of aim is set, the application uses the centroid of all shots as the reference point, and offset statistics show the deviation of each individual shot from the group centre rather than from an intended aiming point.
 
-<!-- TODO: Add screenshot of the canvas with several numbered impact markers placed on a target, the POA crosshair visible, and the mode selector buttons highlighted in the toolbar -->
 ![Screenshot: Target canvas with numbered impact markers, POA marker, and toolbar mode selector buttons](./images/targets-canvas-impacts.png)
 
 **Toolbar modes**
@@ -808,34 +797,53 @@ The **Statistics** panel in the right sidebar shows computed metrics for the cur
 <!-- TODO: Add screenshot of the Statistics panel showing the key metric rows: Shots, Extreme Spread, Mean Radius, CEP50, Windage and Elevation offset with angular equivalents -->
 ![Screenshot: Target Analysis statistics panel showing shot count, extreme spread, mean radius, CEP50, windage and elevation offset rows](./images/targets-stats-panel.png)
 
-**Group metrics** (computed per group or for all shots)
+#### Group geometry
 
-| Statistic | Description |
-|-----------|-------------|
-| **Shots** | Number of impacts in this group / view |
-| **Extreme Spread** | Diameter of the smallest circle enclosing all shot holes (edge to edge if bullet diameter is set) |
-| **Mean Radius (MR)** | Average distance from each shot to the group centroid |
-| **Figure of Merit** | Average of horizontal and vertical extreme spreads |
-| **Horizontal / Vertical Spread** | The total spread measured on each axis independently |
-| **Horizontal / Vertical SD** | Standard deviation on each axis |
-| **Radial SD** | Standard deviation of shot distances from the centroid |
-| **Max Radial Deviation** | Distance from centroid to the furthest shot |
-| **CEP 50%** | Circle of equal probability at 50 %: the radius within which half of all shots are expected to land (requires ≥ 5 shots; based on the Rayleigh distribution) |
-| **R95** | Radius within which 95 % of all shots are expected to land |
-| **2σ / 3σ** | Two- and three-sigma dispersion radii |
-| **Flyers (2σ / 3σ)** | Count of shots outside the 2σ and 3σ thresholds |
-| **Vertical String Ratio** | Ratio of vertical to horizontal spread; values above 1.5 suggest a vertical stringing issue |
+These statistics describe the physical size and shape of the group.
 
-**Point of impact offset** (relative to point of aim)
+| Statistic | What it measures |
+|-----------|-----------------|
+| **Shots** | Number of impacts counted in this view |
+| **Extreme Spread (ES)** | The distance between the two most widely separated holes, measured centre-to-centre (or edge-to-edge when bullet diameter is set). This is the most widely used group-size measure in practical shooting. It is a **diameter** — the full width of the group at its worst pair. Smaller is better. |
+| **Smallest Enclosing Circle Ø (SEC)** | The diameter of the smallest circle that fits around all shot holes. Unlike ES, which only depends on the two worst shots, the SEC accounts for the overall spread of the group. It is always ≥ ES. |
+| **Mean Radius (MR)** | The average distance from every shot to the group centroid (geometric centre). Because it uses all shots rather than just the two worst, MR is less sensitive to a single flyer than ES is. A consistent load will have a low MR relative to its ES. It is a **radius** measured from the group centre. |
+| **Figure of Merit (FoM)** | The average of horizontal extreme spread and vertical extreme spread. A quick way to gauge whether the group is roughly round. |
+| **Horizontal Spread / Vertical Spread** | The total width of the group on each axis independently. A much taller group than it is wide is a sign of vertical stringing. |
+| **Horizontal SD / Vertical SD** | Standard deviation on each axis. A low vertical SD with a high vertical spread means the outlying shots are clustered at the extremes rather than throughout the group; a classic symptom of inconsistent muzzle velocity. |
+| **Radial SD** | Standard deviation of the distance from each shot to the centroid. This is the spread of the radial distances, not the spread of X or Y positions. It is used internally as the basis for computing the Rayleigh scale parameter σ but is also a useful summary of how tightly the shots cluster around the centre. |
+| **Max Radial Deviation** | Distance from the centroid to the furthest single shot. The "worst shot" metric from the group centre rather than from the worst pair. |
+| **Vertical String Ratio** | Vertical spread divided by horizontal spread. A value above 1.5 is highlighted as a stringing warning; the group is significantly taller than it is wide, which often points to inconsistent muzzle velocity, trigger timing, or recoil control. |
 
-| Statistic | Description |
-|-----------|-------------|
-| **Windage offset** | Horizontal POI offset from POA, with direction (left / right) and angular equivalent |
-| **Elevation offset** | Vertical POI offset from POA, with direction (up / down) and angular equivalent |
-| **POI distance** | Total distance from POA to group centroid |
-| **Clicks needed** | Number of scope clicks to correct windage and elevation (if click value is configured) |
+#### Probabilistic statistics
 
-All linear statistics are shown in the unit selected in the Configuration panel (in or cm). Angular equivalents appear in parentheses when a shot distance is configured.
+These statistics use a statistical model to answer the question: *"If I keep firing this load, where will future shots land?"* They require at least 5 shots because small samples produce unreliable estimates.
+
+The model used is the **Rayleigh distribution**, which describes a 2D bullet impact pattern when horizontal and vertical errors are independent and equally distributed; a reasonable assumption for a well-centred, accurate load. All probabilistic values are **radii** measured from the group centroid, not diameters.
+
+> **Radius vs diameter.** ES is a diameter (the full spread between two holes). CEP50, R95, and the sigma radii are radii (distance from the centre). To compare them visually: if R95 = 2.5 in, the R95 circle spans 5 in across (which should be larger than the ES for a well-modelled group).
+
+The Rayleigh scale parameter **σ** is estimated from your shots using the maximum-likelihood formula σ = √(Σrᵢ² / 2n), where rᵢ is each shot's distance from the centroid and n is the shot count. All probabilistic statistics derive from this single estimate of σ.
+
+| Statistic | What it means |
+|-----------|--------------|
+| **CEP50** | Circular Error Probable at 50 %: the radius of the circle centred on the group centroid within which *half* of all future shots from the same hold are expected to land. Think of it as the median accuracy radius. A smaller CEP50 means more of your shots cluster near the centre. Value = σ × 1.177. |
+| **R95** | The radius within which 95 % of future shots are expected to land. This is the practical "everything but extreme outliers" boundary. For a 10-shot group with ES = 5 in, R95 is typically larger than ES/2 (the distance from centroid to the most extreme shot). Value = σ × 2.448. |
+| **2σ radius** | The circle that contains approximately 86.5 % of future shots. Shots outside this circle are counted as **Flyers (>2σ)**. Value = σ × 2. |
+| **3σ radius** | The circle that contains approximately 98.9 % of future shots. Shots outside this circle are counted as **Flyers (>3σ)** and are rare statistical outliers if the load is consistent. Value = σ × 3. |
+| **Flyers (>2σ)** | Count of shots whose distance from the centroid exceeds the 2σ radius (~13.5 % expected by the model). A count of 1–2 in a 10-shot group is not unusual; more than 2–3 suggests the load has inconsistent behaviour or the Rayleigh model is a poor fit. |
+
+#### Point of impact offset
+
+These statistics describe where the centre of the group landed relative to your intended point of aim. If no POA is set, the centroid is used as reference and all offsets will be zero.
+
+| Statistic | What it means |
+|-----------|--------------|
+| **Windage offset** | How far left or right the group centre is from the point of aim, with direction label. |
+| **Elevation offset** | How far up or down the group centre is from the point of aim, with direction label. |
+| **POI distance** | The straight-line distance from the point of aim to the group centroid — combines both windage and elevation into one number. |
+| **Clicks needed** | The number of scope clicks required to move the point of impact onto the point of aim, computed from the configured click value. Positive = move right/up; negative = move left/down. Only shown when a click value is configured. |
+
+All linear statistics are shown in the unit selected in the Configuration panel (in or cm). When a shot distance is configured, angular equivalents (MOA or MIL) appear in parentheses next to each linear value.
 
 ### 7.5 Working with Groups
 
@@ -855,7 +863,6 @@ When one or more groups exist, each new impact you place is automatically assign
 
 The application assigns a distinct colour to each group automatically. Shot markers, statistics overlays (ES line, mean radius circle), and group list items all use the same colour for that group, making it easy to identify which shots belong to which load at a glance.
 
-<!-- TODO: Add screenshot of the canvas and sidebar showing two groups with different colours, each group's shots highlighted in their respective colour, and both groups listed in the Groups section -->
 ![Screenshot: Targets canvas with two colour-coded groups and the Groups section in the sidebar showing each group's name and shot count](./images/targets-groups.png)
 
 ### 7.6 Aggregate View
@@ -870,7 +877,6 @@ When a target has **two or more groups**, a set of view selector tabs appears ab
 
 The **Aggregate** view is particularly useful when comparing multiple loads fired at the same aiming point: it removes the POI offset between loads and focuses entirely on the consistency and group size of each load independently.
 
-<!-- TODO: Add screenshot of the view selector tabs (All / Group 1 / Group 2 / Aggregate) above the Statistics panel, with the Aggregate tab active and the re-centred overlay visible on the canvas -->
 ![Screenshot: Targets view selector tabs showing All, group tabs, and Aggregate; Aggregate tab active with re-centred impact overlay on the canvas](./images/targets-aggregate-view.png)
 
 ### 7.7 Linking to a Range Session
@@ -880,7 +886,7 @@ In the **Configuration** sidebar, the **Session** field connects this target rec
 Once linked:
 - A **navigate** button (arrow icon) appears next to the session selector. Click it to jump directly to that session in the Range Log tab.
 - In the Range Log, a **target icon** (scope) appears on the linked session's action buttons. Click it to jump back to this target in the Targets tab.
-- When you **print** the linked range session, the printed output automatically includes the annotated target image and key statistics — no extra steps needed (see [Section 7.8](#78-printing-a-target) and [Section 6.2](#62-managing-range-sessions)).
+- When you **print** the linked range session, the printed output automatically includes the annotated target image and key statistics; no extra steps needed (see [Section 7.8](#78-printing-a-target) and [Section 6.2](#62-managing-range-sessions)).
 
 <!-- TODO: Add screenshot of the Session field in the Configuration sidebar showing a linked session selected, with the navigate button visible next to the select control -->
 ![Screenshot: Configuration sidebar session field with a session selected and the navigate button visible](./images/targets-session-link.png)
@@ -1038,15 +1044,21 @@ The application still defaults to the **dark theme** on first launch. If you ena
 
 ## 12. Import & Export
 
-Your entire library (ammo entries, tax defaults, equipment costs, load selections, component inventory, reloading journal, range log, firearm profiles, and your **target analysis records**) can be saved to a single JSON file and restored later or shared with another computer.
+Your entire library (ammo entries, tax defaults, equipment costs, load selections, component inventory, reloading journal, range log, firearm profiles, and target analysis records including photos) can be saved to a file and restored later or transferred to another computer.
 
-**Exporting**  
-Click **Export** in the top navigation bar. A `.json` file will be downloaded to your machine.
+**Exporting**
+Click **Export** in the top navigation bar. A `.zip` file is downloaded to your machine. The archive contains all your data and any target photos you have uploaded, compressed into a single portable file.
 
-**Importing**  
-Click **Import** and select a previously exported `.json` file. All data in the file will replace the current library.
+**Importing**
+Click **Import** and select a previously exported `.zip` file (or a `.json` file from an older export). A confirmation dialog shows whether a backup will be made before overwriting your current data (see Auto-backup below). Confirm to proceed. All data in the file replaces the current library.
 
-> WARNING: Import overwrites your current data. Export first if you want to keep your existing entries.
+> **WARNING: Import overwrites your current data.** Export first if you want to keep your existing entries, or enable Auto-backup in Settings so a backup is downloaded automatically before every import.
+
+**Auto-backup**
+In **Settings**, the **Auto-backup on import** toggle controls whether the application automatically downloads a backup `.zip` of your current data before replacing it with the imported file. Enabled by default. If you disable it, no backup is saved and the import is immediate and irreversible.
+
+**Backward compatibility**
+`.json` files exported by earlier versions of the application can still be imported. Target photos are not included in `.json` exports (they were not supported in that format); all other data is restored in full.
 
 <!-- IMAGE MAY NEED UPDATING: navigation bar now includes the Firearms tab between My Components and Journal -->
 ![Screenshot: Export and Import buttons in the navigation bar](./images/header-tabs.png)
@@ -1093,9 +1105,9 @@ Click **Import** and select a previously exported `.json` file. All data in the 
 - **Workup history is preserved after promotion.** Promoting a charge does not delete the ladder or its data. The full development history remains visible in the workup panel (and on the printed data sheet) even after the load is Active.
 - **Calibrate before placing shots.** Set both reference points and enter the known distance before marking any impacts. The calibration can be changed later, but the statistics update immediately so it is most efficient to calibrate first.
 - **Use a known reference on the target.** A printed grid square, the bullseye ring diameter, or a target's stated scoring ring size all work as calibration references. Write the distance in millimetres or inches before the session so you have it ready when you upload the photo.
-- **Bullet diameter refines your statistics.** Enter your bullet's diameter in the Configuration panel. The app uses it to measure extreme spread and group size from the outer edges of the holes (as if touching), the same way groups are conventionally measured with a calliper.
+- **Bullet diameter refines your statistics.** Enter your bullet's diameter in the Configuration panel. The app uses it to measure Extreme Spread and the Smallest Enclosing Circle from the outer edges of the holes (as if the holes were touching), the same way groups are conventionally measured with a calliper. Without bullet diameter, all measurements are centre-to-centre.
 - **Groups let you compare loads on the same target.** If you fired two charge weights or two different loads at the same aiming point, assign their impacts to separate groups. Each group gets its own colour, its own statistics, and contributes to the aggregate calculation.
-- **The aggregate view averages group centroids.** When you have two or more groups, the Aggregate stats tab treats each group's centroid as a single representative shot. This gives you a measure of how consistent the point of impact is across loads, independent of each group's internal dispersion.
+- **The aggregate view removes POI differences between groups.** When you have two or more groups, the Aggregate view re-centres each group's shots onto the origin before computing statistics. This removes the point-of-impact offset between loads and gives you a pure measure of each load's internal dispersion — useful for comparing group size consistency independently of where each load prints on the target.
 - **Link targets to sessions for bidirectional navigation.** In the target's Configuration panel, select the range session this target came from. A navigation button then appears in both the Targets tab (go to session) and in the Range Log session row (go to target), so you can jump between the two records with one click.
 - **Printed session sheets include the target.** When you print a range session that has a linked target, the target image with annotated shots, ES line, mean-radius circle, and CEP50 circle is automatically included at the bottom of the printed sheet along with key statistics — no separate step needed.
 - **Target records are included in export files.** All target photos, calibration data, impact coordinates, groups, and session links are exported with your library and restored on import.
