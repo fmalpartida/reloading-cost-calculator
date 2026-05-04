@@ -4,6 +4,10 @@ Reloading Tracker is an application for managing your reloading activity. At its
 
 [Try it out](https://fmalpartida.github.io/reloading-cost-calculator)
 
+Enjoying Reloading Tracker? Every cup of coffee you send my way helps keep the powder flowing (new features, bug fixes, and late-night coding sessions all run on caffeine). If this app has saved you time at the bench (or saved you from a spreadsheet nightmare), consider buying me one!
+
+[![Support via PayPal](https://img.shields.io/badge/Donate-PayPal-0070ba?logo=paypal&logoColor=white)](https://paypal.me/pacomalpartida)
+
 ## ⚠️ IMPORTANT SAFETY DISCLAIMER ⚠️
 
 > **WARNING: DO NOT USE THE LOAD DATA IN THIS GUIDE.**
