@@ -55,15 +55,24 @@ Enjoying Reloading Tracker? Every cup of coffee you send my way helps keep the p
    - [Managing Range Sessions](#62-managing-range-sessions)
    - [Starring Sessions](#63-starring-sessions)
    - [Range Log Statistics](#64-range-log-statistics)
-7. [Target Analysis](#7-target-analysis)
-   - [Creating a Target Record](#71-creating-a-target-record)
-   - [Uploading and Calibrating the Image](#72-uploading-and-calibrating-the-image)
-   - [Marking Impacts and Point of Aim](#73-marking-impacts-and-point-of-aim)
-   - [Statistics Panel](#74-statistics-panel)
-   - [Working with Groups](#75-working-with-groups)
-   - [Aggregate View](#76-aggregate-view)
-   - [Linking to a Range Session](#77-linking-to-a-range-session)
-   - [Printing a Target](#78-printing-a-target)
+7. [Targets](#7-targets)
+   - [Target Analysis](#71-target-analysis-sub-tab)
+     - [Creating a Target Record](#711-creating-a-target-record)
+     - [Uploading and Calibrating the Image](#712-uploading-and-calibrating-the-image)
+     - [Marking Impacts and Point of Aim](#713-marking-impacts-and-point-of-aim)
+     - [Statistics Panel](#714-statistics-panel)
+     - [Working with Groups](#715-working-with-groups)
+     - [Aggregate View](#716-aggregate-view)
+     - [Linking to a Range Session](#717-linking-to-a-range-session)
+     - [Printing a Target](#718-printing-a-target)
+   - [Compare](#72-compare-sub-tab)
+   - [Target Generator](#73-target-generator-sub-tab)
+     - [Creating a Target Sheet](#731-creating-a-target-sheet)
+     - [Configuring Rings](#732-configuring-rings)
+     - [Layout, Page Size, and Grid](#733-layout-page-size-and-grid)
+     - [Annotations](#734-annotations)
+     - [Managing Target Sheets](#735-managing-target-sheets)
+     - [Printing a Target Sheet](#736-printing-a-target-sheet)
 8. [Cost Analysis (Break-Even)](#8-cost-analysis-break-even)
    - [Load Selection](#81-load-selection)
    - [Equipment Costs](#82-equipment-costs)
@@ -98,7 +107,7 @@ If you use Cost Analysis or Cost Comparison, also add at least one **factory amm
 
 **Step 2a (optional): Work up a new load**
 
-If you are developing a new load from scratch, set its status to **In Development** and configure a **Charge Ladder** in the Editor. Then open the **Charge Workup** panel (ladder icon on the load card or table row) to manage the full development cycle — plan charges, batch-log pressing sessions, track velocity and accuracy results from the range, and promote the winning charge to your final load definition when done. See [Charge Workup](#25-charge-workup-load-development) for the full workflow.
+If you are developing a new load from scratch, set its status to **In Development** and configure a **Charge Ladder** in the Editor. Then open the **Charge Workup** panel (ladder icon on the load card or table row) to manage the full development cycle: plan charges, batch-log pressing sessions, track velocity and accuracy results from the range, and promote the winning charge to your final load definition when done. See [Charge Workup](#25-charge-workup-load-development) for the full workflow.
 
 **Step 2b: Log your pressing sessions in the Journal**
 
@@ -112,7 +121,7 @@ After logging a pressing session, click the **Print** button on the journal entr
 
 **Step 4: Take it to the range and log the session**
 
-After a range trip, open the **Range Log** tab and add a session: choose the firearm you used, the date, the distance you shot, and the lots you burned through. You can record multiple lots in a single outing — each with its own round count, charge weight, COAL, and notes — so each lot tells you exactly how it performed at the range.
+After a range trip, open the **Range Log** tab and add a session: choose the firearm you used, the date, the distance you shot, and the lots you burned through. You can record multiple lots in a single outing, each with its own round count, charge weight, COAL, and notes, so each lot tells you exactly how it performed at the range.
 
 The firearm selector in the Range Log form draws from the **Firearms Registry** (the Firearms tab). Any firearm you have profiled there appears in the dropdown, so you never have to type the same name twice and your performance data stays tied to a consistent firearm identity. If you log a session with a firearm name that does not yet exist in the registry, it is added automatically as a minimal profile that you can flesh out later in the Firearms tab.
 
@@ -122,7 +131,11 @@ Over time the Range Log becomes a searchable field record that connects every ra
 
 **Step 4b (optional): Analyse your target**
 
-After a range session, open the **Targets** tab and create a new target record. Upload a photo of your target, calibrate the scale using a known reference distance, and mark each bullet impact. The application computes group statistics — extreme spread, mean radius, CEP50, windage and elevation offset from your point of aim, and more — immediately as you place shots. When you have multiple loads or charges on the same target, organise impacts into colour-coded groups to compare each group independently and view aggregate statistics across all groups. Link the target record to the range session to navigate between the two tabs with a single click.
+After a range session, open the **Targets** tab. The tab has three sub-tabs:
+
+- **Target Analysis**: create a new target record, upload a photo, calibrate the scale using a known reference distance, and mark each bullet impact. The application computes group statistics (extreme spread, mean radius, CEP50, windage and elevation offset from your point of aim, and more) immediately as you place shots. When you have multiple loads or charges on the same target, organise impacts into colour-coded groups to compare each group independently and view aggregate statistics across all groups. Link the target record to the range session to navigate between the two tabs with a single click.
+- **Compare**: after linking targets to sessions, the Compare sub-tab aggregates every linked result in one table. Filter by load to instantly see which charge weight delivered the best group size and most consistent velocity across all your range sessions.
+- **Target Generator**: design and print custom target sheets before your range session. Configure concentric scoring rings, choose colours and sizes, set columns and rows for multi-target layouts, add grid overlays, and annotate each slot with the load and firearm you plan to use. Print directly from the application and bring your designed targets to the range.
 
 **Step 5 (optional): Review your costs and track break-even**
 
@@ -147,7 +160,7 @@ The application has seven main tabs accessible from the navigation bar at the to
 | **Firearms** | Registry of your firearm profiles: type, caliber, action, barrel, and twist data |
 | **Journal** | Log pressing sessions with auto-incrementing lot numbers, dates, quantities, and notes |
 | **Range Log** | Record range sessions: firearm, distance, lots fired, round counts, performance notes |
-| **Targets** | Upload target photos, mark impacts, measure group size and statistics, and link to range sessions |
+| **Targets** | Three sub-tabs: **Target Analysis**: upload target photos, mark impacts, measure group statistics, and link to range sessions; **Compare**: cross-target table of linked sessions, filterable by load, with ES, MV, SD, group size, and a summary bar showing best results per load; **Target Generator**: design and print custom target sheets with configurable scoring rings, grid overlays, and load annotations |
 | **Cost Tools** | Break-even chart showing when reloading pays off after equipment investment & Side-by-side cost breakdown for selected reload and factory entries |
 
 An **Editor** tab appears automatically whenever you are adding or editing an ammo entry.
@@ -259,7 +272,7 @@ Retired entries are hidden by default to keep your active library clean. When a 
 
 ### 2.5 Charge Workup (Load Development)
 
-The **Charge Workup** panel is the built-in load development workflow. It lets you plan a charge ladder, batch-log pressing sessions directly from the panel, track velocity and group-size results for each step, and promote the winning charge to your final load — all without leaving the application.
+The **Charge Workup** panel is the built-in load development workflow. It lets you plan a charge ladder, batch-log pressing sessions directly from the panel, track velocity and group-size results for each step, and promote the winning charge to your final load, all without leaving the application.
 
 #### Setting up a charge ladder
 
@@ -287,7 +300,7 @@ Shows the load name, caliber, and the configured ladder range (e.g. *38.0–42.0
 
 **Charge ladder table**
 
-Every step in the ladder is listed as a row — planned steps (not yet pressed) and fired steps with accumulated data.
+Every step in the ladder is listed as a row: planned steps (not yet pressed) and fired steps with accumulated data.
 
 | Column | Description |
 |--------|-------------|
@@ -303,7 +316,7 @@ Every step in the ladder is listed as a row — planned steps (not yet pressed) 
 
 Rows with data but not yet promoted are highlighted with a subtle tint. The promoted row is highlighted in green.
 
-![Screenshot: Charge Workup panel — charge ladder table with planned and fired rows, promoted row highlighted](./images/workup-panel-table.png)
+![Screenshot: Charge Workup panel, charge ladder table with planned and fired rows, promoted row highlighted](./images/workup-panel-table.png)
 
 **Logging entries from the workup panel**
 
@@ -316,17 +329,17 @@ All plannable steps are checked by default. Uncheck any step you do not want to 
 Once at least two steps have been fired and recorded in the Range Log, a chart appears below the table:
 
 - **Avg fps** (solid blue line, left axis): average muzzle velocity per charge weight.
-- **Lot fps** (blue diamonds): individual lot velocity, one diamond per journal entry — shows the spread at each charge when multiple lots have been fired.
+- **Lot fps** (blue diamonds): individual lot velocity, one diamond per journal entry; shows the spread at each charge when multiple lots have been fired.
 - **Best Group** (dashed amber line, right axis, inverted): the best group size at each charge. The axis is inverted so smaller groups (better accuracy) appear higher on the chart.
 - **Lot Group** (amber diamonds): individual lot group sizes.
 
 Hover over any line point to see the value; hover over a diamond to see which lot it belongs to. 
 
-![Screenshot: Charge Workup panel — performance chart showing velocity and group curves with individual lot markers](./images/workup-panel-chart.png)
+![Screenshot: Charge Workup panel, performance chart showing velocity and group curves with individual lot markers](./images/workup-panel-chart.png)
 
 #### Promoting a charge
 
-When the data shows a clear node — a charge with consistently good velocity SD and small groups — click **Promote** on that row. A confirmation dialog shows the charge being promoted.
+When the data shows a clear node (a charge with consistently good velocity SD and small groups), click **Promote** on that row. A confirmation dialog shows the charge being promoted.
 
 Confirming promotion:
 - Sets the load's **powder charge** to the promoted value.
@@ -340,13 +353,13 @@ The load is now an active, proven recipe and the Charge Workup panel switches to
 
 If you want to refine the load further, open the workup panel and use the **In Dev / Active** toggle in the footer. This returns the load to In Development status without clearing any data. You can then adjust the ladder range, add new steps, or press additional lots at charges of interest.
 
-![Screenshot: Charge Workup panel footer — status toggle and Log Entries button](./images/workup-panel-footer.png)
+![Screenshot: Charge Workup panel footer, status toggle and Log Entries button](./images/workup-panel-footer.png)
 
 #### Workup data in the printed data sheet
 
 When you print a load's **Data Sheet** from the My Ammo print options, the Charge Workup section is automatically included if development data is present. The printed output shows the ladder summary, the full charge table with the promoted step marked, and a copy of the performance chart as an embedded image.
 
-![Screenshot: Printed load data sheet — Charge Workup section with charge table and performance chart](./images/workup-datasheet-print.png)
+![Screenshot: Printed load data sheet, Charge Workup section with charge table and performance chart](./images/workup-datasheet-print.png)
 
 ---
 
@@ -407,6 +420,16 @@ How many reloads each case is expected to survive before replacement. This amort
 **Notes**  
 Optional free-text field for lot numbers, suppliers, or any other reference.
 
+**Stock on hand** *(optional)*  
+The current quantity you have in stock. The unit depends on the component type:
+- *Powder*: weight in lb or kg (matching the measurement system you selected)
+- *Primer, Bullet, Brass*: individual count
+
+Leave this field blank if you do not want to track stock for this component. Only components with a stock quantity set are visible to the journal deduction feature.
+
+**Alert below** *(optional)*  
+A low-stock threshold in the same unit as **Stock on hand**. When the quantity on hand falls at or below this value, the component card shows a **Low** badge as a visual warning. This is a display indicator only; it does not block any operation.
+
 Click **Save** to add the component. The card appears immediately in its group.
 
 ![Screenshot: Add/Edit component form panel](./images/inventory-add-form.png)
@@ -415,6 +438,7 @@ Each component card shows:
 - Component name and type icon
 - **Price**: the raw price as entered (e.g. *$89.99 / 4 lb*)
 - **Per unit**: the derived cost per lb/kg or per single primer/bullet/case (e.g. *$22.50/lb*)
+- **Stock**: current quantity on hand, shown only when a stock quantity has been entered. Powder stock is shown to four decimal places; all other types show a whole number. A **Low** badge appears inline when the quantity is at or below the configured threshold.
 - Brass **Reloads** count (brass cards only)
 - Bullet **caliber**, **diameter** and **weight** (bullets only)
 - Notes (if any)
@@ -432,6 +456,8 @@ Each component card has three action buttons:
 | 🗑 Delete | Permanently removes the component from the catalog. Loads that were linked to it retain their last-known values but lose the live link. |
 
 ![Screenshot: Inventory card action buttons](./images/inventory-card-actions.png)
+
+In **Table view**, the **Stock** column shows the current quantity on hand for each component, formatted with a unit suffix (*primers*, *rounds*, *cases*, *lb*, or *kg*). Components with no stock quantity set show a dash (—). A **Low** badge appears in the same cell when stock is at or below the threshold.
 
 ### 3.3 Linking Inventory to Loads
 
@@ -474,7 +500,7 @@ Click **Add Firearm** in the top-right corner of the Firearms tab. A dialog open
 | **Action Type** | No | Operating mechanism: **Bolt**, **Semi-Auto**, **Lever**, **Pump**, **Single Shot**, **Revolver**, or **Other**. |
 | **Barrel Length** | No | Free text, e.g. *24 in*, *16.5"*. |
 | **Twist Rate** | No | Rifling twist rate, e.g. *1:10*, *1:8*. Relevant for bullet stabilisation in load development. |
-| **Notes** | No | Any other reference — optics setup, known issues, purchase date, etc. |
+| **Notes** | No | Any other reference: optics setup, known issues, purchase date, etc. |
 
 Click **Add Firearm** in the dialog footer to save. The profile appears immediately in the Firearms list and becomes available in the Range Log firearm selector.
 
@@ -482,12 +508,12 @@ Click **Add Firearm** in the dialog footer to save. The profile appears immediat
 
 ### 4.2 Managing Firearm Profiles
 
-Each firearm profile — in both card and table view — has two action buttons:
+Each firearm profile (in both card and table view) has two action buttons:
 
 | Button | Action |
 |--------|--------|
 | ✏️ Edit | Opens the profile in the form dialog for editing. All fields can be changed. |
-| 🗑 Delete | Permanently removes the profile from the registry. Existing Range Log sessions that referenced this firearm are not affected — the recorded firearm name is preserved in those sessions. |
+| 🗑 Delete | Permanently removes the profile from the registry. Existing Range Log sessions that referenced this firearm are not affected; the recorded firearm name is preserved in those sessions. |
 
 A confirmation dialog appears before deletion to prevent accidental removal.
 
@@ -503,15 +529,15 @@ When at least one profile has a caliber set, a row of **caliber filter chips** a
 
 The **Search** box in the page header filters profiles by name, caliber, and notes simultaneously. The count below the page title updates to reflect how many profiles match the current search.
 
-Clearing the search box resets the list to all profiles (subject to any active caliber filter chips). The search and caliber chips work together — the list shows only profiles that match both the active chip selection and the search text.
+Clearing the search box resets the list to all profiles (subject to any active caliber filter chips). The search and caliber chips work together; the list shows only profiles that match both the active chip selection and the search text.
 
 ### 4.4 Card and Table Views
 
 The **Cards / Table** toggle in the page header switches the display layout. The preference is saved between sessions so the Firearms tab always opens in your last-used view.
 
-**Card view** (default) — each firearm appears as a tile showing all populated fields. Fields that were left blank are omitted from the card to keep it uncluttered. The Type badge and Action tag appear as styled chips.
+**Card view** (default): each firearm appears as a tile showing all populated fields. Fields that were left blank are omitted from the card to keep it uncluttered. The Type badge and Action tag appear as styled chips.
 
-**Table view** — profiles are displayed as rows in a denser layout with columns for Name, Type, Action, Barrel, Twist, and Notes. This view is more efficient for scanning a large registry at a glance.
+**Table view**: profiles are displayed as rows in a denser layout with columns for Name, Type, Action, Barrel, Twist, and Notes. This view is more efficient for scanning a large registry at a glance.
 
 In both views, profiles are grouped by caliber. Firearms without a caliber appear in an **Uncategorized** group at the bottom.
 
@@ -560,14 +586,33 @@ Each entry row has action buttons on the right:
 | 🖨 Print | Opens the label print dialog pre-filled with the lot number and quantity |
 | 📦 Archive | Moves the entry to the archive so it no longer appears in the main list. Archived entries are preserved in full and can be restored at any time. |
 | 🗑 Delete | Permanently removes the entry |
+| 📦 Deduct from stock | Appears only when the entry's load has at least one linked inventory component with a stock quantity set. See below. |
+
+**Deducting inventory stock from a journal entry**
+
+When a reload entry is linked to components in My Components that have a **Stock on hand** value set, a stock deduction button (inventory icon) appears on the journal row. Click it to deduct the quantities used by that lot from the linked inventory:
+
+| Component | Amount deducted |
+|-----------|----------------|
+| Powder | Weight used: `(rounds × charge in grains) ÷ 7000` lb, or `÷ 15432.4` kg for metric. If the entry has a charge override, that value is used instead of the recipe default. |
+| Primer | 1 per round (`quantity`) |
+| Bullet | 1 per round (`quantity`) |
+| Brass | 1 per round (`quantity`). If the entry has a **Brass override**, the matching inventory item is found by name rather than by the linked ID. |
+
+After a successful deduction, the button changes to a **✓ Stock** badge. Click the badge to **return** the stock (undo the deduction). This is useful if you made a mistake or need to adjust quantities before re-deducting.
+
+If you **edit** a journal entry that already had stock deducted and change a quantity-affecting field (round count, charge override, or brass override), the application automatically returns the old deduction and re-applies the new one so the inventory stays accurate.
+
+Stock deduction is not available for archived entries.
+
+<!-- TODO: Image needs updating — journal entry row now shows the inventory deduction button and the "✓ Stock" badge -->
+![Screenshot: journal entry row showing all action buttons (star, edit, duplicate, print, archive, delete) and the Remaining Rounds column](./images/journal-entry.png)
 
 **Remaining Rounds column**
 The **Remaining** column shows how many rounds from each lot have not yet been fired. It is calculated automatically from your Range Log: every time you log rounds against a lot in a range session, the remaining count decreases. When all rounds in a lot have been accounted for in the Range Log, the lot is marked **Depleted**. This live link between the journal and the range means you always know exactly how much of each lot is left on the shelf without maintaining a separate inventory.
 
 **Archiving and restoring entries**
 Click the **📦 Archive** button to move a lot out of the active list without deleting it. Archived entries remain part of your history and are still counted in the Journal statistics panel. To see archived entries, click the **"N archived"** link that appears in the journal header when any entries are archived. To restore an entry to the active list, expand the archived view and click the **Restore** button on the relevant row.
-
-![Screenshot: journal entry row showing all action buttons (star, edit, duplicate, print, archive, delete) and the Remaining Rounds column](./images/journal-entry.png)
 
 Use the **Search** box at the top of the page to filter entries by lot number, date, load name, caliber, brass name, or notes.
 
@@ -585,6 +630,8 @@ The label dialog lets you review and adjust every field on the label before comm
 You can also open the print dialog from any ammo card in **My Ammo** using the print button on that card, without a pre-filled lot number.
 
 ![Screenshot: print label dialog showing LOT and QTY pre-filled from a journal entry.](./images/label-print.png)
+
+You can also select multiple journal entries to print their labels. Click the checkbox on the right of each journal entry to select those lables that you would like to print. Once selected click on the print button to print them. The print dialog will apear with the lables you have selected. You can also print multiple copies of them.
 
 ### 5.4 Journal Statistics
 
@@ -655,14 +702,14 @@ The **fps / m/s** toggle in the page header switches the velocity display unit f
 Sessions are displayed as rows in a list, most recent first. Click any row to **expand** it and see the full per-lot breakdown for that session.
 
 <!-- TODO: Add screenshot of an expanded session row showing lot detail rows beneath it -->
-![Screenshot: Range Log — expanded session row showing individual lot entries](./images/range-log-expanded.png)
+![Screenshot: Range Log, expanded session row showing individual lot entries](./images/range-log-expanded.png)
 
 Each session row has action buttons on the right:
 
 | Button | Action |
 |--------|--------|
 | ★ Star | Marks the session as a reference (see [Starring Sessions](#63-starring-sessions)) |
-| ✏️ Edit | Opens the session for editing — you can change the header fields or add and remove lot entries |
+| ✏️ Edit | Opens the session for editing; you can change the header fields or add and remove lot entries |
 | ⧉ Duplicate | Creates a copy of the session (useful for recurring outings at the same location with the same firearm) |
 | 🎯 Target | Navigates to the linked target in the Targets tab. Only visible when a target has been linked to this session. |
 | 🖨 Print | Opens the print dialog for the session's data sheet. If a target is linked to this session, the printed output automatically includes the annotated target image and its key statistics. |
@@ -690,7 +737,7 @@ The **statistics panel** at the top of the Range Log gives you an at-a-glance pe
 
 The panel has two sections:
 
-**Key Performance Indicators** — a row of summary tiles across the top:
+**Key Performance Indicators**: a row of summary tiles across the top:
 
 | Tile | Meaning |
 |------|---------|
@@ -701,29 +748,42 @@ The panel has two sections:
 | **Best Group** | Smallest group size recorded, normalised to inches |
 | **Avg Group** | Average group size across all lots with group data, normalised to inches |
 
-**Rounds by Load** — a scrollable row of cards, one per distinct load or factory entry. Each card shows:
+**Rounds by Load**: a scrollable row of cards, one per distinct load or factory entry. Each card shows:
 
 - Load name and total rounds fired
 - Average fps and average SD (if velocity data was recorded for that load)
 - Average group size and best group size (if group data was recorded for that load)
 
-The cards let you compare performance across different loads at a glance — useful during load development to see which recipes are consistently grouping best or producing the most consistent velocity.
+The cards let you compare performance across different loads at a glance; useful during load development to see which recipes are consistently grouping best or producing the most consistent velocity.
 
 ---
 
-## 7. Target Analysis
+## 7. Targets
 
-The **Targets** tab gives you a full picture of where your shots actually landed. Upload a photo of your target after a range session, calibrate the scale using a known reference distance on the image, mark each bullet impact by clicking on the photo, and the application immediately computes your group statistics: extreme spread, mean radius, CEP50, windage and elevation offset from your point of aim, and more. When you fire multiple loads or charges at the same aiming point, organise the impacts into colour-coded groups to compare each load's dispersion independently and view aggregate statistics across all groups.
+The **Targets** tab has three sub-tabs:
 
-<!-- TODO: Add screenshot of the Targets tab showing the three-panel layout: target list on the left, annotated canvas in the centre, configuration and statistics sidebar on the right -->
-![Screenshot: Targets tab — target list panel, annotated image canvas, and configuration/statistics sidebar](./images/targets-overview.png)
+- **Target Analysis**: upload a photo of your target, calibrate the scale, mark bullet impacts, and get instant group statistics: extreme spread, mean radius, CEP50, windage and elevation offset, and more. When you fire multiple loads at the same aiming point, organise impacts into colour-coded groups to compare each load independently and view aggregate statistics.
+- **Compare**: a sortable cross-target table that shows every target linked to a range session. Filter by load to see a summary of best ES, average MV, and best group size across all sessions for that load. Use the open button on any row to navigate directly to the target in Target Analysis.
+- **Target Generator**: design and print custom target sheets from scratch. Define concentric scoring rings, set the page layout (columns × rows), choose colours and ring diameters, add grid overlays, and annotate each slot with load and firearm details before printing.
 
-The tab has a three-panel layout:
-- **Left panel** — your list of saved target records, each showing a thumbnail, name, date, and shot count.
-- **Centre** — the interactive canvas where you upload the image and place or review impacts.
-- **Right sidebar** — the Configuration panel (calibration, bullet size, shot distance, notes, and range session link) and the Statistics panel (computed group metrics).
+<!-- TODO: Add screenshot of the Targets tab showing the three sub-tab buttons (Target Analysis, Compare, and Target Generator) at the top of the tab -->
+![Screenshot: Targets tab showing the Target Analysis, Compare, and Target Generator sub-tab buttons](./images/targets-subtabs.png)
 
-### 7.1 Creating a Target Record
+---
+
+### 7.1 Target Analysis sub-tab
+
+<!-- TODO: Add screenshot of the Target Analysis sub-tab showing the three-panel layout: target list on the left, annotated canvas in the centre, configuration and statistics sidebar on the right -->
+![Screenshot: Targets tab, target list panel, annotated image canvas, and configuration/statistics sidebar](./images/targets-overview.png)
+
+The Target Analysis sub-tab has a three-panel layout:
+- **Left panel**: your list of saved target records, each showing a thumbnail, name, date, and shot count with best group size.
+- **Centre**: the interactive canvas where you upload the image and place or review impacts.
+- **Right sidebar**: the Configuration panel (calibration, bullet size, shot distance, notes, and range session link) and the Statistics panel (computed group metrics).
+
+> **Unsaved changes.** If you have placed impacts or changed configuration without saving, navigating to another tab or to the Compare or Target Generator sub-tab will show a confirmation dialog so you cannot accidentally lose your work. Click **Discard & Leave** to proceed without saving, or cancel to stay.
+
+#### 7.1.1 Creating a Target Record
 
 Click **+ New** in the top-left header to create a new target record. A blank record opens immediately and pre-populates the measurement system from your application settings (imperial or metric). Give the record a name and date in the toolbar at the top of the canvas area.
 
@@ -734,14 +794,13 @@ Target records in the list show:
 
 Click the **☆ / ★** star button on any list item to mark the target as a reference. Click the **✕** button to delete it (a confirmation dialog appears first).
 
-### 7.2 Uploading and Calibrating the Image
+#### 7.1.2 Uploading and Calibrating the Image
 
 **Uploading**
 
 Click the upload area in the centre canvas (or drag and drop an image file onto it) to load your target photo. JPEG and PNG images are supported. The image is stored locally alongside all other application data and travels with your export files.
 
-<!-- TODO: Add screenshot of the canvas area before an image is loaded, showing the upload/drag-drop zone -->
-![Screenshot: Targets canvas area showing the upload drag-drop zone before an image is loaded](./images/targets-upload-zone.png)
+s area showing the upload drag-drop zone before an image is loaded](./images/targets-upload-zone.png)
 
 **Calibrating**
 
@@ -767,11 +826,11 @@ The application uses the pixel distance between the two points divided by the en
 | **Angular unit** | MOA or MIL for angular statistics |
 | **Click value** | Your scope's adjustment per click in the selected angular unit, used to compute how many clicks of correction are needed to move point of impact to point of aim |
 | **Notes** | Optional free-text notes for this target |
-| **Session** | Optional link to a range session (see [Section 7.7](#77-linking-to-a-range-session)) |
+| **Session** | Optional link to a range session (see [Section 7.1.7](#717-linking-to-a-range-session)) |
 
 ![Screenshot: Target Analysis configuration sidebar showing calibration, bullet diameter, shot distance, and measurement system fields](./images/targets-config-sidebar.png)
 
-### 7.3 Marking Impacts and Point of Aim
+#### 7.1.3 Marking Impacts and Point of Aim
 
 **Placing shots**
 
@@ -781,7 +840,7 @@ To remove an individual impact, select **Edit** mode and click an existing marke
 
 **Setting the point of aim**
 
-Select **Set POA** from the mode buttons, then click the point on the target you were aiming at (typically the centre of the bullseye). All offset statistics — windage, elevation, and POI distance — are measured relative to this point.
+Select **Set POA** from the mode buttons, then click the point on the target you were aiming at (typically the centre of the bullseye). All offset statistics (windage, elevation, and POI distance) are measured relative to this point.
 
 If no point of aim is set, the application uses the centroid of all shots as the reference point, and offset statistics show the deviation of each individual shot from the group centre rather than from an intended aiming point.
 
@@ -796,13 +855,12 @@ If no point of aim is set, the application uses the centroid of all shots as the
 | **Calibrate** | Click two reference points to set the calibration baseline |
 | **Pan / Zoom** | Drag to pan the canvas; use the zoom buttons or scroll wheel to zoom in and out |
 
-The toolbar also has **Zoom In**, **Zoom Out**, and **Fit** buttons to control the canvas view, and a **Print** button to print the annotated target (see [Section 7.8](#78-printing-a-target)).
+The toolbar also has **Zoom In**, **Zoom Out**, and **Fit** buttons to control the canvas view, and a **Print** button to print the annotated target (see [Section 7.1.8](#718-printing-a-target)).
 
-### 7.4 Statistics Panel
+#### 7.1.4 Statistics Panel
 
 The **Statistics** panel in the right sidebar shows computed metrics for the current view (all shots, a selected group, or the aggregate). The panel is collapsible.
 
-<!-- TODO: Add screenshot of the Statistics panel showing the key metric rows: Shots, Extreme Spread, Mean Radius, CEP50, Windage and Elevation offset with angular equivalents -->
 ![Screenshot: Target Analysis statistics panel showing shot count, extreme spread, mean radius, CEP50, windage and elevation offset rows](./images/targets-stats-panel.png)
 
 #### Group geometry
@@ -812,7 +870,7 @@ These statistics describe the physical size and shape of the group.
 | Statistic | What it measures |
 |-----------|-----------------|
 | **Shots** | Number of impacts counted in this view |
-| **Extreme Spread (ES)** | The distance between the two most widely separated holes, measured centre-to-centre (or edge-to-edge when bullet diameter is set). This is the most widely used group-size measure in practical shooting. It is a **diameter** — the full width of the group at its worst pair. Smaller is better. |
+| **Extreme Spread (ES)** | The distance between the two most widely separated holes, measured centre-to-centre (or edge-to-edge when bullet diameter is set). This is the most widely used group-size measure in practical shooting. It is a **diameter**, the full width of the group at its worst pair. Smaller is better. |
 | **Smallest Enclosing Circle Ø (SEC)** | The diameter of the smallest circle that fits around all shot holes. Unlike ES, which only depends on the two worst shots, the SEC accounts for the overall spread of the group. It is always ≥ ES. |
 | **Mean Radius (MR)** | The average distance from every shot to the group centroid (geometric centre). Because it uses all shots rather than just the two worst, MR is less sensitive to a single flyer than ES is. A consistent load will have a low MR relative to its ES. It is a **radius** measured from the group centre. |
 | **Figure of Merit (FoM)** | The average of horizontal extreme spread and vertical extreme spread. A quick way to gauge whether the group is roughly round. |
@@ -848,20 +906,20 @@ These statistics describe where the centre of the group landed relative to your 
 |-----------|--------------|
 | **Windage offset** | How far left or right the group centre is from the point of aim, with direction label. |
 | **Elevation offset** | How far up or down the group centre is from the point of aim, with direction label. |
-| **POI distance** | The straight-line distance from the point of aim to the group centroid — combines both windage and elevation into one number. |
+| **POI distance** | The straight-line distance from the point of aim to the group centroid; combines both windage and elevation into one number. |
 | **Clicks needed** | The number of scope clicks required to move the point of impact onto the point of aim, computed from the configured click value. Positive = move right/up; negative = move left/down. Only shown when a click value is configured. |
 
 All linear statistics are shown in the unit selected in the Configuration panel (in or cm). When a shot distance is configured, angular equivalents (MOA or MIL) appear in parentheses next to each linear value.
 
-### 7.5 Working with Groups
+#### 7.1.5 Working with Groups
 
-Groups let you organise shots on the same target image by load, charge, or any other meaningful category — each with its own colour-coded markers and independent statistics.
+Groups let you organise shots on the same target image by load, charge, or any other meaningful category, each with its own colour-coded markers and independent statistics.
 
 **Creating a group**
 
 Click **+ Group** in the **Groups** section of the sidebar. A new group is created with a default name and an automatically assigned colour. Click the group's name field to rename it.
 
-Each group appears as a coloured row in the Groups list. Click a group row to select it — the canvas highlights only that group's impacts and the Statistics panel shows that group's metrics.
+Each group appears as a coloured row in the Groups list. Click a group row to select it; the canvas highlights only that group's impacts and the Statistics panel shows that group's metrics.
 
 **Assigning shots to a group**
 
@@ -873,7 +931,7 @@ The application assigns a distinct colour to each group automatically. Shot mark
 
 ![Screenshot: Targets canvas with two colour-coded groups and the Groups section in the sidebar showing each group's name and shot count](./images/targets-groups.png)
 
-### 7.6 Aggregate View
+#### 7.1.6 Aggregate View
 
 When a target has **two or more groups**, a set of view selector tabs appears above the Statistics panel:
 
@@ -887,19 +945,19 @@ The **Aggregate** view is particularly useful when comparing multiple loads fire
 
 ![Screenshot: Targets view selector tabs showing All, group tabs, and Aggregate; Aggregate tab active with re-centred impact overlay on the canvas](./images/targets-aggregate-view.png)
 
-### 7.7 Linking to a Range Session
+#### 7.1.7 Linking to a Range Session
 
 In the **Configuration** sidebar, the **Session** field connects this target record to a specific range session in the Range Log. Click the field to open a searchable dropdown listing all your recorded sessions. You can search by date, firearm name, distance, or lot number.
 
 Once linked:
 - A **navigate** button (arrow icon) appears next to the session selector. Click it to jump directly to that session in the Range Log tab.
 - In the Range Log, a **target icon** (scope) appears on the linked session's action buttons. Click it to jump back to this target in the Targets tab.
-- When you **print** the linked range session, the printed output automatically includes the annotated target image and key statistics; no extra steps needed (see [Section 7.8](#78-printing-a-target) and [Section 6.2](#62-managing-range-sessions)).
+- When you **print** the linked range session, the printed output automatically includes the annotated target image and key statistics; no extra steps needed (see [Section 7.1.8](#718-printing-a-target) and [Section 6.2](#62-managing-range-sessions)).
 
 <!-- TODO: Add screenshot of the Session field in the Configuration sidebar showing a linked session selected, with the navigate button visible next to the select control -->
 ![Screenshot: Configuration sidebar session field with a session selected and the navigate button visible](./images/targets-session-link.png)
 
-### 7.8 Printing a Target
+#### 7.1.8 Printing a Target
 
 Click the **Print** button in the target toolbar to open the print output for the current view.
 
@@ -910,10 +968,168 @@ The printed sheet includes:
 
 When multiple groups are present, the view that is currently active (All, a specific group, or Aggregate) determines what is printed.
 
-> Printing a **range session** from the Range Log automatically includes the linked target's image and statistics at the bottom of the session sheet — see [Section 6.2](#62-managing-range-sessions).
+> Printing a **range session** from the Range Log automatically includes the linked target's image and statistics at the bottom of the session sheet; see [Section 6.2](#62-managing-range-sessions).
 
 <!-- TODO: Add screenshot of the printed target output showing the annotated image with ES line, mean radius circle, CEP50 circle, shot numbers, and the statistics table alongside -->
 ![Screenshot: Printed target output showing annotated target image with overlay graphics and key statistics table](./images/targets-print-output.png)
+
+---
+
+### 7.2 Compare sub-tab
+
+The **Compare** sub-tab aggregates every target that has been linked to a Range Log session into a single sortable table. Where Target Analysis is for deep inspection of a single target, Compare is for answering the question across all your sessions: *which load, charge, and seating depth produced the best groups and the most consistent velocity?*
+
+<!-- TODO: Add screenshot of the Compare sub-tab showing the filter bar, summary bar, and table rows -->
+![Screenshot: Compare sub-tab showing the load filter, summary bar with best ES and avg MV, and the sortable table of target results](./images/targets-compare.png)
+
+#### How rows are populated
+
+A row appears in the Compare table for every target record that has been linked to a Range Log session (see [Section 7.1.7](#717-linking-to-a-range-session)). Targets with no session link are not shown; link a target first to include it here.
+
+#### Columns
+
+| Column | Source |
+|--------|--------|
+| **Date** | Date of the linked range session |
+| **Target** | Target name; if the linked session is starred, an amber ★ appears; firearm name appears below as a subtitle |
+| **Load** | Load name from the linked session lot |
+| **Charge** | Charge weight from the lot (blank for factory ammo) |
+| **CBTO / COAL** | Cartridge base-to-ogive / cartridge overall length from the lot (CBTO shown when available) |
+| **Dist.** | Shooting distance from the range session |
+| **Shots** | Number of shots recorded in the linked lot |
+| **MV (fps)** | Average muzzle velocity from the range session lot |
+| **SD** | Standard deviation of velocity from the range session lot |
+| **ES** | Extreme spread computed from the target image in Target Analysis |
+| **Mean R.** | Mean radius computed from the target image |
+| **Group ✎** | Group size manually entered in the Range Log |
+
+Click any sortable column header to sort the table by that field. Click again to reverse the sort direction.
+
+> **ES vs Group ✎.** ES is derived automatically from the target image by the image analysis algorithm. Group ✎ is the value you typed into the Range Log session form. The two can differ slightly because the image analysis measures centre-to-centre extreme spread whereas the manually entered value may reflect a different measurement convention.
+
+#### Filtering by load
+
+Use the **Load** filter at the top to narrow the table to a single load. When a load is selected, a **summary bar** appears showing:
+
+| Stat | Description |
+|------|-------------|
+| **Sessions** | Number of targets linked to this load |
+| **Best ES** | Lowest extreme spread recorded across all targets for this load |
+| **Avg MV** | Mean of average muzzle velocities across all sessions for this load |
+| **Best Group ✎** | Lowest manually entered group size across all sessions for this load |
+
+#### Best row indicator
+
+When a load is shown with two or more rows, the row with the lowest ES value is highlighted with a ★ badge in the ES column, making it easy to spot your standout session at a glance.
+
+#### Opening a target from the table
+
+Click the **open icon** (↗) at the right of any row to switch directly to the Target Analysis sub-tab with that target selected. This is the fastest way to drill into a specific result after spotting it in the Compare table.
+
+---
+
+### 7.3 Target Generator sub-tab
+
+The **Target Generator** lets you design custom printable target sheets from scratch. Rather than printing a commercial target and photographing it later, you define the scoring rings, layout, and annotations here, then print directly. Designed sheets are saved in the application and can be reprinted or duplicated at any time.
+
+Click **New Target Sheet** to open the designer. The designer has two panels:
+- **Left panel**: all configuration controls for the sheet
+- **Right panel**: a real-time print preview that updates as you make changes
+
+![Screenshot: Target Generator sub-tab showing saved sheet cards with ring colour previews, sheet names, and action buttons](./images/target-generator-list.png)
+
+#### 7.3.1 Creating a Target Sheet
+
+Click **New Target Sheet** in the page header to open the designer with a blank sheet.
+
+| Field | Description |
+|-------|-------------|
+| **Name** | A label for the sheet, e.g., *100 yd Load Workup* or *50 yd Pistol*. Displayed on the sheet card. |
+| **Page Size** | Letter, A4, or Legal. |
+| **Orientation** | Portrait or Landscape. |
+| **Columns × Rows** | Number of targets across and down the page (1–4 each). A 2 × 3 layout prints 6 targets per page. |
+| **Shape** | Target shape: Circle, Square, or Diamond. |
+| **Show Annotation** | Whether to print load/firearm annotation labels on each target slot. |
+| **Annotation position** | Whether annotation text appears inside the rings or outside below the target. |
+
+Click **Save Sheet** to save or **Cancel** to discard changes. The **Print** button in the designer header opens the print dialog directly from the editor.
+
+<!-- TODO: Add screenshot of the Target Sheet designer showing the left configuration panel and the right real-time print preview -->
+![Screenshot: Target Sheet designer, left configuration panel with sheet settings and ring controls, right panel showing real-time print preview of the target layout](./images/target-generator-designer.png)
+
+#### 7.3.2 Configuring Rings
+
+Each target has concentric scoring rings. The innermost ring is Ring 1; higher numbers are progressively outer rings. You can add up to **10 rings** and remove down to a minimum of **2**.
+
+For each ring, configure:
+
+| Option | Description |
+|--------|-------------|
+| **Color** | Choose from: black, white, red, orange, yellow, green, blue, grey, or silver. Each ring can be a different colour to create high-contrast scoring zones. |
+| **Overall diameter** | The outer diameter of the outermost ring (in inches or mm). |
+| **Ring step** | The spacing between consecutive ring edges; controls how wide each scoring band is. |
+
+Use the unit dropdown (in / mm) to switch between inches and millimetres; all diameter values convert automatically.
+
+The real-time preview on the right updates immediately as you adjust ring counts, colours, and sizes.
+
+#### 7.3.3 Layout, Page Size, and Grid
+
+**Layout**
+
+The columns and rows settings define how many targets are tiled on a single page. Use a high-density layout (e.g., 3 × 4 = 12 targets per sheet) for small pistol targets or load-development series where you need many aiming points, or a 1 × 1 layout for a single large precision rifle target.
+
+**Grid overlay**
+
+Enable **Show Grid** to print a background grid over each target; useful as a visual reference for estimating point of impact at a glance. Set the **grid cell size** in the same unit as the ring diameters. The **crosshair** (centre lines) can be shown or hidden independently of the grid.
+
+#### 7.3.4 Annotations
+
+When **Show Annotation** is enabled, each target slot on the sheet has an independent annotation block. For a 2 × 3 sheet, six annotation sections appear in the designer, one per slot, labelled *Target 1*, *Target 2*, and so on. Fill these in before printing so the load and firearm information is already on the sheet when you pull it off the printer.
+
+Each annotation has a **mode toggle**:
+
+| Mode | Fields |
+|------|--------|
+| **Handload** | **Journal Lot** (searchable dropdown from your journal entries), Firearm, Distance, Group size, Avg velocity, SD, Notes |
+| **Factory** | Cartridge name, Lot #, Firearm, Distance, Group size, Avg velocity, SD, Notes |
+
+**Filling multiple targets quickly**
+
+- **Apply to all**: appears on the first target slot. Copies all annotation values from Target 1 to every other slot on the sheet. Use this when all targets on the sheet are for the same load and firearm.
+- **Copy prev**: appears on each subsequent slot. Copies annotation values from the immediately preceding slot, useful for sequential load development targets that share most fields but differ in one entry.
+
+![Screenshot: Target Sheet designer annotation section showing the Handload/Factory mode toggle, journal lot dropdown, firearm and distance fields, and the Apply to all button](./images/target-generator-annotations.png)
+
+#### 7.3.5 Managing Target Sheets
+
+Saved sheets are displayed as cards in the Target Generator sub-tab. Each card shows:
+- A row of **ring colour swatches** showing the colour scheme at a glance
+- Sheet name, page size, columns × rows layout, and shape
+- Last updated date
+
+Each card has three action buttons:
+
+| Button | Action |
+|--------|--------|
+| ⧉ Duplicate | Creates a copy of the sheet with all ring settings, layout, and configuration. Useful for creating variants of the same target with different ring sizes or colours. |
+| 🖨 Print | Opens the print dialog for this sheet without opening the full designer. |
+| 🗑 Delete | Permanently removes the sheet (a confirmation dialog appears first). |
+
+Click the card itself to reopen the designer and edit the sheet.
+
+<!-- TODO: Add screenshot of the Target Generator sheet list showing several saved sheet cards with ring colour swatches and action buttons -->
+![Screenshot: Target Generator sheet list showing saved sheet cards with ring colour swatches, sheet name, layout summary, and duplicate/print/delete action buttons](./images/target-generator-cards.png)
+
+#### 7.3.6 Printing a Target Sheet
+
+Click **Print** on any sheet card, or click the **Print** button inside the designer, to open the print dialog.
+
+The dialog shows:
+- Sheet name, page size, layout (columns × rows), and shape
+- A preview of the first target as it will appear on the printed page
+
+Click **Print** to send the sheet to your printer. The printed output matches the designer preview: all configured rings, colours, grid lines, and annotation fields are included exactly as shown.
 
 ---
 
@@ -1085,6 +1301,11 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 - **Equipment costs** only need to be entered once. They persist between sessions and are included in export files.
 - **Use the inventory for shared components.** If you load multiple calibers with the same powder or primer, define it once in My Components and link it to all relevant loads. A single price update flows through everywhere.
 - **Inventory lists are alphabetical.** Components inside each inventory group are ordered by name to make powders, primers, bullets, and brass easier to scan.
+- **Stock tracking is opt-in per component.** Leave **Stock on hand** blank for any component you do not want to track. Only components with a stock quantity set appear in the journal deduction flow; untracked components are simply ignored by the deduction button.
+- **Stock deduction follows charge overrides.** If a journal entry has a powder charge override, the deduction uses that override amount rather than the recipe's default charge. Always review overrides before deducting.
+- **The Low badge is informational only.** A component showing a Low badge can still be used in new journal entries and deductions. The badge is just a visual reminder to restock; it does not block any workflow.
+- **Returning stock undoes the deduction completely.** Clicking the ✓ Stock badge on a journal entry restores the full deducted amount for all linked components. If you need to correct a quantity, return the stock, edit the entry, then re-deduct.
+- **Brass override deductions match by name.** If a journal entry specifies a brass override (free-text field), the deduction looks up the brass inventory item by that exact name. Make sure the override text matches the inventory item name exactly, or the brass deduction will be skipped for that entry.
 - **Powder quantity field.** When entering a powder in the inventory, set the quantity to match how the powder is sold (1 lb, 4 lb, 8 lb, etc.). The app calculates the per-lb rate automatically and uses it when costing a load.
 - **Unlinking a component.** Manually editing any field in a linked component section (name, price, quantity) automatically breaks the inventory link. The load keeps the values you typed but is no longer updated when the inventory item changes. Use the **×** on the badge to unlink without changing any values.
 - **Deleting an inventory item** does not delete any loads that used it. Those loads retain the component values they had at the time the link was broken.
@@ -1092,7 +1313,7 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 - **Journal baseline for existing reloaders.** If you were reloading before you started using the journal, enter your historical round count as the manual baseline in Cost Analysis Rounds mode. The journal will add to it going forward, keeping your break-even progress accurate.
 - **Label printing from the journal.** The quickest way to print a box label is directly from the Journal; the lot number and quantity are already filled in. You only need to confirm and print.
 - **The bench-to-range loop.** Use the Journal to record what you pressed, then use the Range Log to record how each lot performed at the range. The two tabs together give you a complete picture: production history in the Journal, field performance in the Range Log.
-- **Multiple lots in one range session.** A single range session can include several lots — for example if you ran three different powder charges side by side. Add one lot entry per charge weight so each gets its own round count and notes.
+- **Multiple lots in one range session.** A single range session can include several lots, for example if you ran three different powder charges side by side. Add one lot entry per charge weight so each gets its own round count and notes.
 - **Range Log notes for load development.** Use the per-lot notes field in the Range Log to record group sizes, point of impact shifts, felt recoil, or function issues. Over time this builds a development log you can cross-reference when adjusting a recipe.
 - **Star your reference loads.** Once you find a load that functions and groups well, star that range session. The starred filter gives you a quick shortlist when you are deciding what to press next. Starring a session also stars the linked journal lots automatically, so both records are flagged together.
 - **Remaining Rounds keeps your shelf count accurate.** Log rounds against journal lots in the Range Log using **From Journal** mode and the Remaining column updates automatically. Lots that reach zero are marked Depleted and hidden from the From Journal dropdown so you cannot accidentally log against an empty lot.
@@ -1103,19 +1324,27 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 - **Add firearm profiles before logging range sessions.** Populating the Firearms Registry before your first range session means the firearm selector in the Range Log form will already have your guns listed, saving you from typing them out each time.
 - **Caliber on a firearm profile enables grouping and filtering.** Profiles without a caliber still appear in the registry and the Range Log dropdown, but they fall into an Uncategorized group and do not generate a caliber filter chip. Set the caliber if you want to use the chip filter to narrow down multi-gun sessions by cartridge family.
 - **Deleting a firearm profile does not affect past sessions.** Range Log entries record the firearm name as a string at the time of logging. Removing a profile from the registry does not alter any historical session records; the name is preserved exactly as it was when you logged it.
-- **Twist rate is useful during load development.** Enter the twist rate on your rifle profiles (e.g. *1:10*) so you have it on hand when selecting bullet weights during load development — heavier, longer bullets need faster twist rates to stabilise, and having the spec in the registry saves you from looking it up every time.
-- **Charge workup and the journal are connected.** When you log entries from the Charge Workup panel, they appear in the Journal as normal lot entries. When you later log those lots in the Range Log (select them **From Journal**), the velocity and group data flows back into the workup chart automatically — no extra steps needed.
+- **Twist rate is useful during load development.** Enter the twist rate on your rifle profiles (e.g. *1:10*) so you have it on hand when selecting bullet weights during load development; heavier, longer bullets need faster twist rates to stabilise, and having the spec in the registry saves you from looking it up every time.
+- **Charge workup and the journal are connected.** When you log entries from the Charge Workup panel, they appear in the Journal as normal lot entries. When you later log those lots in the Range Log (select them **From Journal**), the velocity and group data flows back into the workup chart automatically, no extra steps needed.
 - **Link range sessions to workup lots using "From Journal" mode.** When adding a lot in the Range Log, select **From Journal** and pick the lot number that the Charge Workup panel created. This is what connects your range data to the workup chart; if you use the Reload or manual mode instead, the lot number may not match and the data will not appear on the chart.
 - **The workup chart needs at least two data points.** The velocity and group chart only appears once two or more distinct charges have been fired and recorded in the Range Log. Until then, the table gives you the data in row form.
 - **Multiple lots at the same charge show as separate diamonds.** If you pressed and fired two batches at the same charge weight (e.g. two lots of 20 rounds), the chart shows a diamond for each lot alongside the average line, so you can see how consistent your results are across batches.
-- **Ad-hoc charges let you test outside the ladder.** Use the *Add charge* field in the workup panel to add a step that falls outside your configured min–max range — for example to test a charge that looks promising based on early data. The entry is held as a pending row in the table until you click Log Entries, so you can still choose to exclude it before logging.
+- **Ad-hoc charges let you test outside the ladder.** Use the *Add charge* field in the workup panel to add a step that falls outside your configured min–max range, for example to test a charge that looks promising based on early data. The entry is held as a pending row in the table until you click Log Entries, so you can still choose to exclude it before logging.
 - **Promote unstars the previous winning charge.** If you promote a charge, then later start a new development cycle and promote a different charge, the application automatically removes the star from journal entries for the old charge and stars the new one. Your starred filter in the Journal always reflects the current best load.
 - **Workup history is preserved after promotion.** Promoting a charge does not delete the ladder or its data. The full development history remains visible in the workup panel (and on the printed data sheet) even after the load is Active.
 - **Calibrate before placing shots.** Set both reference points and enter the known distance before marking any impacts. The calibration can be changed later, but the statistics update immediately so it is most efficient to calibrate first.
 - **Use a known reference on the target.** A printed grid square, the bullseye ring diameter, or a target's stated scoring ring size all work as calibration references. Write the distance in millimetres or inches before the session so you have it ready when you upload the photo.
 - **Bullet diameter refines your statistics.** Enter your bullet's diameter in the Configuration panel. The app uses it to measure Extreme Spread and the Smallest Enclosing Circle from the outer edges of the holes (as if the holes were touching), the same way groups are conventionally measured with a calliper. Without bullet diameter, all measurements are centre-to-centre.
 - **Groups let you compare loads on the same target.** If you fired two charge weights or two different loads at the same aiming point, assign their impacts to separate groups. Each group gets its own colour, its own statistics, and contributes to the aggregate calculation.
-- **The aggregate view removes POI differences between groups.** When you have two or more groups, the Aggregate view re-centres each group's shots onto the origin before computing statistics. This removes the point-of-impact offset between loads and gives you a pure measure of each load's internal dispersion — useful for comparing group size consistency independently of where each load prints on the target.
+- **The aggregate view removes POI differences between groups.** When you have two or more groups, the Aggregate view re-centres each group's shots onto the origin before computing statistics. This removes the point-of-impact offset between loads and gives you a pure measure of each load's internal dispersion; useful for comparing group size consistency independently of where each load prints on the target.
 - **Link targets to sessions for bidirectional navigation.** In the target's Configuration panel, select the range session this target came from. A navigation button then appears in both the Targets tab (go to session) and in the Range Log session row (go to target), so you can jump between the two records with one click.
-- **Printed session sheets include the target.** When you print a range session that has a linked target, the target image with annotated shots, ES line, mean-radius circle, and CEP50 circle is automatically included at the bottom of the printed sheet along with key statistics — no separate step needed.
+- **Printed session sheets include the target.** When you print a range session that has a linked target, the target image with annotated shots, ES line, mean-radius circle, and CEP50 circle is automatically included at the bottom of the printed sheet along with key statistics, no separate step needed.
 - **Target records are included in export files.** All target photos, calibration data, impact coordinates, groups, and session links are exported with your library and restored on import.
+- **Target Generator sheets are also included in export files.** All designed target sheets (including ring settings, layout, and annotations) travel with your export and are restored on import.
+- **Design once, reprint any time.** Saved target sheets stay in the Target Generator sub-tab permanently. Come back weeks later and reprint the same sheet without reconfiguring it.
+- **Use Duplicate to create variants.** If you want the same sheet in a different ring size or with a different colour scheme, duplicate the sheet and adjust the copy. Both versions are preserved independently.
+- **Apply to all for fast annotation.** Fill in Target 1's annotation fields completely, then click **Apply to all** to copy them to every slot in one click. Only use Copy prev when adjacent targets differ by a single field (e.g. different lot numbers or charges).
+- **Landscape orientation fits more targets per sheet.** For small pistol targets or load workup grids, switching to landscape and increasing the columns count can fit significantly more aiming points on a single page.
+- **Match ring colours to your shooting conditions.** Use high-contrast colour schemes (e.g., black rings on a white target) for bright outdoor conditions and lighter rings with a black background for lower-light indoor ranges.
+- **Best group badge marks the top performer.** In the Target Analysis sub-tab, when two or more groups are present, the group with the smallest Extreme Spread is marked with a ★ badge in the groups list. This gives you an instant visual indicator of which load performed best without reading through each group's statistics individually.
+- **The target list shows aggregated group size for multi-group targets.** When a target has two or more groups, the shot count and group size shown in the target list uses the aggregate calculation (centering each group on the origin and computing ES across all re-centred shots) rather than treating all impacts as one group. This gives you a meaningful group-size summary for load-comparison targets at a glance.
