@@ -605,7 +605,6 @@ If you **edit** a journal entry that already had stock deducted and change a qua
 
 Stock deduction is not available for archived entries.
 
-<!-- TODO: Image needs updating — journal entry row now shows the inventory deduction button and the "✓ Stock" badge -->
 ![Screenshot: journal entry row showing all action buttons (star, edit, duplicate, print, archive, delete) and the Remaining Rounds column](./images/journal-entry.png)
 
 **Remaining Rounds column**
@@ -649,7 +648,6 @@ These figures accumulate automatically as you add entries. The cost per round us
 
 The **Range Log** tab is where you record what happens after the ammo leaves the bench. Every time you go to the range, add a session: choose the firearm, enter the date and the distance, then list each lot you fired along with how many rounds and any per-lot observations. The Range Log supports all three ammo sources: lots from the Reloading Journal, manually entered reload batches, and factory ammunition. Over time it becomes a searchable field record that connects every range trip to the specific lots and load recipes that produced the ammo.
 
-<!-- TODO: Add screenshot of the Range Log tab showing a list of range sessions with expanded lot details -->
 ![Screenshot: Range Log tab showing session list with expanded session](./images/range-log-overview.png)
 
 ### 6.1 Logging a Range Session
@@ -672,8 +670,6 @@ After filling in the session header, add one or more **lots** to the session usi
 | **Reload** | A reload batch that was not logged in the Journal. Enter an optional lot number, select the reload recipe, and override charge or COAL if needed. |
 | **Factory** | Factory ammunition. Select from your defined factory entries. No charge or COAL fields are shown. |
 
-<!-- TODO: Add screenshot of the Range Log add form showing the From Journal / Reload / Factory mode toggle buttons on a lot row -->
-<!-- IMAGE MAY NEED UPDATING: the Firearm field now shows a dropdown populated from the Firearms Registry rather than a plain text input -->
 ![Screenshot: Range Log add/edit form showing the lot mode toggle (From Journal / Reload / Factory) and lot entry fields](./images/range-log-add-form.png)
 
 For every lot, regardless of mode, you can also record per-lot performance data:
@@ -695,13 +691,11 @@ Click **Save Session** when done. You can add as many lots as you fired during t
 **Velocity unit**
 The **fps / m/s** toggle in the page header switches the velocity display unit for all sessions and the add/edit form at once. The preference is saved so the Range Log always opens in your chosen unit. Velocity values are always stored internally in fps; toggling the display never changes your recorded numbers.
 
-<!-- TODO: Add screenshot of the Range Log page header showing the fps/m/s velocity unit toggle button -->
 
 ### 6.2 Managing Range Sessions
 
 Sessions are displayed as rows in a list, most recent first. Click any row to **expand** it and see the full per-lot breakdown for that session.
 
-<!-- TODO: Add screenshot of an expanded session row showing lot detail rows beneath it -->
 ![Screenshot: Range Log, expanded session row showing individual lot entries](./images/range-log-expanded.png)
 
 Each session row has action buttons on the right:
@@ -725,14 +719,13 @@ Starring a range session also **automatically stars all journal lots** that were
 
 Click the **starred filter button** (☆) in the page header to toggle the list to show only starred sessions. This is useful when you are at the bench deciding which loads to press again and want to pull up only the sessions that produced your best results.
 
-<!-- TODO: Add screenshot showing starred sessions in the list with the star filter active, and the corresponding starred lots visible in the Journal -->
 ![Screenshot: Range Log with starred sessions highlighted and the starred filter button active](./images/range-log-starred.png)
 
 ### 6.4 Range Log Statistics
 
 The **statistics panel** at the top of the Range Log gives you an at-a-glance performance summary across all your recorded sessions. Click the bar to expand it.
 
-<!-- TODO: Add screenshot of the Range Log statistics panel expanded, showing KPI tiles and Rounds by Load cards -->
+
 ![Screenshot: Range Log statistics panel expanded, showing KPI tiles and Rounds by Load cards with fps, SD, and group data](./images/range-log-stats.png)
 
 The panel has two sections:
@@ -766,14 +759,12 @@ The **Targets** tab has three sub-tabs:
 - **Compare**: a sortable cross-target table that shows every target linked to a range session. Filter by load to see a summary of best ES, average MV, and best group size across all sessions for that load. Use the open button on any row to navigate directly to the target in Target Analysis.
 - **Target Generator**: design and print custom target sheets from scratch. Define concentric scoring rings, set the page layout (columns × rows), choose colours and ring diameters, add grid overlays, and annotate each slot with load and firearm details before printing.
 
-<!-- TODO: Add screenshot of the Targets tab showing the three sub-tab buttons (Target Analysis, Compare, and Target Generator) at the top of the tab -->
 ![Screenshot: Targets tab showing the Target Analysis, Compare, and Target Generator sub-tab buttons](./images/targets-subtabs.png)
 
 ---
 
 ### 7.1 Target Analysis sub-tab
 
-<!-- TODO: Add screenshot of the Target Analysis sub-tab showing the three-panel layout: target list on the left, annotated canvas in the centre, configuration and statistics sidebar on the right -->
 ![Screenshot: Targets tab, target list panel, annotated image canvas, and configuration/statistics sidebar](./images/targets-overview.png)
 
 The Target Analysis sub-tab has a three-panel layout:
@@ -954,7 +945,6 @@ Once linked:
 - In the Range Log, a **target icon** (scope) appears on the linked session's action buttons. Click it to jump back to this target in the Targets tab.
 - When you **print** the linked range session, the printed output automatically includes the annotated target image and key statistics; no extra steps needed (see [Section 7.1.8](#718-printing-a-target) and [Section 6.2](#62-managing-range-sessions)).
 
-<!-- TODO: Add screenshot of the Session field in the Configuration sidebar showing a linked session selected, with the navigate button visible next to the select control -->
 ![Screenshot: Configuration sidebar session field with a session selected and the navigate button visible](./images/targets-session-link.png)
 
 #### 7.1.8 Printing a Target
@@ -970,7 +960,6 @@ When multiple groups are present, the view that is currently active (All, a spec
 
 > Printing a **range session** from the Range Log automatically includes the linked target's image and statistics at the bottom of the session sheet; see [Section 6.2](#62-managing-range-sessions).
 
-<!-- TODO: Add screenshot of the printed target output showing the annotated image with ES line, mean radius circle, CEP50 circle, shot numbers, and the statistics table alongside -->
 ![Screenshot: Printed target output showing annotated target image with overlay graphics and key statistics table](./images/targets-print-output.png)
 
 ---
@@ -979,7 +968,6 @@ When multiple groups are present, the view that is currently active (All, a spec
 
 The **Compare** sub-tab aggregates every target that has been linked to a Range Log session into a single sortable table. Where Target Analysis is for deep inspection of a single target, Compare is for answering the question across all your sessions: *which load, charge, and seating depth produced the best groups and the most consistent velocity?*
 
-<!-- TODO: Add screenshot of the Compare sub-tab showing the filter bar, summary bar, and table rows -->
 ![Screenshot: Compare sub-tab showing the load filter, summary bar with best ES and avg MV, and the sortable table of target results](./images/targets-compare.png)
 
 #### How rows are populated
@@ -1054,7 +1042,7 @@ Click **New Target Sheet** in the page header to open the designer with a blank 
 
 Click **Save Sheet** to save or **Cancel** to discard changes. The **Print** button in the designer header opens the print dialog directly from the editor.
 
-<!-- TODO: Add screenshot of the Target Sheet designer showing the left configuration panel and the right real-time print preview -->
+
 ![Screenshot: Target Sheet designer, left configuration panel with sheet settings and ring controls, right panel showing real-time print preview of the target layout](./images/target-generator-designer.png)
 
 #### 7.3.2 Configuring Rings
@@ -1118,7 +1106,6 @@ Each card has three action buttons:
 
 Click the card itself to reopen the designer and edit the sheet.
 
-<!-- TODO: Add screenshot of the Target Generator sheet list showing several saved sheet cards with ring colour swatches and action buttons -->
 ![Screenshot: Target Generator sheet list showing saved sheet cards with ring colour swatches, sheet name, layout summary, and duplicate/print/delete action buttons](./images/target-generator-cards.png)
 
 #### 7.3.6 Printing a Target Sheet
