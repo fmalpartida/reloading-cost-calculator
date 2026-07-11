@@ -1,4 +1,4 @@
-# Reloading Tracker 2.6.6: User Guide
+# Reloading Tracker 2.6.7: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -160,15 +160,28 @@ The application has seven main tabs accessible from the navigation bar at the to
 | **Firearms** | Registry of your firearm profiles: type, caliber, action, barrel, and twist data |
 | **Journal** | Log pressing sessions with auto-incrementing lot numbers, dates, quantities, and notes |
 | **Range Log** | Record range sessions: firearm, distance, lots fired, round counts, performance notes |
-| **Targets** | Three sub-tabs: **Target Analysis**: upload target photos, mark impacts, measure group statistics, and link to range sessions; **Compare**: cross-target table of linked sessions, filterable by load, with ES, MV, SD, group size, and a summary bar showing best results per load; **Target Generator**: design and print custom target sheets with configurable scoring rings, grid overlays, and load annotations |
+| **Targets** | Three sub-tabs: **Target Analysis**: upload target photos, mark impacts, measure group statistics, and link to range sessions; **Compare**: cross-target table of linked sessions, filterable by load, with MV, SD, computed group size, and mean radius, plus a summary bar showing best results per load; **Target Generator**: design and print custom target sheets with configurable scoring rings, grid overlays, and load annotations |
 | **Cost Tools** | Break-even chart showing when reloading pays off after equipment investment & Side-by-side cost breakdown for selected reload and factory entries |
 
 An **Editor** tab appears automatically whenever you are adding or editing an ammo entry.
 
 There are also built-in **Tour**, **About**, and **Settings** controls in the top navigation area. Tour launches a guided walkthrough of the main areas of the application, About shows application/version/author/license information, and Settings lets you adjust display preferences such as theme behavior, currency symbol, and cost precision.
 
-<!-- IMAGE MAY NEED UPDATING: navigation bar now includes the Firearms tab between My Components and Journal -->
+**Customizing the tab bar**
+
+A pencil-icon **Customize Tabs** button sits to the right of the tabs. Click it to open a dialog where you can:
+
+- **Reorder tabs** by dragging them into any position using the grip handle
+- **Hide tabs** you do not use by unchecking them — at least one tab must always stay visible
+- **Reset to Default** to restore the original order and visibility at any time
+
+Your tab layout is saved automatically and persists across sessions.
+
 ![Reloading Tracker: main application and navigation tabs](./images/header-tabs.png)
+
+Move the tabs in the application to customize your workflow. Hide those parts of the application you don't use.
+
+![Reloading Tracker: Customizing tabs](./images/custom-tabs.png)
 
 ---
 
@@ -968,7 +981,8 @@ When multiple groups are present, the view that is currently active (All, a spec
 
 The **Compare** sub-tab aggregates every target that has been linked to a Range Log session into a single sortable table. Where Target Analysis is for deep inspection of a single target, Compare is for answering the question across all your sessions: *which load, charge, and seating depth produced the best groups and the most consistent velocity?*
 
-![Screenshot: Compare sub-tab showing the load filter, summary bar with best ES and avg MV, and the sortable table of target results](./images/targets-compare.png)
+
+![Screenshot: Compare sub-tab showing the load filter, summary bar with best group and avg MV, and the sortable table of target results](./images/targets-compare.png)
 
 #### How rows are populated
 
@@ -987,13 +1001,10 @@ A row appears in the Compare table for every target record that has been linked 
 | **Shots** | Number of shots recorded in the linked lot |
 | **MV (fps)** | Average muzzle velocity from the range session lot |
 | **SD** | Standard deviation of velocity from the range session lot |
-| **ES** | Extreme spread computed from the target image in Target Analysis |
+| **Group** | Extreme spread computed from the target image in Target Analysis |
 | **Mean R.** | Mean radius computed from the target image |
-| **Group ✎** | Group size manually entered in the Range Log |
 
 Click any sortable column header to sort the table by that field. Click again to reverse the sort direction.
-
-> **ES vs Group ✎.** ES is derived automatically from the target image by the image analysis algorithm. Group ✎ is the value you typed into the Range Log session form. The two can differ slightly because the image analysis measures centre-to-centre extreme spread whereas the manually entered value may reflect a different measurement convention.
 
 #### Filtering by load
 
@@ -1002,13 +1013,12 @@ Use the **Load** filter at the top to narrow the table to a single load. When a 
 | Stat | Description |
 |------|-------------|
 | **Sessions** | Number of targets linked to this load |
-| **Best ES** | Lowest extreme spread recorded across all targets for this load |
 | **Avg MV** | Mean of average muzzle velocities across all sessions for this load |
-| **Best Group ✎** | Lowest manually entered group size across all sessions for this load |
+| **Best Group** | Lowest extreme spread (computed from the target image) across all sessions for this load |
 
 #### Best row indicator
 
-When a load is shown with two or more rows, the row with the lowest ES value is highlighted with a ★ badge in the ES column, making it easy to spot your standout session at a glance.
+When a load is shown with two or more rows, the row with the lowest Group value is highlighted with a ★ badge in the Group column, making it easy to spot your standout session at a glance.
 
 #### Opening a target from the table
 
