@@ -1,4 +1,4 @@
-# Reloading Tracker 2.6.7: User Guide
+# Reloading Tracker 2.7.0: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -65,6 +65,7 @@ Enjoying Reloading Tracker? Every cup of coffee you send my way helps keep the p
      - [Aggregate View](#716-aggregate-view)
      - [Linking to a Range Session](#717-linking-to-a-range-session)
      - [Printing a Target](#718-printing-a-target)
+     - [Aggregating Groups Across Targets](#719-aggregating-groups-across-targets)
    - [Compare](#72-compare-sub-tab)
    - [Target Generator](#73-target-generator-sub-tab)
      - [Creating a Target Sheet](#731-creating-a-target-sheet)
@@ -160,7 +161,7 @@ The application has seven main tabs accessible from the navigation bar at the to
 | **Firearms** | Registry of your firearm profiles: type, caliber, action, barrel, and twist data |
 | **Journal** | Log pressing sessions with auto-incrementing lot numbers, dates, quantities, and notes |
 | **Range Log** | Record range sessions: firearm, distance, lots fired, round counts, performance notes |
-| **Targets** | Three sub-tabs: **Target Analysis**: upload target photos, mark impacts, measure group statistics, and link to range sessions; **Compare**: cross-target table of linked sessions, filterable by load, with MV, SD, computed group size, and mean radius, plus a summary bar showing best results per load; **Target Generator**: design and print custom target sheets with configurable scoring rings, grid overlays, and load annotations |
+| **Targets** | Three sub-tabs: **Target Analysis**: upload target photos, mark impacts, measure group statistics, link to range sessions, and aggregate groups across multiple targets into one combined view; **Compare**: cross-target table of linked sessions, filterable by load, with MV, SD, computed group size, and mean radius, plus a summary bar showing best results per load; **Target Generator**: design and print custom target sheets with configurable scoring rings, grid overlays, and load annotations |
 | **Cost Tools** | Break-even chart showing when reloading pays off after equipment investment & Side-by-side cost breakdown for selected reload and factory entries |
 
 An **Editor** tab appears automatically whenever you are adding or editing an ammo entry.
@@ -172,7 +173,7 @@ There are also built-in **Tour**, **About**, and **Settings** controls in the to
 A pencil-icon **Customize Tabs** button sits to the right of the tabs. Click it to open a dialog where you can:
 
 - **Reorder tabs** by dragging them into any position using the grip handle
-- **Hide tabs** you do not use by unchecking them — at least one tab must always stay visible
+- **Hide tabs** you do not use by unchecking them - at least one tab must always stay visible
 - **Reset to Default** to restore the original order and visibility at any time
 
 Your tab layout is saved automatically and persists across sessions.
@@ -470,7 +471,7 @@ Each component card has three action buttons:
 
 ![Screenshot: Inventory card action buttons](./images/inventory-card-actions.png)
 
-In **Table view**, the **Stock** column shows the current quantity on hand for each component, formatted with a unit suffix (*primers*, *rounds*, *cases*, *lb*, or *kg*). Components with no stock quantity set show a dash (—). A **Low** badge appears in the same cell when stock is at or below the threshold.
+In **Table view**, the **Stock** column shows the current quantity on hand for each component, formatted with a unit suffix (*primers*, *rounds*, *cases*, *lb*, or *kg*). Components with no stock quantity set show a dash (-). A **Low** badge appears in the same cell when stock is at or below the threshold.
 
 ### 3.3 Linking Inventory to Loads
 
@@ -701,8 +702,8 @@ Use the **⧉** duplicate button on any lot row to quickly copy it when firing m
 
 Click **Save Session** when done. You can add as many lots as you fired during the outing.
 
-**Velocity unit**
-The **fps / m/s** toggle in the page header switches the velocity display unit for all sessions and the add/edit form at once. The preference is saved so the Range Log always opens in your chosen unit. Velocity values are always stored internally in fps; toggling the display never changes your recorded numbers.
+**Unit system**
+The **Imperial / Metric** toggle in the page header switches how velocity, group size, and distance are displayed across the Range Log (including the add/edit form) and the Target Comparison table - both share the same preference, so switching it in either place updates the other too. The preference is saved so these views always open in your chosen unit. Underlying values are always stored in their original unit (fps, inches, yards, etc.); toggling the display never changes your recorded numbers.
 
 
 ### 6.2 Managing Range Sessions
@@ -975,14 +976,41 @@ When multiple groups are present, the view that is currently active (All, a spec
 
 ![Screenshot: Printed target output showing annotated target image with overlay graphics and key statistics table](./images/targets-print-output.png)
 
+#### 7.1.9 Aggregating Groups Across Targets
+
+The **Aggregate View** (Section 7.1.6) combines groups within a single target. To compare groups fired on *different* target photos or range sessions (for example, several loads each shot on their own target) use an **Aggregate**, a separate saved record listed alongside your targets.
+
+**Creating an aggregate**
+Click **+ Aggregate** above the target list, give it a name, and select two or more targets that each have at least one group. The aggregate appears in its own **Aggregates** section in the list, above your targets.
+
+**Viewing an aggregate**
+Selecting an aggregate opens a read-only view: every included group is pooled onto a blank canvas, each re-centred on its own centroid (the same "centers aligned" convention as the single-target Aggregate view), color-coded by source group, with combined statistics and a scale ruler. No photos are shown - only the shot geometry.
+
+Two things can be changed from this view:
+- **Included Groups** - a checklist of every group across the aggregated targets. Uncheck a group to exclude it from the combined view and statistics; at least one group must stay included. This choice is saved with the aggregate.
+- **Imperial / Metric** - the same toggle used elsewhere in the app; also saved with the aggregate.
+
+Everything else is read-only. Renaming the aggregate and deleting it (✕ on its list row) are the only other available actions - the underlying targets and their data are never affected.
+
+**Stays in sync automatically**
+An aggregate does not copy any data from its source targets; it always reads their current state. If you later add an impact, move a shot, or adjust a group on any of the aggregated targets, the aggregate reflects the change immediately the next time you view it. If a source target is deleted, the aggregate simply drops its groups and continues showing the rest.
+
+**Printing**
+Click **Print** in the aggregate's toolbar for the same print output as a regular target, with a header noting which targets it was aggregated from.
+
+![Screenshot: An aggregate's read-only view showing pooled, color-coded groups from two different targets, the Included Groups checklist, and combined statistics](./images/targets-aggregate-cross-target.png)
+
 ---
 
 ### 7.2 Compare sub-tab
 
 The **Compare** sub-tab aggregates every target that has been linked to a Range Log session into a single sortable table. Where Target Analysis is for deep inspection of a single target, Compare is for answering the question across all your sessions: *which load, charge, and seating depth produced the best groups and the most consistent velocity?*
 
+**Unit system**
+The **Imperial / Metric** toggle next to the Load filter shares the same preference as the Range Log's toggle (see [Section 6.1](#61-logging-a-range-session)) - switching it in either view updates both. It controls how velocity, distance, group size, and mean radius are displayed here, converting on the fly regardless of the unit each individual target or session was originally recorded in, so every row in the table stays directly comparable.
 
-![Screenshot: Compare sub-tab showing the load filter, summary bar with best group and avg MV, and the sortable table of target results](./images/targets-compare.png)
+
+![Screenshot: Compare sub-tab showing the load filter, unit toggle, summary bar with best group and avg MV, and the sortable table of target results](./images/targets-compare.png)
 
 #### How rows are populated
 
@@ -997,12 +1025,12 @@ A row appears in the Compare table for every target record that has been linked 
 | **Load** | Load name from the linked session lot |
 | **Charge** | Charge weight from the lot (blank for factory ammo) |
 | **CBTO / COAL** | Cartridge base-to-ogive / cartridge overall length from the lot (CBTO shown when available) |
-| **Dist.** | Shooting distance from the range session |
+| **Dist.** | Shooting distance from the range session, converted to the selected unit system |
 | **Shots** | Number of shots recorded in the linked lot |
-| **MV (fps)** | Average muzzle velocity from the range session lot |
-| **SD** | Standard deviation of velocity from the range session lot |
-| **Group** | Extreme spread computed from the target image in Target Analysis |
-| **Mean R.** | Mean radius computed from the target image |
+| **MV** | Average muzzle velocity from the range session lot, in the selected unit system (fps or m/s) |
+| **SD** | Standard deviation of velocity from the range session lot, in the selected unit system |
+| **Group** | Extreme spread computed from the target image in Target Analysis, converted to the selected unit system |
+| **Mean R.** | Mean radius computed from the target image, converted to the selected unit system |
 
 Click any sortable column header to sort the table by that field. Click again to reverse the sort direction.
 
@@ -1315,7 +1343,7 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 - **Star your reference loads.** Once you find a load that functions and groups well, star that range session. The starred filter gives you a quick shortlist when you are deciding what to press next. Starring a session also stars the linked journal lots automatically, so both records are flagged together.
 - **Remaining Rounds keeps your shelf count accurate.** Log rounds against journal lots in the Range Log using **From Journal** mode and the Remaining column updates automatically. Lots that reach zero are marked Depleted and hidden from the From Journal dropdown so you cannot accidentally log against an empty lot.
 - **Archive completed lots to keep the journal tidy.** Once a lot is fully fired and you no longer need it in the active list, archive it. The lot stays in your history and still contributes to statistics; it just does not appear in the main journal table. Restore it at any time if you need to reference or reprint the label.
-- **Velocity unit preference is global.** The fps / m/s toggle in the Range Log header applies to every session in the list and carries over into the add and edit forms. Switch once; it stays set until you toggle it again.
+- **Unit system preference is shared.** The Imperial / Metric toggle in the Range Log header controls how velocity, distance, and group size are displayed there, in the add/edit form, and in the Target Comparison table. Switch it once in any of those views and it stays set everywhere until you toggle it again.
 - **Range Log data is included in export files.** When you export your library, your full range log history is included. Import it on another machine and your field records move with you.
 - **Firearms Registry data is included in export files.** All firearm profiles are exported with your library and restored on import, so your full registry travels with your data.
 - **Add firearm profiles before logging range sessions.** Populating the Firearms Registry before your first range session means the firearm selector in the Range Log form will already have your guns listed, saving you from typing them out each time.
