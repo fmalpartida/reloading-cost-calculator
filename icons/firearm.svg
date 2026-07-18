@@ -1,14 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Barrel -->
-  <line x1="2" y1="10" x2="13" y2="10"/>
-  <!-- Slide body -->
-  <rect x="11" y="7" width="10" height="6" rx="1.5"/>
-  <!-- Frame -->
-  <polyline points="11,13 15,13 15,21"/>
-  <!-- Grip bottom -->
-  <line x1="12" y1="21" x2="15" y2="21"/>
-  <!-- Grip front -->
-  <line x1="12" y1="13" x2="12" y2="21"/>
-  <!-- Trigger guard -->
-  <path d="M12 13 Q9.5 13 9.5 15.5 Q9.5 18 12 18"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+  <!-- barrel -->
+  <rect x="2" y="8" width="13" height="3.2" rx="1"/>
+  <!-- rear hammer hump -->
+  <path d="M13,8 L17,8 L17,5.5 L19,5.5 L19,11 L13,11 Z"/>
+  <!-- grip -->
+  <path d="M13,11 L19,11 L16.5,20.5 L12,20.5 L12,13 Z"/>
+  <!-- trigger guard -->
+  <ellipse cx="9.5" cy="15" rx="2.6" ry="2.8" fill="none" stroke="white" stroke-width="1.6"/>
 </svg>
