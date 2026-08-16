@@ -1,4 +1,4 @@
-# Reloading Tracker 2.7.1: User Guide
+# Reloading Tracker 2.8.1: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -158,7 +158,7 @@ The application has seven main tabs accessible from the navigation bar at the to
 |-----|---------|
 | **My Ammo** | Library of all your ammo entries: reloads and factory |
 | **My Components** | Global catalog of reloading components: powders, primers, bullets, and brass |
-| **Firearms** | Registry of your firearm profiles: type, caliber, action, barrel, and twist data |
+| **Firearms** | Registry of your firearm profiles: type, caliber, action, barrel, and twist data, plus a photo, serial number, and price |
 | **Journal** | Log pressing sessions with auto-incrementing lot numbers, dates, quantities, and notes |
 | **Range Log** | Record range sessions: firearm, distance, lots fired, round counts, performance notes |
 | **Targets** | Three sub-tabs: **Target Analysis**: upload target photos, mark impacts, measure group statistics, link to range sessions, and aggregate groups across multiple targets into one combined view; **Compare**: cross-target table of linked sessions, filterable by load, with MV, SD, computed group size, and mean radius, plus a summary bar showing best results per load; **Target Generator**: design and print custom target sheets with configurable scoring rings, grid overlays, and load annotations |
@@ -412,6 +412,8 @@ Like My Ammo, My Components also supports **Card** and **Table** views through t
 
 Click **Add Component** in the top-right corner, or click the small **+** button in any group header to pre-select that component type.
 
+The form is organised into labeled sections - **Basics** for every type (plus **Specs** and **Pricing** for bullets), and for brass, **Consistency & Fit** and **Annealing** on top of Basics - followed by a shared **Stock** section at the end.
+
 **Component Type**  
 Choose one of the four types using the selector buttons at the top of the form. Once a component is saved the type cannot be changed; duplicate it and delete the original if you need a different type.
 
@@ -430,6 +432,16 @@ Select **Imperial (lb)** or **Metric (kg)**. This carries through to any load th
 
 **Times Reloaded** *(brass only)*  
 How many reloads each case is expected to survive before replacement. This amortises the brass cost across that many rounds.
+
+**Consistency & Fit** *(brass only, optional)*  
+Fields aimed at precision reloading, where case-to-case consistency matters as much as cost:
+- **Case Weight (gr)** - average case weight, useful for judging lot consistency or comparing to a new batch.
+- **Dedicated Rifle** - a searchable dropdown of your Firearms Registry profiles. Use this when a batch of brass is fire-formed to one chamber (common with tight-neck or custom chambers) and shouldn't be mixed with brass for another rifle in the same caliber.
+- **Shoulder Bump (in)** - the target shoulder bump you dial in when full-length sizing for this brass/rifle combination, e.g. *0.002*.
+
+**Annealing** *(brass only, optional)*  
+- **Annealer** - the machine or method used, e.g. *AMP Press*, *torch*.
+- **Annealer Settings** - free text for the specifics of your process, e.g. *PID 4, 5.5s dwell*.
 
 **Notes**  
 Optional free-text field for lot numbers, suppliers, or any other reference.
@@ -450,12 +462,13 @@ Click **Save** to add the component. The card appears immediately in its group.
 
 Each component card shows:
 - Component name and type icon
-- **Price**: the raw price as entered (e.g. *$89.99 / 4 lb*)
-- **Per unit**: the derived cost per lb/kg or per single primer/bullet/case (e.g. *$22.50/lb*)
+- **Price**: the effective per-unit cost (e.g. *$22.50/lb*, or *$0.16 ea* for a primer). The raw price and quantity you entered stay editable as two separate fields in the form; only the derived per-unit figure is shown in the card or table to keep the list compact.
 - **Stock**: current quantity on hand, shown only when a stock quantity has been entered. Powder stock is shown to four decimal places; all other types show a whole number. A **Low** badge appears inline when the quantity is at or below the configured threshold.
 - Brass **Reloads** count (brass cards only)
 - Bullet **caliber**, **diameter** and **weight** (bullets only)
 - Notes (if any)
+
+For brass with any **Consistency & Fit** or **Annealing** fields set, a **Details** row appears with one or two small icon buttons - a ruler for Consistency & Fit, a flame for Annealing. Hover (or focus) an icon to see the full details in a tooltip; icons only appear for the categories that actually have data entered.
 
 ![Screenshot: Inventory card showing price and per-unit fields](./images/inventory-card.png)
 
@@ -472,6 +485,8 @@ Each component card has three action buttons:
 ![Screenshot: Inventory card action buttons](./images/inventory-card-actions.png)
 
 In **Table view**, the **Stock** column shows the current quantity on hand for each component, formatted with a unit suffix (*primers*, *rounds*, *cases*, *lb*, or *kg*). Components with no stock quantity set show a dash (-). A **Low** badge appears in the same cell when stock is at or below the threshold.
+
+For brass, an **Info** column shows the same Consistency & Fit / Annealing icon buttons as the card view, keeping the table compact instead of adding a separate column per field.
 
 ### 3.3 Linking Inventory to Loads
 
@@ -498,7 +513,7 @@ In the expanded card view under My Ammo, any component that originates from the 
 
 ## 4. Firearms Registry
 
-The **Firearms** tab is a dedicated catalog of the firearms you own and shoot. Every firearm you add here becomes available in the Range Log session form as a selectable option, keeping your range session records consistently tied to a known firearm profile rather than free-typed names. Profiles capture the mechanical details that matter for long-range and load-development work: caliber, action type, barrel length, and twist rate.
+The **Firearms** tab is a dedicated catalog of the firearms you own and shoot. Every firearm you add here becomes available in the Range Log session form as a selectable option, keeping your range session records consistently tied to a known firearm profile rather than free-typed names. Profiles capture the mechanical details that matter for long-range and load-development work - caliber, action type, barrel length, and twist rate - as well as a photo, serial number, and purchase price for your own records.
 
 ![Screenshot: Firearms tab showing firearm profiles in card view, grouped by caliber, with caliber filter chips](./images/firearms-overview.png)
 
@@ -510,15 +525,18 @@ Click **Add Firearm** in the top-right corner of the Firearms tab. A dialog open
 |-------|----------|-------------|
 | **Name** | Yes | A descriptive label for the firearm, e.g. *Remington 700 SPS*, *Glock 17 Gen 5*. |
 | **Firearm Type** | No | Broad category: **Rifle**, **Handgun**, **Shotgun**, or **Other**. |
-| **Caliber** | No | The cartridge the firearm is chambered in, e.g. *.308 Win*, *9mm Luger*. Used for grouping and caliber filter chips. |
 | **Action Type** | No | Operating mechanism: **Bolt**, **Semi-Auto**, **Lever**, **Pump**, **Single Shot**, **Revolver**, or **Other**. |
+| **Caliber** | No | The cartridge the firearm is chambered in, e.g. *.308 Win*, *9mm Luger*. Used for grouping and caliber filter chips. |
 | **Barrel Length** | No | Free text, e.g. *24 in*, *16.5"*. |
 | **Twist Rate** | No | Rifling twist rate, e.g. *1:10*, *1:8*. Relevant for bullet stabilisation in load development. |
+| **Photo** | No | Upload a photo of the firearm (HEIC photos from iPhone are converted automatically). It's resized and compressed for storage, then shown as a thumbnail everywhere the firearm appears - see 4.4 below. Click **Remove** to clear it. |
+| **Serial Number** | No | For your own records. |
+| **Price** | No | What you paid for the firearm. |
 | **Notes** | No | Any other reference: optics setup, known issues, purchase date, etc. |
 
 Click **Add Firearm** in the dialog footer to save. The profile appears immediately in the Firearms list and becomes available in the Range Log firearm selector.
 
-![Screenshot: Firearm form dialog showing Name, Firearm Type, Caliber, Action Type, Barrel Length, Twist Rate, and Notes fields](./images/firearm-form-dialog.png)
+![Screenshot: Firearm form dialog showing Name, Firearm Type, Action Type, Caliber, Barrel Length, Twist Rate, Photo, Serial Number, Price, and Notes fields](./images/firearm-form-dialog.png)
 
 ### 4.2 Managing Firearm Profiles
 
@@ -549,9 +567,11 @@ Clearing the search box resets the list to all profiles (subject to any active c
 
 The **Cards / Table** toggle in the page header switches the display layout. The preference is saved between sessions so the Firearms tab always opens in your last-used view.
 
-**Card view** (default): each firearm appears as a tile showing all populated fields. Fields that were left blank are omitted from the card to keep it uncluttered. The Type badge and Action tag appear as styled chips.
+**Card view** (default): each firearm appears as a tile showing all populated fields, including Serial Number and Price when set. Fields that were left blank are omitted from the card to keep it uncluttered. The Type badge and Action tag appear as styled chips. If a photo is set, it replaces the generic firearm icon in the card header as a small thumbnail.
 
-**Table view**: profiles are displayed as rows in a denser layout with columns for Name, Type, Action, Barrel, Twist, and Notes. This view is more efficient for scanning a large registry at a glance.
+**Table view**: profiles are displayed as rows in a denser layout with columns for Photo, Name, Type, Action, Barrel, Twist, Serial, Price, and Notes. This view is more efficient for scanning a large registry at a glance.
+
+**Photo thumbnails and hover-to-zoom**: wherever a firearm photo appears - the card header or the table's Photo column - it's shown as a small thumbnail. Hover over (or focus) a thumbnail to see the full-size photo in a popup, without leaving the list.
 
 In both views, profiles are grouped by caliber. Firearms without a caliber appear in an **Uncategorized** group at the bottom.
 
@@ -1117,8 +1137,12 @@ Each annotation has a **mode toggle**:
 
 | Mode | Fields |
 |------|--------|
-| **Handload** | **Journal Lot** (searchable dropdown from your journal entries), Firearm, Distance, Group size, Avg velocity, SD, Notes |
-| **Factory** | Cartridge name, Lot #, Firearm, Distance, Group size, Avg velocity, SD, Notes |
+| **Handload** | **Journal Lot** (searchable dropdown from your journal entries), Firearm, Shots, Distance, Notes |
+| **Factory** | Cartridge name, Lot #, Firearm, Shots, Distance, Notes |
+
+Firearm and Shots sit side by side in one row, directly above the matching Distance/Unit row, so the two line up.
+
+Group size, Avg velocity, and SD are **not** data-entry fields - they're not something you'd know before shooting. Instead they always print on the target as blank labelled fields (e.g. *GRP:*, *VEL:*, *SD:*) for you to fill in by hand at the range once you have the results.
 
 **Filling multiple targets quickly**
 
@@ -1293,7 +1317,7 @@ The application still defaults to the **dark theme** on first launch. If you ena
 
 ## 12. Import & Export
 
-Your entire library (ammo entries, tax defaults, equipment costs, load selections, component inventory, reloading journal, range log, firearm profiles, and target analysis records including photos) can be saved to a file and restored later or transferred to another computer.
+Your entire library (ammo entries, tax defaults, equipment costs, load selections, component inventory, reloading journal, range log, firearm profiles including photos, and target analysis records including photos) can be saved to a file and restored later or transferred to another computer.
 
 **Exporting**
 Click **Export** in the top navigation bar. A `.zip` file is downloaded to your machine. The archive contains all your data and any target photos you have uploaded, compressed into a single portable file.
