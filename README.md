@@ -45,6 +45,7 @@ Enjoying Reloading Tracker? Every cup of coffee you send my way helps keep the p
    - [Managing Firearm Profiles](#42-managing-firearm-profiles)
    - [Filtering and Searching](#43-filtering-and-searching)
    - [Card and Table Views](#44-card-and-table-views)
+   - [Firearm Datasheet](#45-firearm-datasheet)
 5. [Reloading Journal](#5-reloading-journal)
    - [Logging a Session](#51-logging-a-session)
    - [Managing Journal Entries](#52-managing-journal-entries)
@@ -158,7 +159,7 @@ The application has seven main tabs accessible from the navigation bar at the to
 |-----|---------|
 | **My Ammo** | Library of all your ammo entries: reloads and factory |
 | **My Components** | Global catalog of reloading components: powders, primers, bullets, and brass |
-| **Firearms** | Registry of your firearm profiles: type, caliber, action, barrel, and twist data, plus a photo, serial number, and price |
+| **Firearms** | Registry of your firearm profiles: type, caliber, action, barrel, and twist data, plus a photo, serial number, price, and mounted optic details |
 | **Journal** | Log pressing sessions with auto-incrementing lot numbers, dates, quantities, and notes |
 | **Range Log** | Record range sessions: firearm, distance, lots fired, round counts, performance notes |
 | **Targets** | Three sub-tabs: **Target Analysis**: upload target photos, mark impacts, measure group statistics, link to range sessions, and aggregate groups across multiple targets into one combined view; **Compare**: cross-target table of linked sessions, filterable by load, with MV, SD, computed group size, and mean radius, plus a summary bar showing best results per load; **Target Generator**: design and print custom target sheets with configurable scoring rings, grid overlays, and load annotations |
@@ -513,13 +514,15 @@ In the expanded card view under My Ammo, any component that originates from the 
 
 ## 4. Firearms Registry
 
-The **Firearms** tab is a dedicated catalog of the firearms you own and shoot. Every firearm you add here becomes available in the Range Log session form as a selectable option, keeping your range session records consistently tied to a known firearm profile rather than free-typed names. Profiles capture the mechanical details that matter for long-range and load-development work - caliber, action type, barrel length, and twist rate - as well as a photo, serial number, and purchase price for your own records.
+The **Firearms** tab is a dedicated catalog of the firearms you own and shoot. Every firearm you add here becomes available in the Range Log session form as a selectable option, keeping your range session records consistently tied to a known firearm profile rather than free-typed names. Profiles capture the mechanical details that matter for long-range and load-development work - caliber, action type, barrel length, and twist rate - as well as a photo, serial number, purchase price, and the optic mounted on the firearm.
 
 ![Screenshot: Firearms tab showing firearm profiles in card view, grouped by caliber, with caliber filter chips](./images/firearms-overview.png)
 
 ### 4.1 Adding a Firearm Profile
 
-Click **Add Firearm** in the top-right corner of the Firearms tab. A dialog opens with the following fields:
+Click **Add Firearm** in the top-right corner of the Firearms tab. The dialog is organised into a **Firearm** section and an optional **Optics** section.
+
+**Firearm**
 
 | Field | Required | Description |
 |-------|----------|-------------|
@@ -529,14 +532,35 @@ Click **Add Firearm** in the top-right corner of the Firearms tab. A dialog open
 | **Caliber** | No | The cartridge the firearm is chambered in, e.g. *.308 Win*, *9mm Luger*. Used for grouping and caliber filter chips. |
 | **Barrel Length** | No | Free text, e.g. *24 in*, *16.5"*. |
 | **Twist Rate** | No | Rifling twist rate, e.g. *1:10*, *1:8*. Relevant for bullet stabilisation in load development. |
-| **Photo** | No | Upload a photo of the firearm (HEIC photos from iPhone are converted automatically). It's resized and compressed for storage, then shown as a thumbnail everywhere the firearm appears - see 4.4 below. Click **Remove** to clear it. |
+| **Photo** | No | Upload a photo of the firearm (HEIC photos from iPhone are converted automatically). It's resized and compressed for storage, then shown as a thumbnail everywhere the firearm appears - see 4.4 and 4.5 below. Click **Remove** to clear it. |
 | **Serial Number** | No | For your own records. |
 | **Price** | No | What you paid for the firearm. |
-| **Notes** | No | Any other reference: optics setup, known issues, purchase date, etc. |
 
-Click **Add Firearm** in the dialog footer to save. The profile appears immediately in the Firearms list and becomes available in the Range Log firearm selector.
+**Optics** *(optional)*
 
-![Screenshot: Firearm form dialog showing Name, Firearm Type, Action Type, Caliber, Barrel Length, Twist Rate, Photo, Serial Number, Price, and Notes fields](./images/firearm-form-dialog.png)
+Fields for the scope or sight mounted on the firearm:
+
+| Field | Description |
+|-------|-------------|
+| **Manufacturer** | e.g. *Vortex*, *Leupold*. |
+| **Model** | e.g. *Razor HD Gen III*. |
+| **Type** | **Scope**, **Red Dot**, **Holographic**, **Prism**, **LPVO**, **Iron Sights**, or **Other**. |
+| **Magnification** | Free text, e.g. *4.5-27x56*, *1x*. |
+| **Focal Plane** | **FFP** or **SFP**. |
+| **Reticle** | Free text, e.g. *EBR-7C MOA*, *TMR*. |
+| **Turret Units** | **MOA** or **MRAD**. |
+| **Zero Distance** | Free text, e.g. *100 yd*. |
+
+Leave the Optics fields blank if the firearm has no optic mounted, or if you'd rather not track it - the Optics section is skipped everywhere in the UI when no optic field is set.
+
+**Notes**
+
+Any other reference: known issues, purchase date, etc.
+
+Click **Save** to add the firearm. The profile appears immediately in the Firearms list and becomes available in the Range Log firearm selector.
+
+
+![Screenshot: Firearm form dialog showing the Firearm section (Name, Type, Action, Caliber, Barrel, Twist, Photo, Serial, Price) and the Optics section (Manufacturer, Model, Type, Magnification, Focal Plane, Reticle, Turret Units, Zero Distance)](./images/firearm-form-dialog.png)
 
 ### 4.2 Managing Firearm Profiles
 
@@ -567,15 +591,23 @@ Clearing the search box resets the list to all profiles (subject to any active c
 
 The **Cards / Table** toggle in the page header switches the display layout. The preference is saved between sessions so the Firearms tab always opens in your last-used view.
 
-**Card view** (default): each firearm appears as a tile showing all populated fields, including Serial Number and Price when set. Fields that were left blank are omitted from the card to keep it uncluttered. The Type badge and Action tag appear as styled chips. If a photo is set, it replaces the generic firearm icon in the card header as a small thumbnail.
+**Card view** (default): each firearm appears as a compact tile. The header shows the photo thumbnail (or a generic firearm icon if none is set) and the name. The body shows only the core fields that are populated - the Type and Action badges share a row, Barrel and Twist share a row, followed by Serial, an **Optic** row, and Price, each on its own line. Notes (if any) appear at the bottom, truncated with a small icon if long - hover or focus it to read the full text in a tooltip. Fields left blank are omitted entirely to keep the card compact.
 
-**Table view**: profiles are displayed as rows in a denser layout with columns for Photo, Name, Type, Action, Barrel, Twist, Serial, Price, and Notes. This view is more efficient for scanning a large registry at a glance.
+**Table view**: profiles are displayed as rows with columns for Photo, Name, Type, Action, Barrel, Twist, Serial, Optic, and Price. Notes, if present, appear as a truncated preview beneath the firearm's name rather than in a separate column - hover or focus the preview to read the full note. This view is more efficient for scanning a large registry at a glance.
 
-**Photo thumbnails and hover-to-zoom**: wherever a firearm photo appears - the card header or the table's Photo column - it's shown as a small thumbnail. Hover over (or focus) a thumbnail to see the full-size photo in a popup, without leaving the list.
+**Optic column/row**: when a firearm has any Optics field set, a scope icon appears - in the Optic column in table view, or the Optic row in card view. Hover or focus the icon to see a quick summary (manufacturer, model, type, magnification, focal plane, reticle, turret units, zero distance) in a tooltip. Firearms with no optic set show nothing in this column/row.
+
+**Photo thumbnails**: wherever a firearm photo appears - the card header or the table's Photo column - it's shown as a small thumbnail. Hover over (or focus) a thumbnail to see the firearm's full datasheet - see 4.5 below.
 
 In both views, profiles are grouped by caliber. Firearms without a caliber appear in an **Uncategorized** group at the bottom.
 
-![Screenshot: Firearms tab table view showing rows grouped by caliber with Type and Action tag columns](./images/firearms-table-view.png)
+![Screenshot: Firearms tab table view showing rows grouped by caliber, with Optic column and notes preview under the name](./images/firearms-table-view.png)
+
+### 4.5 Firearm Datasheet
+
+Hovering over (or focusing) a firearm's photo thumbnail - in either card or table view - opens a **datasheet** popup with everything on file for that firearm: the full-size photo, name, Type/Action badges, Barrel/Twist/Serial/Price specs, an **Optics** section (when set), and Notes. The datasheet is read-only; it's a quick way to see all the details without opening the edit dialog. Move the pointer away (or click elsewhere) to dismiss it.
+
+![Screenshot: Firearm datasheet popup showing photo, badges, specs, Optics section, and notes](./images/firearm-datasheet.png)
 
 ---
 
