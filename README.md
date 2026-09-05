@@ -1,4 +1,4 @@
-# Reloading Tracker 2.8.1: User Guide
+# Reloading Tracker 2.9.0: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -230,6 +230,12 @@ Click **Save Load** or **Update Load** when done. The entry appears immediately 
 
 Click **Add Ammo** or the **+** button in the **Factory** section header. The Editor opens with **Factory Ammo** pre-selected. The form shows:
 
+**Stock** *(optional)*
+- Tracks how many rounds of this factory ammo you have left. Rather than typing a total directly, enter the number of boxes in **Add Boxes** and click **Add** - it accumulates into a running **Lifetime total** shown just below the field. To correct a mistake (e.g. you added a box twice), enter a negative number and click **Add** again; the lifetime total never drops below zero.
+- **Alert Below (boxes)**: optional threshold. When the rounds remaining fall to or below this many boxes, a **Low** badge appears on the card and in the table.
+- Remaining rounds are calculated automatically as *Lifetime total × Rounds per Box*, minus every round logged against this ammo in the Range Log - including sessions logged before you started tracking stock for it, so the count factors in your full shooting history, not just usage from today forward.
+- Leave **Add Boxes** untouched (lifetime total stays at 0) if you don't want to track stock for this ammo; the Stock display is hidden everywhere until you add at least one box.
+
 **Base Factory Price**
 - Price per box and rounds per box.
 
@@ -257,6 +263,10 @@ Click the **▸ / ▾** chevron on the left of the action buttons to expand a ca
 Use the **Search** box to filter cards by name, caliber, type, or component name.
 
 You can also switch between **Card** and **Table** views using the view toggle next to the search box. Card view shows the familiar expandable cards, while Table view gives you a denser list that is easier to scan when you have many entries.
+
+**Stock display**
+
+Factory ammo entries with stock tracking enabled (see [2.2](#22-adding-a-factory-ammo-entry)) show a **Stock** line on the card, or a **Stock** column in table view - both display rounds and boxes remaining together, e.g. *250 rds (5 boxes) left*. A **Low** badge appears once remaining stock falls to or below your configured **Alert Below** threshold. Hover (or focus) the Stock label to see the full breakdown in a tooltip: lifetime total purchased, rounds logged in the Range Log, and the resulting remainder. Entries with no boxes added yet show no Stock line at all.
 
 ![Screenshot: Expanded ammo card showing component breakdown](images/ammo-viewer.png)
 
@@ -734,7 +744,7 @@ After filling in the session header, add one or more **lots** to the session usi
 |------|-------------|
 | **From Journal** | The ammo was logged at the press in the Reloading Journal. Select the lot from the dropdown; charge and COAL fill in automatically. The rounds field pre-fills with the remaining (unfired) count from the journal, and the form will not let you log more rounds than are available. Depleted lots are hidden from the dropdown so you can never over-log a lot. |
 | **Reload** | A reload batch that was not logged in the Journal. Enter an optional lot number, select the reload recipe, and override charge or COAL if needed. |
-| **Factory** | Factory ammunition. Select from your defined factory entries. No charge or COAL fields are shown. |
+| **Factory** | Factory ammunition. Select from your defined factory entries. No charge or COAL fields are shown. For entries with [Stock tracking](#22-adding-a-factory-ammo-entry) enabled, the dropdown shows rounds available for each and won't let you log more than that; depleted entries are hidden from the dropdown, the same way journal lots are. Entries without stock tracking have no such limit. |
 
 ![Screenshot: Range Log add/edit form showing the lot mode toggle (From Journal / Reload / Factory) and lot entry fields](./images/range-log-add-form.png)
 
@@ -762,6 +772,9 @@ The **Imperial / Metric** toggle in the page header switches how velocity, group
 
 Sessions are displayed as rows in a list, most recent first. Click any row to **expand** it and see the full per-lot breakdown for that session.
 
+**Best group marking**: whichever lot holds the smallest group size for a given firearm is marked with a small gold bullseye icon directly on its lot badge - in both the collapsed row and the expanded detail view. This updates live as you log new sessions, so the marker always points to that firearm's current best.
+
+<!-- IMAGE MAY NEED UPDATING: best-group-per-firearm bullseye icon now appears on lot badges -->
 ![Screenshot: Range Log, expanded session row showing individual lot entries](./images/range-log-expanded.png)
 
 Each session row has action buttons on the right:
@@ -791,7 +804,6 @@ Click the **starred filter button** (☆) in the page header to toggle the list 
 
 The **statistics panel** at the top of the Range Log gives you an at-a-glance performance summary across all your recorded sessions. Click the bar to expand it.
 
-
 ![Screenshot: Range Log statistics panel expanded, showing KPI tiles and Rounds by Load cards with fps, SD, and group data](./images/range-log-stats.png)
 
 The panel has two sections:
@@ -800,20 +812,19 @@ The panel has two sections:
 
 | Tile | Meaning |
 |------|---------|
-| **Total Sessions** | Number of range sessions logged |
-| **Total Rounds** | Total rounds fired across all sessions |
+| **Sessions** | Number of range sessions logged |
+| **Rounds Fired** | Total rounds fired across all sessions |
 | **Firearms** | Number of distinct firearms used |
-| **Avg FPS** | Average muzzle velocity across all lots with velocity data |
-| **Best Group** | Smallest group size recorded, normalised to inches |
-| **Avg Group** | Average group size across all lots with group data, normalised to inches |
+| **Best Group** | Smallest group size recorded across all sessions, normalised to inches. Click to jump to that session. |
+| **Starred** | Number of starred sessions (shown once you have at least one) |
 
 **Rounds by Load**: a scrollable row of cards, one per distinct load or factory entry. Each card shows:
 
-- Load name and total rounds fired
+- Load name and caliber, with total rounds fired
 - Average fps and average SD (if velocity data was recorded for that load)
 - Average group size and best group size (if group data was recorded for that load)
 
-The cards let you compare performance across different loads at a glance; useful during load development to see which recipes are consistently grouping best or producing the most consistent velocity.
+Whichever load produced the best (smallest) group **for its caliber** is marked with the same gold bullseye icon used elsewhere, so you can spot your standout recipe within each caliber at a glance. The cards let you compare performance across different loads more broadly too; useful during load development to see which recipes are consistently grouping best or producing the most consistent velocity.
 
 ---
 
@@ -1098,7 +1109,7 @@ Use the **Load** filter at the top to narrow the table to a single load. When a 
 
 #### Best row indicator
 
-When a load is shown with two or more rows, the row with the lowest Group value is highlighted with a ★ badge in the Group column, making it easy to spot your standout session at a glance.
+The row with the lowest Group value for each load is marked with a small gold bullseye icon in the Group column (the same icon used for best-group marking in the Range Log), making it easy to spot your standout session at a glance. The whole row is also lightly highlighted.
 
 #### Opening a target from the table
 
@@ -1337,13 +1348,13 @@ The tour can be dismissed at any time and is designed to help first-time users g
 The top-right area of the header includes both an **About** button and a **Settings** button.
 
 **Settings**
-- **Follow Time Of Day**: automatically uses the light theme during the day and dark theme in the evening
+- **Follow System Theme**: automatically matches your device's light or dark mode setting, and switches live if you change it while the app is open
 - **Currency Symbol**: changes the currency shown across cards, tables, and analysis views
 - **Cost Per Round Decimals**: controls how many decimal places are shown for per-round costs
 
 ![Screenshot: Settings showing the configuration of the application](./images/app-settings.png)
 
-The application still defaults to the **dark theme** on first launch. If you enable **Follow Time Of Day**, the app will switch themes automatically based on the time of day. You can still use the theme toggle in the header to return immediately to manual light/dark mode.
+The application still defaults to the **dark theme** on first launch. If you enable **Follow System Theme**, the app switches themes automatically to match your operating system's setting. You can still use the theme toggle in the header to return immediately to manual light/dark mode.
 
 ---
 
@@ -1373,6 +1384,7 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 ## 13. Tips & Notes
 
 - **All data is stored locally.** No account or internet connection is required. Data is saved automatically in the browser/app storage every time you make a change.
+- **The app reopens on your last tab.** Whichever tab you had open when you last closed or reloaded the app is remembered and restored automatically, so you don't land back on My Ammo every time.
 - **Brass reuse count matters.** Setting a realistic reuse count (commonly 5–10 reloads per case) significantly lowers your per-round brass cost. A count of 1 treats every case as single-use.
 - **State Excise Tax (SET).** Factory ammunition in some US States is subject to a state excise tax in addition to state and local sales tax. The default value is pre-filled for you.
 - **Fix Fee (FF).** Some US States have an additional fix fee (normally associated to a background check) on any ammunition purchases. This is a fixed fee applied to the entire purchase and its cost is diluted over all the rounds purchased.
@@ -1398,6 +1410,8 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 - **Range Log notes for load development.** Use the per-lot notes field in the Range Log to record group sizes, point of impact shifts, felt recoil, or function issues. Over time this builds a development log you can cross-reference when adjusting a recipe.
 - **Star your reference loads.** Once you find a load that functions and groups well, star that range session. The starred filter gives you a quick shortlist when you are deciding what to press next. Starring a session also stars the linked journal lots automatically, so both records are flagged together.
 - **Remaining Rounds keeps your shelf count accurate.** Log rounds against journal lots in the Range Log using **From Journal** mode and the Remaining column updates automatically. Lots that reach zero are marked Depleted and hidden from the From Journal dropdown so you cannot accidentally log against an empty lot.
+- **Factory ammo stock is a lifetime total, not a current count.** Each time you buy more, enter the number of boxes in **Add Boxes** and click **Add** - it accumulates. Don't try to type your current on-hand count directly; the app already subtracts every round you've logged in the Range Log automatically, including sessions recorded before you started tracking stock for that ammo.
+- **Correcting a factory stock mistake.** Entered the wrong number of boxes? Enter a negative number in **Add Boxes** and click **Add** again to bring the lifetime total back down. There's no separate "edit" for the total - amendments always go through the same Add control.
 - **Archive completed lots to keep the journal tidy.** Once a lot is fully fired and you no longer need it in the active list, archive it. The lot stays in your history and still contributes to statistics; it just does not appear in the main journal table. Restore it at any time if you need to reference or reprint the label.
 - **Unit system preference is shared.** The Imperial / Metric toggle in the Range Log header controls how velocity, distance, and group size are displayed there, in the add/edit form, and in the Target Comparison table. Switch it once in any of those views and it stays set everywhere until you toggle it again.
 - **Range Log data is included in export files.** When you export your library, your full range log history is included. Import it on another machine and your field records move with you.
