@@ -1,4 +1,4 @@
-# Reloading Tracker 2.9.0: User Guide
+# Reloading Tracker 2.10.0: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -245,6 +245,9 @@ Click **Add Ammo** or the **+** button in the **Factory** section header. The Ed
 **Additional Fixed Cost**
 - A flat fee spread over a number of rounds, useful for background check fees (e.g. $25 over 500 rounds = $0.05/rd extra) if applicable in your State.
 
+**Photo** *(optional)*
+- Upload a photo of the ammo box (HEIC photos from iPhone are converted automatically). It's resized and compressed for storage, then shown as a thumbnail on the card and in table view - see [2.3](#23-managing-ammo-entries) below. Click **Remove** to clear it.
+
 ![Screenshot: Load editor: Factory Ammo Data form](images/factory-ammo.png)
 
 ### 2.3 Managing Ammo Entries
@@ -269,6 +272,20 @@ You can also switch between **Card** and **Table** views using the view toggle n
 Factory ammo entries with stock tracking enabled (see [2.2](#22-adding-a-factory-ammo-entry)) show a **Stock** line on the card, or a **Stock** column in table view - both display rounds and boxes remaining together, e.g. *250 rds (5 boxes) left*. A **Low** badge appears once remaining stock falls to or below your configured **Alert Below** threshold. Hover (or focus) the Stock label to see the full breakdown in a tooltip: lifetime total purchased, rounds logged in the Range Log, and the resulting remainder. Entries with no boxes added yet show no Stock line at all.
 
 ![Screenshot: Expanded ammo card showing component breakdown](images/ammo-viewer.png)
+
+**Photo thumbnails**
+
+Factory ammo entries with a photo (see [2.2](#22-adding-a-factory-ammo-entry)) show it as a thumbnail on the card and in the table's Photo column. Hover (or focus) the thumbnail to preview the ammo's name, caliber, weight, price per box, and cost per round in a popup - the same behavior as firearm photo thumbnails (see [4.4](#44-card-and-table-views)-[4.5](#45-firearm-datasheet)).
+
+![Screenshot: My Ammo card and table showing a factory ammo photo thumbnail](./images/ammo-photo-thumbnail.png)
+
+![Screenshot: Ammo photo hover popup showing name, caliber, weight, price, and cost per round](./images/ammo-datasheet-popup.png)
+
+**Photos in the printed Data Sheet**
+
+When you print a load's **Data Sheet**, any photo you uploaded for a factory ammo entry appears at the top of the sheet. For reloads, the Data Sheet instead shows photos of the linked powder, primer, bullet, and brass (see [3.3](#33-linking-inventory-to-loads)) as a labeled photo strip in the Components section, whenever those inventory items have a photo. An **Include photos** checkbox at the bottom of the Data Sheet dialog (checked by default) lets you leave photos out of the preview and the printed page.
+
+![Screenshot: Printed load data sheet showing the reload component photo strip in the Components section](./images/datasheet-component-photos.png)
 
 ### Load Status
 
@@ -431,6 +448,9 @@ Choose one of the four types using the selector buttons at the top of the form. 
 **Name / Description** *(required)*  
 A descriptive label, e.g. *Titegroup*, *CCI 500 Small Pistol*, *124gr FMJ RN*, *Mixed once-fired 9mm*.
 
+**Photo** *(optional)*  
+Upload a photo of the component (HEIC photos from iPhone are converted automatically). It's resized and compressed for storage, then shown as a thumbnail on the card or in the table's Photo column - see [3.2](#32-managing-components) below. Click **Remove** to clear it.
+
 **Price** *(required)*  
 The price you paid for the component. For powders this is the price per pound (Imperial) or per kilogram (Metric). For all other types it is the total price for the quantity below.
 
@@ -498,6 +518,12 @@ Each component card has three action buttons:
 In **Table view**, the **Stock** column shows the current quantity on hand for each component, formatted with a unit suffix (*primers*, *rounds*, *cases*, *lb*, or *kg*). Components with no stock quantity set show a dash (-). A **Low** badge appears in the same cell when stock is at or below the threshold.
 
 For brass, an **Info** column shows the same Consistency & Fit / Annealing icon buttons as the card view, keeping the table compact instead of adding a separate column per field.
+
+**Photo thumbnails**
+
+Components with a photo (see [3.1](#31-adding-a-component)) show it as a thumbnail on the card, in place of the generic type icon, or in the table's Photo column. Hover (or focus) the thumbnail to preview the component's name, type, price, stock, and key specs in a popup.
+
+![Screenshot: My Components card and table showing a photo thumbnail and hover popup](./images/inventory-photo-popup.png)
 
 ### 3.3 Linking Inventory to Loads
 
@@ -1360,7 +1386,7 @@ The application still defaults to the **dark theme** on first launch. If you ena
 
 ## 12. Import & Export
 
-Your entire library (ammo entries, tax defaults, equipment costs, load selections, component inventory, reloading journal, range log, firearm profiles including photos, and target analysis records including photos) can be saved to a file and restored later or transferred to another computer.
+Your entire library (ammo entries including photos, tax defaults, equipment costs, load selections, component inventory including photos, reloading journal, range log, firearm profiles including photos, and target analysis records including photos) can be saved to a file and restored later or transferred to another computer.
 
 **Exporting**
 Click **Export** in the top navigation bar. A `.zip` file is downloaded to your machine. The archive contains all your data and any target photos you have uploaded, compressed into a single portable file.
