@@ -1,4 +1,4 @@
-# Reloading Tracker 2.10.0: User Guide
+# Reloading Tracker 2.10.1: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -461,6 +461,9 @@ The price you paid for the component. For powders this is the price per pound (I
 **Measurement System** *(powder only)*  
 Select **Imperial (lb)** or **Metric (kg)**. This carries through to any load that links to this powder.
 
+**OAL (Overall Length)** *(bullet only, optional)*  
+The bullet's overall length, with a unit dropdown (**in** or **mm**) next to it. The unit defaults to your app's Imperial/Metric setting; switching it converts the number you've already entered instead of just relabeling it, e.g. *1.169 in* becomes *29.6926 mm*.
+
 **Times Reloaded** *(brass only)*  
 How many reloads each case is expected to survive before replacement. This amortises the brass cost across that many rounds.
 
@@ -468,7 +471,7 @@ How many reloads each case is expected to survive before replacement. This amort
 Fields aimed at precision reloading, where case-to-case consistency matters as much as cost:
 - **Case Weight (gr)** - average case weight, useful for judging lot consistency or comparing to a new batch.
 - **Dedicated Rifle** - a searchable dropdown of your Firearms Registry profiles. Use this when a batch of brass is fire-formed to one chamber (common with tight-neck or custom chambers) and shouldn't be mixed with brass for another rifle in the same caliber.
-- **Shoulder Bump (in)** - the target shoulder bump you dial in when full-length sizing for this brass/rifle combination, e.g. *0.002*.
+- **Shoulder Bump** - the target shoulder bump you dial in when full-length sizing for this brass/rifle combination, e.g. *0.002*, with the same **in / mm** unit dropdown as OAL - switching units converts the number instead of just relabeling it.
 
 **Annealing** *(brass only, optional)*  
 - **Annealer** - the machine or method used, e.g. *AMP Press*, *torch*.
@@ -496,7 +499,7 @@ Each component card shows:
 - **Price**: the effective per-unit cost (e.g. *$22.50/lb*, or *$0.16 ea* for a primer). The raw price and quantity you entered stay editable as two separate fields in the form; only the derived per-unit figure is shown in the card or table to keep the list compact.
 - **Stock**: current quantity on hand, shown only when a stock quantity has been entered. Powder stock is shown to four decimal places; all other types show a whole number. A **Low** badge appears inline when the quantity is at or below the configured threshold.
 - Brass **Reloads** count (brass cards only)
-- Bullet **caliber**, **diameter** and **weight** (bullets only)
+- Bullet **caliber**, **diameter**, **weight**, and **OAL** (bullets only)
 - Notes (if any)
 
 For brass with any **Consistency & Fit** or **Annealing** fields set, a **Details** row appears with one or two small icon buttons - a ruler for Consistency & Fit, a flame for Annealing. Hover (or focus) an icon to see the full details in a tooltip; icons only appear for the categories that actually have data entered.
@@ -518,6 +521,12 @@ Each component card has three action buttons:
 In **Table view**, the **Stock** column shows the current quantity on hand for each component, formatted with a unit suffix (*primers*, *rounds*, *cases*, *lb*, or *kg*). Components with no stock quantity set show a dash (-). A **Low** badge appears in the same cell when stock is at or below the threshold.
 
 For brass, an **Info** column shows the same Consistency & Fit / Annealing icon buttons as the card view, keeping the table compact instead of adding a separate column per field.
+
+**Sorting**
+
+In **Card view**, use the **Sort** dropdown to order components by **A–Z**, **Price**, **Stock**, or **None** (the order they were added). The arrow button next to it flips between ascending and descending; it's disabled when **None** is selected since there's nothing to reverse.
+
+In **Table view**, the dropdown is hidden - instead, click the **Name**, **Price**, or **Stock** column header directly to sort by that column. Clicking the same header again cycles through ascending, descending, and back to no sort. Switching between Card and Table view always resets sorting to **None**, so a sort applied in one view never carries over unseen into the other.
 
 **Photo thumbnails**
 
