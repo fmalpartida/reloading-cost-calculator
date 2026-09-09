@@ -7,7 +7,7 @@ Manage a shared component inventory, work up new loads with a structured charge 
 If you also care about the economics, the app can do that too. Compare the cost of your reloads against factory ammunition, track your progress toward break-even after equipment investment, and get a side-by-side cost breakdown across any combination of loads. Totally optional though -- plenty of reloaders just want the log and the data.
 
 
-> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.10.7). All previous version are available [previous versions](https://github.com/fmalpartida/reloading-cost-calculator/releases).
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.10.7). All previous version are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
 
 
 Want to try it out first?
