@@ -1,4 +1,4 @@
-# Reloading Tracker 2.10.1: User Guide
+# Reloading Tracker 2.10.7: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -6,7 +6,15 @@ Manage a shared component inventory, work up new loads with a structured charge 
 
 If you also care about the economics, the app can do that too. Compare the cost of your reloads against factory ammunition, track your progress toward break-even after equipment investment, and get a side-by-side cost breakdown across any combination of loads. Totally optional though -- plenty of reloaders just want the log and the data.
 
-[Try it out](https://fmalpartida.github.io/reloading-cost-calculator)
+
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases). This release (2.10.7) is at [releases/tag/v2.10.7](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.10.7); every new release follows the same URL pattern.
+
+
+Want to try it out first?
+
+> **ONLINE VERSION:** A fully operational web deployment of the application is live at [**Try it out**](https://fmalpartida.github.io/reloading-cost-calculator). No install required - open it in your browser and start logging.
+
+> **YOUR DATA IS PORTABLE.** The on-line version, web version, and desktop versions share the same export/import format. Whatever you do on the web app can be exported and imported into the desktop version, and vice-versa, so you can move freely between the two without losing any of your loads, journal, range log, firearms, or targets. See [Import & Export](#12-import--export). *The on-line version does not store any information on the web, it uses your browser's local storage.*
 
 Enjoying Reloading Tracker? Every cup of coffee you send my way helps keep the powder flowing (new features, bug fixes, and late-night coding sessions all run on caffeine). If this app has saved you time at the bench (or saved you from a spreadsheet nightmare), consider buying me one!
 
