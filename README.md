@@ -1,4 +1,4 @@
-# Reloading Tracker 2.10.7: User Guide
+# Reloading Tracker 2.11.0: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -542,6 +542,10 @@ Components with a photo (see [3.1](#31-adding-a-component)) show it as a thumbna
 
 ![Screenshot: My Components card and table showing a photo thumbnail and hover popup](./images/inventory-photo-popup.png)
 
+**Cash-in-hand totals**
+
+Each category header (Powders, Primers, Bullets, Brass) shows that category's total stock value — quantity on hand × price — next to its item count. A grand total across all categories appears at the top of the page next to the filter tags. Both use your configured currency symbol and update automatically as stock levels or prices change.
+
 ### 3.3 Linking Inventory to Loads
 
 When editing or creating a reload in the **Editor** tab, each component section (Powder, Primers, Bullets, Brass) has a **Select from inventory** dropdown above the manual input fields. Choosing an item from that dropdown fills all the related fields automatically and marks the component with a **linked badge**.
@@ -556,7 +560,9 @@ You can also click the **×** on the badge to unlink intentionally without editi
 **Auto-update behaviour:**  
 When you edit a component in My Components (e.g. update a powder price after buying a new jug), every reload that is still linked to that component has its cost recalculated immediately. No manual re-entry is needed.
 
-> **Tracking cost changes across component batches.** If you want to preserve an accurate cost history when a new batch of a component arrives at a different price, add the new batch as a separate inventory item rather than editing the existing one. Then duplicate the load in My Ammo and link the copy to the new batch. Journal entries logged against the original load retain its original component costs, while the duplicate carries the new batch price going forward. Both loads appear in Cost Analysis, giving you an accurate weighted picture of what you have actually spent across batches.
+> **Tracking cost changes across component batches.** As of 2.11.0, this is handled for you automatically: every journal entry locks in its cost per round the moment you log it, using the prices in effect at that instant (see [5.2](#52-managing-journal-entries)). A later price change in My Components no longer rewrites what past lots are recorded as having cost.
+>
+> Duplicating the load and linking the copy to a separate inventory item is still a reasonable approach if you'd rather keep two distinct recipes side by side (e.g. to compare batches directly in Cost Analysis), but it's no longer necessary just to preserve historical cost accuracy — the per-entry cost lock handles that for a single load across all its batches.
 
 **Inventory badge in My Ammo:**  
 In the expanded card view under My Ammo, any component that originates from the inventory shows a small inventory icon next to its name, so you can tell at a glance which values are managed centrally.
@@ -720,9 +726,19 @@ When a reload entry is linked to components in My Components that have a **Stock
 
 After a successful deduction, the button changes to a **✓ Stock** badge. Click the badge to **return** the stock (undo the deduction). This is useful if you made a mistake or need to adjust quantities before re-deducting.
 
-If you **edit** a journal entry that already had stock deducted and change a quantity-affecting field (round count, charge override, or brass override), the application automatically returns the old deduction and re-applies the new one so the inventory stays accurate.
+If you **edit** a journal entry that already had stock deducted and change a quantity-affecting field (round count, charge override, or brass override), the application automatically returns the old deduction and re-applies the new one so the inventory stays accurate — and re-locks the cost as described below.
 
 Stock deduction is not available for archived entries.
+
+**Cost is locked in when you log an entry**
+
+Component prices change over time — the price you paid for powder last year isn't what it costs today. To keep your historical records accurate, the cost per round for a lot is **frozen the moment you log it** (or the moment you next edit its load, charge override, or brass override), using the component prices in effect at that instant. Editing a component's price in My Components afterward will not change what this lot is recorded as having cost — this happens automatically for every entry, whether or not you ever use Deduct from Stock. The Journal's **Cost Summary** panel always shows this locked-in figure. Hover over the **✓ Stock** badge on a lot to see the exact cost per round that was locked in for it.
+
+Editing an entry's quantity alone doesn't change its per-round rate, but changing the load, powder charge override, or brass override recalculates and re-locks the rate at that moment — reflecting whatever prices are current when you make the edit.
+
+This only affects how past lots are *recorded*. The **Cost Analysis (Break-Even)** tool in section 8 is intentionally different. It always projects using today's prices, since it's answering "at current costs, how many rounds until my equipment pays for itself," not "what did I actually spend."
+
+If you were using the app before this feature existed, your existing entries get locked in automatically the first time you open the Journal tab — using whatever prices are current at that moment, since the app has no record of what you actually paid back when those lots were originally pressed.
 
 ![Screenshot: journal entry row showing all action buttons (star, edit, duplicate, print, archive, delete) and the Remaining Rounds column](./images/journal-entry.png)
 
