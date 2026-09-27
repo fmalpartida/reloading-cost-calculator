@@ -1,4 +1,4 @@
-# Reloading Tracker 2.11.0: User Guide
+# Reloading Tracker 2.12.1: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -7,14 +7,14 @@ Manage a shared component inventory, work up new loads with a structured charge 
 If you also care about the economics, the app can do that too. Compare the cost of your reloads against factory ammunition, track your progress toward break-even after equipment investment, and get a side-by-side cost breakdown across any combination of loads. Totally optional though -- plenty of reloaders just want the log and the data.
 
 
-> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.11.0). All previous version are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.12.1). All previous version are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
 
 
 Want to try it out first?
 
 > **ONLINE VERSION:** A fully operational web deployment of the application is live at [**Try it out**](https://fmalpartida.github.io/reloading-cost-calculator). No install required - open it in your browser and start logging.
 
-> **YOUR DATA IS PORTABLE.** The on-line version, web version, and desktop versions share the same export/import format. Whatever you do on the web app can be exported and imported into the desktop version, and vice-versa, so you can move freely between the two without losing any of your loads, journal, range log, firearms, or targets. See [Import & Export](#12-import--export). *The on-line version does not store any information on the web, it uses your browser's local storage.*
+> **YOUR DATA IS PORTABLE.** The web and desktop versions share the same export/import format, so you can move freely between them without losing any of your loads, journal, range log, firearms, or targets. See [Import & Export](#12-import--export). *The web version stores nothing online; it all lives in your browser's local storage.*
 
 Enjoying Reloading Tracker? Every cup of coffee you send my way helps keep the powder flowing (new features, bug fixes, and late-night coding sessions all run on caffeine). If this app has saved you time at the bench (or saved you from a spreadsheet nightmare), consider buying me one!
 
@@ -101,7 +101,6 @@ Enjoying Reloading Tracker? Every cup of coffee you send my way helps keep the p
 
 Reloading Tracker follows a natural progression that mirrors the way reloading actually works. The first three steps are the core workflow, useful for any reloader regardless of whether you care about costs. Step 4 is for those who also want to track cost and break-even progress.
 
-<!-- IMAGE MAY NEED UPDATING: navigation bar now includes the Firearms tab between My Components and Journal -->
 ![Reloading Tracker: main application and navigation tabs](./images/header-tabs.png)
 
 **Step 1: Define your loads**
@@ -111,7 +110,7 @@ Before you can log sessions, the application needs to know what you are reloadin
 - **Direct entry in My Ammo.** Open the Editor tab and fill in the load details. This is the fastest way to get started.
 - **Build a component library first (recommended).** Go to **My Components** and add your powders, primers, bullets, and brass. Then, when you create a load in My Ammo, select each component from the inventory instead of typing values by hand. Any future price change (a new jug of powder, a bulk primer buy) only needs to be updated in one place, and every load that uses that component recalculates automatically.
 
-> **If you plan to use the cost features**, accuracy starts with the prices you enter. Use the actual prices you paid, including shipping if it meaningfully affects the per-unit cost. Update component prices when you buy a new batch. The closer your entries are to real-world costs, the more the numbers you see will reflect your true reloading economics rather than a rough estimate.
+> **If you plan to use the cost features**, accuracy starts with the prices you enter. Use what you actually paid, including shipping if it meaningfully affects the per-unit cost, and update it whenever you buy a new batch, so the numbers reflect your real reloading economics rather than a rough estimate.
 
 If you use Cost Analysis or Cost Comparison, also add at least one **factory ammo** entry (with its box price, taxes, and any fixed fees) so the comparison and break-even analysis have a meaningful baseline to work against.
 
@@ -123,7 +122,7 @@ If you are developing a new load from scratch, set its status to **In Developmen
 
 Every time you sit down at the press, open the **Journal** tab and add an entry: select the load, enter the date and the number of rounds you produced. The application assigns a unique, incrementing lot number automatically.
 
-This is where the application starts working for you over time. Each session builds a complete production history: what you made, when you made it, and how much. That record is valuable on its own as a traceable log of every batch you have ever pressed, and it also feeds directly into Cost Analysis if you want to track your progress toward break-even.
+This is where the application starts working for you over time: each entry builds a production history of what you made, when, and how much. That record is valuable on its own, and it also feeds directly into Cost Analysis if you want to track your progress toward break-even.
 
 **Step 3: Print lot labels**
 
@@ -181,7 +180,7 @@ There are also built-in **Tour**, **About**, and **Settings** controls in the to
 
 A pencil-icon **Customize Tabs** button sits to the right of the tabs. Click it to open a dialog where you can:
 
-- **Reorder tabs** by dragging them into any position using the grip handle
+- **Reorder tabs** by dragging them into any position using the grip handle, or with the up and down arrows on each row
 - **Hide tabs** you do not use by unchecking them - at least one tab must always stay visible
 - **Reset to Default** to restore the original order and visibility at any time
 
@@ -370,7 +369,7 @@ Rows with data but not yet promoted are highlighted with a subtle tint. The prom
 
 **Logging entries from the workup panel**
 
-All plannable steps are checked by default. Uncheck any step you do not want to press in this session, then click **Log N Entries** in the footer. The application creates one Journal entry per checked charge, all dated today, using the configured rounds per step. A brief confirmation message appears before the panel closes.
+All plannable steps are checked by default. Uncheck any step you do not want to press in this session, then click **Log N Entries** in the footer. The application creates one Journal entry per checked charge, all dated today, using the configured rounds per step and the current lot numbers of the load's linked components. A brief confirmation message appears before the panel closes.
 
 > You can also add a **one-off charge** that is outside the configured ladder: type the charge weight in the *Add charge* field below the table and click **Add**. The row appears in the table, checked and ready to include in the next batch log, without immediately writing a journal entry.
 
@@ -486,7 +485,7 @@ Fields aimed at precision reloading, where case-to-case consistency matters as m
 - **Annealer Settings** - free text for the specifics of your process, e.g. *PID 4, 5.5s dwell*.
 
 **Notes**  
-Optional free-text field for lot numbers, suppliers, or any other reference.
+Optional free-text field for suppliers or any other reference.
 
 **Stock on hand** *(optional)*  
 The current quantity you have in stock. The unit depends on the component type:
@@ -498,6 +497,9 @@ Leave this field blank if you do not want to track stock for this component. Onl
 **Alert below** *(optional)*  
 A low-stock threshold in the same unit as **Stock on hand**. When the quantity on hand falls at or below this value, the component card shows a **Low** badge as a visual warning. This is a display indicator only; it does not block any operation.
 
+**Lot #** *(optional)*  
+The manufacturer's lot code for the batch you have on hand, e.g. *VG-2291*. New Journal entries record it automatically (see [5.1](#51-logging-a-session)), so update it when you open a new jug of powder or box of primers.
+
 Click **Save** to add the component. The card appears immediately in its group.
 
 ![Screenshot: Add/Edit component form panel](./images/inventory-add-form.png)
@@ -506,6 +508,7 @@ Each component card shows:
 - Component name and type icon
 - **Price**: the effective per-unit cost (e.g. *$22.50/lb*, or *$0.16 ea* for a primer). The raw price and quantity you entered stay editable as two separate fields in the form; only the derived per-unit figure is shown in the card or table to keep the list compact.
 - **Stock**: current quantity on hand, shown only when a stock quantity has been entered. Powder stock is shown to four decimal places; all other types show a whole number. A **Low** badge appears inline when the quantity is at or below the configured threshold.
+- **Lot**: the lot number on hand, shown only when one has been entered.
 - Brass **Reloads** count (brass cards only)
 - Bullet **caliber**, **diameter**, **weight**, and **OAL** (bullets only)
 - Notes (if any)
@@ -526,7 +529,7 @@ Each component card has three action buttons:
 
 ![Screenshot: Inventory card action buttons](./images/inventory-card-actions.png)
 
-In **Table view**, the **Stock** column shows the current quantity on hand for each component, formatted with a unit suffix (*primers*, *rounds*, *cases*, *lb*, or *kg*). Components with no stock quantity set show a dash (-). A **Low** badge appears in the same cell when stock is at or below the threshold.
+In **Table view**, the **Stock** column shows the current quantity on hand for each component, formatted with a unit suffix (*primers*, *rounds*, *cases*, *lb*, or *kg*). Components with no stock quantity set show a dash (-). A **Low** badge appears in the same cell when stock is at or below the threshold. The **Lot #** column next to it shows each component's lot number, or a dash when none is set.
 
 For brass, an **Info** column shows the same Consistency & Fit / Annealing icon buttons as the card view, keeping the table compact instead of adding a separate column per field.
 
@@ -538,13 +541,13 @@ In **Table view**, the dropdown is hidden - instead, click the **Name**, **Price
 
 **Photo thumbnails**
 
-Components with a photo (see [3.1](#31-adding-a-component)) show it as a thumbnail on the card, in place of the generic type icon, or in the table's Photo column. Hover (or focus) the thumbnail to preview the component's name, type, price, stock, and key specs in a popup.
+Components with a photo (see [3.1](#31-adding-a-component)) show it as a thumbnail on the card, in place of the generic type icon, or in the table's Photo column. Hover (or focus) the thumbnail to preview the component's name, type, price, stock, lot number, and key specs in a popup.
 
 ![Screenshot: My Components card and table showing a photo thumbnail and hover popup](./images/inventory-photo-popup.png)
 
 **Cash-in-hand totals**
 
-Each category header (Powders, Primers, Bullets, Brass) shows that category's total stock value — quantity on hand × price — next to its item count. A grand total across all categories appears at the top of the page next to the filter tags. Both use your configured currency symbol and update automatically as stock levels or prices change.
+Each category header (Powders, Primers, Bullets, Brass) shows that category's total stock value (quantity on hand × price) next to its item count. A grand total across all categories appears at the top of the page next to the filter tags. Both use your configured currency symbol and update automatically as stock levels or prices change.
 
 ### 3.3 Linking Inventory to Loads
 
@@ -562,7 +565,7 @@ When you edit a component in My Components (e.g. update a powder price after buy
 
 > **Tracking cost changes across component batches.** As of 2.11.0, this is handled for you automatically: every journal entry locks in its cost per round the moment you log it, using the prices in effect at that instant (see [5.2](#52-managing-journal-entries)). A later price change in My Components no longer rewrites what past lots are recorded as having cost.
 >
-> Duplicating the load and linking the copy to a separate inventory item is still a reasonable approach if you'd rather keep two distinct recipes side by side (e.g. to compare batches directly in Cost Analysis), but it's no longer necessary just to preserve historical cost accuracy — the per-entry cost lock handles that for a single load across all its batches.
+> Duplicating the load and linking the copy to a separate inventory item is still a reasonable approach if you'd rather keep two distinct recipes side by side (e.g. to compare batches directly in Cost Analysis), but it's no longer necessary just to preserve historical cost accuracy: the per-entry cost lock handles that for a single load across all its batches.
 
 **Inventory badge in My Ammo:**  
 In the expanded card view under My Ammo, any component that originates from the inventory shows a small inventory icon next to its name, so you can tell at a glance which values are managed centrally.
@@ -627,7 +630,7 @@ Each firearm profile (in both card and table view) has two action buttons:
 
 | Button | Action |
 |--------|--------|
-| ✏️ Edit | Opens the profile in the form dialog for editing. All fields can be changed. |
+| ✏️ Edit | Opens the profile in the form dialog for editing. All fields can be changed. If you rename the firearm, its past Range Log sessions follow the new name, so its history stays together. |
 | 🗑 Delete | Permanently removes the profile from the registry. Existing Range Log sessions that referenced this firearm are not affected; the recorded firearm name is preserved in those sessions. |
 
 A confirmation dialog appears before deletion to prevent accidental removal.
@@ -689,9 +692,12 @@ Click **Log Entry** at the top right of the entries card to open the session dia
 | **Charge override** | Optional. Enter a value only if this batch was loaded at a different charge than the recipe default. Overridden values are highlighted in the journal row. |
 | **COAL override** | Optional. Per-lot cartridge overall length if it differs from the recipe. |
 | **Brass override** | Optional. Specify which brass was used if it differs from the recipe default. |
-| **Notes** | Optional; use for a powder lot number, seating depth, or any other session reference. |
+| **Powder / Primer / Bullet / Brass lot** | Optional. The manufacturer lot codes of the components you used. For a new entry these fill in from the lot numbers of the load's linked components in My Components (see [3.1](#31-adding-a-component)); change them if you used a different lot. Picking a different brass fills in that brass's lot. |
+| **Notes** | Optional; use for seating depth or any other session reference. |
 
 The next available lot number is shown at the top of the dialog and is assigned automatically when you save. Click **Save Entry** to log the session. The new entry appears at the top of the list and the lot counter advances.
+
+Component lots are only filled in automatically for new entries. Entries logged before this feature existed stay blank, since today's lots may not be the ones you used back then; edit an entry to add them by hand if you know them.
 
 ![Screenshot: journal edit dialog showing the charge, COAL, and brass override fields](./images/journal-editor.png)
 
@@ -707,7 +713,7 @@ Each entry row has action buttons on the right:
 |--------|--------|
 | ☆ Star | Marks the entry as a reference lot (starred entries show a coloured accent) |
 | ✏️ Edit | Opens the entry for editing; the lot number is fixed and cannot be changed |
-| ⧉ Duplicate | Creates a copy of the entry with the next available lot number (useful for pressing additional batches of the same load at the same settings) |
+| ⧉ Duplicate | Creates a copy of the entry with the next available lot number and the same component lots (useful for pressing additional batches of the same load at the same settings) |
 | 🖨 Print | Opens the label print dialog pre-filled with the lot number and quantity |
 | 📦 Archive | Moves the entry to the archive so it no longer appears in the main list. Archived entries are preserved in full and can be restored at any time. |
 | 🗑 Delete | Permanently removes the entry |
@@ -726,19 +732,22 @@ When a reload entry is linked to components in My Components that have a **Stock
 
 After a successful deduction, the button changes to a **✓ Stock** badge. Click the badge to **return** the stock (undo the deduction). This is useful if you made a mistake or need to adjust quantities before re-deducting.
 
-If you **edit** a journal entry that already had stock deducted and change a quantity-affecting field (round count, charge override, or brass override), the application automatically returns the old deduction and re-applies the new one so the inventory stays accurate — and re-locks the cost as described below.
+If you **edit** a journal entry that already had stock deducted and change a quantity-affecting field (round count, charge override, or brass override), the application automatically returns the old deduction and re-applies the new one so the inventory stays accurate, and re-locks the cost as described below.
 
 Stock deduction is not available for archived entries.
 
 **Cost is locked in when you log an entry**
 
-Component prices change over time — the price you paid for powder last year isn't what it costs today. To keep your historical records accurate, the cost per round for a lot is **frozen the moment you log it** (or the moment you next edit its load, charge override, or brass override), using the component prices in effect at that instant. Editing a component's price in My Components afterward will not change what this lot is recorded as having cost — this happens automatically for every entry, whether or not you ever use Deduct from Stock. The Journal's **Cost Summary** panel always shows this locked-in figure. Hover over the **✓ Stock** badge on a lot to see the exact cost per round that was locked in for it.
+Component prices change over time: the price you paid for powder last year isn't what it costs today. To keep your historical records accurate, the cost per round for a lot is **frozen the moment you log it** (or the moment you next edit its load, charge override, or brass override), using the component prices in effect at that instant. Editing a component's price in My Components afterward will not change what this lot is recorded as having cost. This happens automatically for every entry, whether or not you ever use Deduct from Stock. The Journal's **Cost Summary** panel always shows this locked-in figure. Hover over the **✓ Stock** badge on a lot to see the exact cost per round that was locked in for it.
 
-Editing an entry's quantity alone doesn't change its per-round rate, but changing the load, powder charge override, or brass override recalculates and re-locks the rate at that moment — reflecting whatever prices are current when you make the edit.
+Editing an entry's quantity alone doesn't change its per-round rate, but changing the load, powder charge override, or brass override recalculates and re-locks the rate at that moment, reflecting whatever prices are current when you make the edit.
 
 This only affects how past lots are *recorded*. The **Cost Analysis (Break-Even)** tool in section 8 is intentionally different. It always projects using today's prices, since it's answering "at current costs, how many rounds until my equipment pays for itself," not "what did I actually spend."
 
-If you were using the app before this feature existed, your existing entries get locked in automatically the first time you open the Journal tab — using whatever prices are current at that moment, since the app has no record of what you actually paid back when those lots were originally pressed.
+If you were using the app before this feature existed, your existing entries get locked in automatically the first time you open the Journal tab, using whatever prices are current at that moment, since the app has no record of what you actually paid back when those lots were originally pressed.
+
+**Component lots**
+Entries with component lots recorded show a tag icon in the Notes column. Hover over it to see the powder, primer, bullet, and brass lots used for that batch.
 
 ![Screenshot: journal entry row showing all action buttons (star, edit, duplicate, print, archive, delete) and the Remaining Rounds column](./images/journal-entry.png)
 
@@ -748,7 +757,10 @@ The **Remaining** column shows how many rounds from each lot have not yet been f
 **Archiving and restoring entries**
 Click the **📦 Archive** button to move a lot out of the active list without deleting it. Archived entries remain part of your history and are still counted in the Journal statistics panel. To see archived entries, click the **"N archived"** link that appears in the journal header when any entries are archived. To restore an entry to the active list, expand the archived view and click the **Restore** button on the relevant row.
 
-Use the **Search** box at the top of the page to filter entries by lot number, date, load name, caliber, brass name, or notes.
+Use the **Search** box at the top of the page to filter entries by lot number, date, load name, caliber, brass name, notes, or component lot. Searching a primer lot code, for example, lists every batch pressed with that lot.
+
+**On phones and tablets**
+On narrow screens the table switches to a stacked layout: each entry shows its lot, date, load, quantity, remaining rounds, and notes in a column, with the action buttons alongside. Charge, COAL/CBTO, brass, and fired count are hidden to save space; open the entry to see them.
 
 ### 5.3 Printing a Lot Label
 
@@ -817,7 +829,13 @@ For every lot, regardless of mode, you can also record per-lot performance data:
 | **SD** | Standard deviation (fps) |
 | **Group** | Group size with unit (in / cm / MOA / MIL) |
 | **Shots** | Number of shots in the group |
+| **Cold bore** | Cold bore rounds fired |
+| **Fouling** | Fouling shots fired before recording |
+| **Shot string** | Optional. Each shot's velocity from your chronograph, separated by commas or spaces, e.g. *2810, 2815, 2798*. See below. |
 | **Notes** | Per-lot observations |
+
+**Entering a shot string**
+If you paste in the shot string from your chronograph, the app works out **Avg fps**, **ES**, and **SD** for you and locks those three fields so they always match the shots. SD is the sample standard deviation, the same figure chronographs report. Clear the shot string to type the numbers in by hand instead. The raw shots are saved with the session and shown in its expanded view, so you can always go back to them.
 
 Use the **⧉** duplicate button on any lot row to quickly copy it when firing multiple similar lots in the same outing. At least one lot must have an ammo selection before the session can be saved.
 
@@ -833,7 +851,6 @@ Sessions are displayed as rows in a list, most recent first. Click any row to **
 
 **Best group marking**: whichever lot holds the smallest group size for a given firearm is marked with a small gold bullseye icon directly on its lot badge - in both the collapsed row and the expanded detail view. This updates live as you log new sessions, so the marker always points to that firearm's current best.
 
-<!-- IMAGE MAY NEED UPDATING: best-group-per-firearm bullseye icon now appears on lot badges -->
 ![Screenshot: Range Log, expanded session row showing individual lot entries](./images/range-log-expanded.png)
 
 Each session row has action buttons on the right:
@@ -919,7 +936,7 @@ Target records in the list show:
 - The target name and date
 - Shot count and best group size
 
-Click the **☆ / ★** star button on any list item to mark the target as a reference. Click the **✕** button to delete it (a confirmation dialog appears first).
+Click the **☆ / ★** star button on any list item to mark the target as a reference. Click the 🗑 **Delete** button to delete it (a confirmation dialog appears first).
 
 #### 7.1.2 Uploading and Calibrating the Image
 
@@ -944,6 +961,8 @@ The application uses the pixel distance between the two points divided by the en
 
 **Configuration panel fields**
 
+The panel groups its fields under four headings: **Units** (measurement system, angular unit, click value), **Setup** (image, calibration reference, bullet diameter, shot distance), **Range session** (the linked session, its lot, and CBTO/COAL), and **Notes**. The Notes box stays one line tall until you type in it.
+
 | Field | Description |
 |-------|-------------|
 | **Calibration reference** | The two reference points and their real-world distance |
@@ -953,7 +972,8 @@ The application uses the pixel distance between the two points divided by the en
 | **Angular unit** | MOA or MIL for angular statistics |
 | **Click value** | Your scope's adjustment per click in the selected angular unit, used to compute how many clicks of correction are needed to move point of impact to point of aim |
 | **Notes** | Optional free-text notes for this target |
-| **Session** | Optional link to a range session (see [Section 7.1.7](#717-linking-to-a-range-session)) |
+| **Linked session** | Optional link to a range session (see [Section 7.1.7](#717-linking-to-a-range-session)) |
+| **CBTO / COAL** | Read-only. Shown once the target is linked to a reload lot: the lot's CBTO, or its COAL when no CBTO is recorded, so you can see the seating depth behind the group without leaving the tab. Not shown for factory ammo. |
 
 ![Screenshot: Target Analysis configuration sidebar showing calibration, bullet diameter, shot distance, and measurement system fields](./images/targets-config-sidebar.png)
 
@@ -982,7 +1002,7 @@ If no point of aim is set, the application uses the centroid of all shots as the
 | **Calibrate** | Click two reference points to set the calibration baseline |
 | **Pan / Zoom** | Drag to pan the canvas; use the zoom buttons or scroll wheel to zoom in and out |
 
-The toolbar also has **Zoom In**, **Zoom Out**, and **Fit** buttons to control the canvas view, and a **Print** button to print the annotated target (see [Section 7.1.8](#718-printing-a-target)).
+The toolbar also has **Zoom In**, **Zoom Out**, and **Fit** buttons to control the canvas view, and a **Print** button to print the annotated target (see [Section 7.1.8](#718-printing-a-target)). The buttons are grouped: the mode buttons on one shaded band, the view buttons (pan, zoom, crop, rotate) on another, and Export, Print, and Save after a divider on the right.
 
 #### 7.1.4 Statistics Panel
 
@@ -1070,14 +1090,18 @@ When a target has **two or more groups**, a set of view selector tabs appears ab
 
 The **Aggregate** view is particularly useful when comparing multiple loads fired at the same aiming point: it removes the POI offset between loads and focuses entirely on the consistency and group size of each load independently.
 
+**Group comparison table**
+Above the tabs, a small table puts every group side by side: shots, extreme spread, mean radius, and windage and elevation offset from the point of aim. It's the quickest way to compare several charges fired on the same paper without clicking through each tab. Click a row to open that group. Groups need at least two shots to appear.
+
 ![Screenshot: Targets view selector tabs showing All, group tabs, and Aggregate; Aggregate tab active with re-centred impact overlay on the canvas](./images/targets-aggregate-view.png)
 
 #### 7.1.7 Linking to a Range Session
 
-In the **Configuration** sidebar, the **Session** field connects this target record to a specific range session in the Range Log. Click the field to open a searchable dropdown listing all your recorded sessions. You can search by date, firearm name, distance, or lot number.
+In the **Configuration** sidebar, the **Linked session** field (under **Range session**) connects this target record to a specific range session in the Range Log. Click the field to open a searchable dropdown listing all your recorded sessions. You can search by date, firearm name, distance, or lot number.
 
 Once linked:
 - A **navigate** button (arrow icon) appears next to the session selector. Click it to jump directly to that session in the Range Log tab.
+- The linked lot's **CBTO** (or **COAL** when no CBTO is recorded) appears below the session, and on the printed target.
 - In the Range Log, a **target icon** (scope) appears on the linked session's action buttons. Click it to jump back to this target in the Targets tab.
 - When you **print** the linked range session, the printed output automatically includes the annotated target image and key statistics; no extra steps needed (see [Section 7.1.8](#718-printing-a-target) and [Section 6.2](#62-managing-range-sessions)).
 
@@ -1091,6 +1115,7 @@ The printed sheet includes:
 - The annotated target image with impact circles, shot order numbers, and overlay graphics: a dashed **ES line** connecting the two most extreme shots, a solid **mean radius circle**, and a dashed **CEP50 circle** (when ≥ 5 shots are present)
 - The target name and view label (group name or "All Groups")
 - Key statistics: shot count, extreme spread, mean radius, POI offset, and CEP50
+- The linked lot's CBTO (or COAL), when the target is linked to a reload lot
 
 When multiple groups are present, the view that is currently active (All, a specific group, or Aggregate) determines what is printed.
 
@@ -1112,7 +1137,9 @@ Two things can be changed from this view:
 - **Included Groups** - a checklist of every group across the aggregated targets. Uncheck a group to exclude it from the combined view and statistics; at least one group must stay included. This choice is saved with the aggregate.
 - **Imperial / Metric** - the same toggle used elsewhere in the app; also saved with the aggregate.
 
-Everything else is read-only. Renaming the aggregate and deleting it (✕ on its list row) are the only other available actions - the underlying targets and their data are never affected.
+Everything else is read-only. Renaming the aggregate and deleting it (🗑 on its list row) are the only other available actions - the underlying targets and their data are never affected.
+
+The group comparison table (see [7.1.6](#716-aggregate-view)) appears here too, listing each group's shots, extreme spread, and mean radius. Windage and elevation are left out, since the groups are re-centred.
 
 **Stays in sync automatically**
 An aggregate does not copy any data from its source targets; it always reads their current state. If you later add an impact, move a shot, or adjust a group on any of the aggregated targets, the aggregate reflects the change immediately the next time you view it. If a source target is deleted, the aggregate simply drops its groups and continues showing the rest.
@@ -1239,7 +1266,7 @@ Each annotation has a **mode toggle**:
 
 | Mode | Fields |
 |------|--------|
-| **Handload** | **Journal Lot** (searchable dropdown from your journal entries), Firearm, Shots, Distance, Notes |
+| **Handload** | **Journal Lot** (searchable dropdown from your journal entries, newest first), Firearm, Shots, Distance, Notes |
 | **Factory** | Cartridge name, Lot #, Firearm, Shots, Distance, Notes |
 
 Firearm and Shots sit side by side in one row, directly above the matching Distance/Unit row, so the two line up.
@@ -1435,7 +1462,6 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 **Backward compatibility**
 `.json` files exported by earlier versions of the application can still be imported. Target photos are not included in `.json` exports (they were not supported in that format); all other data is restored in full.
 
-<!-- IMAGE MAY NEED UPDATING: navigation bar now includes the Firearms tab between My Components and Journal -->
 ![Screenshot: Export and Import buttons in the navigation bar](./images/header-tabs.png)
 
 ---
@@ -1461,9 +1487,11 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 - **Powder quantity field.** When entering a powder in the inventory, set the quantity to match how the powder is sold (1 lb, 4 lb, 8 lb, etc.). The app calculates the per-lb rate automatically and uses it when costing a load.
 - **Unlinking a component.** Manually editing any field in a linked component section (name, price, quantity) automatically breaks the inventory link. The load keeps the values you typed but is no longer updated when the inventory item changes. Use the **×** on the badge to unlink without changing any values.
 - **Deleting an inventory item** does not delete any loads that used it. Those loads retain the component values they had at the time the link was broken.
-- **Journal lot numbers never repeat.** Deleting an entry does not reuse its lot number. The next new entry starts from the **Starting lot #** you configured in the Journal header, then increments past any already-used numbers until it finds the next free slot. This means you can lower the starting lot number to fill in historical batches without creating duplicates, and existing entries are never displaced.
+- **Journal lot numbers never repeat.** Deleting an entry does not reuse its lot number. The next new entry starts from the **Starting lot #** you configured in the Journal header, then increments past any already-used numbers until it finds the next free slot, so you can lower it to backfill historical batches without ever creating a duplicate or displacing an existing entry.
 - **Journal baseline for existing reloaders.** If you were reloading before you started using the journal, enter your historical round count as the manual baseline in Cost Analysis Rounds mode. The journal will add to it going forward, keeping your break-even progress accurate.
 - **Label printing from the journal.** The quickest way to print a box label is directly from the Journal; the lot number and quantity are already filled in. You only need to confirm and print.
+- **Keep component lot numbers current.** Update a component's **Lot #** in My Components whenever you open a new jug or box. Every Journal entry after that records the new lot, so an unexplained change in SD or point of impact can be traced back to a lot change.
+- **Paste the whole shot string.** Entering each shot's velocity instead of just the average keeps the raw data, and the app calculates the average, ES, and SD for you.
 - **The bench-to-range loop.** Use the Journal to record what you pressed, then use the Range Log to record how each lot performed at the range. The two tabs together give you a complete picture: production history in the Journal, field performance in the Range Log.
 - **Multiple lots in one range session.** A single range session can include several lots, for example if you ran three different powder charges side by side. Add one lot entry per charge weight so each gets its own round count and notes.
 - **Range Log notes for load development.** Use the per-lot notes field in the Range Log to record group sizes, point of impact shifts, felt recoil, or function issues. Over time this builds a development log you can cross-reference when adjusting a recipe.
@@ -1477,7 +1505,8 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 - **Firearms Registry data is included in export files.** All firearm profiles are exported with your library and restored on import, so your full registry travels with your data.
 - **Add firearm profiles before logging range sessions.** Populating the Firearms Registry before your first range session means the firearm selector in the Range Log form will already have your guns listed, saving you from typing them out each time.
 - **Caliber on a firearm profile enables grouping and filtering.** Profiles without a caliber still appear in the registry and the Range Log dropdown, but they fall into an Uncategorized group and do not generate a caliber filter chip. Set the caliber if you want to use the chip filter to narrow down multi-gun sessions by cartridge family.
-- **Deleting a firearm profile does not affect past sessions.** Range Log entries record the firearm name as a string at the time of logging. Removing a profile from the registry does not alter any historical session records; the name is preserved exactly as it was when you logged it.
+- **Deleting a firearm profile does not affect past sessions.** Range Log sessions keep the firearm's name as well as a link to its profile. Removing a profile from the registry does not alter any historical session records; the name is preserved exactly as it was.
+- **Renaming a firearm keeps its history together.** Past sessions follow the new name, so the rifle's stats and best groups stay in one place. Sessions logged before profiles existed are matched to a profile by name.
 - **Twist rate is useful during load development.** Enter the twist rate on your rifle profiles (e.g. *1:10*) so you have it on hand when selecting bullet weights during load development; heavier, longer bullets need faster twist rates to stabilise, and having the spec in the registry saves you from looking it up every time.
 - **Charge workup and the journal are connected.** When you log entries from the Charge Workup panel, they appear in the Journal as normal lot entries. When you later log those lots in the Range Log (select them **From Journal**), the velocity and group data flows back into the workup chart automatically, no extra steps needed.
 - **Link range sessions to workup lots using "From Journal" mode.** When adding a lot in the Range Log, select **From Journal** and pick the lot number that the Charge Workup panel created. This is what connects your range data to the workup chart; if you use the Reload or manual mode instead, the lot number may not match and the data will not appear on the chart.
@@ -1490,7 +1519,7 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 - **Use a known reference on the target.** A printed grid square, the bullseye ring diameter, or a target's stated scoring ring size all work as calibration references. Write the distance in millimetres or inches before the session so you have it ready when you upload the photo.
 - **Bullet diameter refines your statistics.** Enter your bullet's diameter in the Configuration panel. The app uses it to measure Extreme Spread and the Smallest Enclosing Circle from the outer edges of the holes (as if the holes were touching), the same way groups are conventionally measured with a calliper. Without bullet diameter, all measurements are centre-to-centre.
 - **Groups let you compare loads on the same target.** If you fired two charge weights or two different loads at the same aiming point, assign their impacts to separate groups. Each group gets its own colour, its own statistics, and contributes to the aggregate calculation.
-- **The aggregate view removes POI differences between groups.** When you have two or more groups, the Aggregate view re-centres each group's shots onto the origin before computing statistics. This removes the point-of-impact offset between loads and gives you a pure measure of each load's internal dispersion; useful for comparing group size consistency independently of where each load prints on the target.
+- **The aggregate view removes POI differences between groups.** When you have two or more groups, the Aggregate view re-centres each group's shots onto the origin before computing statistics. This removes the point-of-impact offset between loads, giving you a pure measure of each load's internal dispersion, useful for comparing group consistency regardless of where each load prints on the target.
 - **Link targets to sessions for bidirectional navigation.** In the target's Configuration panel, select the range session this target came from. A navigation button then appears in both the Targets tab (go to session) and in the Range Log session row (go to target), so you can jump between the two records with one click.
 - **Printed session sheets include the target.** When you print a range session that has a linked target, the target image with annotated shots, ES line, mean-radius circle, and CEP50 circle is automatically included at the bottom of the printed sheet along with key statistics, no separate step needed.
 - **Target records are included in export files.** All target photos, calibration data, impact coordinates, groups, and session links are exported with your library and restored on import.
@@ -1500,5 +1529,5 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 - **Apply to all for fast annotation.** Fill in Target 1's annotation fields completely, then click **Apply to all** to copy them to every slot in one click. Only use Copy prev when adjacent targets differ by a single field (e.g. different lot numbers or charges).
 - **Landscape orientation fits more targets per sheet.** For small pistol targets or load workup grids, switching to landscape and increasing the columns count can fit significantly more aiming points on a single page.
 - **Match ring colours to your shooting conditions.** Use high-contrast colour schemes (e.g., black rings on a white target) for bright outdoor conditions and lighter rings with a black background for lower-light indoor ranges.
-- **Best group badge marks the top performer.** In the Target Analysis sub-tab, when two or more groups are present, the group with the smallest Extreme Spread is marked with a ★ badge in the groups list. This gives you an instant visual indicator of which load performed best without reading through each group's statistics individually.
-- **The target list shows aggregated group size for multi-group targets.** When a target has two or more groups, the shot count and group size shown in the target list uses the aggregate calculation (centering each group on the origin and computing ES across all re-centred shots) rather than treating all impacts as one group. This gives you a meaningful group-size summary for load-comparison targets at a glance.
+- **Best group badge marks the top performer.** In the Target Analysis sub-tab, when two or more groups are present, the group with the smallest Extreme Spread is marked with a ★ badge in the groups list, so you can spot the best-performing load without reading through every group's statistics.
+- **The target list shows aggregated group size for multi-group targets.** When a target has two or more groups, the shot count and group size shown in the target list uses the aggregate calculation (centering each group on the origin and computing ES across all re-centred shots) rather than treating all impacts as one group, giving you a meaningful group-size summary for load-comparison targets at a glance.
