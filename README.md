@@ -1,4 +1,4 @@
-# Reloading Tracker 2.12.1: User Guide
+# Reloading Tracker 2.13.1: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -7,7 +7,7 @@ Manage a shared component inventory, work up new loads with a structured charge 
 If you also care about the economics, the app can do that too. Compare the cost of your reloads against factory ammunition, track your progress toward break-even after equipment investment, and get a side-by-side cost breakdown across any combination of loads. Totally optional though -- plenty of reloaders just want the log and the data.
 
 
-> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.12.1). All previous version are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.13.1). All previous version are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
 
 
 Want to try it out first?
@@ -224,6 +224,9 @@ Click **Add Ammo** in the top-right corner of the My Ammo tab, or click the **+*
 **Brass / Cases**
 - Brass description, price, quantity, and how many times each case will be reloaded before replacement. The cost per round is divided by this reuse count.
 
+**Stock**
+- Rounds in hand for a reload come from the Journal: every lot you press for this load adds its rounds, and rounds logged against those lots in the Range Log come off. Archived lots no longer count. There is no count to type in; the only field is **Alert Below (rounds)**, an optional threshold that shows a **Low** badge on the card and in the table once rounds in hand fall to or below it.
+
 **Sales Tax**
 - The sales tax percentage applied to your total component cost.
 
@@ -276,7 +279,7 @@ You can also switch between **Card** and **Table** views using the view toggle n
 
 **Stock display**
 
-Factory ammo entries with stock tracking enabled (see [2.2](#22-adding-a-factory-ammo-entry)) show a **Stock** line on the card, or a **Stock** column in table view - both display rounds and boxes remaining together, e.g. *250 rds (5 boxes) left*. A **Low** badge appears once remaining stock falls to or below your configured **Alert Below** threshold. Hover (or focus) the Stock label to see the full breakdown in a tooltip: lifetime total purchased, rounds logged in the Range Log, and the resulting remainder. Entries with no boxes added yet show no Stock line at all.
+Ammo with stock to show gets a **Stock** line on the card, or a **Stock** column in table view. Factory ammo with stock tracking enabled (see [2.2](#22-adding-a-factory-ammo-entry)) shows rounds and boxes remaining together, e.g. *250 rds (5 boxes) left*. Reloads show the rounds left in their active Journal lots (see [2.1](#21-adding-a-reload-entry)), e.g. *240 rds left*, so the number always matches the Journal's **Remaining** column. A **Low** badge appears once remaining stock falls to or below your configured **Alert Below** threshold. Hover (or focus) the Stock label to see how the number is worked out. Factory ammo with no boxes added and reloads with no Journal lots show no Stock line at all.
 
 ![Screenshot: Expanded ammo card showing component breakdown](images/ammo-viewer.png)
 
@@ -755,7 +758,7 @@ Entries with component lots recorded show a tag icon in the Notes column. Hover 
 The **Remaining** column shows how many rounds from each lot have not yet been fired. It is calculated automatically from your Range Log: every time you log rounds against a lot in a range session, the remaining count decreases. When all rounds in a lot have been accounted for in the Range Log, the lot is marked **Depleted**. This live link between the journal and the range means you always know exactly how much of each lot is left on the shelf without maintaining a separate inventory.
 
 **Archiving and restoring entries**
-Click the **📦 Archive** button to move a lot out of the active list without deleting it. Archived entries remain part of your history and are still counted in the Journal statistics panel. To see archived entries, click the **"N archived"** link that appears in the journal header when any entries are archived. To restore an entry to the active list, expand the archived view and click the **Restore** button on the relevant row.
+Click the **📦 Archive** button to move a lot out of the active list without deleting it. Archived entries remain part of your history and are still counted in the Journal statistics panel, but their unfired rounds no longer count toward the load's stock in My Ammo. To see archived entries, click the **"N archived"** link that appears in the journal header when any entries are archived. To restore an entry to the active list, expand the archived view and click the **Restore** button on the relevant row.
 
 Use the **Search** box at the top of the page to filter entries by lot number, date, load name, caliber, brass name, notes, or component lot. Searching a primer lot code, for example, lists every batch pressed with that lot.
 
@@ -1497,6 +1500,7 @@ In **Settings**, the **Auto-backup on import** toggle controls whether the appli
 - **Range Log notes for load development.** Use the per-lot notes field in the Range Log to record group sizes, point of impact shifts, felt recoil, or function issues. Over time this builds a development log you can cross-reference when adjusting a recipe.
 - **Star your reference loads.** Once you find a load that functions and groups well, star that range session. The starred filter gives you a quick shortlist when you are deciding what to press next. Starring a session also stars the linked journal lots automatically, so both records are flagged together.
 - **Remaining Rounds keeps your shelf count accurate.** Log rounds against journal lots in the Range Log using **From Journal** mode and the Remaining column updates automatically. Lots that reach zero are marked Depleted and hidden from the From Journal dropdown so you cannot accidentally log against an empty lot.
+- **Reload stock lives in the Journal.** A reload's stock in My Ammo is the sum of its Journal lots' Remaining counts, so press and log through the Journal if you want it tracked. Rounds logged in **Reload** mode in the Range Log (not tied to a Journal lot) don't come off the stock. If you have ammo pressed before you started using the Journal, log it as a Journal entry so it is counted.
 - **Factory ammo stock is a lifetime total, not a current count.** Each time you buy more, enter the number of boxes in **Add Boxes** and click **Add** - it accumulates. Don't try to type your current on-hand count directly; the app already subtracts every round you've logged in the Range Log automatically, including sessions recorded before you started tracking stock for that ammo.
 - **Correcting a factory stock mistake.** Entered the wrong number of boxes? Enter a negative number in **Add Boxes** and click **Add** again to bring the lifetime total back down. There's no separate "edit" for the total - amendments always go through the same Add control.
 - **Archive completed lots to keep the journal tidy.** Once a lot is fully fired and you no longer need it in the active list, archive it. The lot stays in your history and still contributes to statistics; it just does not appear in the main journal table. Restore it at any time if you need to reference or reprint the label.
