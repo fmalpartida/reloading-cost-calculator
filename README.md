@@ -1,4 +1,4 @@
-# Reloading Tracker 2.13.1: User Guide
+# Reloading Tracker 2.14.2: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
