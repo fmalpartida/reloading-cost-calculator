@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <linearGradient id="wadG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#8a96a3"/>
+      <stop offset="45%"  stop-color="#eef2f6"/>
+      <stop offset="100%" stop-color="#8a96a3"/>
+    </linearGradient>
+  </defs>
+  <!-- shot cup petals -->
+  <path d="M8,3 L11.4,3 L11.4,12 L8,12 Z" fill="url(#wadG)"/>
+  <path d="M12.6,3 L16,3 L16,12 L12.6,12 Z" fill="url(#wadG)"/>
+  <!-- collapsible cushion -->
+  <path d="M9,12 L15,12 L13.2,15 L15,18 L9,18 L10.8,15 Z" fill="#c3ccd6" stroke="#6b7682" stroke-width="0.5"/>
+  <!-- gas seal -->
+  <rect x="7.5" y="18" width="9" height="3" rx="0.8" fill="url(#wadG)" stroke="#6b7682" stroke-width="0.5"/>
+</svg>
