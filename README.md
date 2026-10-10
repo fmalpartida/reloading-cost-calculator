@@ -1,4 +1,4 @@
-# Reloading Tracker 2.13.1: User Guide
+# Reloading Tracker 2.14.2: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -7,7 +7,7 @@ Manage a shared component inventory, work up new loads with a structured charge 
 If you also care about the economics, the app can do that too. Compare the cost of your reloads against factory ammunition, track your progress toward break-even after equipment investment, and get a side-by-side cost breakdown across any combination of loads. Totally optional though -- plenty of reloaders just want the log and the data.
 
 
-> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.13.1). All previous version are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.14.2). All previous version are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
 
 
 Want to try it out first?
@@ -44,6 +44,7 @@ Enjoying Reloading Tracker? Every cup of coffee you send my way helps keep the p
    - [Load Status](#load-status)
    - [Default Taxes & Fees](#24-default-taxes--fees)
    - [Charge Workup (Load Development)](#25-charge-workup-load-development)
+   - [Shotshells](#26-shotshells)
 3. [My Components](#3-my-components)
    - [Adding a Component](#31-adding-a-component)
    - [Managing Components](#32-managing-components)
@@ -165,7 +166,7 @@ The application has seven main tabs accessible from the navigation bar at the to
 | Tab | Purpose |
 |-----|---------|
 | **My Ammo** | Library of all your ammo entries: reloads and factory |
-| **My Components** | Global catalog of reloading components: powders, primers, bullets, and brass |
+| **My Components** | Global catalog of reloading components: powders, primers, bullets, and brass, plus hulls, wads, shot, and slugs for shotshells |
 | **Firearms** | Registry of your firearm profiles: type, caliber, action, barrel, and twist data, plus a photo, serial number, price, and mounted optic details |
 | **Journal** | Log pressing sessions with auto-incrementing lot numbers, dates, quantities, and notes |
 | **Range Log** | Record range sessions: firearm, distance, lots fired, round counts, performance notes |
@@ -196,7 +197,7 @@ Move the tabs in the application to customize your workflow. Hide those parts of
 
 ## 2. My Ammo
 
-The **My Ammo** tab is where you build and maintain your ammunition library. Entries are grouped by type: reloads first, then factory ammo (sorted cheapest to most expensive within each group). Each group has a colored section header with a **+** button to add a new entry of that type directly.
+The **My Ammo** tab is where you build and maintain your ammunition library. Entries are grouped by type: reloads first, then factory ammo (sorted cheapest to most expensive within each group). Each group has a colored section header with a **+** button to add a new entry of that type directly. Within each group, entries are split into **Handgun**, **Rifle**, and **Shotgun** categories, with anything that can't be placed under **Uncategorized**.
 
 ![Screenshot: My Ammo tab showing reload and factory cards](./images/my-ammo.png)
 
@@ -207,6 +208,8 @@ Click **Add Ammo** in the top-right corner of the My Ammo tab, or click the **+*
 **Ammo Information**
 - **Name**: identifies the cartridge. Required.
 - **Load Type**: Reload or Factory.
+- **Ammo Class**: Metallic Cartridge or Shotshell. Picking Shotshell switches the form to shotshell components, see [Shotshells](#26-shotshells).
+- **Category**: Handgun, Rifle, or Shotgun. Groups the entry in My Ammo and narrows the caliber list to that category. It fills in from the caliber until you pick one yourself.
 - **Status**: the development state of the load. See [Load Status](#load-status) below.
 - **Caliber**: the cartridge designation (e.g. *9mm Luger*, *.308 Win*). This is added when defining the bullet.
 - **COAL**: cartridge overall length for this load. Printed on the lot label.
@@ -428,6 +431,33 @@ Click **Apply to All** to update every existing entry in your library with the c
 
 You can also reset taxes to defaults on a per-entry basis using the **Reset to defaults** link inside the Editor.
 
+### 2.6 Shotshells
+
+Set **Ammo Class** to **Shotshell** in the Editor to track shotgun reloads or factory shells. The **Caliber** field becomes **Gauge** (*12 ga*, *20 ga*, *.410 bore*, and so on), and two more fields appear: **Shell Length** (e.g. *2-3/4"* or *70 mm*) and **Projectile**, which is **Shot**, **Buckshot**, or **Slug**.
+
+**Reloaded shotshells**
+
+The reload form swaps the cartridge sections for shotshell ones:
+
+- **Powder** and **Primers** work exactly as for metallic loads.
+- **Shot / Buckshot** (shot and buckshot loads): description, material (lead, plated lead, steel, bismuth, tungsten), shot size, pellet count for buckshot, price per lb or kg, and the **Payload** per shell. Payload is in ounces for Imperial and grams for Metric, the way US and European manuals list it.
+- **Slug** (slug loads): description, weight in grains, price, and the quantity that price covers.
+- **Wads**: description, type (plastic, fiber, custom), price, and the quantity that price covers.
+- **Hulls**: replaces Brass / Cases, with the same price, quantity, and times-reloaded fields.
+- **Crimp** and **Published Velocity** are optional recipe notes. COAL, CBTO, and the Charge Ladder don't apply to shotshells and are hidden.
+
+Hull, wad, shot, and slug can all be picked from My Components like any other component (see [3.3](#33-linking-inventory-to-loads)). Hulls, wads, and slugs saved with a gauge only show up for loads of that gauge. The cost breakdown on the card and in the Live Preview lists the shot, wad, and hull cost per shell.
+
+<!-- IMAGE NEEDED: images/shotshell-editor.png, Editor with Ammo Class set to Shotshell showing the Shot, Wads, and Hulls sections -->
+
+**Factory shotshells**
+
+Factory entries take the same gauge, shell length, and projectile, plus optional payload, shot material and size, pellet count, slug weight, **Dram Equivalent**, and **Velocity**. Pricing, taxes, and stock work as for any factory ammo (see [2.2](#22-adding-a-factory-ammo-entry)).
+
+<!-- IMAGE NEEDED: images/shotshell-card.png, expanded shotshell card in My Ammo showing shot, wad, and hull costs -->
+
+> Shotshell recipes are tested as an exact combination of hull, primer, powder, wad, and payload. Don't swap any one of them without published data for the new combination.
+
 ---
 
 ## 3. My Components
@@ -436,7 +466,7 @@ The **My Components** tab is a global catalog of reloading components. Instead o
 
 ![Screenshot: My Components tab showing grouped components with filter tags](./images/my-inventory.png)
 
-Components are organised into four types: **Powder**, **Primer**, **Bullet**, and **Brass**. They are displayed in grouped sections, each with a colored left-border accent that matches the component's icon.
+Components are organised into eight types: **Powder**, **Primer**, **Bullet**, and **Brass** for cartridges, plus **Hull**, **Wad**, **Shot**, and **Slug** for shotshells. They are displayed in grouped sections, each with a colored left-border accent that matches the component's icon.
 
 **Filter tags** at the top of the list let you narrow the view to a single type at a glance; click a tag to activate it, click again to clear the filter.
 
@@ -453,7 +483,7 @@ Click **Add Component** in the top-right corner, or click the small **+** button
 The form is organised into labeled sections - **Basics** for every type (plus **Specs** and **Pricing** for bullets), and for brass, **Consistency & Fit** and **Annealing** on top of Basics - followed by a shared **Stock** section at the end.
 
 **Component Type**  
-Choose one of the four types using the selector buttons at the top of the form. Once a component is saved the type cannot be changed; duplicate it and delete the original if you need a different type.
+Choose one of the eight types using the selector buttons at the top of the form. Once a component is saved the type cannot be changed; duplicate it and delete the original if you need a different type.
 
 **Name / Description** *(required)*  
 A descriptive label, e.g. *Titegroup*, *CCI 500 Small Pistol*, *124gr FMJ RN*, *Mixed once-fired 9mm*.
@@ -462,14 +492,22 @@ A descriptive label, e.g. *Titegroup*, *CCI 500 Small Pistol*, *124gr FMJ RN*, *
 Upload a photo of the component (HEIC photos from iPhone are converted automatically). It's resized and compressed for storage, then shown as a thumbnail on the card or in the table's Photo column - see [3.2](#32-managing-components) below. Click **Remove** to clear it.
 
 **Price** *(required)*  
-The price you paid for the component. For powders this is the price per pound (Imperial) or per kilogram (Metric). For all other types it is the total price for the quantity below.
+The price you paid for the component. For powder and shot this is the price per pound (Imperial) or per kilogram (Metric). For all other types it is the total price for the quantity below.
 
 **Quantity / Weight** *(required)*  
-- *Powder*: the weight the price covers (lbs or kg). A 1 lb jug entered at $28.99/1 lb stores as $28.99/lb; a 4 lb jug entered at $89.99/4 lb also resolves to the correct per-lb rate when used in a load.
-- *Primer, Bullet, Brass*: the number of units the price covers (e.g. 100 primers for $15.99).
+- *Powder, Shot*: the weight the price covers (lbs or kg). A 1 lb jug entered at $28.99/1 lb stores as $28.99/lb; a 4 lb jug entered at $89.99/4 lb also resolves to the correct per-lb rate when used in a load.
+- *Primer, Bullet, Brass, Hull, Wad, Slug*: the number of units the price covers (e.g. 100 primers for $15.99).
 
-**Measurement System** *(powder only)*  
-Select **Imperial (lb)** or **Metric (kg)**. This carries through to any load that links to this powder.
+**Measurement System** *(powder and shot)*  
+Select **Imperial (lb)** or **Metric (kg)**. This carries through to any load that links to this component.
+
+**Shotshell specs** *(optional)*  
+- *Hull*: **Gauge**, **Shell Length**, and **Times Reloaded** (required, same as brass).
+- *Wad*: **Gauge** and **Wad Type**.
+- *Shot*: **Material** and **Shot Size**.
+- *Slug*: **Gauge** and **Weight (grains)**.
+
+Setting a gauge on a hull, wad, or slug limits it to loads of that gauge in the Editor's inventory dropdown.
 
 **OAL (Overall Length)** *(bullet only, optional)*  
 The bullet's overall length, with a unit dropdown (**in** or **mm**) next to it. The unit defaults to your app's Imperial/Metric setting; switching it converts the number you've already entered instead of just relabeling it, e.g. *1.169 in* becomes *29.6926 mm*.
@@ -492,8 +530,8 @@ Optional free-text field for suppliers or any other reference.
 
 **Stock on hand** *(optional)*  
 The current quantity you have in stock. The unit depends on the component type:
-- *Powder*: weight in lb or kg (matching the measurement system you selected)
-- *Primer, Bullet, Brass*: individual count
+- *Powder, Shot*: weight in lb or kg (matching the measurement system you selected)
+- *Primer, Bullet, Brass, Hull, Wad, Slug*: individual count
 
 Leave this field blank if you do not want to track stock for this component. Only components with a stock quantity set are visible to the journal deduction feature.
 
@@ -532,7 +570,7 @@ Each component card has three action buttons:
 
 ![Screenshot: Inventory card action buttons](./images/inventory-card-actions.png)
 
-In **Table view**, the **Stock** column shows the current quantity on hand for each component, formatted with a unit suffix (*primers*, *rounds*, *cases*, *lb*, or *kg*). Components with no stock quantity set show a dash (-). A **Low** badge appears in the same cell when stock is at or below the threshold. The **Lot #** column next to it shows each component's lot number, or a dash when none is set.
+In **Table view**, the **Stock** column shows the current quantity on hand for each component, formatted with a unit suffix (*primers*, *rounds*, *cases*, *hulls*, *wads*, *slugs*, *lb*, or *kg*). Components with no stock quantity set show a dash (-). A **Low** badge appears in the same cell when stock is at or below the threshold. The **Lot #** column next to it shows each component's lot number, or a dash when none is set.
 
 For brass, an **Info** column shows the same Consistency & Fit / Annealing icon buttons as the card view, keeping the table compact instead of adding a separate column per field.
 
@@ -550,11 +588,11 @@ Components with a photo (see [3.1](#31-adding-a-component)) show it as a thumbna
 
 **Cash-in-hand totals**
 
-Each category header (Powders, Primers, Bullets, Brass) shows that category's total stock value (quantity on hand × price) next to its item count. A grand total across all categories appears at the top of the page next to the filter tags. Both use your configured currency symbol and update automatically as stock levels or prices change.
+Each category header (Powders, Primers, Bullets, Brass, and so on) shows that category's total stock value (quantity on hand × price) next to its item count. A grand total across all categories appears at the top of the page next to the filter tags. Both use your configured currency symbol and update automatically as stock levels or prices change.
 
 ### 3.3 Linking Inventory to Loads
 
-When editing or creating a reload in the **Editor** tab, each component section (Powder, Primers, Bullets, Brass) has a **Select from inventory** dropdown above the manual input fields. Choosing an item from that dropdown fills all the related fields automatically and marks the component with a **linked badge**.
+When editing or creating a reload in the **Editor** tab, each component section (Powder, Primers, Bullets, Brass, and for shotshells Shot, Slug, Wads, Hulls) has a **Select from inventory** dropdown above the manual input fields. Choosing an item from that dropdown fills all the related fields automatically and marks the component with a **linked badge**.
 
 ![Screenshot: Load editor with inventory dropdown and linked badge](./images/inventory-link-badge.png)
 
@@ -594,7 +632,7 @@ Click **Add Firearm** in the top-right corner of the Firearms tab. The dialog is
 | **Name** | Yes | A descriptive label for the firearm, e.g. *Remington 700 SPS*, *Glock 17 Gen 5*. |
 | **Firearm Type** | No | Broad category: **Rifle**, **Handgun**, **Shotgun**, or **Other**. |
 | **Action Type** | No | Operating mechanism: **Bolt**, **Semi-Auto**, **Lever**, **Pump**, **Single Shot**, **Revolver**, or **Other**. |
-| **Caliber** | No | The cartridge the firearm is chambered in, e.g. *.308 Win*, *9mm Luger*. Used for grouping and caliber filter chips. |
+| **Caliber** | No | The cartridge the firearm is chambered in, e.g. *.308 Win*, *9mm Luger*, *12 ga*. The list follows the Firearm Type (handgun, rifle, or shotgun calibers). Used for grouping and caliber filter chips. |
 | **Barrel Length** | No | Free text, e.g. *24 in*, *16.5"*. |
 | **Twist Rate** | No | Rifling twist rate, e.g. *1:10*, *1:8*. Relevant for bullet stabilisation in load development. |
 | **Photo** | No | Upload a photo of the firearm (HEIC photos from iPhone are converted automatically). It's resized and compressed for storage, then shown as a thumbnail everywhere the firearm appears - see 4.4 and 4.5 below. Click **Remove** to clear it. |
@@ -700,6 +738,10 @@ Click **Log Entry** at the top right of the entries card to open the session dia
 
 The next available lot number is shown at the top of the dialog and is assigned automatically when you save. Click **Save Entry** to log the session. The new entry appears at the top of the list and the lot counter advances.
 
+For a shotshell load the dialog adapts: COAL and CBTO overrides are hidden, **Brass override** becomes **Hull override** (picked from your hulls), and the lot fields become powder, primer, shot (or slug), wad, and hull.
+
+<!-- IMAGE NEEDED: images/shotshell-journal.png, Journal entry dialog for a shotshell load showing the Hull override and shotshell lot fields -->
+
 Component lots are only filled in automatically for new entries. Entries logged before this feature existed stay blank, since today's lots may not be the ones you used back then; edit an entry to add them by hand if you know them.
 
 ![Screenshot: journal edit dialog showing the charge, COAL, and brass override fields](./images/journal-editor.png)
@@ -728,10 +770,11 @@ When a reload entry is linked to components in My Components that have a **Stock
 
 | Component | Amount deducted |
 |-----------|----------------|
-| Powder | Weight used: `(rounds × charge in grains) ÷ 7000` lb, or `÷ 15432.4` kg for metric. If the entry has a charge override, that value is used instead of the recipe default. |
-| Primer | 1 per round (`quantity`) |
-| Bullet | 1 per round (`quantity`) |
-| Brass | 1 per round (`quantity`). If the entry has a **Brass override**, the matching inventory item is found by name rather than by the linked ID. |
+| Powder | Weight used: `(rounds × charge in grains) ÷ 7000` lb, or `(rounds × charge in grams) ÷ 1000` kg for metric. If the entry has a charge override, that value is used instead of the recipe default. |
+| Shot | Weight used: `(shells × payload in oz) ÷ 16` lb, or `(shells × payload in grams) ÷ 1000` kg for metric. |
+| Primer, Wad | 1 per round (`quantity`) |
+| Bullet, Slug | 1 per round (`quantity`) |
+| Brass, Hull | 1 per round (`quantity`). If the entry has a **Brass** or **Hull override**, the matching inventory item is found by name rather than by the linked ID. |
 
 After a successful deduction, the button changes to a **✓ Stock** badge. Click the badge to **return** the stock (undo the deduction). This is useful if you made a mistake or need to adjust quantities before re-deducting.
 
@@ -1227,7 +1270,7 @@ Click **New Target Sheet** in the page header to open the designer with a blank 
 | **Orientation** | Portrait or Landscape. |
 | **Columns × Rows** | Number of targets across and down the page (1–4 each). A 2 × 3 layout prints 6 targets per page. |
 | **Shape** | Target shape: Circle, Square, or Diamond. |
-| **Show Annotation** | Whether to print load/firearm annotation labels on each target slot. |
+| **Annotation: Load / Gun** | Two toggles: **Load** prints the load details (lot, components, shots) and **Gun** prints the firearm, distance, and result fields. Turn off both to print a bare target. |
 | **Annotation position** | Whether annotation text appears inside the rings or outside below the target. |
 
 Click **Save Sheet** to save or **Cancel** to discard changes. The **Print** button in the designer header opens the print dialog directly from the editor.
@@ -1263,7 +1306,7 @@ Enable **Show Grid** to print a background grid over each target; useful as a vi
 
 #### 7.3.4 Annotations
 
-When **Show Annotation** is enabled, each target slot on the sheet has an independent annotation block. For a 2 × 3 sheet, six annotation sections appear in the designer, one per slot, labelled *Target 1*, *Target 2*, and so on. Fill these in before printing so the load and firearm information is already on the sheet when you pull it off the printer.
+When either annotation toggle (**Load** or **Gun**) is on, each target slot on the sheet has an independent annotation block. For a 2 × 3 sheet, six annotation sections appear in the designer, one per slot, labelled *Target 1*, *Target 2*, and so on. Fill these in before printing so the load and firearm information is already on the sheet when you pull it off the printer.
 
 Each annotation has a **mode toggle**:
 
@@ -1274,7 +1317,9 @@ Each annotation has a **mode toggle**:
 
 Firearm and Shots sit side by side in one row, directly above the matching Distance/Unit row, so the two line up.
 
-Group size, Avg velocity, and SD are **not** data-entry fields - they're not something you'd know before shooting. Instead they always print on the target as blank labelled fields (e.g. *GRP:*, *VEL:*, *SD:*) for you to fill in by hand at the range once you have the results.
+Group size, Avg velocity, and SD are **not** data-entry fields - they're not something you'd know before shooting. Instead they print with the gun details as blank labelled fields (e.g. *GRP:*, *VEL:*, *SD:*) for you to fill in by hand at the range once you have the results.
+
+The **Load** and **Gun** toggles control which part of the block prints, so you can keep the gun and result fields on a sheet without the load details, or the other way round. Text too long for its field, such as a long firearm name, is shortened with an ellipsis instead of running past the annotation box.
 
 **Filling multiple targets quickly**
 
