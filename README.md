@@ -1,4 +1,4 @@
-# Reloading Tracker 2.14.2: User Guide
+# Reloading Tracker 2.14.3: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -7,7 +7,7 @@ Manage a shared component inventory, work up new loads with a structured charge 
 If you also care about the economics, the app can do that too. Compare the cost of your reloads against factory ammunition, track your progress toward break-even after equipment investment, and get a side-by-side cost breakdown across any combination of loads. Totally optional though -- plenty of reloaders just want the log and the data.
 
 
-> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.14.2). All previous version are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.14.3). All previous version are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
 
 
 Want to try it out first?
@@ -244,9 +244,10 @@ Click **Save Load** or **Update Load** when done. The entry appears immediately 
 Click **Add Ammo** or the **+** button in the **Factory** section header. The Editor opens with **Factory Ammo** pre-selected. The form shows:
 
 **Stock** *(optional)*
-- Tracks how many rounds of this factory ammo you have left. Rather than typing a total directly, enter the number of boxes in **Add Boxes** and click **Add** - it accumulates into a running **Lifetime total** shown just below the field. To correct a mistake (e.g. you added a box twice), enter a negative number and click **Add** again; the lifetime total never drops below zero.
+- Tracks how many rounds of this factory ammo you have left. Rather than typing a total directly, enter the number of boxes in **Add Boxes** and click **Add** (or just save the entry) - it accumulates into a running **Lifetime total** shown just below the field. To correct a mistake (e.g. you added a box twice), enter a negative number and click **Add** again; the lifetime total never drops below zero.
 - **Alert Below (boxes)**: optional threshold. When the rounds remaining fall to or below this many boxes, a **Low** badge appears on the card and in the table.
 - Remaining rounds are calculated automatically as *Lifetime total × Rounds per Box*, minus every round logged against this ammo in the Range Log - including sessions logged before you started tracking stock for it, so the count factors in your full shooting history, not just usage from today forward.
+- While stock is tracked, the **Live Preview** shows the boxes and rounds you have in hand, with a **Low** badge when below your alert. It updates as you type in **Add Boxes**, before you save.
 - Leave **Add Boxes** untouched (lifetime total stays at 0) if you don't want to track stock for this ammo; the Stock display is hidden everywhere until you add at least one box.
 
 **Base Factory Price**
