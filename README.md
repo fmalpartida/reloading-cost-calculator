@@ -1,4 +1,4 @@
-# Reloading Tracker 2.14.3: User Guide
+# Reloading Tracker 2.15.0: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -199,6 +199,7 @@ Move the tabs in the application to customize your workflow. Hide those parts of
 
 The **My Ammo** tab is where you build and maintain your ammunition library. Entries are grouped by type: reloads first, then factory ammo (sorted cheapest to most expensive within each group). Each group has a colored section header with a **+** button to add a new entry of that type directly. Within each group, entries are split into **Handgun**, **Rifle**, and **Shotgun** categories, with anything that can't be placed under **Uncategorized**.
 
+<!-- IMAGE MAY NEED UPDATING: Reloads and Factory headers now have a caliber filter (2.15.0) -->
 ![Screenshot: My Ammo tab showing reload and factory cards](./images/my-ammo.png)
 
 ### 2.1 Adding a Reload Entry
@@ -278,6 +279,8 @@ Each ammo card has four action buttons in its top-right corner:
 Click the **▸ / ▾** chevron on the left of the action buttons to expand a card and see the full component cost breakdown.
 
 Use the **Search** box to filter cards by name, caliber, type, or component name.
+
+When the **Reloads** or **Factory** section holds more than one caliber, a **caliber filter** appears in its header. Each section filters on its own, so you can show only your 6.5 Creedmoor reloads while still listing all factory ammo. The filter works together with search and the retired toggle, and the count at the top of the page reflects it. If the filters leave nothing to show, click **Clear Filters** to reset the search and both caliber filters at once.
 
 You can also switch between **Card** and **Table** views using the view toggle next to the search box. Card view shows the familiar expandable cards, while Table view gives you a denser list that is easier to scan when you have many entries.
 
@@ -475,6 +478,8 @@ Components are organised into eight types: **Powder**, **Primer**, **Bullet**, a
 
 Use the **Search** box to filter components by name or notes across all groups.
 
+The **Bullets**, **Brass**, and **Hulls** sections also get a **caliber filter** in their header (gauge for hulls) once they hold more than one caliber. Each section filters on its own, and its cash-in-hand total follows the selected caliber.
+
 Like My Ammo, My Components also supports **Card** and **Table** views through the view toggle near the search box.
 
 ### 3.1 Adding a Component
@@ -589,11 +594,11 @@ Components with a photo (see [3.1](#31-adding-a-component)) show it as a thumbna
 
 **Cash-in-hand totals**
 
-Each category header (Powders, Primers, Bullets, Brass, and so on) shows that category's total stock value (quantity on hand × price) next to its item count. A grand total across all categories appears at the top of the page next to the filter tags. Both use your configured currency symbol and update automatically as stock levels or prices change.
+Each category header (Powders, Primers, Bullets, Brass, and so on) shows that category's total stock value (quantity on hand × price) next to its item count. A grand total across all categories appears at the top of the page next to the filter tags. Search and the filter tags don't affect these totals, but a section's caliber filter does: picking .308 Win in Bullets shows only the value of your .308 Win bullets, and the grand total follows. Both use your configured currency symbol and update automatically as stock levels or prices change.
 
 ### 3.3 Linking Inventory to Loads
 
-When editing or creating a reload in the **Editor** tab, each component section (Powder, Primers, Bullets, Brass, and for shotshells Shot, Slug, Wads, Hulls) has a **Select from inventory** dropdown above the manual input fields. Choosing an item from that dropdown fills all the related fields automatically and marks the component with a **linked badge**.
+When editing or creating a reload in the **Editor** tab, each component section (Powder, Primers, Bullets, Brass, and for shotshells Shot, Slug, Wads, Hulls) has a **Select from inventory** dropdown above the manual input fields. Choosing an item from that dropdown fills all the related fields automatically and marks the component with a **linked badge**. Bullets and brass are listed with their caliber, and hulls with their gauge, so items with similar names are easy to tell apart.
 
 ![Screenshot: Load editor with inventory dropdown and linked badge](./images/inventory-link-badge.png)
 
@@ -805,6 +810,8 @@ The **Remaining** column shows how many rounds from each lot have not yet been f
 Click the **📦 Archive** button to move a lot out of the active list without deleting it. Archived entries remain part of your history and are still counted in the Journal statistics panel, but their unfired rounds no longer count toward the load's stock in My Ammo. To see archived entries, click the **"N archived"** link that appears in the journal header when any entries are archived. To restore an entry to the active list, expand the archived view and click the **Restore** button on the relevant row.
 
 Use the **Search** box at the top of the page to filter entries by lot number, date, load name, caliber, brass name, notes, or component lot. Searching a primer lot code, for example, lists every batch pressed with that lot.
+
+When your journal holds more than one caliber, a **caliber filter** appears next to the search box. Pick a caliber to show only the lots loaded for it, or **All calibers** to clear it. The filter works together with the search box and the starred and archived toggles, and **Select all** for batch label printing only picks the entries currently shown.
 
 **On phones and tablets**
 On narrow screens the table switches to a stacked layout: each entry shows its lot, date, load, quantity, remaining rounds, and notes in a column, with the action buttons alongside. Charge, COAL/CBTO, brass, and fired count are hidden to save space; open the entry to see them.
