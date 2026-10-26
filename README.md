@@ -1,4 +1,4 @@
-# Reloading Tracker 2.15.0: User Guide
+# Reloading Tracker 2.16.0: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf. And it grows with you from there.
 
@@ -7,7 +7,7 @@ Manage a shared component inventory, work up new loads with a structured charge 
 If you also care about the economics, the app can do that too. Compare the cost of your reloads against factory ammunition, track your progress toward break-even after equipment investment, and get a side-by-side cost breakdown across any combination of loads. Totally optional though -- plenty of reloaders just want the log and the data.
 
 
-> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.14.3). All previous version are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.16.0). All previous version are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
 
 
 Want to try it out first?
@@ -199,7 +199,6 @@ Move the tabs in the application to customize your workflow. Hide those parts of
 
 The **My Ammo** tab is where you build and maintain your ammunition library. Entries are grouped by type: reloads first, then factory ammo (sorted cheapest to most expensive within each group). Each group has a colored section header with a **+** button to add a new entry of that type directly. Within each group, entries are split into **Handgun**, **Rifle**, and **Shotgun** categories, with anything that can't be placed under **Uncategorized**.
 
-<!-- IMAGE MAY NEED UPDATING: Reloads and Factory headers now have a caliber filter (2.15.0) -->
 ![Screenshot: My Ammo tab showing reload and factory cards](./images/my-ammo.png)
 
 ### 2.1 Adding a Reload Entry
@@ -229,7 +228,7 @@ Click **Add Ammo** in the top-right corner of the My Ammo tab, or click the **+*
 - Brass description, price, quantity, and how many times each case will be reloaded before replacement. The cost per round is divided by this reuse count.
 
 **Stock**
-- Rounds in hand for a reload come from the Journal: every lot you press for this load adds its rounds, and rounds logged against those lots in the Range Log come off. Archived lots no longer count. There is no count to type in; the only field is **Alert Below (rounds)**, an optional threshold that shows a **Low** badge on the card and in the table once rounds in hand fall to or below it.
+- Rounds in hand for a reload come from the Journal: every lot you press for this load adds its rounds, and rounds logged against those lots in the Range Log come off. Archived lots no longer count. There is no count to type in; the only field is **Alert Below (rounds)**, an optional threshold that turns the card's stock pill orange, and shows a **Low** badge in the table, once rounds in hand fall to or below it.
 
 **Sales Tax**
 - The sales tax percentage applied to your total component cost.
@@ -246,7 +245,7 @@ Click **Add Ammo** or the **+** button in the **Factory** section header. The Ed
 
 **Stock** *(optional)*
 - Tracks how many rounds of this factory ammo you have left. Rather than typing a total directly, enter the number of boxes in **Add Boxes** and click **Add** (or just save the entry) - it accumulates into a running **Lifetime total** shown just below the field. To correct a mistake (e.g. you added a box twice), enter a negative number and click **Add** again; the lifetime total never drops below zero.
-- **Alert Below (boxes)**: optional threshold. When the rounds remaining fall to or below this many boxes, a **Low** badge appears on the card and in the table.
+- **Alert Below (boxes)**: optional threshold. When the rounds remaining fall to or below this many boxes, the card's stock pill turns orange and a **Low** badge appears in the table.
 - Remaining rounds are calculated automatically as *Lifetime total × Rounds per Box*, minus every round logged against this ammo in the Range Log - including sessions logged before you started tracking stock for it, so the count factors in your full shooting history, not just usage from today forward.
 - While stock is tracked, the **Live Preview** shows the boxes and rounds you have in hand, with a **Low** badge when below your alert. It updates as you type in **Add Boxes**, before you save.
 - Leave **Add Boxes** untouched (lifetime total stays at 0) if you don't want to track stock for this ammo; the Stock display is hidden everywhere until you add at least one box.
@@ -286,7 +285,9 @@ You can also switch between **Card** and **Table** views using the view toggle n
 
 **Stock display**
 
-Ammo with stock to show gets a **Stock** line on the card, or a **Stock** column in table view. Factory ammo with stock tracking enabled (see [2.2](#22-adding-a-factory-ammo-entry)) shows rounds and boxes remaining together, e.g. *250 rds (5 boxes) left*. Reloads show the rounds left in their active Journal lots (see [2.1](#21-adding-a-reload-entry)), e.g. *240 rds left*, so the number always matches the Journal's **Remaining** column. A **Low** badge appears once remaining stock falls to or below your configured **Alert Below** threshold. Hover (or focus) the Stock label to see how the number is worked out. Factory ammo with no boxes added and reloads with no Journal lots show no Stock line at all.
+Ammo with stock to show gets a **stock pill** on the card, or a **Stock** column in table view. Factory ammo with stock tracking enabled (see [2.2](#22-adding-a-factory-ammo-entry)) shows rounds and boxes remaining together, e.g. *250 rds (5 boxes) left*. Reloads show the rounds left in their active Journal lots (see [2.1](#21-adding-a-reload-entry)), e.g. *240 rds left*, so the number always matches the Journal's **Remaining** column. Factory ammo with no boxes added and reloads with no Journal lots show no stock at all.
+
+On the card, the pill sits at the right end of the card. Its color tells you where you stand at a glance: **green** while you have stock, **orange** once it falls to or below your **Alert Below** threshold, and **red** when it reaches zero. In table view, a **Low** badge marks the same threshold. Hover (or focus) the pill to see how the number is worked out.
 
 ![Screenshot: Expanded ammo card showing component breakdown](images/ammo-viewer.png)
 
@@ -452,13 +453,11 @@ The reload form swaps the cartridge sections for shotshell ones:
 
 Hull, wad, shot, and slug can all be picked from My Components like any other component (see [3.3](#33-linking-inventory-to-loads)). Hulls, wads, and slugs saved with a gauge only show up for loads of that gauge. The cost breakdown on the card and in the Live Preview lists the shot, wad, and hull cost per shell.
 
-<!-- IMAGE NEEDED: images/shotshell-editor.png, Editor with Ammo Class set to Shotshell showing the Shot, Wads, and Hulls sections -->
 
 **Factory shotshells**
 
 Factory entries take the same gauge, shell length, and projectile, plus optional payload, shot material and size, pellet count, slug weight, **Dram Equivalent**, and **Velocity**. Pricing, taxes, and stock work as for any factory ammo (see [2.2](#22-adding-a-factory-ammo-entry)).
 
-<!-- IMAGE NEEDED: images/shotshell-card.png, expanded shotshell card in My Ammo showing shot, wad, and hull costs -->
 
 > Shotshell recipes are tested as an exact combination of hull, primer, powder, wad, and payload. Don't swap any one of them without published data for the new combination.
 
@@ -566,15 +565,24 @@ For brass with any **Consistency & Fit** or **Annealing** fields set, a **Detail
 
 ### 3.2 Managing Components
 
-Each component card has three action buttons:
+Each component card has four action buttons:
 
 | Button | Action |
 |--------|--------|
 | ✏️ Edit | Opens the component in the form panel for editing. The type selector is disabled; type cannot be changed after creation. |
-| ⧉ Duplicate | Creates a copy with *(copy)* appended to the name, useful when a component comes in multiple package sizes. |
+| ⧉ Duplicate | Creates a copy with *(copy)* appended to the name, useful when a component comes in multiple package sizes. Duplicating an archived component gives an active copy. |
+| 📦 Archive | Retires the component without deleting it. Becomes **Restore** on an archived component. See below. |
 | 🗑 Delete | Permanently removes the component from the catalog. Loads that were linked to it retain their last-known values but lose the live link. |
 
 ![Screenshot: Inventory card action buttons](./images/inventory-card-actions.png)
+
+**Archiving components**
+
+When you stop using a component, say a powder you won't buy again or a brass lot you've retired, archive it rather than delete it. You're asked to confirm first. An archived component is hidden from the list, left out of the cash-in-hand totals, and no longer offered in the Editor's inventory dropdowns or the Journal's brass and hull lists. Loads already linked to it keep the link and keep updating.
+
+When anything is archived, the count under the page title ends with a **"N archived hidden"** link, and each section header shows **"N archived"** for that section. Click either to show archived components; the link changes to **hide archived**. Shown archived components are dimmed, with an **ARCHIVED** tag on the card or a red edge and an **Archived** tag on the table row. Click **Restore** to make one active again.
+
+![Screenshot: Archived components, showing archived component tag and link to hide them at the top.](./images/archived-components.png)
 
 In **Table view**, the **Stock** column shows the current quantity on hand for each component, formatted with a unit suffix (*primers*, *rounds*, *cases*, *hulls*, *wads*, *slugs*, *lb*, or *kg*). Components with no stock quantity set show a dash (-). A **Low** badge appears in the same cell when stock is at or below the threshold. The **Lot #** column next to it shows each component's lot number, or a dash when none is set.
 
@@ -594,7 +602,7 @@ Components with a photo (see [3.1](#31-adding-a-component)) show it as a thumbna
 
 **Cash-in-hand totals**
 
-Each category header (Powders, Primers, Bullets, Brass, and so on) shows that category's total stock value (quantity on hand × price) next to its item count. A grand total across all categories appears at the top of the page next to the filter tags. Search and the filter tags don't affect these totals, but a section's caliber filter does: picking .308 Win in Bullets shows only the value of your .308 Win bullets, and the grand total follows. Both use your configured currency symbol and update automatically as stock levels or prices change.
+Each category header (Powders, Primers, Bullets, Brass, and so on) shows that category's total stock value (quantity on hand × price) next to its item count. A grand total across all categories appears at the top of the page next to the filter tags. Archived components never count. Search and the filter tags don't affect these totals, but a section's caliber filter does: picking .308 Win in Bullets shows only the value of your .308 Win bullets, and the grand total follows. Both use your configured currency symbol and update automatically as stock levels or prices change.
 
 ### 3.3 Linking Inventory to Loads
 
@@ -673,14 +681,21 @@ Click **Save** to add the firearm. The profile appears immediately in the Firear
 
 ### 4.2 Managing Firearm Profiles
 
-Each firearm profile (in both card and table view) has two action buttons:
+Each firearm profile (in both card and table view) has three action buttons:
 
 | Button | Action |
 |--------|--------|
 | ✏️ Edit | Opens the profile in the form dialog for editing. All fields can be changed. If you rename the firearm, its past Range Log sessions follow the new name, so its history stays together. |
+| 📦 Archive | Retires the firearm without deleting it. Becomes **Restore** on an archived firearm. See below. |
 | 🗑 Delete | Permanently removes the profile from the registry. Existing Range Log sessions that referenced this firearm are not affected; the recorded firearm name is preserved in those sessions. |
 
 A confirmation dialog appears before deletion to prevent accidental removal.
+
+**Archiving firearms**
+
+Sold a rifle or put one away for good? Archive it to keep it on record without cluttering the list. You're asked to confirm first. An archived firearm is hidden from the list, from the Range Log's firearm picker, and from the **Dedicated Firearm** picker on brass. Existing Range Log sessions keep their firearm, and a brass lot already dedicated to it keeps the link.
+
+When anything is archived, the count under the page title ends with a **"N archived hidden"** link, and each caliber group shows **"N archived"** for that group. Click either to show archived firearms; the link changes to **hide archived**. Shown archived firearms are dimmed, with an **ARCHIVED** tag on the card or a red edge and an **Archived** tag on the table row. Click **Restore** to make one active again.
 
 ### 4.3 Filtering and Searching
 
@@ -745,9 +760,6 @@ Click **Log Entry** at the top right of the entries card to open the session dia
 The next available lot number is shown at the top of the dialog and is assigned automatically when you save. Click **Save Entry** to log the session. The new entry appears at the top of the list and the lot counter advances.
 
 For a shotshell load the dialog adapts: COAL and CBTO overrides are hidden, **Brass override** becomes **Hull override** (picked from your hulls), and the lot fields become powder, primer, shot (or slug), wad, and hull.
-
-<!-- IMAGE NEEDED: images/shotshell-journal.png, Journal entry dialog for a shotshell load showing the Hull override and shotshell lot fields -->
-
 Component lots are only filled in automatically for new entries. Entries logged before this feature existed stay blank, since today's lots may not be the ones you used back then; edit an entry to add them by hand if you know them.
 
 ![Screenshot: journal edit dialog showing the charge, COAL, and brass override fields](./images/journal-editor.png)
@@ -807,7 +819,7 @@ Entries with component lots recorded show a tag icon in the Notes column. Hover 
 The **Remaining** column shows how many rounds from each lot have not yet been fired. It is calculated automatically from your Range Log: every time you log rounds against a lot in a range session, the remaining count decreases. When all rounds in a lot have been accounted for in the Range Log, the lot is marked **Depleted**. This live link between the journal and the range means you always know exactly how much of each lot is left on the shelf without maintaining a separate inventory.
 
 **Archiving and restoring entries**
-Click the **📦 Archive** button to move a lot out of the active list without deleting it. Archived entries remain part of your history and are still counted in the Journal statistics panel, but their unfired rounds no longer count toward the load's stock in My Ammo. To see archived entries, click the **"N archived"** link that appears in the journal header when any entries are archived. To restore an entry to the active list, expand the archived view and click the **Restore** button on the relevant row.
+Click the **📦 Archive** button to move a lot out of the active list without deleting it. Archived entries remain part of your history and are still counted in the Journal statistics panel, but their unfired rounds no longer count toward the load's stock in My Ammo. When any entries are archived, the page description ends with a **"N archived hidden"** link; click it (or the archive filter button in the header) to show them, and click **hide archived** to hide them again. Archived rows are dimmed and tagged **Archived**. To restore an entry to the active list, click the **Restore** button on its row.
 
 Use the **Search** box at the top of the page to filter entries by lot number, date, load name, caliber, brass name, notes, or component lot. Searching a primer lot code, for example, lists every batch pressed with that lot.
 
@@ -1283,7 +1295,6 @@ Click **New Target Sheet** in the page header to open the designer with a blank 
 
 Click **Save Sheet** to save or **Cancel** to discard changes. The **Print** button in the designer header opens the print dialog directly from the editor.
 
-
 ![Screenshot: Target Sheet designer, left configuration panel with sheet settings and ring controls, right panel showing real-time print preview of the target layout](./images/target-generator-designer.png)
 
 #### 7.3.2 Configuring Rings
@@ -1295,6 +1306,7 @@ For each ring, configure:
 | Option | Description |
 |--------|-------------|
 | **Color** | Choose from: black, white, red, orange, yellow, green, blue, grey, or silver. Each ring can be a different colour to create high-contrast scoring zones. |
+| **Ring lines** | Turn on to draw a thin line (0.5 mm) on the edge between rings, in a colour you pick from the same palette. It separates neighbouring rings of the same colour and makes scoring edges easier to read. The outer edge of the target has no line. |
 | **Overall diameter** | The outer diameter of the outermost ring (in inches or mm). |
 | **Ring step** | The spacing between consecutive ring edges; controls how wide each scoring band is. |
 
@@ -1377,7 +1389,11 @@ The **Cost Analysis** tab shows how the cumulative cost of reloading (including 
 
 The left column lists all your reload and factory entries.
 
-By default, both reloads and factory ammo use **checkbox selection**. Check the entries you want to include in the averages. If nothing is checked, **all entries of that type are included automatically**.
+By default, both reloads and factory ammo use **checkbox selection**. Check the entries you want to include in the averages. If nothing is checked, **all entries of that type are included automatically**. Your selection and round counts are saved, so they're still there next time you open the tab.
+
+Each entry fits on one line: checkbox, name, and cost per round. In **Rounds** mode a reload shows its name, round count, and journal rounds on the first line, with the cost per round and total rounds below, aligned right. A small thumbnail appears next to the name: the photo of factory ammo, or the photo of a reload's linked bullet (see [3.3](#33-linking-inventory-to-loads)).
+
+Click a load's name to open its details: caliber, COAL/CBTO, and for reloads the powder, bullet, primer, and brass, each with its photo from My Components when it has one (the type icon otherwise). Factory ammo shows its photo. This is the same dialog you get by clicking a load name in the Journal.
 
 ![Screenshot: Load Selection panel with checkboxes](./images/load-selection.png)
 
