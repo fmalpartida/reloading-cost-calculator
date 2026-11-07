@@ -1,4 +1,4 @@
-# Reloading Tracker 2.16.1: User Guide
+# Reloading Tracker 2.17.1: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf.
 
@@ -7,7 +7,7 @@ It grows with you from there. Keep one inventory of your components. Work up new
 If you also care about costs, the app covers that too. Compare your reloads with factory ammunition, track how close you are to paying off your equipment, and see a side-by-side cost breakdown for any mix of loads. This part is optional; plenty of reloaders just want the log and the data.
 
 
-> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.16.1). All previous versions are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.17.1). All previous versions are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
 
 
 Want to try it out first?
@@ -243,9 +243,10 @@ Click **Save Load** or **Update Load** when done. The entry shows up in My Ammo 
 Click **Add Ammo** or the **+** button in the **Factory** section header. The Editor opens with **Factory Ammo** pre-selected. The form shows:
 
 **Stock** *(optional)*
-- Tracks how many rounds of this ammo you have left. Enter the number of boxes you bought in **Add Boxes** and click **Add** (or just save). Boxes add up in the **Lifetime total** shown below the field. To fix a mistake, such as adding a box twice, enter a negative number and click **Add**. The total never goes below zero.
-- **Alert Below (boxes)**: optional threshold. When the rounds remaining fall to or below this many boxes, the stock pill turns orange.
-- Rounds remaining = *Lifetime total × Rounds per Box*, minus every round of this ammo logged in the Range Log. That includes sessions logged before you started tracking stock.
+- Tracks how many rounds of this ammo you have left. Enter the boxes you bought in **Add Boxes** and click **Add**, or just save. Boxes add up in the **Lifetime total** below the field. To fix a mistake, enter a negative number and click **Add**. The total never goes below zero.
+- **Alert Below**: optional. Pick **Boxes** or **Rounds** with the switch next to the label. When what's left reaches this number, the stock pill turns orange.
+- Tracking starts the day you first add boxes. Rounds left = *Lifetime total × Rounds per Box*, minus the rounds of this ammo you log in the Range Log from that day on. Earlier sessions don't count, so start with the boxes on your shelf today. A session dated that same day does count.
+- Ammo that tracked stock before 2.17.1 still counts every session, so its numbers stay the same.
 - While stock is tracked, the **Live Preview** shows the boxes and rounds in hand, with a **Low** badge when you're below your alert. It updates as you type, before you save.
 - To skip stock tracking for this ammo, leave **Add Boxes** empty. Stock stays hidden until you add at least one box.
 
@@ -292,6 +293,18 @@ Ammo that tracks stock shows a **stock pill** on the card and a **Stock** column
 On the card, the pill sits at the right end of the card. Its color shows where you stand: **green** while you have stock, **orange** at or below your **Alert Below** threshold, and **red** at zero. The table view shows the same pill. Hover over the pill to see how the number is worked out.
 
 ![Screenshot: Expanded ammo card showing component breakdown](images/ammo-viewer.png)
+
+**Missing components**
+
+A reload shows an orange **⚠ Components missing** badge when a linked component can't cover even one round. For example, you're out of primers, or you have less powder than one charge. Hover over the badge to see which components. In table view, a small **⚠** sits next to the name instead.
+
+Only components linked from My Components (see [3.3](#33-linking-inventory-to-loads)) with **Stock on hand** set are checked.
+
+![Screenshot: Component missing to build load badge.](./images/load-component-missing.png)
+
+**Value on hand**
+
+Each section header (**Reloads**, **Factory**) shows what your ammo on hand is worth: rounds left × cost per round. The **Total** at the top right adds both sections. Retired loads never count. Search and the **Low stock** tag don't change the totals; a section's caliber filter does.
 
 **Photo thumbnails**
 
@@ -829,7 +842,9 @@ On narrow screens, each entry stacks its lot, date, load, quantity, remaining ro
 
 ### 5.3 Printing a Lot Label
 
-Click **Print** on any journal entry. The label dialog opens with **LOT** and **QTY** filled in; check it and print.
+Click **Print** on any journal entry. The label dialog opens with **LOT** and **QTY** filled in. Check the label and print it.
+
+If the entry changes the recipe's charge, COAL, CBTO, or brass, those values print in **blue**, so they stand out on the box. The preview shows them in the same blue, on a white label like the one you'll print.
 
 You can review and change every field before printing:
 
@@ -842,7 +857,7 @@ You can also print from any card in **My Ammo** with its print button. LOT and Q
 
 ![Screenshot: print label dialog showing LOT and QTY pre-filled from a journal entry.](./images/label-print.png)
 
-To print several labels at once, tick the checkbox at the start of each journal row you want, then click **Print N Labels** at the top of the list. The dialog shows all the selected labels, and you can print several copies of each.
+To print several labels at once, tick the checkbox at the start of each journal row you want, then click **Print N Labels** at the top of the list. The dialog previews each selected label, with changed values in blue. You can print several copies of each.
 
 ### 5.4 Journal Statistics
 
@@ -989,7 +1004,7 @@ The Target Analysis sub-tab has three panels:
 - **Centre**: the canvas where you upload the image and place or review impacts.
 - **Right**: the Configuration panel (calibration, bullet size, distance, notes, and range session link) and the Statistics panel.
 
-> **Unsaved changes.** If you try to leave with unsaved impacts or settings, you're asked to confirm. Click **Discard & Leave** to go without saving, or cancel to stay.
+> **Unsaved changes.** Changes are kept only when you click **Save**. If you leave a target with unsaved changes, you're asked to confirm. Click **Discard & Leave** to lose them, or **Cancel** to stay. Opening another target, starting a new one, opening an aggregate, and changing tabs all count as leaving. A blank new target you haven't changed closes without asking. Closing the app or reloading the page doesn't warn you, so save first.
 
 #### 7.1.1 Creating a Target Record
 
@@ -1045,9 +1060,36 @@ The panel has four headings: **Units** (measurement system, angular unit, click 
 
 **Placing shots**
 
-Choose **Add Impact** in the toolbar, then click each bullet hole. Each click places a numbered marker, in the order you place them.
+Choose **+ Impact** in the toolbar, then click each bullet hole. Each click places a numbered marker, in the order you place them.
 
-To remove an impact, switch to **Edit** mode, click the marker, and delete it. You can also use the per-impact controls in the Statistics panel.
+To move a marker, drag it. This doesn't work while the Pan tool is on, because dragging then moves the image. To remove a marker, right-click it.
+
+**Placing shots automatically**
+
+**Auto Place** finds the bullet holes for you. It stays disabled until you set Ref A and Ref B.
+
+1. Calibrate the image and enter the bullet diameter (see [Section 7.1.2](#712-uploading-and-calibrating-the-image)).
+2. Zoom and pan until the shots you want are on screen. Auto Place looks only at what's visible.
+3. Click **Auto Place**. A ring over the image shows the progress. A large photo can take about 20 seconds.
+4. Check the result, then click **Save**.
+
+For best results, the holes should contrast with the target. Put a dark background behind a light target, and a light background behind a dark target.
+
+What to expect:
+
+- Each hole gets a numbered marker. The numbers don't show firing order.
+- Running it again won't mark the same hole twice.
+- A hole cut off by the edge of the screen is skipped, so zoom out if you want it included.
+- Shots go into the selected group. If there are no groups yet, Group 1 is created. The button is disabled on the **All** tab when you have groups, and on the **Agg.** tab.
+- For a sheet with several targets, zoom to one target and select its group. Then repeat for the next one.
+
+**Ragged holes**
+
+If a hole may hold more shots than Auto Place marked, it draws a dashed amber circle around it. A message above the image tells you how many there are.
+
+Click inside a circle to add a shot. Click **✕** on the message to remove the circles. They aren't saved or printed.
+
+> **Always check the result.** Auto Place can miss shots, mostly in tight groups, and a target with no circles can still be missing some. It can also mark something that isn't a shot.
 
 **Setting the point of aim**
 
@@ -1055,18 +1097,20 @@ Choose **Set POA**, then click the point you aimed at (usually the centre of the
 
 If no point of aim is set, the group centre is used instead, so offsets show each shot's distance from the group centre.
 
+To remove the point of aim, click **Clear POA**.
+
 ![Screenshot: Target canvas with numbered impact markers, POA marker, and toolbar mode selector buttons](./images/targets-canvas-impacts.png)
 
 **Toolbar modes**
 
 | Mode button | Function |
 |-------------|----------|
-| **Add Impact** | Click on the canvas to place a new numbered impact |
+| **+ Impact** | Click on the canvas to place a new numbered impact |
 | **Set POA** | Click to place or move the point of aim marker |
 | **Calibrate** | Click two reference points to set the calibration baseline |
 | **Pan / Zoom** | Drag to pan the canvas; use the zoom buttons or scroll wheel to zoom in and out |
 
-The toolbar also has **Zoom In**, **Zoom Out**, and **Fit**, and a **Print** button (see [Section 7.1.8](#718-printing-a-target)). Buttons are grouped: modes on one band, view tools (pan, zoom, crop, rotate) on another, and Export, Print, and Save on the right.
+Next to the modes is the **Auto Place** button, described above. The toolbar also has **Zoom In**, **Zoom Out**, and **Fit**, and a **Print** button (see [Section 7.1.8](#718-printing-a-target)). Buttons are grouped: modes on one band, view tools (pan, zoom, crop, rotate) on another, and Export, Print, and Save on the right.
 
 #### 7.1.4 Statistics Panel
 
@@ -1118,7 +1162,7 @@ Where the group centre landed compared with your point of aim. Without a POA, th
 | **Windage offset** | How far left or right the group centre is from the point of aim, with direction label. |
 | **Elevation offset** | How far up or down the group centre is from the point of aim, with direction label. |
 | **POI distance** | The straight-line distance from the point of aim to the group centre, combining windage and elevation. |
-| **Clicks needed** | The scope clicks needed to move the point of impact onto the point of aim, based on your click value. Positive = right/up; negative = left/down. Shown only when a click value is set. |
+| **Clicks needed** | The scope clicks needed to move the point of impact onto the point of aim, based on your click value. Positive = right/up; negative = left/down. Hover over the clicks to see the click size used. |
 
 Linear values use the unit set in the Configuration panel (in or cm). With a shot distance set, MOA or MIL values appear in brackets next to them.
 
@@ -1544,7 +1588,7 @@ Exports from earlier versions (`.json` files) still import. They don't include t
 - **Define shared components once.** If several loads use the same powder or primer, add it to My Components and link it. One price update reaches every load.
 - **Keep component lot numbers current.** Update a component's **Lot #** when you open a new jug or box. If SD or point of impact suddenly changes, you can trace it to a lot change.
 - **Reload stock comes from the Journal.** Rounds count only if they're in a Journal lot and logged with **From Journal** in the Range Log. Log older ammo as a Journal entry so it counts.
-- **Factory stock is a lifetime total.** Add boxes as you buy them; don't type your current count. To fix a mistake, add a negative number of boxes.
+- **Factory stock starts from what's on your shelf.** When you start tracking, add the boxes you have now; earlier Range Log sessions don't count. After that, add boxes as you buy them. To fix a mistake, add a negative number of boxes.
 - **Brass overrides match by name.** Stock deduction looks for a brass item with exactly the override's name. If the names differ, the brass isn't deducted.
 - **Use From Journal for workup lots.** Range results only reach the Charge Workup chart when you log the lot with **From Journal**, not **Reload**.
 - **Already reloading before the Journal?** Enter your earlier round count as the baseline in Cost Analysis **Rounds** mode. The Journal adds to it from there.
