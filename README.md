@@ -1,4 +1,4 @@
-# Reloading Tracker 2.17.1: User Guide
+# Reloading Tracker 2.17.18: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf.
 
@@ -7,7 +7,7 @@ It grows with you from there. Keep one inventory of your components. Work up new
 If you also care about costs, the app covers that too. Compare your reloads with factory ammunition, track how close you are to paying off your equipment, and see a side-by-side cost breakdown for any mix of loads. This part is optional; plenty of reloaders just want the log and the data.
 
 
-> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.17.1). All previous versions are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.17.18). All previous versions are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
 
 
 Want to try it out first?
@@ -270,9 +270,19 @@ Each ammo card and table row has these actions in its top-right corner:
 
 | Button | Action |
 |--------|--------|
+| 📓 Log to Journal | Reloads only. Opens a short dialog to log a pressing session. See below. |
+| 🎯 Log to Range Log | Factory ammo only. Opens a short dialog to log rounds fired. See below. |
 | ✏️ Edit | Opens the entry in the Editor tab |
 | 🖨 Print | For reloads, lets you print a label or the data sheet. Factory ammo opens its data sheet straight away. |
 | ⋯ More | **Duplicate** (useful for variants of the same load), **Set to** another status, and **Delete**. |
+
+**Logging from My Ammo**
+
+Click 📓 **Log to Journal** on a reload to record a pressing session without leaving My Ammo. Enter the **Rounds pressed** and pick the **Brass** (or **Hull** for shotshells). The dialog shows the lot number it will use. The lot is dated today and appears in the Journal like any other.
+
+Click 🎯 **Log to Range Log** on factory ammo to record rounds fired today. Enter the **Rounds fired**, then check the **Firearm** and **Distance**. Both start from the last session that used this ammo. The firearm list shows only firearms of the same caliber. If you track stock for it, the dialog shows how many rounds are left and won't log more.
+
+The buttons don't appear on retired or draft ammo.
 
 Delete asks you to confirm and names the load. If the load has Journal history, the dialog also offers **Retire instead**, which hides it and keeps that history.
 
@@ -282,7 +292,7 @@ Use the **Search** box to filter cards by name, caliber, type, or component name
 
 When the **Reloads** or **Factory** section holds more than one caliber, a **caliber filter** appears in its header. Each section filters on its own: you can show only your 6.5 Creedmoor reloads and still see all factory ammo. The filter works with search and the retired toggle, and the count at the top follows it. If nothing is left to show, click **Clear Filters** to reset the search and both filters.
 
-Switch between **Cards** and **Table** with the buttons next to the search box. Table view is denser and easier to scan when you have many entries. In card view, the sort menu picks both the field and the direction, for example **Price: low to high**. In table view, click a column header to sort.
+Switch between **Cards** and **Table** with the buttons next to the search box. Table view is denser and easier to scan when you have many entries. Long bullet, powder and primer names end in **…**; hover to see the full name. The action buttons stay at the right edge while the table scrolls sideways. In card view, the sort menu picks both the field and the direction, for example **Price: low to high**. In table view, click a column header to sort.
 
 When any ammo is at or below its alert, or out of stock, a **Low stock** tag appears under the title. Click it to see only what you need to press or buy.
 
@@ -500,7 +510,7 @@ Like My Ammo, My Components has **Cards** and **Table** views. Click the small a
 
 Click **Add Component** in the top-right corner, or the small **+** in a section header to start with that type selected.
 
-The form has labeled sections: **Basics** for every type, **Specs** and **Pricing** for bullets, and **Consistency & Fit** and **Annealing** for brass. A **Stock** section comes last for all types.
+The form has labeled sections: **Specs** for bullets, wads, shot and slugs, **Basics** for brass and hulls, and **Consistency & Fit** and **Annealing** for brass. Every type ends with **Pricing**, **Stock** and **Notes**, in that order, so the price always sits just above the stock.
 
 **Component Type**  
 Pick one of the eight types at the top of the form. The type can't be changed after saving; to use a different type, create a new component and delete the old one.
@@ -532,21 +542,23 @@ A hull, wad, or slug with a gauge set only appears in the Editor for loads of th
 **OAL (Overall Length)** *(bullet only, optional)*  
 The bullet's overall length, with an **in** / **mm** unit next to it. The unit starts at your Imperial/Metric setting. Switching it converts the number, e.g. *1.169 in* becomes *29.6926 mm*.
 
+**OAL and Case Capacity** *(brass only, optional)*  
+- **OAL (Overall Length)**: the case length, with an **in** / **mm** unit. Switching the unit converts the number, as for bullets.
+- **Case Capacity (water)**: how much water the case holds, in **gr** or **g**. Switching the unit converts the number, e.g. *56.2 gr* becomes *3.642 g*.
+
 **Times Reloaded** *(brass only)*  
 How many times each case can be reloaded before you replace it. The brass cost is spread across that many rounds.
 
 **Consistency & Fit** *(brass only, optional)*  
 Fields for precision reloading, where case-to-case consistency matters:
 - **Case Weight (gr)**: average case weight, useful for checking a lot's consistency or comparing a new batch.
+- **Weighed Cases (gr)**: type or paste the weight of each case you weighed, separated by spaces or commas. The form shows the count, average, lightest to heaviest, spread and SD as you type, and the average fills **Case Weight**.
 - **Dedicated Firearm**: pick one of your firearms. Use it when brass is fire-formed to one chamber (common with tight-neck or custom chambers) and shouldn't be mixed with brass for another rifle in the same caliber.
 - **Shoulder Bump**: the shoulder bump you aim for when full-length sizing this brass, e.g. *0.002*. It has the same **in** / **mm** unit as OAL, and switching converts the number.
 
 **Annealing** *(brass only, optional)*  
 - **Annealer**: the machine or method used, e.g. *AMP Press*, *torch*.
 - **Annealer Settings**: free text for your process, e.g. *PID 4, 5.5s dwell*.
-
-**Notes**  
-Optional free-text field for suppliers or any other reference.
 
 **Stock on hand** *(optional)*  
 How much you have now. The unit depends on the type:
@@ -560,6 +572,9 @@ A low-stock threshold, in the same unit as **Stock on hand**. At or below it, th
 
 **Lot #** *(optional)*  
 The manufacturer's lot code for the batch you have on hand, e.g. *VG-2291*. New Journal entries record it automatically (see [5.1](#51-logging-a-session)), so update it when you open a new jug of powder or box of primers.
+
+**Notes**  
+Optional free-text field for suppliers or any other reference.
 
 Click **Save**. The card appears in its section right away.
 
@@ -609,7 +624,9 @@ In **Table view**, click the **Name**, **Price**, or **Stock** column header ins
 
 **Photo thumbnails**
 
-Components with a photo (see [3.1](#31-adding-a-component)) show it as a thumbnail in place of the type icon on the card, or in the table's Photo column. Hover over it, or tab to it and press Enter, to see the name, type, price, stock, lot number, and key specs.
+Components with a photo (see [3.1](#31-adding-a-component)) show it as a thumbnail in place of the type icon on the card, or in the table's Photo column. Components without a photo show their type icon there instead. Hover over the thumbnail or icon, or tab to it and press Enter, to see the name, type, price, stock, lot number, and key specs.
+
+For brass, the popup also shows the OAL, case capacity, annealer and its settings. With two or more weighed cases, it shows the weight range, spread and SD.
 
 ![Screenshot: My Components card and table showing a photo thumbnail and hover popup](./images/inventory-photo-popup.png)
 
@@ -788,11 +805,16 @@ Each entry row has action buttons on the right:
 | Button | Action |
 |--------|--------|
 | ☆ Star | Marks the entry as a reference lot (starred entries show a coloured accent) |
+| 🎯 Log to Range Log | Opens a short dialog to log rounds fired from this lot today. Shown on lots with rounds left. |
 | ✏️ Edit | Opens the entry for editing; the lot number is fixed and cannot be changed |
 | 🖨 Print | Opens the label print dialog pre-filled with the lot number and quantity |
 | 📦 Archive | Moves the entry out of the main list. Nothing is lost, and you can restore it any time. |
 | ⋯ More | **Duplicate** copies the entry with the next lot number and the same component lots, handy for pressing another batch at the same settings. **Delete** removes it for good. |
 | 📦 Deduct from stock | Shown only when the load has a linked component with stock set. See below. |
+
+**Logging a lot to the Range Log**
+
+Click 🎯 **Log to Range Log** on a lot to record rounds fired today. Enter the **Rounds fired**, then check the **Firearm** and **Distance**. Both start from the last session that used this load. The firearm list shows only firearms of the same caliber. You can't log more rounds than the lot has left.
 
 **Deducting inventory stock from a journal entry**
 
@@ -878,6 +900,8 @@ The **Range Log** is where you record what happens after the ammo leaves the ben
 ![Screenshot: Range Log tab showing session list with expanded session](./images/range-log-overview.png)
 
 ### 6.1 Logging a Range Session
+
+For a quick entry with one load, use 🎯 **Log to Range Log** on factory ammo in My Ammo (see [2.3](#23-managing-ammo-entries)) or on a lot in the Journal (see [5.2](#52-managing-journal-entries)).
 
 Click **+ Log Session** at the top of the Range Log. Fill in:
 
@@ -1029,12 +1053,12 @@ Click the upload area in the centre (or drag an image onto it) to load your targ
 
 Before placing shots, set the scale so the statistics are in real units:
 
-1. Select **Calibrate** from the mode buttons in the toolbar.
-2. Click the first reference point (e.g. one edge of a known dimension on the target).
-3. Click the second reference point (e.g. the opposite edge).
+1. Choose **Ref** in the toolbar.
+2. Click one end of a known distance on the target (e.g. one edge of a printed grid square).
+3. Click the other end.
 4. In the **Configuration** sidebar, enter the real-world distance between those two points and choose the unit (in / cm / mm).
 
-The app divides the distance in pixels by the real distance to get the scale. All statistics update whenever the calibration changes.
+To adjust a reference point, drag it. With **Ref** chosen, a click moves the closer of the two points. All statistics update whenever the calibration changes.
 
 > **Tip:** Use a printed grid square, a ring of known diameter, or any other feature you can measure. Note the measurement before the session so it's ready when you upload the photo.
 
@@ -1066,7 +1090,7 @@ To move a marker, drag it. This doesn't work while the Pan tool is on, because d
 
 **Placing shots automatically**
 
-**Auto Place** finds the bullet holes for you. It stays disabled until you set Ref A and Ref B.
+**Auto Place** finds the bullet holes for you. It stays disabled until you set the reference points.
 
 1. Calibrate the image and enter the bullet diameter (see [Section 7.1.2](#712-uploading-and-calibrating-the-image)).
 2. Zoom and pan until the shots you want are on screen. Auto Place looks only at what's visible.
@@ -1107,7 +1131,7 @@ To remove the point of aim, click **Clear POA**.
 |-------------|----------|
 | **+ Impact** | Click on the canvas to place a new numbered impact |
 | **Set POA** | Click to place or move the point of aim marker |
-| **Calibrate** | Click two reference points to set the calibration baseline |
+| **Ref** | Click to place the two reference points for calibration |
 | **Pan / Zoom** | Drag to pan the canvas; use the zoom buttons or scroll wheel to zoom in and out |
 
 Next to the modes is the **Auto Place** button, described above. The toolbar also has **Zoom In**, **Zoom Out**, and **Fit**, and a **Print** button (see [Section 7.1.8](#718-printing-a-target)). Buttons are grouped: modes on one band, view tools (pan, zoom, crop, rotate) on another, and Export, Print, and Save on the right.
@@ -1433,6 +1457,8 @@ The left column lists your reload and factory entries.
 
 By default, both use **checkboxes**. Check the entries to include in the averages; if none are checked, **all entries of that type are included**. Your selection and round counts are saved.
 
+Retired ammo is hidden from the list. Turn on the **Retired** switch at the top of the panel to see it. Hidden retired ammo still counts in the analysis.
+
 Each entry fits on one line: checkbox, name, and cost per round. In **Rounds** mode a reload shows its name on the first line. Below it you see the rounds you typed, the Journal rounds (the blue **+N**), and the total, then the cost per round. The total cost of those rounds sits on the right, so you can compare loads down the list. Reloads with no rounds are dimmed and show a dash instead of a total. A small thumbnail appears next to the name: the photo of factory ammo, or the photo of a reload's linked bullet (see [3.3](#33-linking-inventory-to-loads)).
 
 Click a load's name to open its details: caliber, COAL/CBTO, and for reloads the powder, bullet, primer, and brass, each with its photo from My Components when it has one (the type icon otherwise). Factory ammo shows its photo. This is the same dialog you get by clicking a load name in the Journal.
@@ -1509,16 +1535,20 @@ If reloading costs more per round than factory, the lines never cross and a warn
 **Selecting entries**  
 Click an entry to select or clear it. Selected reloads are green and factory ammo amber. You can select as many as you like.
 
+Retired ammo is hidden. Turn on the **Retired** switch in the header to show it and include it in the comparison. Hidden retired ammo is left out of the results.
+
 **Reading the comparison**  
 With entries selected, you'll see:
 
 - A **bar chart** of cost per round for every selected entry.
 - A **cost table** with totals for 50, 100, and 1,000 rounds for each entry.
 - A **Difference** section (with at least one reload and one factory entry selected) showing how much cheaper your reload is per round and per 50, 100, and 1,000 rounds.
+- An **Average Reload vs Average Factory, by Caliber** table. For each caliber, it averages the reloads and factory ammo you selected, so reloads are only compared with factory ammo of the same caliber. Calibers you selected that have only reloads or only factory ammo are listed below the table.
 
 Use the **Search** box above the selection list to filter by name, caliber, type, or component.
 
 ![Screenshot: Cost Comparison: bar chart and difference table](./images/cost-comparison.png)
+<!-- IMAGE MAY NEED UPDATING: the average card is now a per-caliber table (2.17.5) -->
 ![Screenshot: Cost Comparison: difference table](./images/cost-break-down.png)
 
 ---
