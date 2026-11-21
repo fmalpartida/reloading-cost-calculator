@@ -1,4 +1,4 @@
-# Reloading Tracker 2.17.18: User Guide
+# Reloading Tracker 2.17.21: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf.
 
@@ -7,7 +7,7 @@ It grows with you from there. Keep one inventory of your components. Work up new
 If you also care about costs, the app covers that too. Compare your reloads with factory ammunition, track how close you are to paying off your equipment, and see a side-by-side cost breakdown for any mix of loads. This part is optional; plenty of reloaders just want the log and the data.
 
 
-> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.17.18). All previous versions are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.17.21). All previous versions are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
 
 
 Want to try it out first?
@@ -208,7 +208,7 @@ Click **Add Ammo** in the top-right corner, or the **+** button in the **Reloads
 - **Name**: identifies the cartridge. Required.
 - **Load Type**: Reload or Factory.
 - **Ammo Class**: Metallic Cartridge or Shotshell. Picking Shotshell switches the form to shotshell components, see [Shotshells](#26-shotshells).
-- **Category**: Handgun, Rifle, or Shotgun. Groups the entry in My Ammo and narrows the caliber list to that category. It fills in from the caliber until you pick one yourself.
+- **Category**: groups the entry in My Ammo and narrows the caliber list to that category. Cartridges are **Handgun** or **Rifle**, and the category fills in from the caliber until you pick one yourself. Shotshells are always **Shotgun**.
 - **Status**: the development state of the load. See [Load Status](#load-status) below.
 - **Caliber**: the cartridge designation (e.g. *9mm Luger*, *.308 Win*). This is added when defining the bullet.
 - **COAL**: cartridge overall length for this load. Printed on the lot label.
@@ -252,6 +252,7 @@ Click **Add Ammo** or the **+** button in the **Factory** section header. The Ed
 
 **Base Factory Price**
 - Price per box and rounds per box.
+- Rounds per box starts at the usual box size: 50 for handgun, 20 for rifle, and 25 for shotshells. It follows the category you pick until you type your own number.
 
 **Factory Taxes**
 - Sales tax (%), State excise tax (%).
@@ -295,6 +296,8 @@ When the **Reloads** or **Factory** section holds more than one caliber, a **cal
 Switch between **Cards** and **Table** with the buttons next to the search box. Table view is denser and easier to scan when you have many entries. Long bullet, powder and primer names end in **…**; hover to see the full name. The action buttons stay at the right edge while the table scrolls sideways. In card view, the sort menu picks both the field and the direction, for example **Price: low to high**. In table view, click a column header to sort.
 
 When any ammo is at or below its alert, or out of stock, a **Low stock** tag appears under the title. Click it to see only what you need to press or buy.
+
+To hide ammo with nothing in hand, click the **no-stock filter** button in the header (the empty box). It hides ammo whose rounds are all used, reloads with no Journal lots, and factory ammo with no boxes added. The count under the title then ends with an **"N without stock hidden"** link. Click it, or the button again, to show them. Everything shows by default, and the app remembers your choice.
 
 **Stock display**
 
@@ -722,7 +725,7 @@ You're asked to confirm before deleting.
 
 **Archiving firearms**
 
-Sold a rifle or put one away for good? Archive it to keep its record without cluttering the list. You'll be asked to confirm. Archived firearms are hidden from the list, the Range Log's firearm list, and the **Dedicated Firearm** list on brass. Past range sessions keep their firearm, and brass already dedicated to it stays linked.
+Sold a rifle or put one away for good? Archive it to keep its record without cluttering the list. You'll be asked to confirm. Archived firearms are hidden from the list, the Range Log's firearm list, the Target Generator's firearm list, and the **Dedicated Firearm** list on brass. Past range sessions keep their firearm, and brass already dedicated to it stays linked. A saved target sheet that already names an archived firearm keeps it.
 
 When anything is archived, the count under the page title ends with an **"N archived hidden"** link, and each caliber group shows **"N archived"**. Click either to show archived firearms, and click **hide archived** to hide them again. Archived cards are dimmed and tagged **ARCHIVED**; table rows get a red edge and an **Archived** tag. Click **Restore** to make one active again.
 
@@ -852,12 +855,14 @@ Entries with component lots show a tag icon in the Notes column. Hover over it t
 **Remaining Rounds column**
 The **Remaining** column shows how many rounds of each lot haven't been fired. It comes from the Range Log: each time you log rounds from a lot, the count goes down. When every round is accounted for, the lot is marked **Depleted**. You always know what's left on the shelf without keeping a separate count.
 
+Depleted lots are shown by default. Click the **depleted filter** button in the header (the empty box) to hide them. The page description then ends with an **"N depleted hidden"** link. Click it, or the button again, to show them. The app remembers your choice.
+
 **Archiving and restoring entries**
 Click **📦 Archive** to move a lot out of the active list without deleting it. Archived entries stay in your history and still count in the Journal statistics, but their unfired rounds no longer count toward the load's stock in My Ammo. When any entries are archived, the page description ends with an **"N archived hidden"** link. Click it (or the archive filter button in the header) to show them, and click **hide archived** to hide them again. Archived rows are dimmed and tagged **Archived**. Click **Restore** on a row to make it active again.
 
 Use the **Search** box to filter entries by lot number, date, load name, caliber, brass, notes, or component lot. For example, search a primer lot code to list every batch pressed with it.
 
-When your journal holds more than one caliber, a **caliber filter** appears next to the search box. Pick a caliber to show only its lots, or **All calibers** to clear it. It works with search and the starred and archived filters, and **Select all** for batch printing only picks the entries shown.
+When your journal holds more than one caliber, a **caliber filter** appears next to the search box. Pick a caliber to show only its lots, or **All calibers** to clear it. It works with search and the starred, depleted, and archived filters, and **Select all** for batch printing only picks the entries shown.
 
 **On phones and tablets**
 On narrow screens, each entry stacks its lot, date, load, quantity, remaining rounds, and notes, with the action buttons alongside. Charge, COAL/CBTO, brass, and fired count are hidden; open the entry to see them.
@@ -877,9 +882,11 @@ You can review and change every field before printing:
 
 You can also print from any card in **My Ammo** with its print button. LOT and QTY are then left blank.
 
+While a load has an open charge workup (see [2.5](#25-charge-workup-load-development)), labels printed from My Ammo leave the charge blank, so you can write it in. Labels printed from the Journal always show the lot's charge.
+
 ![Screenshot: print label dialog showing LOT and QTY pre-filled from a journal entry.](./images/label-print.png)
 
-To print several labels at once, tick the checkbox at the start of each journal row you want, then click **Print N Labels** at the top of the list. The dialog previews each selected label, with changed values in blue. You can print several copies of each.
+To print several labels at once, tick the checkbox at the start of each journal row you want, then click **Print N Labels** at the top of the list. The dialog previews each selected label on the left, with changed values in blue. On the right, pick the number of copies of each, the fields to print, and where to start on the sheet.
 
 ### 5.4 Journal Statistics
 
@@ -1371,7 +1378,7 @@ For each ring, configure:
 
 | Option | Description |
 |--------|-------------|
-| **Color** | Black, white, red, orange, yellow, green, blue, grey, or silver. Mix colours for high-contrast scoring zones. |
+| **Color** | Black, white, red, orange, yellow, green, blue, grey, light grey, or silver. Mix colours for high-contrast scoring zones. |
 | **Ring lines** | Turn on to draw a thin line (0.5 mm) between rings, in a colour you pick from the same palette. It separates rings of the same colour and makes scoring edges easier to read. The target's outer edge has no line. |
 | **Overall diameter** | The outer diameter of the outermost ring (in inches or mm). |
 | **Ring step** | The gap between ring edges, which sets how wide each scoring band is. |
@@ -1405,7 +1412,7 @@ Firearm and Shots share a row, right above Distance and Unit.
 
 Group size, average velocity, and SD are **not** entered here, since you won't know them before shooting. They print as blank labelled fields (e.g. *GRP:*, *VEL:*, *SD:*) for you to fill in at the range.
 
-The **Load** and **Gun** toggles control which part of the block prints, so you can print the gun and result fields without the load details, or the other way round. Text that's too long, like a long firearm name, is shortened with an ellipsis.
+The **Load** and **Gun** toggles control which part of the block prints, so you can print the gun and result fields without the load details, or the other way round. A **DATE** field to fill in prints either way. Text that's too long, like a long firearm name, is shortened with an ellipsis.
 
 **Filling multiple targets quickly**
 
@@ -1438,8 +1445,8 @@ Click the card to reopen the sheet in the designer.
 Click **Print** on a sheet card, or in the designer, to open the print dialog.
 
 The dialog shows:
-- Sheet name, page size, layout (columns × rows), and shape
-- A preview of the first target as it will appear on the printed page
+- Sheet name, page size, orientation, number of targets, and shape
+- A preview of the whole page on white paper, with every target where it will print
 
 Click **Print** to send it to your printer. The printout matches the designer preview exactly.
 
@@ -1548,7 +1555,7 @@ With entries selected, you'll see:
 Use the **Search** box above the selection list to filter by name, caliber, type, or component.
 
 ![Screenshot: Cost Comparison: bar chart and difference table](./images/cost-comparison.png)
-<!-- IMAGE MAY NEED UPDATING: the average card is now a per-caliber table (2.17.5) -->
+
 ![Screenshot: Cost Comparison: difference table](./images/cost-break-down.png)
 
 ---
