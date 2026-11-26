@@ -1,4 +1,4 @@
-# Reloading Tracker 2.17.21: User Guide
+# Reloading Tracker 2.17.23: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf.
 
@@ -7,7 +7,7 @@ It grows with you from there. Keep one inventory of your components. Work up new
 If you also care about costs, the app covers that too. Compare your reloads with factory ammunition, track how close you are to paying off your equipment, and see a side-by-side cost breakdown for any mix of loads. This part is optional; plenty of reloaders just want the log and the data.
 
 
-> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.17.21). All previous versions are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.17.23). All previous versions are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
 
 
 Want to try it out first?
@@ -400,15 +400,17 @@ Each ladder step is a row, whether it's still planned or already fired.
 | **Avg fps** | Average muzzle velocity across all sessions for this charge |
 | **Avg SD** | Average standard deviation |
 | **Best Group** | Best (smallest) group size recorded at this charge |
-| **Promote** | Button to promote this charge as the final load (only shown when data exists and the load is In Development) |
+| **Promote** | Promotes this charge as the final load. Shown when the charge has data and the load is In Development. |
 
 Rows with data are lightly tinted. The promoted row is green.
+
+To drop a charge you haven't loaded yet, click its 🗑 **Remove charge** button. The button only shows on charges with no lots, while the load is In Development. Charges you've already loaded stay, because their lots live in the Journal.
 
 ![Screenshot: Charge Workup panel, charge ladder table with planned and fired rows, promoted row highlighted](./images/workup-panel-table.png)
 
 **Logging entries from the workup panel**
 
-All steps are checked by default. Uncheck any you won't press this time, then click **Log N Entries**. The app creates one Journal entry per checked charge, dated today, using the rounds per step and the current lot numbers of the load's linked components.
+Charges you haven't loaded yet are checked. Charges that already have a lot start unchecked; check one to press another lot. Uncheck any you won't press this time, then click **Log N Entries**. The app creates one Journal entry per checked charge, dated today, using the rounds per step and the current lot numbers of the load's linked components.
 
 > You can also add a **one-off charge** outside the ladder: type it in the *Add charge* field below the table and click **Add**. The new row is checked for the next batch log; no journal entry is written yet.
 
@@ -1093,7 +1095,9 @@ The panel has four headings: **Units** (measurement system, angular unit, click 
 
 Choose **+ Impact** in the toolbar, then click each bullet hole. Each click places a numbered marker, in the order you place them.
 
-To move a marker, drag it. This doesn't work while the Pan tool is on, because dragging then moves the image. To remove a marker, right-click it.
+To move a marker, drag it. The statistics update when you let go. Dragging doesn't work while the Pan tool is on, because it moves the image instead.
+
+To remove a marker, right-click it or tap it with two fingers on a trackpad. You can also click it to select it, then press **Delete** or **Backspace**.
 
 **Placing shots automatically**
 
@@ -1236,7 +1240,7 @@ Above the tabs, a small table lists every group side by side: shots, extreme spr
 
 #### 7.1.7 Linking to a Range Session
 
-In the **Configuration** sidebar, the **Linked session** field (under **Range session**) links this target to a range session. Click it to search your sessions by date, firearm, distance, or lot number.
+In the **Configuration** sidebar, the **Linked session** field (under **Range session**) links this target to a range session. Click it to search your sessions by date, firearm, distance, or lot number. Each session also shows the ammo, its charge, and the date on a second line. Search matches that line too.
 
 Once linked:
 - An arrow button next to the session takes you to it in the Range Log.
