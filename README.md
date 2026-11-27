@@ -1,4 +1,4 @@
-# Reloading Tracker 2.17.23: User Guide
+# Reloading Tracker 2.17.28: User Guide
 
 Reloading Tracker is your complete bench-to-range companion. It starts as a production log: define your loads, record every pressing session with a unique lot number, and print a label for every box on your shelf.
 
@@ -7,7 +7,7 @@ It grows with you from there. Keep one inventory of your components. Work up new
 If you also care about costs, the app covers that too. Compare your reloads with factory ammunition, track how close you are to paying off your equipment, and see a side-by-side cost breakdown for any mix of loads. This part is optional; plenty of reloaders just want the log and the data.
 
 
-> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.17.23). All previous versions are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
+> **DOWNLOAD:** A desktop version is available from the releases page: [**latest version**](https://github.com/fmalpartida/reloading-cost-calculator/releases/tag/v2.17.28). All previous versions are available [here](https://github.com/fmalpartida/reloading-cost-calculator/releases).
 
 
 Want to try it out first?
@@ -267,7 +267,11 @@ Click **Add Ammo** or the **+** button in the **Factory** section header. The Ed
 
 ### 2.3 Managing Ammo Entries
 
-Each ammo card and table row has these actions in its top-right corner:
+Each card leads with the load itself. The header shows the name and caliber. Below it, the recipe sits in two columns: powder and charge next to bullet and weight, then COAL or CBTO, then primer next to brass. The quantities line up on the right of each column. Factory ammo shows the bullet and its shell specs instead.
+
+Under the recipe, a small line shows the stock pill and the cost per round. A note shows as a short preview; hover over it to read it all.
+
+On a card, the action buttons appear when you hover over it. In table view they're always in the row. These are the actions:
 
 | Button | Action |
 |--------|--------|
@@ -287,7 +291,7 @@ The buttons don't appear on retired or draft ammo.
 
 Delete asks you to confirm and names the load. If the load has Journal history, the dialog also offers **Retire instead**, which hides it and keeps that history.
 
-Click the **▸ / ▾** chevron on the left of the action buttons to expand a card and see the full component cost breakdown. Click the small arrow at the left of the **Reloads** or **Factory** header to collapse that whole section; the app remembers it.
+Click the **⌄** chevron at the right of the stock line to expand a card and see the full component cost breakdown, status and volume costs. Click the small arrow at the left of the **Reloads** or **Factory** header to collapse that whole section; the app remembers it.
 
 Use the **Search** box to filter cards by name, caliber, type, or component name.
 
@@ -301,15 +305,15 @@ To hide ammo with nothing in hand, click the **no-stock filter** button in the h
 
 **Stock display**
 
-Ammo that tracks stock shows a **stock pill** on the card and a **Stock** column in table view. Factory ammo shows rounds and boxes left, e.g. *250 rds (5 boxes) left* (see [2.2](#22-adding-a-factory-ammo-entry)). Reloads show the rounds left in their active Journal lots, e.g. *240 rds left*, which matches the Journal's **Remaining** column (see [2.1](#21-adding-a-reload-entry)). Ammo with no stock tracked shows nothing.
+Ammo that tracks stock shows a **stock pill** on the card and a **Stock** column in table view. Factory ammo shows rounds and boxes left, e.g. *250 rds · 5 boxes* on the card and *250 rds (5 boxes)* in the table (see [2.2](#22-adding-a-factory-ammo-entry)). Reloads show the rounds left in their active Journal lots, e.g. *240 rds*, which matches the Journal's **Remaining** column (see [2.1](#21-adding-a-reload-entry)). Ammo with no stock tracked shows nothing.
 
-On the card, the pill sits at the right end of the card. Its color shows where you stand: **green** while you have stock, **orange** at or below your **Alert Below** threshold, and **red** at zero. The table view shows the same pill. Hover over the pill to see how the number is worked out.
+On the card, the pill sits on the line under the recipe. Its color shows where you stand: **green** while you have stock, **orange** at or below your **Alert Below** threshold, and **red** at zero. The table view shows the same pill. Hover over the pill to see how the number is worked out.
 
 ![Screenshot: Expanded ammo card showing component breakdown](images/ammo-viewer.png)
 
 **Missing components**
 
-A reload shows an orange **⚠ Components missing** badge when a linked component can't cover even one round. For example, you're out of primers, or you have less powder than one charge. Hover over the badge to see which components. In table view, a small **⚠** sits next to the name instead.
+A reload shows an orange **⚠ Missing** badge next to the stock pill when a linked component can't cover even one round. For example, you're out of primers, or you have less powder than one charge. Hover over the badge to see which components. In table view, a small **⚠** sits next to the name instead.
 
 Only components linked from My Components (see [3.3](#33-linking-inventory-to-loads)) with **Stock on hand** set are checked.
 
@@ -345,7 +349,7 @@ Every ammo entry has a **status** that shows where it is in your development cyc
 | **Retired** | Recipe superseded or no longer in use. Hidden from default views but preserved in all history and journal entries. |
 
 **Changing the status**
-- In card view: open the card's **⋯** menu and pick **Set to** a status, or expand the card (▸) and use the **Status** selector. Each status in the selector has a one-line description.
+- In card view: open the card's **⋯** menu and pick **Set to** a status, or expand the card (**⌄**) and use the **Status** selector. Each status in the selector has a one-line description.
 - In table view: use the **Status** dropdown in the Status column.
 - In the Editor: the Status field appears in the Ammo Information section next to the load type.
 
@@ -586,20 +590,22 @@ Click **Save**. The card appears in its section right away.
 ![Screenshot: Add/Edit component form panel](./images/inventory-add-form.png)
 
 Each component card shows:
-- Component name and type icon
-- **Price**: the cost per unit (e.g. *$22.50/lb*, or *$0.16 ea* for a primer). The form keeps the price and quantity you entered; the card and table show only the per-unit cost.
-- **Stock**: a pill at the top of the card, if you track stock. It's **green** while you have stock, **orange** at or below your alert, and **red** at zero, the same as My Ammo. Powder and shot show two decimals; hover over the pill for the exact amount and your alert level.
+- The photo (or type icon) and name, with a one-line spec summary under the name, e.g. *124 gr · .355 · 9mm Luger · OAL 1.169 in* for a bullet, or *9mm Luger · 5× reloads* for brass
+- **Stock**: a pill, if you track stock. It's **green** while you have stock, **orange** at or below your alert, and **red** at zero, the same as My Ammo. Powder and shot show two decimals; hover over the pill for the exact amount and your alert level.
+- **Value on hand**: what that stock is worth, next to the pill
+- **Stock bar**: shown when you set an alert. The bar is your stock and the tick is your alert, on the same scale. With plenty in stock, the bar is full and the tick sits near the start. When stock drops below four times your alert, the tick stays a quarter of the way along and the bar shrinks toward it.
+- **Price**: the cost per unit (e.g. *$22.50/lb*, or *$0.16 ea* for a primer). Prices per pound or kilo always show two decimals. The form keeps the price and quantity you entered; the card and table show only the per-unit cost.
 - **Lot**: the lot number on hand, shown only when one has been entered.
-- A one-line spec summary under the name, e.g. *124 gr · .355 · 9mm Luger · OAL 1.169 in* for a bullet, or *9mm Luger · 5× reloads* for brass
-- Notes (if any)
+- **Journalled** and **Deducted**: how much the Journal has used. See below.
+- Notes (if any), as a short preview at the bottom
 
-Brass with **Consistency & Fit** or **Annealing** data shows a **Details** row with an icon for each: a ruler for Consistency & Fit, a flame for Annealing. Hover over an icon to see the details.
+Brass with **Consistency & Fit** or **Annealing** data shows a **Details** entry with an icon for each: a ruler for Consistency & Fit, a flame for Annealing. Hover over an icon to see the details.
 
 ![Screenshot: Inventory card showing price and per-unit fields](./images/inventory-card.png)
 
 ### 3.2 Managing Components
 
-Each component card and table row has these actions:
+Click a card to edit it. On a card, the action buttons appear when you hover over it. In table view they're always in the row. These are the actions:
 
 | Button | Action |
 |--------|--------|
@@ -617,7 +623,15 @@ When anything is archived, the count under the page title ends with an **"N arch
 
 ![Screenshot: Archived components, showing archived component tag and link to hide them at the top.](./images/archived-components.png)
 
-In **Table view**, the **Stock** column shows the same colored pill, with its unit (*primers*, *rounds*, *cases*, *hulls*, *wads*, *slugs*, *lb*, or *kg*), or a dash if not set. The **Lot #** column shows the lot number, or a dash.
+In **Table view**, the **Stock** column shows the same colored pill, with its unit (*primers*, *rounds*, *cases*, *hulls*, *wads*, *slugs*, *lb*, or *kg*), or a dash if not set. The **Level** column shows the same stock bar as the card, for components with an alert set. Hover over it for the amount and your alert. The **Used** column shows the Journal usage: the journalled amount on top, the deducted part under it.
+
+**Journal usage**
+
+Each component shows how much of it your Journal lots have used:
+- **Journalled**: everything pressed with it, across all Journal lots.
+- **Deducted**: the part of that you took out of stock with the Journal's stock button (see [5.2](#52-managing-journal-entries)).
+
+Amounts use the component's stock unit: primers, rounds, cases, lb or kg. Hover over the Journalled figure to see how many lots it covers. A lot counts toward the components its load links to, and an overridden brass counts toward that brass. Archived components keep their figures, so you can see how much of an old lot you used. Components no lot has used show nothing. The **Lot #** column shows the lot number, or a dash.
 
 For brass, an **Info** column holds the same Consistency & Fit and Annealing icons as the cards.
 
@@ -715,7 +729,7 @@ Click **Save**. The firearm shows up in the list and in the Range Log's firearm 
 
 ### 4.2 Managing Firearm Profiles
 
-Each firearm profile (in both card and table view) has these actions:
+Click a card to edit it. On a card, the action buttons appear when you hover over it. In table view they're always in the row. These are the actions:
 
 | Button | Action |
 |--------|--------|
@@ -749,11 +763,11 @@ Search and chips work together: the list shows the firearms that match both.
 
 The **Cards** / **Table** buttons switch the layout. The tab remembers your choice. Click the small arrow at the left of a caliber group to collapse it.
 
-**Card view** (default): each firearm is a compact tile with its photo (or a firearm icon) and name in the header. The body shows only the fields you filled in: Type and Action badges, Barrel and Twist, then Serial, Optic, Price, and **Fired**: the rounds logged with this firearm in the Range Log and the date you last shot it. Long notes are shortened; hover over the note to read it all.
+**Card view** (default): each firearm is a compact tile. The header shows its photo (or a firearm icon), the name, and the type and action, e.g. *Rifle · Semi-Auto*. The body leads with the rounds fired: the rounds logged with this firearm in the Range Log, and the date you last shot it. Below that, a small grid shows only the fields you filled in: Barrel, Twist, Price, Optic, and Serial. Long notes are shortened; hover over the note to read it all.
 
 **Table view**: one row per firearm, with columns for Name (with its photo), Type, Action, Barrel, Twist, Optic, and Fired (rounds and last range date). Serial number and price are on the card. Notes show as a short preview under the name; hover over it to read it all. On a narrow screen the table scrolls sideways and the Name column stays in view.
 
-**Optic**: when a firearm has optic details, a scope icon appears in the Optic column (table) or Optic row (card). Hover over it to see the manufacturer, model, type, magnification, focal plane, reticle, turret units, and zero distance.
+**Optic**: on a card, the Optic entry shows the optic's name, or its type when no make or model is set. In the table, a scope icon appears in the Optic column. Hover over either to see the manufacturer, model, type, magnification, focal plane, reticle, turret units, and zero distance.
 
 **Photo thumbnails**: hover over a firearm's thumbnail to see its full datasheet (see 4.5).
 
@@ -1149,7 +1163,18 @@ Next to the modes is the **Auto Place** button, described above. The toolbar als
 
 #### 7.1.4 Statistics Panel
 
-The **Statistics** panel in the right sidebar shows metrics for the current view: all shots, one group, or the aggregate. You can collapse it.
+The **Statistics** panel in the right sidebar shows metrics for the current view: all shots, one group, or the aggregate. You can collapse it. Values line up in one column across all sections. Hover over a value for a short explanation of what it measures.
+
+A table in the bottom-right corner of the image shows the key numbers too. It lists the distance, extreme spread, enclosing circle, mean radius, 2σ and R95 radius, 2σ ellipse, width, and height. Each value shows in your length unit, MOA, and MIL. A line sample next to each row matches the overlay drawn on the target.
+
+To move the table, drag it. Its corners turn orange when you hover over it. Each target keeps its own spot, so you can place it clear of the group. Click **Save** to keep the new spot. Prints use the same spot.
+
+Flyers are marked with a red triangle around the shot.
+
+With 5 or more shots, a light blue **2σ ellipse** appears around the group. Like the 2σ circle, it should hold about 86% of future shots. Unlike the circle, it follows the shape of the group. A long, tilted ellipse means the shots string along that line. The table shows its long and short sizes.
+
+
+![Screenshot: Target canvas with the stats table and a flyer marked by a red triangle](./images/targets-canvas-stats-table.png)
 
 ![Screenshot: Target Analysis statistics panel showing shot count, extreme spread, mean radius, CEP50, windage and elevation offset rows](./images/targets-stats-panel.png)
 
@@ -1166,7 +1191,7 @@ These describe the size and shape of the group.
 | **Figure of Merit (FoM)** | The average of the horizontal and vertical spreads. A quick check of whether the group is roughly round. |
 | **Horizontal Spread / Vertical Spread** | The width and height of the group. A group much taller than it is wide points to vertical stringing. |
 | **Horizontal SD / Vertical SD** | Standard deviation on each axis. A low vertical SD with a high vertical spread means the outlying shots sit at the extremes, a classic sign of inconsistent muzzle velocity. |
-| **Radial SD** | Standard deviation of each shot's distance from the group centre. A useful summary of how tightly the shots cluster, and the basis for the Rayleigh σ below. |
+| **Radial SD** | Standard deviation of each shot's distance from the group centre. Low means the shots sit at similar distances from the centre. It isn't the σ used below. For a normal group it's about 0.66 σ. |
 | **Max Radial Deviation** | Distance from the group centre to the farthest shot. |
 | **Vertical String Ratio** | Vertical spread divided by horizontal spread. Above 1.5 it's highlighted as a stringing warning: the group is much taller than wide, often from inconsistent velocity, trigger timing, or recoil control. |
 
@@ -1199,7 +1224,7 @@ Where the group centre landed compared with your point of aim. Without a POA, th
 | **POI distance** | The straight-line distance from the point of aim to the group centre, combining windage and elevation. |
 | **Clicks needed** | The scope clicks needed to move the point of impact onto the point of aim, based on your click value. Positive = right/up; negative = left/down. Hover over the clicks to see the click size used. |
 
-Linear values use the unit set in the Configuration panel (in or cm). With a shot distance set, MOA or MIL values appear in brackets next to them.
+Linear values use the measurement system set in the Configuration panel. Imperial shows inches. Metric shows mm up to 100 mm, then cm. With a shot distance set, MOA or MIL values appear in brackets next to them.
 
 #### 7.1.5 Working with Groups
 
@@ -1416,6 +1441,8 @@ Firearm and Shots share a row, right above Distance and Unit.
 
 Group size, average velocity, and SD are **not** entered here, since you won't know them before shooting. They print as blank labelled fields (e.g. *GRP:*, *VEL:*, *SD:*) for you to fill in at the range.
 
+To move an annotation box, drag it in the preview. Its corners turn orange when you hover over it. Inside the target, it moves anywhere. Below the target, it slides left and right. Each target keeps its own spot, and the print matches. Click **Save Sheet** to keep it.
+
 The **Load** and **Gun** toggles control which part of the block prints, so you can print the gun and result fields without the load details, or the other way round. A **DATE** field to fill in prints either way. Text that's too long, like a long firearm name, is shortened with an ellipsis.
 
 **Filling multiple targets quickly**
@@ -1428,9 +1455,11 @@ The **Load** and **Gun** toggles control which part of the block prints, so you 
 #### 7.3.5 Managing Target Sheets
 
 Saved sheets appear as cards. Each card shows:
-- **Ring colour swatches** showing the colour scheme
+- A thumbnail of the printed page, with every target in place
 - Sheet name, page size, columns × rows layout, and shape
-- Last updated date
+- **Ring colour swatches** and the last updated date
+
+To change the order, drag a card to a new spot. The app remembers the order. New and duplicated sheets go first.
 
 Each card has three action buttons:
 
