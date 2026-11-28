@@ -213,6 +213,7 @@ Click **Add Ammo** in the top-right corner, or the **+** button in the **Reloads
 - **Caliber**: the cartridge designation (e.g. *9mm Luger*, *.308 Win*). This is added when defining the bullet.
 - **COAL**: cartridge overall length for this load. Printed on the lot label.
 - **Notes**: optional free-text field for dates or any other reference.
+- **Photo**: optional. Upload a photo of your rounds. iPhone HEIC photos are converted automatically. It shows as a thumbnail on the card and in table view (see [2.3](#23-managing-ammo-entries)). Click **Remove** to clear it.
 
 **Powder**
 - Powder name, measurement system (Imperial grains or Metric grams), price per lb/kg, and charge weight per round.
@@ -234,13 +235,14 @@ Click **Add Ammo** in the top-right corner, or the **+** button in the **Reloads
 
 A **Live Preview** panel on the right updates as you type. It shows the cost per round and totals for 50, 100, and 1000 rounds.
 
+<!-- IMAGE MAY NEED UPDATING: Photo field now under Notes in Ammo Information (2.17.28) -->
 ![Screenshot: Load editor: Reload Data form with live preview](./images/load-editor.png)
 
 Click **Save Load** or **Update Load** when done. The entry shows up in My Ammo right away and is available in Cost Comparison and Cost Analysis.
 
 ### 2.2 Adding a Factory Ammo Entry
 
-Click **Add Ammo** or the **+** button in the **Factory** section header. The Editor opens with **Factory Ammo** pre-selected. The form shows:
+Click **Add Ammo** or the **+** button in the **Factory** section header. The Editor opens with **Factory Ammo** pre-selected. **Ammo Information** is the same as for reloads, including **Photo** (see [2.1](#21-adding-a-reload-entry)). The form then shows:
 
 **Stock** *(optional)*
 - Tracks how many rounds of this ammo you have left. Enter the boxes you bought in **Add Boxes** and click **Add**, or just save. Boxes add up in the **Lifetime total** below the field. To fix a mistake, enter a negative number and click **Add**. The total never goes below zero.
@@ -260,9 +262,7 @@ Click **Add Ammo** or the **+** button in the **Factory** section header. The Ed
 **Additional Fixed Cost**
 - A flat fee spread over a number of rounds, useful for background check fees (e.g. $25 over 500 rounds = $0.05/rd extra) if applicable in your State.
 
-**Photo** *(optional)*
-- Upload a photo of the ammo box. iPhone HEIC photos are converted automatically. The photo is resized for storage and shown as a thumbnail on the card and in table view (see [2.3](#23-managing-ammo-entries)). Click **Remove** to clear it.
-
+<!-- IMAGE MAY NEED UPDATING: Photo field moved up to Ammo Information (2.17.28) -->
 ![Screenshot: Load editor: Factory Ammo Data form](images/factory-ammo.png)
 
 ### 2.3 Managing Ammo Entries
@@ -313,9 +313,9 @@ On the card, the pill sits on the line under the recipe. Its color shows where y
 
 **Missing components**
 
-A reload shows an orange **⚠ Missing** badge next to the stock pill when a linked component can't cover even one round. For example, you're out of primers, or you have less powder than one charge. Hover over the badge to see which components. In table view, a small **⚠** sits next to the name instead.
+A reload shows an orange **⚠ Missing** badge next to the stock pill when a linked component can't cover even one round. For example, you're out of primers, or you have less powder than one charge. It also shows when a linked component was deleted from My Components; the tooltip marks it *(deleted)*. Hover over the badge to see which components. In table view, a small **⚠** sits next to the name instead.
 
-Only components linked from My Components (see [3.3](#33-linking-inventory-to-loads)) with **Stock on hand** set are checked.
+Only components linked from My Components (see [3.3](#33-linking-inventory-to-loads)) are checked. Stock is checked only when **Stock on hand** is set. To clear a *(deleted)* warning, link the load to another component in the Editor.
 
 ![Screenshot: Component missing to build load badge.](./images/load-component-missing.png)
 
@@ -325,7 +325,7 @@ Each section header (**Reloads**, **Factory**) shows what your ammo on hand is w
 
 **Photo thumbnails**
 
-Factory ammo with a photo (see [2.2](#22-adding-a-factory-ammo-entry)) shows it as a thumbnail on the card and in the table's Photo column. Hover over the thumbnail to see the ammo's name, caliber, weight, price per box, and cost per round, just like firearm thumbnails (see [4.4](#44-card-and-table-views) and [4.5](#45-firearm-datasheet)).
+Ammo with a photo (see [2.1](#21-adding-a-reload-entry)) shows it as a thumbnail on the card and in the table's Photo column. Hover over the thumbnail to see the ammo's name, caliber, weight, and cost per round, plus the price per box for factory ammo or the powder, charge and primer for a reload, just like firearm thumbnails (see [4.4](#44-card-and-table-views) and [4.5](#45-firearm-datasheet)).
 
 ![Screenshot: My Ammo card and table showing a factory ammo photo thumbnail](./images/ammo-photo-thumbnail.png)
 
@@ -333,7 +333,7 @@ Factory ammo with a photo (see [2.2](#22-adding-a-factory-ammo-entry)) shows it 
 
 **Photos in the printed Data Sheet**
 
-When you print a load's **Data Sheet**, a factory ammo photo appears at the top. For reloads, the sheet shows a strip of photos of the linked powder, primer, bullet, and brass, when they have one (see [3.3](#33-linking-inventory-to-loads)). Untick **Include photos** at the bottom of the dialog to leave photos out.
+When you print a load's **Data Sheet**, the ammo's own photo appears at the top. For reloads, the sheet also shows a strip of photos of the linked powder, primer, bullet, and brass, when they have one (see [3.3](#33-linking-inventory-to-loads)). Untick **Include photos** at the bottom of the dialog to leave photos out.
 
 ![Screenshot: Printed load data sheet showing the reload component photo strip in the Components section](./images/datasheet-component-photos.png)
 
@@ -1499,9 +1499,9 @@ By default, both use **checkboxes**. Check the entries to include in the average
 
 Retired ammo is hidden from the list. Turn on the **Retired** switch at the top of the panel to see it. Hidden retired ammo still counts in the analysis.
 
-Each entry fits on one line: checkbox, name, and cost per round. In **Rounds** mode a reload shows its name on the first line. Below it you see the rounds you typed, the Journal rounds (the blue **+N**), and the total, then the cost per round. The total cost of those rounds sits on the right, so you can compare loads down the list. Reloads with no rounds are dimmed and show a dash instead of a total. A small thumbnail appears next to the name: the photo of factory ammo, or the photo of a reload's linked bullet (see [3.3](#33-linking-inventory-to-loads)).
+Each entry fits on one line: checkbox, name, and cost per round. In **Rounds** mode a reload shows its name on the first line. Below it you see the rounds you typed, the Journal rounds (the blue **+N**), and the total, then the cost per round. The total cost of those rounds sits on the right, so you can compare loads down the list. Reloads with no rounds are dimmed and show a dash instead of a total. A small thumbnail appears next to the name: the ammo's own photo, or else the photo of a reload's linked bullet (see [3.3](#33-linking-inventory-to-loads)).
 
-Click a load's name to open its details: caliber, COAL/CBTO, and for reloads the powder, bullet, primer, and brass, each with its photo from My Components when it has one (the type icon otherwise). Factory ammo shows its photo. This is the same dialog you get by clicking a load name in the Journal.
+Click a load's name to open its details: caliber, COAL/CBTO, and for reloads the powder, bullet, primer, and brass, each with its photo from My Components when it has one (the type icon otherwise). Ammo with its own photo shows it at the top. This is the same dialog you get by clicking a load name in the Journal.
 
 ![Screenshot: Load Selection panel with checkboxes](./images/load-selection.png)
 
